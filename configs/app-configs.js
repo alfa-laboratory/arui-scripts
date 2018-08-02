@@ -3,7 +3,7 @@ const fs = require('fs');
 const CWD = process.cwd();
 
 const appPackage = JSON.parse(fs.readFileSync(path.join(CWD, 'package.json'), 'utf8'));
-const packageSettings = appPackage.aruiScripts || {};
+const packageSettings = appPackage.aruiScripts || appPackage['arui-scripts'] || {};
 
 const buildPath = packageSettings.buildPath || '.build';
 const assetsPath = packageSettings.assetsPath || 'assets';
