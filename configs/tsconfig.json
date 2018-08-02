@@ -1,0 +1,21 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "es2015",
+      "es2016"
+    ],
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "target": "es2017",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "allowJs": true
+  }
+}
