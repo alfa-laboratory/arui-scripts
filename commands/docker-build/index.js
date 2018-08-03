@@ -47,8 +47,8 @@ const imageFullName = `${dockerRegistry ? `${dockerRegistry}/` : ''}${imageName}
 
         await Promise.all([
             fs.writeFile(path.join(pathToTempDir, 'Dockerfile'), dockerfile, 'utf8'),
-            fs.writeFile(path.join(pathToTempDir, 'start.sh'), startScript, 'utf8'),
             fs.writeFile(path.join(pathToTempDir, 'nginx.conf'), nginxConf, 'utf8'),
+            fs.writeFile(path.join(pathToTempDir, 'start.sh'), startScript, { encoding: 'utf8', mode: 555 }),
             fs.remove(configs.buildPath),
         ]);
 
