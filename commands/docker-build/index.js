@@ -52,6 +52,8 @@ const imageFullName = `${dockerRegistry ? `${dockerRegistry}/` : ''}${imageName}
             fs.remove(configs.buildPath),
         ]);
 
+		shell.chmod('+x', path.join(pathToTempDir, 'start.sh'));
+
         console.time('Build application time');
         // run build script
         await exec('npm run build');
