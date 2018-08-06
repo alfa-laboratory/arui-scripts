@@ -1,3 +1,13 @@
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/alfa-laboratory/arui-scripts/compare/v2.0.2...v2.0.3) (2018-08-06)
+
+
+### Bug Fixes
+
+* changed octal value ([40a9dfa](https://github.com/alfa-laboratory/arui-scripts/commit/40a9dfa))
+
+
+
 <a name="2.0.2"></a>
 ## [2.0.2](https://github.com/alfa-laboratory/arui-scripts/compare/v2.0.1...v2.0.2) (2018-08-06)
 
