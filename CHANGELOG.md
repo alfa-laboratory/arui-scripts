@@ -1,3 +1,13 @@
+<a name="2.0.2"></a>
+## [2.0.2](https://github.com/alfa-laboratory/arui-scripts/compare/v2.0.1...v2.0.2) (2018-08-06)
+
+
+### Bug Fixes
+
+* remove erroneous commit ([cda07da](https://github.com/alfa-laboratory/arui-scripts/commit/cda07da))
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/alfa-laboratory/arui-scripts/compare/v2.0.0...v2.0.1) (2018-08-06)
 
