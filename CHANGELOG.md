@@ -1,3 +1,13 @@
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/alfa-laboratory/arui-scripts/compare/v2.0.3...v2.0.4) (2018-08-08)
+
+
+### Bug Fixes
+
+* **app-configs:** fix baseDockerImage ([0100b06](https://github.com/alfa-laboratory/arui-scripts/commit/0100b06))
+
+
+
 <a name="2.0.3"></a>
 ## [2.0.3](https://github.com/alfa-laboratory/arui-scripts/compare/v2.0.2...v2.0.3) (2018-08-06)
 
