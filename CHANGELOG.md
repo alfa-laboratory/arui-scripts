@@ -1,3 +1,13 @@
+<a name="2.0.5"></a>
+## [2.0.5](https://github.com/alfa-laboratory/arui-scripts/compare/v2.0.4...v2.0.5) (2018-08-23)
+
+
+### Bug Fixes
+
+* **webpack-client-prod:** keep keyframes names ([fdd4298](https://github.com/alfa-laboratory/arui-scripts/commit/fdd4298))
+
+
+
 <a name="2.0.4"></a>
 ## [2.0.4](https://github.com/alfa-laboratory/arui-scripts/compare/v2.0.3...v2.0.4) (2018-08-08)
 
