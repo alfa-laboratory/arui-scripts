@@ -191,7 +191,13 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
         }),
         new ManifestPlugin(),
         new webpack.optimize.ModuleConcatenationPlugin(),
-        new OptimizeCssAssetsPlugin(),
+        new OptimizeCssAssetsPlugin({
+            cssProcessorOptions: {
+                reduceIdents: {
+                    keyframes: false
+                }
+            }
+        }),
         new CompressionPlugin({
             asset: '[file].gz',
             algorithm: 'gzip',
