@@ -4,6 +4,7 @@
     "collectCoverageFrom": [
         "src/**/*.{js,jsx,ts,tsx}"
     ],
+    "testURL": "http://localhost",
     "transform": {
         "^.+\\.jsx?$": "<rootDir>/node_modules/arui-scripts/configs/jest/babel-transform",
         "^.+\\.tsx?$": "ts-jest",
