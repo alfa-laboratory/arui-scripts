@@ -364,6 +364,27 @@ module.exports = {
 - `babel-server` - конфигурация `babel` для серверноого кода. Ключи: `babel`, `babelServer`.
 - `dev-server` - конфигурация `webpack-dev-server`. Ключи: `devServer`.
 - `postcss` - конфигурация для `postcss`. Ключи: `postcss`.
+  > `config` postcss содержит массив с уже инициализированными плагинами, параметры которых уже зафиксированны. Если необходимо изменить параметры плагинов можно пересоздать конфиг, таким образом:
+    ```javascript
+    const {
+        createPostcssConfig, // функция для создания конфигурационного файла postcss
+        postcssPlugins, // список плагинов
+        postcssPluginsOptions, // коллекция конфигураций плагинов
+    } = require('arui-scripts/configs/postcss.config');
+
+    module.exports = {
+        postcss: () => {
+            const newOption = {
+                ...postcssPluginsOptions,
+                'postcss-import': {
+                    ...postcssPluginsOptions['postcss-import'],
+                    path: [...postcssPluginsOptions['postcss-import'].path, './src'],
+                },
+            };
+            return createPostcssConfig(postcssPlugins, newOption);
+        },
+    };
+    ```
 - `stats-options` - конфигурация для [webpack-stats](https://webpack.js.org/configuration/stats/). Ключи: `stats`.
 - `webpack.client.dev` - конфигурация для клиентского webpack в dev режиме. Ключи: `webpack`, `webpackClient`, `webpackDev`, `webpackClientDev`.
 - `webpack.client.prod` - конфигурация для клиентского webpack в prod режиме. Ключи: `webpack`, `webpackClient`, `webpackProd`, `webpackClientProd`.
@@ -371,3 +392,4 @@ module.exports = {
 - `webpack.server.prod` - конфигурация для серверного webpack в prod режиме. Ключи: `webpack`, `webpackServer`, `webpackProd`, `webpackServerProd`.
 
 Для некоторых конфигураций определены несколько ключей, они будут применятся в том порядке, в котором они приведены в этом файле.
+

@@ -1,3 +1,9 @@
+/**
+ * Функция для создания конфигурационного файла postcss
+ * @param {String[]} plugins список плагинов
+ * @param {Object} options коллекция конфигураций плагинов, где ключ - название плагина, а значение - аргумент для инициализации
+ * @returns {*}
+ */
 function createPostcssConfig(plugins, options) {
     return plugins.map(pluginName => {
         const plugin = require(pluginName);
