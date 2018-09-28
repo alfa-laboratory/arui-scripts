@@ -1,3 +1,8 @@
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/alfa-laboratory/arui-scripts/compare/v2.0.5...v2.1.0) (2018-09-28)
+
+
+
 <a name="2.0.5"></a>
 ## [2.0.5](https://github.com/alfa-laboratory/arui-scripts/compare/v2.0.4...v2.0.5) (2018-08-23)
 
