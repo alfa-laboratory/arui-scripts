@@ -50,7 +50,7 @@ module.exports = {
     useServerHMR: typeof packageSettings.useServerHMR !== 'undefined' ? !!packageSettings.useServerHMR : false,
     useYarn: fs.existsSync(yarnLockFilePath),
     clientServerPort: packageSettings.clientServerPort ? parseInt(packageSettings.clientServerPort, 10) : 8080,
-    serverPort: packageSettings.serverPort ? parseInt(packageSettings, 10) : 3000,
+    serverPort: packageSettings.serverPort ? parseInt(packageSettings.serverPort, 10) : 3000,
 
     debug: !!packageSettings.debug,
     hasOverrides: fs.existsSync(overridesPath),
