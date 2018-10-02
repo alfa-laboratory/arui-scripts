@@ -1,3 +1,13 @@
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/alfa-laboratory/arui-scripts/compare/v2.1.0...v2.1.1) (2018-10-02)
+
+
+### Bug Fixes
+
+* **app-configs:** typo in serverPort ([72ea7e3](https://github.com/alfa-laboratory/arui-scripts/commit/72ea7e3))
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/alfa-laboratory/arui-scripts/compare/v2.0.5...v2.1.0) (2018-09-28)
 
