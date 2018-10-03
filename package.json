@@ -81,7 +81,7 @@
     "webpack-node-externals": "^1.6.0"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=8.9.1"
   },
   "scripts": {
     "_changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
