@@ -7,13 +7,15 @@ const commands = [
     'docker-build',
     'test',
     'ensure-yarn',
-    'archive-build'
+    'archive-build',
+    'postinstall'
 ];
 
 const command = process.argv[2];
 
 if (!command || commands.indexOf(command) === -1) {
     console.error(`Please specify one of available commands: ${commands.map(c => `"${c}"`).join(' ')}`);
+
     process.exit(-1);
 }
 
