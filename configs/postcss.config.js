@@ -34,7 +34,7 @@ const postcssPlugins = [
 
 const postcssPluginsOptions = {
     'postcss-import': {
-        path: ['./src'],
+        path: [],
         plugins: [require('postcss-discard-comments')()],
     },
     'postcss-url': {
