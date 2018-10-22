@@ -1,3 +1,13 @@
+<a name="2.2.1"></a>
+## [2.2.1](https://github.com/alfa-laboratory/arui-scripts/compare/v2.1.1...v2.2.1) (2018-10-22)
+
+
+### Features
+
+* **jest-preset:** add testURL ([374d924](https://github.com/alfa-laboratory/arui-scripts/commit/374d924))
+
+
+
 <a name="2.1.1"></a>
 ## [2.1.1](https://github.com/alfa-laboratory/arui-scripts/compare/v2.1.0...v2.1.1) (2018-10-02)
 
