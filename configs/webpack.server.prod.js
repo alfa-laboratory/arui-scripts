@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
@@ -6,6 +7,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const configs = require('./app-configs');
 const babelConf = require('./babel-server');
 const applyOverrides = require('./util/apply-overrides');
+const assetsIgnoreBanner = fs.readFileSync(require.resolve('./util/node-assets-ignore'), 'utf8');
 
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
@@ -41,7 +43,7 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
                 .replace(/\\/g, '/'),
     },
     externals: [nodeExternals({
-        whitelist: [/^arui-feather/, /^arui-ft-private/, /^arui-private/, /^alfaform-core-ui/]
+        whitelist: [/^arui-feather/, /^arui-ft-private/, /^arui-private/, /^alfaform-core-ui/, /^#/]
     })],
     resolve: {
         // This allows you to set a fallback for where Webpack should look for modules.
@@ -119,6 +121,11 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
         ],
     },
     plugins: [
+        new webpack.BannerPlugin({
+            banner: assetsIgnoreBanner,
+            raw: true,
+            entryOnly: false
+        }),
         new webpack.BannerPlugin({
             banner: 'require("source-map-support").install();',
             raw: true,

@@ -228,10 +228,6 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
             ? []
             : [
                 new webpack.NormalModuleReplacementPlugin(
-                    /^prop-types$/,
-                    noopPath
-                ),
-                new webpack.NormalModuleReplacementPlugin(
                     /^react-style-proptype$/,
                     noopPath
                 ),
