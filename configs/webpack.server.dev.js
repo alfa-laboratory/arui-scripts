@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const webpack = require('webpack');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
@@ -11,6 +12,7 @@ const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeM
 const configs = require('./app-configs');
 const babelConf = require('./babel-server');
 const applyOverrides = require('./util/apply-overrides');
+const assetsIgnoreBanner = fs.readFileSync(require.resolve('./util/node-assets-ignore'), 'utf8');
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -48,7 +50,7 @@ const config = {
                 .replace(/\\/g, '/'),
     },
     externals: [nodeExternals({
-        whitelist: [/^arui-feather/, /^arui-ft-private/, /^arui-private/, /^alfaform-core-ui/]
+        whitelist: [/^arui-feather/, /^arui-ft-private/, /^arui-private/, /^alfaform-core-ui/, /^#/]
     })],
     resolve: {
         // This allows you to set a fallback for where Webpack should look for modules.
@@ -139,6 +141,11 @@ const config = {
             ? new StartServerPlugin(configs.serverOutput)
             : new ReloadServerPlugin({ script: path.join(configs.serverOutputPath, configs.serverOutput) }),
         new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.BannerPlugin({
+            banner: assetsIgnoreBanner,
+            raw: true,
+            entryOnly: false
+        }),
         new webpack.BannerPlugin({
             banner: 'require("source-map-support").install();',
             raw: true,
