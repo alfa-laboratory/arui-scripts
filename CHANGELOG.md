@@ -1,3 +1,13 @@
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/alfa-laboratory/arui-scripts/compare/v2.2.1...v3.0.0) (2018-11-14)
+
+
+### Features
+
+* **webpack:** ignore non-js require in node.js in node_modules ([2de1ea7](https://github.com/alfa-laboratory/arui-scripts/commit/2de1ea7))
+
+
+
 <a name="2.2.1"></a>
 ## [2.2.1](https://github.com/alfa-laboratory/arui-scripts/compare/v2.1.1...v2.2.1) (2018-10-22)
 
