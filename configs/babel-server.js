@@ -1,33 +1,37 @@
 const applyOverrides = require('./util/apply-overrides');
+const configs = require('./app-configs');
 
 module.exports = applyOverrides(['babel', 'babelServer'], {
     presets: [
         [
-            require.resolve('babel-preset-env'),
+            require.resolve('@babel/preset-env'),
             { modules: false, targets: { node: 'current' }, loose: true }
         ],
-        require.resolve('babel-preset-react')
-    ],
+        configs.tsconfig !== null && require.resolve('@babel/preset-typescript'),
+        require.resolve('@babel/preset-react'),
+    ].filter(Boolean),
     plugins: [
-        require.resolve('babel-plugin-syntax-dynamic-import'),
-        require.resolve('babel-plugin-transform-proto-to-assign'),
-        require.resolve('babel-plugin-transform-decorators-legacy'),
-        require.resolve('babel-plugin-transform-class-properties'),
-        require.resolve('babel-plugin-transform-export-extensions'),
-        [require.resolve('babel-plugin-transform-object-rest-spread'), { useBuiltIns: true }],
-        [require.resolve('babel-plugin-transform-runtime'), { polyfill: false, helpers: false }]
+        require.resolve('@babel/plugin-syntax-dynamic-import'),
+        require.resolve('@babel/plugin-transform-proto-to-assign'),
+        [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
+        [require.resolve('@babel/plugin-proposal-class-properties'), { loose: true }],
+        require.resolve('@babel/plugin-proposal-numeric-separator'),
+        require.resolve('@babel/plugin-proposal-export-default-from'),
+        require.resolve('@babel/plugin-proposal-export-namespace-from'),
+        [require.resolve('@babel/plugin-proposal-object-rest-spread'), { useBuiltIns: true }],
+        [require.resolve('@babel/plugin-transform-runtime'), { helpers: false }]
     ],
     env: {
         production: {
             plugins: [
-                require.resolve('babel-plugin-transform-react-constant-elements'),
-                require.resolve('babel-plugin-transform-react-remove-prop-types'),
-                require.resolve('babel-plugin-transform-react-inline-elements')
+                require.resolve('@babel/plugin-transform-react-constant-elements'),
+                require.resolve('@babel/plugin-transform-react-inline-elements'),
+                require.resolve('babel-plugin-transform-react-remove-prop-types')
             ]
         },
         test: {
             plugins: [
-                require.resolve('babel-plugin-transform-es2015-modules-commonjs')
+                require.resolve('@babel/plugin-transform-modules-commonjs')
             ]
         }
     }

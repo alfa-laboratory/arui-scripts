@@ -18,6 +18,7 @@ const assetsIgnoreBanner = fs.readFileSync(require.resolve('./util/node-assets-i
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
 const config = {
+    mode: 'development',
     // You may want 'eval' instead if you prefer to see the compiled output in DevTools.
     devtool: 'cheap-module-source-map',
     target: 'node',
@@ -73,7 +74,7 @@ const config = {
                 oneOf: [
                     // Process JS with Babel.
                     {
-                        test: /\.(js|jsx|mjs)$/,
+                        test: /\.(js|jsx|mjs|ts|tsx)$/,
                         include: configs.appSrc,
                         loader: require.resolve('babel-loader'),
                         options: Object.assign({
@@ -82,32 +83,6 @@ const config = {
                             // directory for faster rebuilds.
                             cacheDirectory: true,
                         }, babelConf),
-                    },
-                    // Process TS with tsc
-                    configs.tsconfig !== null && {
-                        test: /\.tsx?$/,
-                        use: [
-                            {
-                                loader: require.resolve('babel-loader'),
-                                options: Object.assign({
-                                    // This is a feature of `babel-loader` for webpack (not Babel itself).
-                                    // It enables caching results in ./node_modules/.cache/babel-loader/
-                                    // directory for faster rebuilds.
-                                    cacheDirectory: true
-                                }, babelConf)
-                            },
-							{
-								loader: require.resolve('cache-loader')
-							},
-                            {
-                                loader: require.resolve('ts-loader'),
-                                options: {
-                                    onlyCompileBundledFiles: true,
-									happyPackMode: true,
-                                    configFile: configs.tsconfig
-                                }
-                            }
-                        ],
                     },
                     // replace css imports with empty files
                     {
@@ -167,7 +142,7 @@ const config = {
         // makes the discovery automatic so you don't have to restart.
         // See https://github.com/facebookincubator/create-react-app/issues/186
         new WatchMissingNodeModulesPlugin(configs.appNodeModules),
-        configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
+        configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
     ].filter(Boolean),
     // Turn off performance hints during development because we don't do any
     // splitting or minification in interest of speed. These warnings become

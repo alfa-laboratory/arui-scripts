@@ -15,6 +15,7 @@ const applyOverrides = require('./util/apply-overrides');
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
 module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webpackClientDev'], {
+    mode: 'development',
     // You may want 'eval' instead if you prefer to see the compiled output in DevTools.
     devtool: 'cheap-module-source-map',
     // These are the "entry points" to our application.
@@ -29,7 +30,7 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
         // We include the app code last so that if there is a runtime error during
         // initialization, it doesn't blow up the WebpackDevServer client, and
         // changing JS code would still trigger a refresh.
-    ],
+    ].filter(Boolean),
     context: configs.cwd,
     output: {
         // Add /* filename */ comments to generated require()s in the output.
@@ -79,7 +80,7 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                     },
                     // Process JS with Babel.
                     {
-                        test: /\.(js|jsx|mjs)$/,
+                        test: /\.(js|jsx|mjs|ts|tsx)$/,
                         include: configs.appSrc,
                         use: [
                             { loader: require.resolve('react-hot-loader/webpack') },
@@ -91,33 +92,6 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                                     // directory for faster rebuilds.
                                     cacheDirectory: true
                                 }, babelConf)
-                            }
-                        ]
-                    },
-                    // Process TS with tsc
-                    configs.tsconfig !== null && {
-                        test: /\.tsx?$/,
-                        use: [
-                            { loader: require.resolve('react-hot-loader/webpack') },
-                            {
-                                loader: require.resolve('babel-loader'),
-                                options: Object.assign({
-                                    // This is a feature of `babel-loader` for webpack (not Babel itself).
-                                    // It enables caching results in ./node_modules/.cache/babel-loader/
-                                    // directory for faster rebuilds.
-                                    cacheDirectory: true
-                                }, babelConf)
-                            },
-							{
-								loader: require.resolve('cache-loader')
-							},
-                            {
-                                loader: require.resolve('ts-loader'),
-                                options: {
-                                    onlyCompileBundledFiles: true,
-									happyPackMode: true,
-                                    configFile: configs.tsconfig
-                                }
                             }
                         ]
                     },
@@ -171,8 +145,6 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
     },
     plugins: [
         new AssetsPlugin({ path: configs.serverOutputPath }),
-        // Add module names to factory functions so they appear in browser profiler.
-        new webpack.NamedModulesPlugin(),
         new webpack.ProvidePlugin({
             React: 'react'
         }),
@@ -196,7 +168,7 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
         //         to: configs.clientOutputPath
         //     }
         // ])
-        configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
+        configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.
