@@ -1,6 +1,6 @@
 {
   "name": "arui-scripts",
-  "version": "4.0.0-prerelease2",
+  "version": "4.0.0",
   "main": "index.js",
   "license": "MPL-2.0",
   "repository": {
@@ -49,7 +49,7 @@
     "jest": "23.6.0",
     "jest-snapshot-serializer-class-name-to-string": "1.0.0",
     "lodash.merge": "4.6.1",
-    "mini-css-extract-plugin": "^0.4.4",
+    "mini-css-extract-plugin": "0.4.4",
     "null-loader": "0.1.1",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "postcss-calc": "^6.0.1",

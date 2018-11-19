@@ -2,7 +2,7 @@ import { isSmaller, YesNoEnum } from '../utils';
 
 describe('isSmaller', () => {
     it('should return no if a not greater than b', () => {
-        const result = isSmaller(1 ,2);
+        const result = isSmaller(1, 2);
 
         expect(result).toBe(YesNoEnum.No);
     });
