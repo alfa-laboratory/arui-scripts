@@ -54,6 +54,7 @@ module.exports = {
     tsconfig: fs.existsSync(projectTsConfigPath) ? projectTsConfigPath : null,
 	localNginxConf: fs.existsSync(nginxConfFilePath) ? nginxConfFilePath : null,
 
+    useTscLoader: packageSettings.useTscLoader || false,
     useServerHMR: typeof packageSettings.useServerHMR !== 'undefined' ? !!packageSettings.useServerHMR : false,
     useYarn: fs.existsSync(yarnLockFilePath),
     clientServerPort: packageSettings.clientServerPort ? parseInt(packageSettings.clientServerPort, 10) : 8080,

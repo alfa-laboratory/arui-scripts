@@ -71,7 +71,9 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
     },
     module: {
-        strictExportPresence: true,
+        // typescript interface will be removed from modules, and we will get an error on correct code
+        // see https://github.com/webpack/webpack/issues/7378
+        strictExportPresence: !configs.tsconfig,
         rules: [
             {
                 // "oneOf" will traverse all following loaders until one will
@@ -91,10 +93,35 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
                     },
                     // Process JS with Babel.
                     {
-                        test: /\.(js|jsx|mjs|ts|tsx)$/,
+                        test: configs.useTscLoader ? /\.(js|jsx|mjs)$/ : /\.(js|jsx|mjs|ts|tsx)$/,
                         include: configs.appSrc,
                         loader: require.resolve('babel-loader'),
                         options: babelConf,
+                    },
+                    (configs.tsconfig && configs.useTscLoader) && {
+                        test: /\.tsx?$/,
+                        use: [
+                            {
+                                loader: require.resolve('babel-loader'),
+                                options: Object.assign({
+                                    // This is a feature of `babel-loader` for webpack (not Babel itself).
+                                    // It enables caching results in ./node_modules/.cache/babel-loader/
+                                    // directory for faster rebuilds.
+                                    cacheDirectory: true
+                                }, babelConf)
+                            },
+                            {
+                                loader: require.resolve('cache-loader')
+                            },
+                            {
+                                loader: require.resolve('ts-loader'),
+                                options: {
+                                    onlyCompileBundledFiles: true,
+                                    happyPackMode: true,
+                                    configFile: configs.tsconfig
+                                }
+                            }
+                        ]
                     },
                     // The notation here is somewhat confusing.
                     // "postcss" loader applies autoprefixer to our CSS.

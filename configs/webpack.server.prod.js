@@ -61,16 +61,44 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
     },
     module: {
-        strictExportPresence: true,
+        // typescript interface will be removed from modules, and we will get an error on correct code
+        // see https://github.com/webpack/webpack/issues/7378
+        strictExportPresence: !configs.tsconfig,
         rules: [
             {
                 oneOf: [
                     // Process JS with Babel.
                     {
-                        test: /\.(js|jsx|mjs|ts|tsx)$/,
+                        test: configs.useTscLoader ? /\.(js|jsx|mjs)$/ : /\.(js|jsx|mjs|ts|tsx)$/,
                         include: configs.appSrc,
                         loader: require.resolve('babel-loader'),
                         options: babelConf,
+                    },
+                    (configs.tsconfig && configs.useTscLoader) && {
+                        test: /\.tsx?$/,
+                        use: [
+                            {
+                                loader: require.resolve('babel-loader'),
+                                options: Object.assign({
+                                    // This is a feature of `babel-loader` for webpack (not Babel itself).
+                                    // It enables caching results in ./node_modules/.cache/babel-loader/
+                                    // directory for faster rebuilds.
+                                    cacheDirectory: true
+                                }, babelConf)
+                            },
+                            {
+                                loader: require.resolve('cache-loader')
+                            },
+                            {
+                                loader: require.resolve('ts-loader'),
+                                options: {
+                                    onlyCompileBundledFiles: true,
+                                    transpileOnly: true,
+                                    happyPackMode: true,
+                                    configFile: configs.tsconfig
+                                }
+                            }
+                        ]
                     },
                     // replace css imports with empty files
                     {

@@ -8,7 +8,7 @@ module.exports = applyOverrides(['babel', 'babelClient'],{
             require.resolve('@babel/preset-env'),
             { modules: false, targets: { browsers }, loose: true }
         ],
-        configs.tsconfig !== null && require.resolve('@babel/preset-typescript'),
+        (configs.tsconfig !== null && !configs.useTscLoader) && require.resolve('@babel/preset-typescript'),
         require.resolve('@babel/preset-react')
     ].filter(Boolean),
     plugins: [

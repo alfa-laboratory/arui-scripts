@@ -61,6 +61,7 @@ npm install arui-scripts --save-dev
 - `archiveName` - имя архива, который будет создан при использовании команды `archive-build`. По-умолчанию `build.tar`.
 - `keepPropTypes` - если `true`, пакеты с prop-types не будут удалены из production билда.
 - `debug` - режим отладки, в котором не выполняются некоторые нежелательные операции и выводится больше сообщений об ошибках, по-умолчанию `false`.
+- `useTscLoader` -  использовать ts-loader вместо babel-loader для обработки ts файлов. У babel-loader есть [ряд ограничений](https://blogs.msdn.microsoft.com/typescript/2018/08/27/typescript-and-babel-7/). По умолчанию `false`. 
 
 Так же, читаются настройки jest (см. [документацию](https://facebook.github.io/jest/docs/en/configuration.html))
 и `proxy` (см. [документацию](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#proxying-api-requests-in-development)).
@@ -299,6 +300,19 @@ yarn будет использоваться когда в рутовой пап
 ```json
 {
     "extends": "./node_modules/arui-scripts/configs/tsconfig.json"
+}
+```
+
+По-умолчанию TS будет компилироваться через babel, но у этого естьряд ограничений:
+- нельзя использовать namespace
+- Нельзя использовать устаревший синтаксис import/export (`import foo = require(...)`, `export = foo`)
+- enum merging
+
+Если вы используете что-то из вышеперичисленного - вы можете вернуться к использованию tsc для компиляции ts файлов
+
+```json
+{
+    "arui-scripts": { "useTscLoader": true }
 }
 ```
 
