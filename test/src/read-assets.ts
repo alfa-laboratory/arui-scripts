@@ -1,5 +1,5 @@
-import * as path from "path";
-import * as fs from "fs";
+import path from "path";
+import fs from "fs";
 
 export function readAssetsManifest() {
     const manifestPath = path.join(process.cwd(), '.build/webpack-assets.json');
