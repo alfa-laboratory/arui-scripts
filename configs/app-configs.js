@@ -16,6 +16,13 @@ const yarnLockFilePath = path.join(CWD, 'yarn.lock');
 const overridesPath = path.join(CWD, 'arui-scripts.overrides.js');
 const nginxConfFilePath = path.join(CWD, 'nginx.conf');
 
+let aruiPolyfills = null;
+try {
+    aruiPolyfills = require.resolve('arui-feather/polyfills');
+} catch (error) {
+    // just ignore it
+}
+
 module.exports = {
     appPackage,
     name: appPackage.name,
@@ -38,7 +45,7 @@ module.exports = {
     serverOutputPath: path.resolve(CWD, buildPath),
 
     // client compilation configs
-    clientPolyfillsEntry: packageSettings.clientPolyfillsEntry || require.resolve('arui-feather/polyfills'),
+    clientPolyfillsEntry: packageSettings.clientPolyfillsEntry || aruiPolyfills,
     clientEntry: packageSettings.clientEntry || path.resolve(absoluteSrcPath, 'index'),
     clientOutputPath: path.resolve(CWD, buildPath, assetsPath),
     keepPropTypes: packageSettings.keepPropTypes || false,
@@ -47,6 +54,7 @@ module.exports = {
     tsconfig: fs.existsSync(projectTsConfigPath) ? projectTsConfigPath : null,
 	localNginxConf: fs.existsSync(nginxConfFilePath) ? nginxConfFilePath : null,
 
+    useTscLoader: packageSettings.useTscLoader || false,
     useServerHMR: typeof packageSettings.useServerHMR !== 'undefined' ? !!packageSettings.useServerHMR : false,
     useYarn: fs.existsSync(yarnLockFilePath),
     clientServerPort: packageSettings.clientServerPort ? parseInt(packageSettings.clientServerPort, 10) : 8080,

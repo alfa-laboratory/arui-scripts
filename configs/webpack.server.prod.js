@@ -13,6 +13,7 @@ const assetsIgnoreBanner = fs.readFileSync(require.resolve('./util/node-assets-i
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
 module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'webpackServerProd'], {
+    mode: 'production',
     // Don't attempt to continue if there are any errors.
     bail: true,
     // We generate sourcemaps in production. This is slow but gives good results.
@@ -60,38 +61,44 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
     },
     module: {
-        strictExportPresence: true,
+        // typescript interface will be removed from modules, and we will get an error on correct code
+        // see https://github.com/webpack/webpack/issues/7378
+        strictExportPresence: !configs.tsconfig,
         rules: [
             {
                 oneOf: [
                     // Process JS with Babel.
                     {
-                        test: /\.(js|jsx|mjs)$/,
+                        test: configs.useTscLoader ? /\.(js|jsx|mjs)$/ : /\.(js|jsx|mjs|ts|tsx)$/,
                         include: configs.appSrc,
                         loader: require.resolve('babel-loader'),
                         options: babelConf,
                     },
-                    // Process TS with tsc
-                    configs.tsconfig !== null && {
+                    (configs.tsconfig && configs.useTscLoader) && {
                         test: /\.tsx?$/,
                         use: [
                             {
                                 loader: require.resolve('babel-loader'),
-                                options: babelConf,
+                                options: Object.assign({
+                                    // This is a feature of `babel-loader` for webpack (not Babel itself).
+                                    // It enables caching results in ./node_modules/.cache/babel-loader/
+                                    // directory for faster rebuilds.
+                                    cacheDirectory: true
+                                }, babelConf)
                             },
-							{
-								loader: require.resolve('cache-loader')
-							},
+                            {
+                                loader: require.resolve('cache-loader')
+                            },
                             {
                                 loader: require.resolve('ts-loader'),
                                 options: {
                                     onlyCompileBundledFiles: true,
-									happyPackMode: true,
+                                    transpileOnly: true,
+                                    happyPackMode: true,
                                     configFile: configs.tsconfig
                                 }
                             }
-                        ],
-
+                        ]
                     },
                     // replace css imports with empty files
                     {
@@ -134,9 +141,6 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
         new webpack.ProvidePlugin({
             React: 'react'
         }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-        }),
-        configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true })
+        configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin()
     ].filter(Boolean)
 });

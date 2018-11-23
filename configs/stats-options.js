@@ -40,7 +40,9 @@ const statsOptions = applyOverrides('stats', {
     // Add webpack version information
     version: false,
     // Add warnings
-    warnings: true
+    warnings: true,
+    // ignore warning from missing types
+    warningsFilter: /export .* was not found in/
 });
 
 module.exports = statsOptions;

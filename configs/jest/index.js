@@ -26,7 +26,7 @@ const defaultJestConfig = {
     ],
     globals: {
         'ts-jest': {
-            tsConfigFile: configs.tsconfig
+            tsConfig: configs.tsconfig
         }
     }
 };
