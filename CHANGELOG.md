@@ -1,3 +1,19 @@
+<a name="4.0.1"></a>
+## [4.0.1](https://github.com/alfa-laboratory/arui-scripts/compare/v3.0.0...v4.0.1) (2018-11-23)
+
+
+### Bug Fixes
+
+* small review fixes ([7888b6b](https://github.com/alfa-laboratory/arui-scripts/commit/7888b6b))
+
+
+### Features
+
+* add `useTscLoader` flag, fix some problems with ts compilation ([568f509](https://github.com/alfa-laboratory/arui-scripts/commit/568f509))
+* migrate to webpack 4 ([acbb30b](https://github.com/alfa-laboratory/arui-scripts/commit/acbb30b))
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/alfa-laboratory/arui-scripts/compare/v2.2.1...v3.0.0) (2018-11-14)
 
