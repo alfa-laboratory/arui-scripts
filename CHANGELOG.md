@@ -1,3 +1,13 @@
+<a name="4.0.2"></a>
+## [4.0.2](https://github.com/alfa-laboratory/arui-scripts/compare/v4.0.1...v4.0.2) (2018-11-23)
+
+
+### Bug Fixes
+
+* move test to other directory, fix npmignore ([73f93e4](https://github.com/alfa-laboratory/arui-scripts/commit/73f93e4))
+
+
+
 <a name="4.0.1"></a>
 ## [4.0.1](https://github.com/alfa-laboratory/arui-scripts/compare/v3.0.0...v4.0.1) (2018-11-23)
 
