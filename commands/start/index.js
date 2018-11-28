@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const chalk = require('chalk');
 const WebpackDevServer = require('webpack-dev-server');
 const { choosePort } = require('react-dev-utils/WebpackDevServerUtils');
+const openBrowser = require('react-dev-utils/openBrowser');
 const checkRequiredFiles = require('../util/check-required-files');
 const configs = require('../../configs/app-configs');
 const clientConfig = require('../../configs/webpack.client.dev');
@@ -46,6 +47,9 @@ choosePort(HOST, DEFAULT_PORT)
         serverCompiler.watch(100, () => {});
 
         clientDevServer.listen(port, HOST, () => {
+            if (openBrowser(`http://localhost:${port}`)) {
+              console.log('The browser tab has been opened!');
+            }
             console.log(`Client dev server running at http://${HOST}:${port}...`);
         });
     })
