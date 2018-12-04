@@ -25,8 +25,7 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
     entry: [configs.clientPolyfillsEntry, configs.clientEntry].filter(Boolean),
     context: configs.cwd,
     output: {
-        // Add /* filename */ comments to generated require()s in the output.
-        pathinfo: true,
+        pathinfo: false,
         path: configs.clientOutputPath,
         publicPath: configs.publicPath,
         filename: '[name].[chunkhash:8].js',
