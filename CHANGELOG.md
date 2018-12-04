@@ -1,3 +1,19 @@
+<a name="4.0.3"></a>
+## [4.0.3](https://github.com/alfa-laboratory/arui-scripts/compare/v4.0.2...v4.0.3) (2018-12-04)
+
+
+### Bug Fixes
+
+* **webpack.client:** remove pathinfo from client prod build ([c2d86a3](https://github.com/alfa-laboratory/arui-scripts/commit/c2d86a3))
+
+
+### Features
+
+* **ci:** add travis ci ([9c30459](https://github.com/alfa-laboratory/arui-scripts/commit/9c30459))
+* **scripts:** add install step for test project ([e834431](https://github.com/alfa-laboratory/arui-scripts/commit/e834431))
+
+
+
 <a name="4.0.2"></a>
 ## [4.0.2](https://github.com/alfa-laboratory/arui-scripts/compare/v4.0.1...v4.0.2) (2018-11-23)
 
