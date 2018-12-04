@@ -33,21 +33,20 @@ function checkFileWithExtensions(filePath, extensions) {
 }
 
 function checkRequiredFiles() {
-    const unavailableFiles = files
-        .map(filePath => {
-            return {
-                exist: checkFileWithExtensions(filePath, extensions),
-                path: filePath
-            };
-        })
-        .filter(fileInfo => !fileInfo.exist);
+    const unavailableFilePaths = files
+        .reduce((result, filePath) => {
+            if (filePath && !checkFileWithExtensions(filePath, extensions)) {
+                result.push(filePath);
+            }
+            return result;
+        }, [])
 
-    if (unavailableFiles.length !== 0) {
+    if (unavailableFilePaths.length !== 0) {
         console.log(chalk.red('Could not find required files.'));
         const extensionsString = extensions.join(',');
-        unavailableFiles.forEach(fileInfo => {
-            const dirName = path.dirname(fileInfo.path);
-            const fileName = path.basename(fileInfo.path);
+        unavailableFilePaths.forEach(filePath => {
+            const dirName = path.dirname(filePath);
+            const fileName = path.basename(filePath);
             console.log(chalk.red('  Name: ') + chalk.cyan(`${fileName}.{${extensionsString}}`));
             console.log(chalk.red('  Searched in: ') + chalk.cyan(dirName));
         });
