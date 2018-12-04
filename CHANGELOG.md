@@ -1,3 +1,13 @@
+<a name="4.1.0"></a>
+# [4.1.0](https://github.com/alfa-laboratory/arui-scripts/compare/v4.0.3...v4.1.0) (2018-12-04)
+
+
+### Features
+
+* **browserlist:** forget dead browsers ([926bc1d](https://github.com/alfa-laboratory/arui-scripts/commit/926bc1d))
+
+
+
 <a name="4.0.3"></a>
 ## [4.0.3](https://github.com/alfa-laboratory/arui-scripts/compare/v4.0.2...v4.0.3) (2018-12-04)
 
