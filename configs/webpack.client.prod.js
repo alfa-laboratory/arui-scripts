@@ -195,7 +195,8 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
             cssProcessorOptions: {
                 reduceIdents: {
                     keyframes: false
-                }
+                },
+                zindex: false
             }
         }),
         new CompressionPlugin({

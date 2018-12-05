@@ -37,7 +37,7 @@ npm install arui-scripts --save-dev
 - `arui-scripts build` - компилирует клиент и сервер для использования в production
 - `arui-scripts docker-build` - собирает docker контейнер c production билдом и загружает его в артифактори
 - `arui-scripts test` - запускает jest тесты.
-- `arui-scriots archive-build` - собирает архив с production билдом
+- `arui-scripts archive-build` - собирает архив с production билдом
 
 
 Настройки
