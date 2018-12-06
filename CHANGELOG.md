@@ -1,3 +1,14 @@
+<a name="4.1.1"></a>
+## [4.1.1](https://github.com/alfa-laboratory/arui-scripts/compare/v4.1.0...v4.1.1) (2018-12-06)
+
+
+### Bug Fixes
+
+* provided default value for clientPolyfillsEntry when no arui-feather is installed ([623593e](https://github.com/alfa-laboratory/arui-scripts/commit/623593e))
+* **webpack-minimizer:** update webpack, disable z-index optimize ([f936b1b](https://github.com/alfa-laboratory/arui-scripts/commit/f936b1b))
+
+
+
 <a name="4.1.0"></a>
 # [4.1.0](https://github.com/alfa-laboratory/arui-scripts/compare/v4.0.3...v4.1.0) (2018-12-04)
 
