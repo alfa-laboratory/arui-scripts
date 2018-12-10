@@ -137,7 +137,10 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
                     {
                         test: /\.css$/,
                         loaders: [
-                            MiniCssExtractPlugin.loader,
+                            {
+                                loader: MiniCssExtractPlugin.loader,
+                                options: { publicPath: './' }
+                            },
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
