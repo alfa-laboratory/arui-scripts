@@ -1,3 +1,13 @@
+<a name="4.1.2"></a>
+## [4.1.2](https://github.com/alfa-laboratory/arui-scripts/compare/v4.1.1...v4.1.2) (2018-12-10)
+
+
+### Bug Fixes
+
+* **client:** correct base path for css extractor plugin ([1195fa7](https://github.com/alfa-laboratory/arui-scripts/commit/1195fa7))
+
+
+
 <a name="4.1.1"></a>
 ## [4.1.1](https://github.com/alfa-laboratory/arui-scripts/compare/v4.1.0...v4.1.1) (2018-12-06)
 
