@@ -14,9 +14,7 @@ const applyOverrides = require('./util/apply-overrides');
 
 const noopPath = require.resolve('./util/noop');
 
-// This is the development configuration.
-// It is focused on developer experience and fast rebuilds.
-// The production configuration is different and lives in a separate file.
+// This is the production configuration.
 module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'webpackClientProd'], {
     mode: 'production',
     // You may want 'eval' instead if you prefer to see the compiled output in DevTools.
