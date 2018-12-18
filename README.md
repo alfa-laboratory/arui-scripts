@@ -172,7 +172,7 @@ if (module.hot) {
         try {
             await currentServer.stop();
 
-            currentServer = server; // импорт из сервера заменется самостоятельно
+            currentServer = server; // импорт из сервера заменится самостоятельно
             await startServer();
         } catch (error) {
             console.log('Failed to update server. You probably need to restart application', error);
@@ -255,6 +255,8 @@ docker run -p 8080:8080 container-name:version ./start.sh
 
 На `8080` порту будет поднят nginx, который будет раздавать статику и проксировать все остальные запросы к `nodejs`.
 
+Вы также можете переопределить полностью процесс сборки docker-образа, создав в корневой директории проекта `Dockerfile` содержащий необходимый набор инструкций. Пример [Dockerfile](https://github.com/alfa-laboratory/arui-scripts/blob/master/commands/docker-build/dockerfile.template.js).
+
 archive
 ---
 
@@ -303,7 +305,7 @@ yarn будет использоваться когда в рутовой пап
 }
 ```
 
-По умолчанию TS будет компилироваться через babel, но у этого естьряд ограничений:
+По умолчанию TS будет компилироваться через babel, но у этого есть ряд ограничений:
 - нельзя использовать namespace
 - Нельзя использовать устаревший синтаксис import/export (`import foo = require(...)`, `export = foo`)
 - enum merging

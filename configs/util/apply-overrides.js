@@ -18,7 +18,7 @@ function applyOverrides(overridesKey, config) {
     overridesKey.forEach(key => {
         if (overrides.hasOwnProperty(key)) {
             if (typeof overrides[key] !== 'function') {
-                console.error('Incorrect override', key);
+                console.error(`Override ${key} must be a function`);
             }
             config = overrides[key](config);
         }

@@ -2,9 +2,9 @@ const path = require('path');
 const shell = require('shelljs');
 const fs = require('fs-extra');
 const configs = require('../../configs/app-configs');
+const dockerfileTemplate = require('./dockerfile.template');
 const nginxConfTemplate = require('./nginx.conf.template');
 const startScript = require('./start.template');
-const dockerfile = require('./dockerfile.template');
 const exec = require('../util/exec');
 
 let imageVersion = configs.version;
@@ -34,7 +34,7 @@ const imageFullName = `${dockerRegistry ? `${dockerRegistry}/` : ''}${imageName}
 
 (async () => {
     try {
-        console.log(`Build container ${imageFullName}`);
+        console.log(`Build docker image ${imageFullName}`);
         console.time('Total time');
         // create tmp directory for docker related files
         // We need to copy it because we will remove this directory during build process
@@ -44,6 +44,10 @@ const imageFullName = `${dockerRegistry ? `${dockerRegistry}/` : ''}${imageName}
         const nginxConf = configs.localNginxConf
             ? await fs.readFile(configs.localNginxConf, 'utf8')
             : nginxConfTemplate;
+
+        const dockerfile = configs.localDockerfile
+            ? await fs.readFile(configs.localDockerfile, 'utf8')
+            : dockerfileTemplate;
 
         await Promise.all([
             fs.writeFile(path.join(pathToTempDir, 'Dockerfile'), dockerfile, 'utf8'),
@@ -58,22 +62,22 @@ const imageFullName = `${dockerRegistry ? `${dockerRegistry}/` : ''}${imageName}
 
         console.timeEnd('Build application time');
 
-        console.time('Remove build dependencies time');
-        // if yarn is available prunde dev dependencies with yarn, otherwise use npm
+        console.time('Remove dev dependencies time');
+        // if yarn is available prune dev dependencies with yarn, otherwise use npm
         if (configs.useYarn && shell.which('yarn')) {
             await exec('yarn install --production --ignore-optional --frozen-lockfile --ignore-scripts --prefer-offline');
         } else {
             await exec('npm prune --production');
         }
 
-        console.timeEnd('Remove build dependencies time');
+        console.timeEnd('Remove dev dependencies time');
 
-        console.time('Build container time');
+        console.time('Build docker image time');
         await exec(`docker build -f "./${tempDirName}/Dockerfile" \\
  --build-arg START_SH_LOCATION="./${tempDirName}/start.sh" \\
  --build-arg NGINX_CONF_LOCATION="./${tempDirName}/nginx.conf" -t ${imageFullName} .`);
 
-        console.timeEnd('Build container time');
+        console.timeEnd('Build docker image time');
 
         // remove temp directory
         await fs.remove(pathToTempDir);
