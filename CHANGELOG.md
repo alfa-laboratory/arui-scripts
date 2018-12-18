@@ -1,3 +1,13 @@
+<a name="4.2.0"></a>
+# [4.2.0](https://github.com/alfa-laboratory/arui-scripts/compare/v4.1.2...v4.2.0) (2018-12-18)
+
+
+### Features
+
+* **docker-build:** added ability to override dockerfile ([76a3a3a](https://github.com/alfa-laboratory/arui-scripts/commit/76a3a3a))
+
+
+
 <a name="4.1.2"></a>
 ## [4.1.2](https://github.com/alfa-laboratory/arui-scripts/compare/v4.1.1...v4.1.2) (2018-12-10)
 
