@@ -1,3 +1,13 @@
+<a name="4.2.2"></a>
+## [4.2.2](https://github.com/alfa-laboratory/arui-scripts/compare/v4.2.1...v4.2.2) (2019-01-10)
+
+
+### Bug Fixes
+
+* **dependencies:** update webpack-dev-server ([b7727c6](https://github.com/alfa-laboratory/arui-scripts/commit/b7727c6))
+
+
+
 <a name="4.2.1"></a>
 ## [4.2.1](https://github.com/alfa-laboratory/arui-scripts/compare/v4.2.0...v4.2.1) (2018-12-26)
 
