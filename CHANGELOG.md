@@ -1,3 +1,13 @@
+<a name="4.2.3"></a>
+## [4.2.3](https://github.com/alfa-laboratory/arui-scripts/compare/v4.2.2...v4.2.3) (2019-01-17)
+
+
+### Features
+
+* **webpack-dev-server:** up version to 3.1.4 ([0be5c9f](https://github.com/alfa-laboratory/arui-scripts/commit/0be5c9f))
+
+
+
 <a name="4.2.2"></a>
 ## [4.2.2](https://github.com/alfa-laboratory/arui-scripts/compare/v4.2.1...v4.2.2) (2019-01-10)
 
