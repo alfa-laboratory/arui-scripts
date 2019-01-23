@@ -13,6 +13,7 @@ process.on('unhandledRejection', err => {
     throw err;
 });
 
+// Skip 'node', 'arui-scripts' and 'test' arguments and take all the rest (or none if there is no more arguments).
 const argv = process.argv.slice(3);
 
 argv.push(
