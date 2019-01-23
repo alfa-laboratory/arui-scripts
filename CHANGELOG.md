@@ -1,3 +1,14 @@
+<a name="4.2.4"></a>
+## [4.2.4](https://github.com/alfa-laboratory/arui-scripts/compare/v4.2.3...v4.2.4) (2019-01-23)
+
+
+### Bug Fixes
+
+* **test:** Comment about skipped arguments added ([ce555ce](https://github.com/alfa-laboratory/arui-scripts/commit/ce555ce))
+* **test:** Fixed argument handling to test provided files only ([8711585](https://github.com/alfa-laboratory/arui-scripts/commit/8711585))
+
+
+
 <a name="4.2.3"></a>
 ## [4.2.3](https://github.com/alfa-laboratory/arui-scripts/compare/v4.2.2...v4.2.3) (2019-01-17)
 
