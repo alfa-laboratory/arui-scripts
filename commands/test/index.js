@@ -13,7 +13,7 @@ process.on('unhandledRejection', err => {
     throw err;
 });
 
-const argv = process.argv.slice(2);
+const argv = process.argv.slice(3);
 
 argv.push(
     '--config',
