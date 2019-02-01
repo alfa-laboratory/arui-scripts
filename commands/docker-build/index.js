@@ -15,7 +15,7 @@ const commandLineArguments = process.argv.slice(3);
 commandLineArguments.forEach(arg => {
     let [argName, argValue] = arg.split('=');
     argName = argName.toLowerCase().trim();
-    argValue = argValue ? argValue.trim().toLowerCase() : '';
+    argValue = argValue ? argValue.trim() : '';
     switch (argName) {
         case 'version':
             imageVersion = argValue;
