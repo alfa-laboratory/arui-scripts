@@ -1,3 +1,13 @@
+<a name="4.2.6"></a>
+## [4.2.6](https://github.com/alfa-laboratory/arui-scripts/compare/v4.2.4...v4.2.6) (2019-02-28)
+
+
+### Bug Fixes
+
+* remove toLowerCase() call on argValue from docker-build ([6ee433c](https://github.com/alfa-laboratory/arui-scripts/commit/6ee433c))
+
+
+
 <a name="4.2.5"></a>
 ## [4.2.5](https://github.com/alfa-laboratory/arui-scripts/compare/v4.2.4...v4.2.5) (2019-02-14)
 
