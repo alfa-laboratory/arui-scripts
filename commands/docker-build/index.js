@@ -2,9 +2,9 @@ const path = require('path');
 const shell = require('shelljs');
 const fs = require('fs-extra');
 const configs = require('../../configs/app-configs');
-const dockerfileTemplate = require('./dockerfile.template');
-const nginxConfTemplate = require('./nginx.conf.template');
-const startScript = require('./start.template');
+const dockerfileTemplate = require('../../templates/dockerfile.template');
+const nginxConfTemplate = require('../../templates/nginx.conf.template');
+const startScript = require('../../templates/start.template');
 const exec = require('../util/exec');
 
 let imageVersion = configs.version;
@@ -36,6 +36,7 @@ const imageFullName = `${dockerRegistry ? `${dockerRegistry}/` : ''}${imageName}
     try {
         console.log(`Build docker image ${imageFullName}`);
         console.time('Total time');
+        console.time('Setting up time');
         // create tmp directory for docker related files
         // We need to copy it because we will remove this directory during build process
 
@@ -56,12 +57,12 @@ const imageFullName = `${dockerRegistry ? `${dockerRegistry}/` : ''}${imageName}
             fs.remove(configs.buildPath),
         ]);
 
+        console.timeEnd('Setting up time');
         console.time('Build application time');
         // run build script
         await exec('npm run build');
 
         console.timeEnd('Build application time');
-
         console.time('Remove dev dependencies time');
         // if yarn is available prune dev dependencies with yarn, otherwise use npm
         if (configs.useYarn && shell.which('yarn')) {
@@ -71,13 +72,13 @@ const imageFullName = `${dockerRegistry ? `${dockerRegistry}/` : ''}${imageName}
         }
 
         console.timeEnd('Remove dev dependencies time');
-
         console.time('Build docker image time');
         await exec(`docker build -f "./${tempDirName}/Dockerfile" \\
  --build-arg START_SH_LOCATION="./${tempDirName}/start.sh" \\
  --build-arg NGINX_CONF_LOCATION="./${tempDirName}/nginx.conf" -t ${imageFullName} .`);
 
         console.timeEnd('Build docker image time');
+        console.time('Cleanup time');
 
         // remove temp directory
         await fs.remove(pathToTempDir);
@@ -87,6 +88,7 @@ const imageFullName = `${dockerRegistry ? `${dockerRegistry}/` : ''}${imageName}
             await exec(`docker push ${imageFullName}`);
         }
 
+        console.timeEnd('Cleanup time');
         console.timeEnd('Total time');
     } catch (err) {
         await fs.remove(pathToTempDir);
