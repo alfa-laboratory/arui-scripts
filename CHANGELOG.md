@@ -1,3 +1,19 @@
+<a name="5.0.0"></a>
+# [5.0.0](https://github.com/alfa-laboratory/arui-scripts/compare/v4.2.6...v5.0.0) (2019-04-25)
+
+
+### Bug Fixes
+
+* **postinstall:** more obvious error messages on symlink creation issues ([0e348c1](https://github.com/alfa-laboratory/arui-scripts/commit/0e348c1))
+
+
+### Features
+
+* synchronized contents of archive build with contents of docker build ([97a1fa2](https://github.com/alfa-laboratory/arui-scripts/commit/97a1fa2))
+* **webpack:** remove React ProvidePlugin ([01e6b5a](https://github.com/alfa-laboratory/arui-scripts/commit/01e6b5a))
+
+
+
 <a name="4.2.6"></a>
 ## [4.2.6](https://github.com/alfa-laboratory/arui-scripts/compare/v4.2.4...v4.2.6) (2019-02-28)
 
