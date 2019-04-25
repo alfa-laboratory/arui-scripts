@@ -187,9 +187,6 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
             filename: '[name].[contenthash:8].css',
             chunkFilename: '[name].[contenthash:8].chunk.css',
         }),
-        new webpack.ProvidePlugin({
-            React: 'react'
-        }),
         new webpack.HashedModuleIdsPlugin(),
         new ManifestPlugin(),
         new OptimizeCssAssetsPlugin({

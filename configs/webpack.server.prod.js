@@ -138,9 +138,6 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
             raw: true,
             entryOnly: false
         }),
-        new webpack.ProvidePlugin({
-            React: 'react'
-        }),
         configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin()
     ].filter(Boolean)
 });
