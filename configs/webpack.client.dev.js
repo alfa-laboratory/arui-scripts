@@ -174,9 +174,6 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
     },
     plugins: [
         new AssetsPlugin({ path: configs.serverOutputPath }),
-        new webpack.ProvidePlugin({
-            React: 'react'
-        }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         }),
