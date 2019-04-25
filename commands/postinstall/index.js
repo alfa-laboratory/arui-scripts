@@ -17,17 +17,32 @@ const to = path.relative(from, cwd);
 // Symlink file
 const symlink = `${from}/${symlinkname}`;
 
+function existsAndIsSymlink(path) {
+    const exists = fs.existsSync(path);
+    if (!exists) {
+        throw new Error(`${path} doesn't exist`);
+    }
+    const stats = fs.lstatSync(path);
+    if (stats.isDirectory()) {
+        throw new Error(`${path} is an existing directory`);
+    }
+    else if (stats.isFile()) {
+        throw new Error(`${path} is an existing file`);
+    }
+    else if (!stats.isSymbolicLink()) {
+        throw new Error(`${path} is neither a file, directory or symlink, but it exists somehow`);
+    }
+}
+
 try {
     // Add symlink to the project root folder
-    fs.symlinkSync(to, symlink);
+    if (!fs.existsSync(symlink)) {
+        fs.symlinkSync(to, symlink);
+        console.log(`Symlink from ${symlink} to ${to} successfully created`);
+    }
+    existsAndIsSymlink(symlink);
 } catch (err) {
     // Show error message
     console.log(`Error while creating symlink to ${to}\n`, err);
-} finally {
-    // Check symlink file existance, otherwise fail
-    if (fs.existsSync(symlink)) {
-        console.log(`Symlink from ${symlink} to ${to} successfully created`);
-    } else {
-        process.exit(-1);
-    }
+    process.exit(-1);
 }
