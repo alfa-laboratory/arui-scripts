@@ -1,5 +1,6 @@
 const configs = require('../app-configs');
-const merge = require('lodash.merge');
+const merge = require('lodash.mergeWith');
+const { arrayConcatCustomizer } = require('../util/merge-customizers');
 
 const defaultJestConfig = {
     testRegex: 'src/.*(test|spec|/__test__/|/__tests__/).*\\.(jsx?|tsx?)$',
@@ -42,4 +43,4 @@ if (configs.appPackage.jest) {
     }
 }
 
-module.exports = merge(defaultJestConfig, appJestConfig);
+module.exports = mergeWith(defaultJestConfig, appJestConfig, arrayConcatCustomizer);
