@@ -1,5 +1,5 @@
 const configs = require('../app-configs');
-const merge = require('lodash.mergeWith');
+const merge = require('lodash.mergewith');
 const { arrayConcatCustomizer } = require('../util/merge-customizers');
 
 const defaultJestConfig = {
