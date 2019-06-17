@@ -1,5 +1,5 @@
 const configs = require('../app-configs');
-const merge = require('lodash.mergewith');
+const mergewith = require('lodash.mergewith');
 const { arrayConcatCustomizer } = require('../util/merge-customizers');
 
 const defaultJestConfig = {
@@ -43,4 +43,4 @@ if (configs.appPackage.jest) {
     }
 }
 
-module.exports = mergeWith(defaultJestConfig, appJestConfig, arrayConcatCustomizer);
+module.exports = mergewith(defaultJestConfig, appJestConfig, arrayConcatCustomizer);
