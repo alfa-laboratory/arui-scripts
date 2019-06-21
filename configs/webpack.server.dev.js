@@ -6,6 +6,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const StartServerPlugin = require('start-server-webpack-plugin');
 const ReloadServerPlugin = require('reload-server-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
+const PnpWebpackPlugin = require('pnp-webpack-plugin');
 
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 
@@ -66,6 +67,16 @@ const config = {
         // `web` extension prefixes have been added for better support
         // for React Native Web.
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
+        plugins: [
+            PnpWebpackPlugin
+        ]
+    },
+    resolveLoader: {
+        plugins: [
+            // Also related to Plug'n'Play, but this time it tells Webpack to load its loaders
+            // from the current package.
+            PnpWebpackPlugin.moduleLoader(module),
+        ],
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -103,12 +114,12 @@ const config = {
                             },
                             {
                                 loader: require.resolve('ts-loader'),
-                                options: {
+                                options: PnpWebpackPlugin.tsLoaderOptions({
                                     onlyCompileBundledFiles: true,
                                     transpileOnly: true,
                                     happyPackMode: true,
                                     configFile: configs.tsconfig
-                                }
+                                })
                             }
                         ]
                     },
@@ -167,7 +178,7 @@ const config = {
         // makes the discovery automatic so you don't have to restart.
         // See https://github.com/facebookincubator/create-react-app/issues/186
         new WatchMissingNodeModulesPlugin(configs.appNodeModules),
-        configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
+        configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(PnpWebpackPlugin.forkTsCheckerOptions()),
     ].filter(Boolean),
     // Turn off performance hints during development because we don't do any
     // splitting or minification in interest of speed. These warnings become

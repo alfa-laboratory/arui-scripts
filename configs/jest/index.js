@@ -7,6 +7,7 @@ const defaultJestConfig = {
     collectCoverageFrom: [
         'src/**/*.{js,jsx,ts,tsx}'
     ],
+    resolver: require.resolve('jest-pnp-resolver'),
     // transform project js and ts files using babel ant ts transformers
     transform: {
         '^.+\\.jsx?$': require.resolve('./babel-transform'),

@@ -6,6 +6,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
+const PnpWebpackPlugin = require('pnp-webpack-plugin');
 
 const configs = require('./app-configs');
 const babelConf = require('./babel-client');
@@ -66,6 +67,16 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
         // `web` extension prefixes have been added for better support
         // for React Native Web.
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
+        plugins: [
+            PnpWebpackPlugin
+        ]
+    },
+    resolveLoader: {
+        plugins: [
+            // Also related to Plug'n'Play, but this time it tells Webpack to load its loaders
+            // from the current package.
+            PnpWebpackPlugin.moduleLoader(module),
+        ],
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -112,11 +123,11 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
                             },
                             {
                                 loader: require.resolve('ts-loader'),
-                                options: {
+                                options: PnpWebpackPlugin.tsLoaderOptions({
                                     onlyCompileBundledFiles: true,
                                     happyPackMode: true,
                                     configFile: configs.tsconfig
-                                }
+                                })
                             }
                         ]
                     },
@@ -204,7 +215,7 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
             threshold: 10240,
             minRatio: 0.8
         }),
-        configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
+        configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(PnpWebpackPlugin.forkTsCheckerOptions()),
     ].filter(Boolean).concat(
         // Ignore prop-types packages in production mode
         // This should works fine, since proptypes usage should be eliminated in production mode

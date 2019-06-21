@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
+const PnpWebpackPlugin = require('pnp-webpack-plugin');
 
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 
@@ -58,6 +59,16 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
         // `web` extension prefixes have been added for better support
         // for React Native Web.
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
+        plugins: [
+            PnpWebpackPlugin
+        ]
+    },
+    resolveLoader: {
+        plugins: [
+            // Also related to Plug'n'Play, but this time it tells Webpack to load its loaders
+            // from the current package.
+            PnpWebpackPlugin.moduleLoader(module),
+        ],
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -115,12 +126,12 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                             },
                             {
                                 loader: require.resolve('ts-loader'),
-                                options: {
+                                options: PnpWebpackPlugin.tsLoaderOptions({
                                     onlyCompileBundledFiles: true,
                                     transpileOnly: true,
                                     happyPackMode: true,
                                     configFile: configs.tsconfig
-                                }
+                                })
                             }
                         ]
                     },
@@ -194,7 +205,7 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
         //         to: configs.clientOutputPath
         //     }
         // ])
-        configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
+        configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(PnpWebpackPlugin.forkTsCheckerOptions()),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.

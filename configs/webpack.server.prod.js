@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const PnpWebpackPlugin = require('pnp-webpack-plugin');
 
 const configs = require('./app-configs');
 const babelConf = require('./babel-server');
@@ -59,6 +60,16 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
         // `web` extension prefixes have been added for better support
         // for React Native Web.
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
+        plugins: [
+            PnpWebpackPlugin
+        ]
+    },
+    resolveLoader: {
+        plugins: [
+            // Also related to Plug'n'Play, but this time it tells Webpack to load its loaders
+            // from the current package.
+            PnpWebpackPlugin.moduleLoader(module),
+        ],
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -91,12 +102,12 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
                             },
                             {
                                 loader: require.resolve('ts-loader'),
-                                options: {
+                                options: PnpWebpackPlugin.tsLoaderOptions({
                                     onlyCompileBundledFiles: true,
                                     transpileOnly: true,
                                     happyPackMode: true,
                                     configFile: configs.tsconfig
-                                }
+                                })
                             }
                         ]
                     },
@@ -138,6 +149,6 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
             raw: true,
             entryOnly: false
         }),
-        configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin()
+        configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(PnpWebpackPlugin.forkTsCheckerOptions())
     ].filter(Boolean)
 });
