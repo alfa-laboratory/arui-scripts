@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
+const getLocalIdentPattern = require('./util/css-modules-local-ident');
 const configs = require('./app-configs');
 const babelConf = require('./babel-server');
 const applyOverrides = require('./util/apply-overrides');
@@ -104,6 +105,18 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
                     {
                         test: /\.css$/,
                         loader: require.resolve('null-loader')
+                    },
+                    {
+                        test: /\.pcss$/,
+                        use: [
+                            {
+                                loader: require.resolve('css-loader/locals'),
+                                options: {
+                                    modules: true,
+                                    localIdentName: getLocalIdentPattern({ isProduction: true })
+                                },
+                            }
+                        ],
                     },
                     // "file" loader makes sure those assets get served by WebpackDevServer.
                     // When you `import` an asset, you get its (virtual) filename.

@@ -2,6 +2,7 @@ import React from 'react';
 import image from './clock.svg';
 import { isSmaller } from './utils';
 
+import styles from './css-module.pcss';
 import './style.css';
 
 export class App extends React.Component {
@@ -11,7 +12,7 @@ export class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={ styles.root }>
                 <h2>
                     Hello, arui-scripts!
                 </h2>

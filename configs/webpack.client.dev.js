@@ -6,6 +6,7 @@ const AssetsPlugin = require('assets-webpack-plugin');
 
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 
+const getLocalIdentPattern = require('./util/css-modules-local-ident');
 const configs = require('./app-configs');
 const babelConf = require('./babel-client');
 const postcssConf = require('./postcss');
@@ -137,6 +138,29 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                                 loader: require.resolve('css-loader'),
                                 options: {
                                     importLoaders: 1,
+                                },
+                            },
+                            {
+                                loader: require.resolve('postcss-loader'),
+                                options: {
+                                    // Necessary for external CSS imports to work
+                                    // https://github.com/facebookincubator/create-react-app/issues/2677
+                                    ident: 'postcss',
+                                    plugins: () => postcssConf,
+                                },
+                            },
+                        ],
+                    },
+                    {
+                        test: /\.pcss$/,
+                        use: [
+                            require.resolve('style-loader'),
+                            {
+                                loader: require.resolve('css-loader'),
+                                options: {
+                                    importLoaders: 1,
+                                    modules: true,
+                                    localIdentName: getLocalIdentPattern({ isProduction: false })
                                 },
                             },
                             {
