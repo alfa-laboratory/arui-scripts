@@ -47,7 +47,7 @@
     "file-loader": "2.0.0",
     "fork-ts-checker-webpack-plugin": "0.4.15",
     "fs-extra": "6.0.1",
-    "jest": "23.6.0",
+    "jest": "24.8.0",
     "jest-pnp-resolver": "^1.2.1",
     "jest-snapshot-serializer-class-name-to-string": "1.0.0",
     "lodash.merge": "4.6.1",
