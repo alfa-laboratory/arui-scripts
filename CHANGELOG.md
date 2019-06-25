@@ -1,3 +1,13 @@
+<a name="5.2.0"></a>
+# [5.2.0](https://github.com/alfa-laboratory/arui-scripts/compare/v5.1.0...v5.2.0) (2019-06-25)
+
+
+### Features
+
+* **webpack.client.prod:** use TerserPlugin for minimization ([425adeb](https://github.com/alfa-laboratory/arui-scripts/commit/425adeb))
+
+
+
 <a name="5.1.0"></a>
 # [5.1.0](https://github.com/alfa-laboratory/arui-scripts/compare/v5.0.0...v5.1.0) (2019-05-30)
 
