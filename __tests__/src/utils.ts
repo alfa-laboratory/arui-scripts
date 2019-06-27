@@ -8,3 +8,7 @@ export function isSmaller(a: number, b: number) {
     b = b * 10_000;
     return a > b ? YesNoEnum.Yes : YesNoEnum.No
 }
+
+export const constObject = {
+    name: 'someString'
+} as const;
