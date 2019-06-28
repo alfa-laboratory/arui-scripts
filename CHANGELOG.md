@@ -1,3 +1,13 @@
+<a name="5.4.0"></a>
+# [5.4.0](https://github.com/alfa-laboratory/arui-scripts/compare/v5.3.0...v5.4.0) (2019-06-28)
+
+
+### Features
+
+* **client:** remove unused measureFileSizesBeforeBuild call ([de0c68a](https://github.com/alfa-laboratory/arui-scripts/commit/de0c68a))
+
+
+
 <a name="5.3.0"></a>
 # [5.3.0](https://github.com/alfa-laboratory/arui-scripts/compare/v5.2.0...v5.3.0) (2019-06-27)
 
