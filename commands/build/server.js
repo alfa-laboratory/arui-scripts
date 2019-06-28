@@ -6,7 +6,8 @@ const build = require('./build-wrapper');
 
 const config = require('../../configs/webpack.server.prod');
 
-console.log('Building server...');
+console.log(chalk.magenta('Building server...'));
+
 build(config)
     .then(({ warnings }) => {
         if (warnings.length) {
