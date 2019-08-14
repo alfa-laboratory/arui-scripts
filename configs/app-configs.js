@@ -7,6 +7,7 @@ const packageSettings = appPackage.aruiScripts || appPackage['arui-scripts'] || 
 
 const buildPath = packageSettings.buildPath || '.build';
 const assetsPath = packageSettings.assetsPath || 'assets';
+const additionalBuildPath = packageSettings.additionalBuildPath || ['config'];
 
 const absoluteSrcPath = path.resolve(CWD, 'src');
 const absoluteNodeModulesPath = path.resolve(CWD, 'node_modules');
@@ -37,7 +38,7 @@ module.exports = {
     appNodeModules: absoluteNodeModulesPath,
     publicPath: `${assetsPath}/`,
     buildPath,
-    additionalBuildPath: ['config'],
+    additionalBuildPath,
     archiveName: 'build.tar',
 
     // server compilation configs
