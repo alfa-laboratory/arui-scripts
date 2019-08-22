@@ -8,6 +8,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 
+const getLocalIdentPattern = require('./util/css-modules-local-ident');
 const configs = require('./app-configs');
 const babelConf = require('./babel-client');
 const postcssConf = require('./postcss');
@@ -193,6 +194,34 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
                                     importLoaders: 1,
                                     minimize: true,
                                     sourceMap: false,
+                                },
+                            },
+                            {
+                                loader: require.resolve('postcss-loader'),
+                                options: {
+                                    // Necessary for external CSS imports to work
+                                    // https://github.com/facebookincubator/create-react-app/issues/2677
+                                    ident: 'postcss',
+                                    plugins: () => postcssConf,
+                                },
+                            },
+                        ],
+                    },
+                    {
+                        test: /\.pcss$/,
+                        loaders: [
+                            {
+                                loader: MiniCssExtractPlugin.loader,
+                                options: { publicPath: './' }
+                            },
+                            {
+                                loader: require.resolve('css-loader'),
+                                options: {
+                                    importLoaders: 1,
+                                    minimize: true,
+                                    modules: true,
+                                    sourceMap: false,
+                                    localIdentName: getLocalIdentPattern({ isProduction: true })
                                 },
                             },
                             {
