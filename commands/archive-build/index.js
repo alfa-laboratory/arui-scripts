@@ -54,7 +54,10 @@ const packageJsonPath = path.join(configs.cwd, packageJsonFileName);
         await Promise.all([
             fs.copy(configs.buildPath, path.join(pathToTempDir, configs.buildPath)),
             fs.copy(nodeModulesPath, path.join(pathToTempDir, nodeModulesDirName)),
-            fs.copy(packageJsonPath, path.join(pathToTempDir, packageJsonFileName))
+            fs.copy(packageJsonPath, path.join(pathToTempDir, packageJsonFileName)),
+            ...configs.additionalBuildPath.map(additionalPath => (
+                fs.copy(path.join(configs.cwd, additionalPath), path.join(pathToTempDir, additionalPath))
+            ))
         ]);
         await tar.c(
             {
