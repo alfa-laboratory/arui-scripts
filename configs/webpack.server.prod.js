@@ -7,6 +7,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const getLocalIdentPattern = require('./util/css-modules-local-ident');
 const configs = require('./app-configs');
 const babelConf = require('./babel-server');
+const postcssConf = require('./postcss');
 const applyOverrides = require('./util/apply-overrides');
 const assetsIgnoreBanner = fs.readFileSync(require.resolve('./util/node-assets-ignore'), 'utf8');
 
@@ -115,7 +116,16 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
                                     modules: true,
                                     localIdentName: getLocalIdentPattern({ isProduction: true })
                                 },
-                            }
+                            },
+                            {
+                                loader: require.resolve('postcss-loader'),
+                                options: {
+                                    // Necessary for external CSS imports to work
+                                    // https://github.com/facebookincubator/create-react-app/issues/2677
+                                    ident: 'postcss',
+                                    plugins: () => postcssConf,
+                                },
+                            },
                         ],
                     },
                     // "file" loader makes sure those assets get served by WebpackDevServer.

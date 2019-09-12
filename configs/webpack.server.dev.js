@@ -12,6 +12,7 @@ const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeM
 const getLocalIdentPattern = require('./util/css-modules-local-ident');
 const configs = require('./app-configs');
 const babelConf = require('./babel-server');
+const postcssConf = require('./postcss');
 const applyOverrides = require('./util/apply-overrides');
 const assetsIgnoreBanner = fs.readFileSync(require.resolve('./util/node-assets-ignore'), 'utf8');
 
@@ -127,7 +128,16 @@ const config = {
                                     modules: true,
                                     localIdentName: getLocalIdentPattern({ isProduction: false })
                                 },
-                            }
+                            },
+                            {
+                                loader: require.resolve('postcss-loader'),
+                                options: {
+                                    // Necessary for external CSS imports to work
+                                    // https://github.com/facebookincubator/create-react-app/issues/2677
+                                    ident: 'postcss',
+                                    plugins: () => postcssConf,
+                                },
+                            },
                         ],
                     },
                     // "file" loader makes sure those assets get served by WebpackDevServer.
