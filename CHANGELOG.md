@@ -1,3 +1,19 @@
+<a name="5.6.0"></a>
+# [5.6.0](https://github.com/alfa-laboratory/arui-scripts/compare/v5.5.0...v5.6.0) (2019-09-13)
+
+
+### Bug Fixes
+
+* fixed issue with shadowing path module ([b499974](https://github.com/alfa-laboratory/arui-scripts/commit/b499974))
+* fix postcss webpack server config ([bbfcd53](https://github.com/alfa-laboratory/arui-scripts/commit/bbfcd53))
+
+
+### Features
+
+* additional build path ([5cc67c9](https://github.com/alfa-laboratory/arui-scripts/commit/5cc67c9))
+
+
+
 <a name="5.5.0"></a>
 # [5.5.0](https://github.com/alfa-laboratory/arui-scripts/compare/v5.4.0...v5.5.0) (2019-08-22)
 
