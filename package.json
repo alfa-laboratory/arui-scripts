@@ -104,7 +104,7 @@
     "typescript": "3.5.1"
   },
   "peerDependencies": {
-    "typescript": "^3.5.1"
+    "typescript": ">=3.5.1"
   },
   "author": "Good guys from Alfa Laboratory",
   "maintainers": [
