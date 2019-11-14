@@ -1,3 +1,8 @@
+<a name="5.6.2"></a>
+## [5.6.2](https://github.com/alfa-laboratory/arui-scripts/compare/v5.6.1...v5.6.2) (2019-11-14)
+
+
+
 <a name="5.6.1"></a>
 ## [5.6.1](https://github.com/alfa-laboratory/arui-scripts/compare/v5.6.0...v5.6.1) (2019-10-02)
 
