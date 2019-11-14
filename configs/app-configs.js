@@ -8,7 +8,7 @@ const packageSettings = appPackage.aruiScripts || appPackage['arui-scripts'] || 
 const buildPath = packageSettings.buildPath || '.build';
 const assetsPath = packageSettings.assetsPath || 'assets';
 const additionalBuildPath = packageSettings.additionalBuildPath || ['config'];
-const nginxRootPath = packageSettings.nginxRootPath || 'src';
+const nginxRootPath = packageSettings.nginxRootPath || '/src';
 
 const absoluteSrcPath = path.resolve(CWD, 'src');
 const absoluteNodeModulesPath = path.resolve(CWD, 'node_modules');

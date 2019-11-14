@@ -10,13 +10,13 @@ module.exports = `server {
     location /${configs.publicPath} {
         expires max;
         add_header Cache-Control public;
-        root /${configs.nginxRootPath}/${configs.buildPath};
+        root ${configs.nginxRootPath}/${configs.buildPath};
     }
 
     location ~ /${configs.publicPath}.*\\.js$ {
         expires max;
         add_header Cache-Control public;
-        root /${configs.nginxRootPath}/${configs.buildPath};
+        root ${configs.nginxRootPath}/${configs.buildPath};
         types {
             text/javascript  js;
         }
