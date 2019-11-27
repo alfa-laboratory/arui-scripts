@@ -109,6 +109,7 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
                     // replace css imports with empty files
                     {
                         test: cssRegex,
+                        exclude: cssModuleRegex,
                         loader: require.resolve('null-loader')
                     },
                     {

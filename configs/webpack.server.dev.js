@@ -121,6 +121,7 @@ const config = {
                     // replace css imports with empty files
                     {
                         test: cssRegex,
+                        exclude: cssModuleRegex,
                         loader: require.resolve('null-loader')
                     },
                     {

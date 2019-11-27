@@ -214,7 +214,6 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
                     },
                     {
                         test: cssModuleRegex,
-                        exclude: cssRegex,
                         loaders: [
                             {
                                 loader: MiniCssExtractPlugin.loader,

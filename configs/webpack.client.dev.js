@@ -157,7 +157,6 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                     },
                     {
                         test: cssModuleRegex,
-                        exclude: cssRegex,
                         use: [
                             require.resolve('style-loader'),
                             {
