@@ -1,3 +1,13 @@
+<a name="6.0.1"></a>
+## [6.0.1](https://github.com/alfa-laboratory/arui-scripts/compare/v6.0.0...v6.0.1) (2019-11-27)
+
+
+### Bug Fixes
+
+* fix css modules loader ([77cdcb3](https://github.com/alfa-laboratory/arui-scripts/commit/77cdcb3))
+
+
+
 <a name="6.0.0"></a>
 # [6.0.0](https://github.com/alfa-laboratory/arui-scripts/compare/v5.6.2...v6.0.0) (2019-11-27)
 
