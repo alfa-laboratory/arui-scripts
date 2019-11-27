@@ -1,3 +1,13 @@
+<a name="6.0.0"></a>
+# [6.0.0](https://github.com/alfa-laboratory/arui-scripts/compare/v5.6.2...v6.0.0) (2019-11-27)
+
+
+### Features
+
+* use css modules naming convention ([836670a](https://github.com/alfa-laboratory/arui-scripts/commit/836670a))
+
+
+
 <a name="5.6.2"></a>
 ## [5.6.2](https://github.com/alfa-laboratory/arui-scripts/compare/v5.6.1...v5.6.2) (2019-11-14)
 
