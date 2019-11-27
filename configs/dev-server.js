@@ -14,7 +14,7 @@ module.exports = applyOverrides('devServer', {
         '/**': {
             target: `http://localhost:${configs.serverPort}`,
             bypass: (req) => {
-                if (req.url.match(/\./)) {
+                if (req.url.match(/^\/assets\//)) {
                     return req.url;
                 }
                 return false;
