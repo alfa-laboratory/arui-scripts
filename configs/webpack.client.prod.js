@@ -16,6 +16,10 @@ const applyOverrides = require('./util/apply-overrides');
 
 const noopPath = require.resolve('./util/noop');
 
+// style files regexes
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
+
 // This is the production configuration.
 module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'webpackClientProd'], {
     mode: 'production',
@@ -182,7 +186,8 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
                     // use the "style" loader inside the async code so CSS from them won't be
                     // in the main CSS file.
                     {
-                        test: /\.css$/,
+                        test: cssRegex,
+                        exclude: cssModuleRegex,
                         loaders: [
                             {
                                 loader: MiniCssExtractPlugin.loader,
@@ -208,7 +213,8 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
                         ],
                     },
                     {
-                        test: /\.pcss$/,
+                        test: cssModuleRegex,
+                        exclude: cssRegex,
                         loaders: [
                             {
                                 loader: MiniCssExtractPlugin.loader,

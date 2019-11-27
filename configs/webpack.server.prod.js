@@ -11,6 +11,10 @@ const postcssConf = require('./postcss');
 const applyOverrides = require('./util/apply-overrides');
 const assetsIgnoreBanner = fs.readFileSync(require.resolve('./util/node-assets-ignore'), 'utf8');
 
+// style files regexes
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
+
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
@@ -104,11 +108,11 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
                     },
                     // replace css imports with empty files
                     {
-                        test: /\.css$/,
+                        test: cssRegex,
                         loader: require.resolve('null-loader')
                     },
                     {
-                        test: /\.pcss$/,
+                        test: cssModuleRegex,
                         use: [
                             {
                                 loader: require.resolve('css-loader/locals'),

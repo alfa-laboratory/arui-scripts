@@ -11,6 +11,9 @@ const configs = require('./app-configs');
 const babelConf = require('./babel-client');
 const postcssConf = require('./postcss');
 const applyOverrides = require('./util/apply-overrides');
+// style files regexes
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -131,7 +134,8 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                     // In production, we use a plugin to extract that CSS to a file, but
                     // in development "style" loader enables hot editing of CSS.
                     {
-                        test: /\.css$/,
+                        test: cssRegex,
+                        exclude: cssModuleRegex,
                         use: [
                             require.resolve('style-loader'),
                             {
@@ -152,7 +156,8 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                         ],
                     },
                     {
-                        test: /\.pcss$/,
+                        test: cssModuleRegex,
+                        exclude: cssRegex,
                         use: [
                             require.resolve('style-loader'),
                             {

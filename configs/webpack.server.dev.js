@@ -16,6 +16,10 @@ const postcssConf = require('./postcss');
 const applyOverrides = require('./util/apply-overrides');
 const assetsIgnoreBanner = fs.readFileSync(require.resolve('./util/node-assets-ignore'), 'utf8');
 
+// style files regexes
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
+
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
@@ -116,11 +120,11 @@ const config = {
                     },
                     // replace css imports with empty files
                     {
-                        test: /\.css$/,
+                        test: cssRegex,
                         loader: require.resolve('null-loader')
                     },
                     {
-                        test: /\.pcss$/,
+                        test: cssModuleRegex,
                         use: [
                             {
                                 loader: require.resolve('css-loader/locals'),

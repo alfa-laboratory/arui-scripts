@@ -2,7 +2,7 @@ import React from 'react';
 import image from './clock.svg';
 import { isSmaller } from './utils';
 
-import styles from './css-module.pcss';
+import styles from './app.module.css';
 import './style.css';
 
 export class App extends React.Component {
