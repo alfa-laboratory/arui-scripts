@@ -1,9 +1,21 @@
 const path = require('path');
 const fs = require('fs');
+const merge = require('lodash.merge');
 const CWD = process.cwd();
 
 const appPackage = JSON.parse(fs.readFileSync(path.join(CWD, 'package.json'), 'utf8'));
-const packageSettings = appPackage.aruiScripts || appPackage['arui-scripts'] || {};
+let packageSettings = appPackage.aruiScripts || appPackage['arui-scripts'] || {};
+
+if (process.env.ARUI_SCRIPTS_CONFIG) {
+    try {
+        console.warn('Используйте ARUI_SCRIPTS_CONFIG только для отладки');
+        envSettings = JSON.parse(process.env.ARUI_SCRIPTS_CONFIG);
+        packageSettings = merge(packageSettings, envSettings);
+    } catch (e) {
+        console.error(e);
+        throw Error('Not valid JSON passed. Correct it. For example: ARUI_SCRIPTS_CONFIG="{\"serverPort\":3333}"');
+    }
+}
 
 const buildPath = packageSettings.buildPath || '.build';
 const assetsPath = packageSettings.assetsPath || 'assets';
