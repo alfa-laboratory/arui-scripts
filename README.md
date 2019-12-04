@@ -44,7 +44,7 @@ npm install arui-scripts --save-dev
 ---
 
 Несмотря на то, что все работает из коробки, вы можете захотеть поменять некоторые настройки сборщиков.
-Сделать это можно в `package.json`, определив там свойство `aruiScripts` или `arui-scripts`.
+Сделать это можно в `package.json`, определив там свойство `aruiScripts`.
 
 Доступные настройки:
 
@@ -320,7 +320,7 @@ yarn будет использоваться когда в рутовой пап
 
 ```json
 {
-    "arui-scripts": { "useTscLoader": true }
+    "aruiScripts": { "useTscLoader": true }
 }
 ```
 
