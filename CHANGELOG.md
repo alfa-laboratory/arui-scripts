@@ -1,3 +1,13 @@
+<a name="6.0.2"></a>
+## [6.0.2](https://github.com/alfa-laboratory/arui-scripts/compare/v6.0.1...v6.0.2) (2019-12-04)
+
+
+### Features
+
+* allow override scripts settings by env ([172dc48](https://github.com/alfa-laboratory/arui-scripts/commit/172dc48))
+
+
+
 <a name="6.0.1"></a>
 ## [6.0.1](https://github.com/alfa-laboratory/arui-scripts/compare/v6.0.0...v6.0.1) (2019-11-27)
 
