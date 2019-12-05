@@ -4,7 +4,12 @@ const merge = require('lodash.merge');
 const CWD = process.cwd();
 
 const appPackage = JSON.parse(fs.readFileSync(path.join(CWD, 'package.json'), 'utf8'));
-let packageSettings = appPackage.aruiScripts || appPackage['arui-scripts'] || {};
+
+if (appPackage['arui-scripts']) {
+    throw Error('arui-scripts in package.json is not supported. Use aruiScripts instead.');
+}
+
+let packageSettings = appPackage.aruiScripts || {};
 
 if (process.env.ARUI_SCRIPTS_CONFIG) {
     try {
