@@ -10,7 +10,7 @@ const commands = [
     'archive-build',
 ];
 
-const command = commands[1];
+const command = process.argv[2];
 
 if (!command || commands.indexOf(command) === -1) {
     console.error(`Please specify one of available commands: ${commands.map(c => `"${c}"`).join(' ')}`);
