@@ -8,10 +8,9 @@ const commands = [
     'test',
     'ensure-yarn',
     'archive-build',
-    'postinstall'
 ];
 
-const command = process.argv[2];
+const command = commands[1];
 
 if (!command || commands.indexOf(command) === -1) {
     console.error(`Please specify one of available commands: ${commands.map(c => `"${c}"`).join(' ')}`);
