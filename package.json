@@ -27,6 +27,8 @@
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.3.3",
     "@babel/runtime": "7.4.5",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
     "assets-webpack-plugin": "3.9.7",
     "autoprefixer": "^8.0.0",
     "babel-core": "^7.0.0-bridge.0",
@@ -36,6 +38,7 @@
     "cache-loader": "^1.2.5",
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "chalk": "^2.3.1",
+    "commitlint": "^8.2.0",
     "compression-webpack-plugin": "2.0.0",
     "copy-webpack-plugin": "4.6.0",
     "css-loader": "1.0.1",
@@ -47,6 +50,7 @@
     "file-loader": "2.0.0",
     "fork-ts-checker-webpack-plugin": "0.4.15",
     "fs-extra": "6.0.1",
+    "husky": "^3.1.0",
     "jest": "23.6.0",
     "jest-snapshot-serializer-class-name-to-string": "1.0.0",
     "lodash.merge": "4.6.1",
@@ -102,6 +106,11 @@
   "devDependencies": {
     "conventional-changelog-cli": "1.3.16",
     "typescript": "3.5.1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "peerDependencies": {
     "typescript": ">=3.5.1"
