@@ -124,7 +124,7 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
             (configs.tsconfig && new TsconfigPathsPlugin({
                 configFile: configs.tsconfig
             }))
-        ]
+        ].filter(Boolean),
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
