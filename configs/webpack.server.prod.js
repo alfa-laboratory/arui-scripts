@@ -68,7 +68,8 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
         plugins: [
             (configs.tsconfig && new TsconfigPathsPlugin({
-                configFile: configs.tsconfig
+                configFile: configs.tsconfig,
+                extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
             }))
         ].filter(Boolean),
     },
