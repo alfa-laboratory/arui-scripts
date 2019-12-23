@@ -64,9 +64,9 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
         // for React Native Web.
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
         plugins: [
-            new TsconfigPathsPlugin({
-                configFile: './tsconfig.json'
-            })
+            (configs.tsconfig && new TsconfigPathsPlugin({
+                configFile: configs.tsconfig
+            }))
         ]
     },
     module: {
