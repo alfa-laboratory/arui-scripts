@@ -8,7 +8,6 @@ const commands = [
     'test',
     'ensure-yarn',
     'archive-build',
-    'postinstall'
 ];
 
 const command = process.argv[2];

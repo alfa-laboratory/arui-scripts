@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 
@@ -62,6 +63,12 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
         // `web` extension prefixes have been added for better support
         // for React Native Web.
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
+        plugins: [
+            (configs.tsconfig && new TsconfigPathsPlugin({
+                configFile: configs.tsconfig,
+                extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
+            }))
+        ].filter(Boolean),
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
