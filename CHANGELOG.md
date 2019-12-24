@@ -1,3 +1,25 @@
+<a name="8.0.0"></a>
+# [8.0.0](https://github.com/alfa-laboratory/arui-scripts/compare/v7.0.0...v8.0.0) (2019-12-24)
+
+
+### Bug Fixes
+
+* changed commitlint settings ([50a6a39](https://github.com/alfa-laboratory/arui-scripts/commit/50a6a39))
+* deleted baseUrl ([95158e3](https://github.com/alfa-laboratory/arui-scripts/commit/95158e3))
+* deleted commitlint as dep ([c83af3e](https://github.com/alfa-laboratory/arui-scripts/commit/c83af3e))
+* reintaling husky ([46f955c](https://github.com/alfa-laboratory/arui-scripts/commit/46f955c))
+* removed recursive symlink ([f1b6459](https://github.com/alfa-laboratory/arui-scripts/commit/f1b6459))
+* returned proccess.argv ([9199bb8](https://github.com/alfa-laboratory/arui-scripts/commit/9199bb8))
+* trying fix build ([7c2e76b](https://github.com/alfa-laboratory/arui-scripts/commit/7c2e76b))
+
+
+### Features
+
+* add prod tsconfig ([82f91e7](https://github.com/alfa-laboratory/arui-scripts/commit/82f91e7))
+* close [#59](https://github.com/alfa-laboratory/arui-scripts/issues/59) ([7f36f8b](https://github.com/alfa-laboratory/arui-scripts/commit/7f36f8b))
+
+
+
 <a name="7.0.0"></a>
 # [7.0.0](https://github.com/alfa-laboratory/arui-scripts/compare/v6.0.3...v7.0.0) (2019-12-05)
 
