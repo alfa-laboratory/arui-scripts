@@ -1,5 +1,12 @@
-const configs = require('../app-configs');
+const fs = require('fs');
+const { pathsToModuleNameMapper } = require('ts-jest/utils');
+const { parseConfigFileTextToJson } = require('typescript');
 const merge = require('lodash.merge');
+const configs = require('../app-configs');
+const tsConfigPath = configs.tsconfig;
+const tsConfig = fs.readFileSync(configs.tsconfig, 'utf8');
+const parseTsConfig = parseConfigFileTextToJson(tsConfigPath, tsConfig);
+const parseTsConfigPaths = parseTsConfig.config.compilerOptions.paths || {};
 
 const defaultJestConfig = {
     testRegex: 'src/.*(test|spec|/__test__/|/__tests__/).*\\.(jsx?|tsx?)$',
@@ -16,7 +23,8 @@ const defaultJestConfig = {
     },
     moduleNameMapper: {
         // replace all css files with simple empty exports
-        '\\.css$': require.resolve('./css-mock')
+        '\\.css$': require.resolve('./css-mock'),
+        ...pathsToModuleNameMapper(parseTsConfigPaths, { prefix: '<rootDir>/' })
     },
     setupFiles: [
         require.resolve('./setup')
