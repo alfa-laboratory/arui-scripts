@@ -4,9 +4,9 @@ const { parseConfigFileTextToJson } = require('typescript');
 const merge = require('lodash.merge');
 const configs = require('../app-configs');
 const tsConfigPath = configs.tsconfig;
-const tsConfig = fs.readFileSync(configs.tsconfig, 'utf8');
-const parseTsConfig = parseConfigFileTextToJson(tsConfigPath, tsConfig);
-const parseTsConfigPaths = parseTsConfig.config.compilerOptions.paths || {};
+const tsConfigText = fs.readFileSync(configs.tsconfig, 'utf8');
+const tsConfig = parseConfigFileTextToJson(tsConfigPath, tsConfigText);
+const tsConfigPaths = tsConfig.config.compilerOptions.paths || {};
 
 const defaultJestConfig = {
     testRegex: 'src/.*(test|spec|/__test__/|/__tests__/).*\\.(jsx?|tsx?)$',
@@ -24,7 +24,7 @@ const defaultJestConfig = {
     moduleNameMapper: {
         // replace all css files with simple empty exports
         '\\.css$': require.resolve('./css-mock'),
-        ...pathsToModuleNameMapper(parseTsConfigPaths, { prefix: '<rootDir>/' })
+        ...pathsToModuleNameMapper(tsConfigPaths, { prefix: '<rootDir>/' })
     },
     setupFiles: [
         require.resolve('./setup')
