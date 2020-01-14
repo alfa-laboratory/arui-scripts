@@ -1,3 +1,22 @@
+<a name="8.1.1"></a>
+## [8.1.1](https://github.com/alfa-laboratory/arui-scripts/compare/v8.0.0...v8.1.1) (2020-01-14)
+
+
+### Bug Fixes
+
+* **config:** change assets RegExp in proxy ([3321833](https://github.com/alfa-laboratory/arui-scripts/commit/3321833))
+* **config:** use publicPath config property for assets path ([61f7a83](https://github.com/alfa-laboratory/arui-scripts/commit/61f7a83))
+* **dev-server:** make correct method startWith -> startsWith ([cf91a62](https://github.com/alfa-laboratory/arui-scripts/commit/cf91a62))
+
+
+### Features
+
+* **ci:** add yarn cache ([17ff911](https://github.com/alfa-laboratory/arui-scripts/commit/17ff911))
+* **jest:** dynamic pass paths from tsconfig for aliases ([cfaed8f](https://github.com/alfa-laboratory/arui-scripts/commit/cfaed8f))
+* **jest:** make more correct title for some variables ([28766c6](https://github.com/alfa-laboratory/arui-scripts/commit/28766c6))
+
+
+
 <a name="8.1.0"></a>
 # [8.1.0](https://github.com/alfa-laboratory/arui-scripts/compare/v8.0.0...v8.1.0) (2020-01-13)
 
