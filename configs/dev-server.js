@@ -17,7 +17,7 @@ module.exports = applyOverrides('devServer', {
             bypass: (req) => {
                 const assetsRoot = path.resolve(`/${configs.publicPath}`);
 
-                if (req.url.startWith(assetsRoot)) {
+                if (req.url.startsWith(assetsRoot)) {
                     return req.url;
                 }
 
