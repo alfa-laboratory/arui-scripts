@@ -1,5 +1,6 @@
 import express from 'express';
 import { readAssetsManifest } from './read-assets';
+import { constObject } from './utils';
 
 const app = express();
 
@@ -23,4 +24,5 @@ ${assets.js.map(c => `<script type='text/javascript' src='/${c}'></script>`)}
 
 app.listen(3000, () => {
     console.log('Test server is listening on :3000');
+    console.log(constObject);
 });
