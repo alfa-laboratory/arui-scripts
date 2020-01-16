@@ -9,6 +9,16 @@ export function isSmaller(a: number, b: number) {
     return a > b ? YesNoEnum.Yes : YesNoEnum.No
 }
 
+type OptionalChainingTest = {
+    foo?: {
+        bar?: string;
+    };
+};
+
+export function testOptionalChaining(smth: OptionalChainingTest) {
+    return smth?.foo?.bar;
+}
+
 export const constObject = {
     name: 'someString'
 } as const;
