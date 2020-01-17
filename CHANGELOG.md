@@ -1,3 +1,13 @@
+<a name="8.2.1"></a>
+## [8.2.1](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.0...v8.2.1) (2020-01-17)
+
+
+### Bug Fixes
+
+* **jest-config:** fix test files regexp ([d208b34](https://github.com/alfa-laboratory/arui-scripts/commit/d208b34))
+
+
+
 <a name="8.2.0"></a>
 # [8.2.0](https://github.com/alfa-laboratory/arui-scripts/compare/v8.0.0...v8.2.0) (2020-01-16)
 
