@@ -9,7 +9,7 @@ const tsConfig = parseConfigFileTextToJson(tsConfigPath, tsConfigText);
 const tsConfigPaths = tsConfig.config.compilerOptions.paths || {};
 
 const defaultJestConfig = {
-    testRegex: 'src/.*(test|spec|/__test__/|/__tests__/).*\\.(jsx?|tsx?)$',
+    testRegex: '^src.*((\/__test__\/|\/__tests__\/).*)|(test|spec|tests)\.(jsx?|tsx?)$',
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
     collectCoverageFrom: [
         'src/**/*.{js,jsx,ts,tsx}'
