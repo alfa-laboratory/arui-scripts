@@ -133,45 +133,30 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                     {
                         test: /\.css$/,
                         use: [
-                            require.resolve('style-loader'),
+                            'style-loader',
                             {
-                                loader: require.resolve('css-loader'),
+                                loader: 'css-loader',
                                 options: {
+                                    modules: true,
                                     importLoaders: 1,
                                 },
                             },
-                            {
-                                loader: require.resolve('postcss-loader'),
-                                options: {
-                                    // Necessary for external CSS imports to work
-                                    // https://github.com/facebookincubator/create-react-app/issues/2677
-                                    ident: 'postcss',
-                                    plugins: () => postcssConf,
-                                },
-                            },
+                            'postcss-loader'
                         ],
                     },
                     {
                         test: /\.pcss$/,
                         use: [
-                            require.resolve('style-loader'),
+                            'style-loader',
                             {
-                                loader: require.resolve('css-loader'),
+                                loader: 'css-loader',
                                 options: {
                                     importLoaders: 1,
                                     modules: true,
                                     localIdentName: getLocalIdentPattern({ isProduction: false })
                                 },
                             },
-                            {
-                                loader: require.resolve('postcss-loader'),
-                                options: {
-                                    // Necessary for external CSS imports to work
-                                    // https://github.com/facebookincubator/create-react-app/issues/2677
-                                    ident: 'postcss',
-                                    plugins: () => postcssConf,
-                                },
-                            },
+                            'postcss-loader'
                         ],
                     },
                     // "file" loader makes sure those assets get served by WebpackDevServer.
