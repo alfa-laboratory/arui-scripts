@@ -2,6 +2,8 @@ import React from 'react';
 import image from './clock.svg';
 import { isSmaller } from './utils';
 
+import { Icon } from './Icon';
+
 import styles from './css-module.pcss';
 import './style.css';
 
@@ -16,6 +18,7 @@ export class App extends React.Component {
                 <h2>
                     Hello, arui-scripts!
                 </h2>
+                <Icon />
 
                 Check hot-loader: <br />
                 Button is clicked { this.state.clickCount } times

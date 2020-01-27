@@ -1,0 +1,31 @@
+.icon {
+  display: inline-block;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.gear {
+  background-image: url('../../icons/gear.svg');
+}
+
+/* Размеры */
+
+.s {
+  width: 24px;
+  height: 24px;
+}
+
+.m {
+  width: 28px;
+  height: 28px;
+}
+
+.l {
+  width: 32px;
+  height: 32px;
+}
+
+.xl {
+  width: 36px;
+  height: 36px;
+}
