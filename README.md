@@ -44,7 +44,7 @@ npm install arui-scripts --save-dev
 ---
 
 Несмотря на то, что все работает из коробки, вы можете захотеть поменять некоторые настройки сборщиков.
-Сделать это можно в `package.json`, определив там свойство `aruiScripts` или `arui-scripts`.
+Сделать это можно в `package.json`, определив там свойство `aruiScripts`.
 
 Доступные настройки:
 
@@ -62,6 +62,12 @@ npm install arui-scripts --save-dev
 - `keepPropTypes` - если `true`, пакеты с prop-types не будут удалены из production билда.
 - `debug` - режим отладки, в котором не выполняются некоторые нежелательные операции и выводится больше сообщений об ошибках, по умолчанию `false`.
 - `useTscLoader` -  использовать ts-loader вместо babel-loader для обработки ts файлов. У babel-loader есть [ряд ограничений](https://blogs.msdn.microsoft.com/typescript/2018/08/27/typescript-and-babel-7/). По умолчанию `false`.
+
+В целях отладки все эти настройки можно переопределить не изменяя package.json
+Просто передайте необходимые настройки в environment переменной ARUI_SCRIPTS_CONFIG
+```
+ARUI_SCRIPTS_CONFIG="{\"serverPort\":3333}" yarn start
+```
 
 Так же, читаются настройки jest (см. [документацию](https://facebook.github.io/jest/docs/en/configuration.html))
 и `proxy` (см. [документацию](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#proxying-api-requests-in-development)).
@@ -314,7 +320,7 @@ yarn будет использоваться когда в рутовой пап
 
 ```json
 {
-    "arui-scripts": { "useTscLoader": true }
+    "aruiScripts": { "useTscLoader": true }
 }
 ```
 

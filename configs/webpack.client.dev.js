@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 
@@ -11,6 +12,9 @@ const configs = require('./app-configs');
 const babelConf = require('./babel-client');
 const postcssConf = require('./postcss');
 const applyOverrides = require('./util/apply-overrides');
+// style files regexes
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -59,6 +63,12 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
         // `web` extension prefixes have been added for better support
         // for React Native Web.
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
+        plugins: [
+            (configs.tsconfig && new TsconfigPathsPlugin({
+                configFile: configs.tsconfig,
+                extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
+            }))
+        ].filter(Boolean),
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -131,7 +141,8 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                     // In production, we use a plugin to extract that CSS to a file, but
                     // in development "style" loader enables hot editing of CSS.
                     {
-                        test: /\.css$/,
+                        test: cssRegex,
+                        exclude: cssModuleRegex,
                         use: [
                             'style-loader',
                             {
@@ -145,7 +156,7 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                         ],
                     },
                     {
-                        test: /\.pcss$/,
+                        test: cssModuleRegex,
                         use: [
                             'style-loader',
                             {

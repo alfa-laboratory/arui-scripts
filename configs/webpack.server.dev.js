@@ -8,6 +8,7 @@ const ReloadServerPlugin = require('reload-server-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const getLocalIdentPattern = require('./util/css-modules-local-ident');
 const configs = require('./app-configs');
@@ -15,6 +16,10 @@ const babelConf = require('./babel-server');
 const postcssConf = require('./postcss');
 const applyOverrides = require('./util/apply-overrides');
 const assetsIgnoreBanner = fs.readFileSync(require.resolve('./util/node-assets-ignore'), 'utf8');
+
+// style files regexes
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -68,6 +73,12 @@ const config = {
         // `web` extension prefixes have been added for better support
         // for React Native Web.
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
+        plugins: [
+            (configs.tsconfig && new TsconfigPathsPlugin({
+                configFile: configs.tsconfig,
+                extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
+            }))
+        ].filter(Boolean),
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -116,11 +127,12 @@ const config = {
                     },
                     // replace css imports with empty files
                     {
-                        test: /\.css$/,
+                        test: cssRegex,
+                        exclude: cssModuleRegex,
                         loader: require.resolve('null-loader')
                     },
                     {
-                        test: /\.pcss$/,
+                        test: cssModuleRegex,
                         use: [
                             {
                                 loader: require.resolve('css-loader/locals'),

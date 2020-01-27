@@ -1,6 +1,6 @@
 {
   "name": "arui-scripts",
-  "version": "5.6.2",
+  "version": "8.2.1",
   "main": "index.js",
   "license": "MPL-2.0",
   "repository": {
@@ -16,8 +16,10 @@
     "@babel/plugin-proposal-decorators": "7.4.4",
     "@babel/plugin-proposal-export-default-from": "7.2.0",
     "@babel/plugin-proposal-export-namespace-from": "7.2.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
     "@babel/plugin-proposal-numeric-separator": "7.2.0",
     "@babel/plugin-proposal-object-rest-spread": "7.4.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.8.3",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
     "@babel/plugin-transform-proto-to-assign": "7.4.4",
     "@babel/plugin-transform-react-constant-elements": "7.2.0",
@@ -78,6 +80,7 @@
     "tar": "4.4.8",
     "ts-jest": "24.0.2",
     "ts-loader": "6.0.1",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
     "url-loader": "1.1.2",
     "webpack": "4.26.1",
     "webpack-dev-server": "3.1.14",
@@ -100,11 +103,25 @@
     "test": "npm run test-build && npm run test-test"
   },
   "devDependencies": {
+    "@types/node": "^8.9.1",
+    "arui-presets-lint": "^2.0.0",
     "conventional-changelog-cli": "1.3.16",
-    "typescript": "3.5.1"
+    "husky": "^3.1.0",
+    "typescript": "3.7.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "./node_modules/arui-presets-lint/commitlint"
+    ]
   },
   "peerDependencies": {
-    "typescript": ">=3.5.1"
+    "typescript": ">=3.7.3"
   },
   "author": "Good guys from Alfa Laboratory",
   "maintainers": [

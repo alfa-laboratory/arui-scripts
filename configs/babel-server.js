@@ -19,7 +19,9 @@ module.exports = applyOverrides(['babel', 'babelServer'], {
         require.resolve('@babel/plugin-proposal-export-default-from'),
         require.resolve('@babel/plugin-proposal-export-namespace-from'),
         [require.resolve('@babel/plugin-proposal-object-rest-spread'), { useBuiltIns: true }],
-        [require.resolve('@babel/plugin-transform-runtime'), { helpers: false }]
+        [require.resolve('@babel/plugin-transform-runtime'), { helpers: false }],
+        require.resolve('@babel/plugin-proposal-nullish-coalescing-operator'),
+        require.resolve('@babel/plugin-proposal-optional-chaining')
     ],
     env: {
         production: {

@@ -1,3 +1,132 @@
+<a name="8.2.1"></a>
+## [8.2.1](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.0...v8.2.1) (2020-01-17)
+
+
+### Bug Fixes
+
+* **jest-config:** fix test files regexp ([d208b34](https://github.com/alfa-laboratory/arui-scripts/commit/d208b34))
+
+
+
+<a name="8.2.0"></a>
+# [8.2.0](https://github.com/alfa-laboratory/arui-scripts/compare/v8.0.0...v8.2.0) (2020-01-16)
+
+
+### Bug Fixes
+
+* **config:** change assets RegExp in proxy ([3321833](https://github.com/alfa-laboratory/arui-scripts/commit/3321833))
+* **config:** use publicPath config property for assets path ([61f7a83](https://github.com/alfa-laboratory/arui-scripts/commit/61f7a83))
+* **dev-server:** make correct method startWith -> startsWith ([cf91a62](https://github.com/alfa-laboratory/arui-scripts/commit/cf91a62))
+
+
+### Features
+
+* **babel:** add optional chaining and nullish coalescing support ([8fa3211](https://github.com/alfa-laboratory/arui-scripts/commit/8fa3211))
+* **ci:** add yarn cache ([17ff911](https://github.com/alfa-laboratory/arui-scripts/commit/17ff911))
+* **jest:** dynamic pass paths from tsconfig for aliases ([cfaed8f](https://github.com/alfa-laboratory/arui-scripts/commit/cfaed8f))
+* **jest:** make more correct title for some variables ([28766c6](https://github.com/alfa-laboratory/arui-scripts/commit/28766c6))
+
+
+
+<a name="8.1.1"></a>
+## [8.1.1](https://github.com/alfa-laboratory/arui-scripts/compare/v8.0.0...v8.1.1) (2020-01-14)
+
+
+### Bug Fixes
+
+* **config:** change assets RegExp in proxy ([3321833](https://github.com/alfa-laboratory/arui-scripts/commit/3321833))
+* **config:** use publicPath config property for assets path ([61f7a83](https://github.com/alfa-laboratory/arui-scripts/commit/61f7a83))
+* **dev-server:** make correct method startWith -> startsWith ([cf91a62](https://github.com/alfa-laboratory/arui-scripts/commit/cf91a62))
+
+
+### Features
+
+* **ci:** add yarn cache ([17ff911](https://github.com/alfa-laboratory/arui-scripts/commit/17ff911))
+* **jest:** dynamic pass paths from tsconfig for aliases ([cfaed8f](https://github.com/alfa-laboratory/arui-scripts/commit/cfaed8f))
+* **jest:** make more correct title for some variables ([28766c6](https://github.com/alfa-laboratory/arui-scripts/commit/28766c6))
+
+
+
+<a name="8.1.0"></a>
+# [8.1.0](https://github.com/alfa-laboratory/arui-scripts/compare/v8.0.0...v8.1.0) (2020-01-13)
+
+
+### Bug Fixes
+
+* **config:** change assets RegExp in proxy ([3321833](https://github.com/alfa-laboratory/arui-scripts/commit/3321833))
+* **config:** use publicPath config property for assets path ([61f7a83](https://github.com/alfa-laboratory/arui-scripts/commit/61f7a83))
+
+
+### Features
+
+* **ci:** add yarn cache ([17ff911](https://github.com/alfa-laboratory/arui-scripts/commit/17ff911))
+* **jest:** dynamic pass paths from tsconfig for aliases ([cfaed8f](https://github.com/alfa-laboratory/arui-scripts/commit/cfaed8f))
+* **jest:** make more correct title for some variables ([28766c6](https://github.com/alfa-laboratory/arui-scripts/commit/28766c6))
+
+
+
+<a name="8.0.0"></a>
+# [8.0.0](https://github.com/alfa-laboratory/arui-scripts/compare/v7.0.0...v8.0.0) (2019-12-24)
+
+
+### Bug Fixes
+
+* changed commitlint settings ([50a6a39](https://github.com/alfa-laboratory/arui-scripts/commit/50a6a39))
+* deleted baseUrl ([95158e3](https://github.com/alfa-laboratory/arui-scripts/commit/95158e3))
+* deleted commitlint as dep ([c83af3e](https://github.com/alfa-laboratory/arui-scripts/commit/c83af3e))
+* reintaling husky ([46f955c](https://github.com/alfa-laboratory/arui-scripts/commit/46f955c))
+* removed recursive symlink ([f1b6459](https://github.com/alfa-laboratory/arui-scripts/commit/f1b6459))
+* returned proccess.argv ([9199bb8](https://github.com/alfa-laboratory/arui-scripts/commit/9199bb8))
+* trying fix build ([7c2e76b](https://github.com/alfa-laboratory/arui-scripts/commit/7c2e76b))
+
+
+### Features
+
+* add prod tsconfig ([82f91e7](https://github.com/alfa-laboratory/arui-scripts/commit/82f91e7))
+* close [#59](https://github.com/alfa-laboratory/arui-scripts/issues/59) ([7f36f8b](https://github.com/alfa-laboratory/arui-scripts/commit/7f36f8b))
+
+
+
+<a name="7.0.0"></a>
+# [7.0.0](https://github.com/alfa-laboratory/arui-scripts/compare/v6.0.3...v7.0.0) (2019-12-05)
+
+
+
+<a name="6.0.3"></a>
+## [6.0.3](https://github.com/alfa-laboratory/arui-scripts/compare/v6.0.2...v6.0.3) (2019-12-04)
+
+
+
+<a name="6.0.2"></a>
+## [6.0.2](https://github.com/alfa-laboratory/arui-scripts/compare/v6.0.1...v6.0.2) (2019-12-04)
+
+
+### Features
+
+* allow override scripts settings by env ([172dc48](https://github.com/alfa-laboratory/arui-scripts/commit/172dc48))
+
+
+
+<a name="6.0.1"></a>
+## [6.0.1](https://github.com/alfa-laboratory/arui-scripts/compare/v6.0.0...v6.0.1) (2019-11-27)
+
+
+### Bug Fixes
+
+* fix css modules loader ([77cdcb3](https://github.com/alfa-laboratory/arui-scripts/commit/77cdcb3))
+
+
+
+<a name="6.0.0"></a>
+# [6.0.0](https://github.com/alfa-laboratory/arui-scripts/compare/v5.6.2...v6.0.0) (2019-11-27)
+
+
+### Features
+
+* use css modules naming convention ([836670a](https://github.com/alfa-laboratory/arui-scripts/commit/836670a))
+
+
+
 <a name="5.6.2"></a>
 ## [5.6.2](https://github.com/alfa-laboratory/arui-scripts/compare/v5.6.1...v5.6.2) (2019-11-14)
 

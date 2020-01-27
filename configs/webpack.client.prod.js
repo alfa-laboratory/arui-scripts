@@ -7,6 +7,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const getLocalIdentPattern = require('./util/css-modules-local-ident');
 const configs = require('./app-configs');
@@ -15,6 +16,10 @@ const postcssConf = require('./postcss');
 const applyOverrides = require('./util/apply-overrides');
 
 const noopPath = require.resolve('./util/noop');
+
+// style files regexes
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
 
 // This is the production configuration.
 module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'webpackClientProd'], {
@@ -115,6 +120,12 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
         // `web` extension prefixes have been added for better support
         // for React Native Web.
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
+        plugins: [
+            (configs.tsconfig && new TsconfigPathsPlugin({
+                configFile: configs.tsconfig,
+                extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
+            }))
+        ].filter(Boolean),
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -182,7 +193,8 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
                     // use the "style" loader inside the async code so CSS from them won't be
                     // in the main CSS file.
                     {
-                        test: /\.css$/,
+                        test: cssRegex,
+                        exclude: cssModuleRegex,
                         loaders: [
                             {
                                 loader: MiniCssExtractPlugin.loader,
@@ -208,7 +220,7 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
                         ],
                     },
                     {
-                        test: /\.pcss$/,
+                        test: cssModuleRegex,
                         loaders: [
                             {
                                 loader: MiniCssExtractPlugin.loader,
