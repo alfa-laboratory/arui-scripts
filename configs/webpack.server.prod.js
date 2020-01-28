@@ -51,7 +51,7 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
                 .replace(/\\/g, '/'),
     },
     externals: [nodeExternals({
-        whitelist: [/^arui-feather/, /^arui-ft-private/, /^arui-private/, /^alfaform-core-ui/, /^#/]
+        whitelist: [/^arui-feather/, /^arui-ft-private/, /^arui-private/, /^alfaform-core-ui/, /^newclick-components/, /^#/]
     })],
     resolve: {
         // This allows you to set a fallback for where Webpack should look for modules.
@@ -123,9 +123,10 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
                         test: cssModuleRegex,
                         use: [
                             {
-                                loader: require.resolve('css-loader/locals'),
+                                loader: require.resolve('css-loader'),
                                 options: {
                                     modules: true,
+                                    exportOnlyLocals: true,
                                     localIdentName: getLocalIdentPattern({ isProduction: true })
                                 },
                             },

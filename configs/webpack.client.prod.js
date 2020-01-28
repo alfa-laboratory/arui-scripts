@@ -204,7 +204,6 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
                                 loader: require.resolve('css-loader'),
                                 options: {
                                     importLoaders: 1,
-                                    minimize: true,
                                     sourceMap: false,
                                 },
                             },
@@ -230,7 +229,6 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
                                 loader: require.resolve('css-loader'),
                                 options: {
                                     importLoaders: 1,
-                                    minimize: true,
                                     modules: true,
                                     sourceMap: false,
                                     localIdentName: getLocalIdentPattern({ isProduction: true })
