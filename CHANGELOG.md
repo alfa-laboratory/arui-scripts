@@ -1,3 +1,14 @@
+<a name="8.2.2"></a>
+## [8.2.2](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.1...v8.2.2) (2020-01-28)
+
+
+### Bug Fixes
+
+* remove invalid option ([1de8fae](https://github.com/alfa-laboratory/arui-scripts/commit/1de8fae))
+* up css loader ([32dec5e](https://github.com/alfa-laboratory/arui-scripts/commit/32dec5e))
+
+
+
 <a name="8.2.1"></a>
 ## [8.2.1](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.0...v8.2.1) (2020-01-17)
 
