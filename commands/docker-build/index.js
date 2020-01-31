@@ -10,6 +10,7 @@ const exec = require('../util/exec');
 let imageVersion = configs.version;
 let imageName = configs.name;
 let dockerRegistry = configs.dockerRegistry;
+let debug = configs.debug;
 const commandLineArguments = process.argv.slice(3);
 
 commandLineArguments.forEach(arg => {
@@ -22,6 +23,9 @@ commandLineArguments.forEach(arg => {
             break;
         case 'name':
             imageName = argValue;
+            break;
+        case 'debug':
+            debug = argValue;
             break;
         default:
             console.warn(`Unknown argument ${argName}`);
@@ -84,7 +88,7 @@ const imageFullName = `${dockerRegistry ? `${dockerRegistry}/` : ''}${imageName}
         await fs.remove(pathToTempDir);
 
         // guard against pushing the image during tests
-        if (!configs.debug) {
+        if (!debug) {
             await exec(`docker push ${imageFullName}`);
         }
 
