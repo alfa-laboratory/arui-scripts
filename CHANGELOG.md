@@ -1,3 +1,13 @@
+<a name="8.2.3"></a>
+## [8.2.3](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.2...v8.2.3) (2020-02-02)
+
+
+### Bug Fixes
+
+* fix regexp to exclude test files outside of src dir ([8a8729b](https://github.com/alfa-laboratory/arui-scripts/commit/8a8729b))
+
+
+
 <a name="8.2.2"></a>
 ## [8.2.2](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.1...v8.2.2) (2020-01-28)
 
