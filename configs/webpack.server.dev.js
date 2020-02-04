@@ -10,7 +10,7 @@ const nodeExternals = require('webpack-node-externals');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
-const getLocalIdentPattern = require('./util/css-modules-local-ident');
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const configs = require('./app-configs');
 const babelConf = require('./babel-server');
 const postcssConf = require('./postcss');
@@ -139,7 +139,7 @@ const config = {
                                 options: {
                                     modules: true,
                                     exportOnlyLocals: true,
-                                    localIdentName: getLocalIdentPattern({ isProduction: false })
+                                    getLocalIdent: getCSSModuleLocalIdent
                                 },
                             },
                             {

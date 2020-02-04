@@ -9,7 +9,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
-const getLocalIdentPattern = require('./util/css-modules-local-ident');
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const configs = require('./app-configs');
 const babelConf = require('./babel-client');
 const postcssConf = require('./postcss');
@@ -231,7 +231,7 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
                                     importLoaders: 1,
                                     modules: true,
                                     sourceMap: false,
-                                    localIdentName: getLocalIdentPattern({ isProduction: true })
+                                    getLocalIdent: getCSSModuleLocalIdent
                                 },
                             },
                             {

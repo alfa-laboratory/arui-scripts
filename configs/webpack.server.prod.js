@@ -5,7 +5,7 @@ const nodeExternals = require('webpack-node-externals');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
-const getLocalIdentPattern = require('./util/css-modules-local-ident');
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const configs = require('./app-configs');
 const babelConf = require('./babel-server');
 const postcssConf = require('./postcss');
@@ -127,7 +127,7 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
                                 options: {
                                     modules: true,
                                     exportOnlyLocals: true,
-                                    localIdentName: getLocalIdentPattern({ isProduction: true })
+                                    getLocalIdent: getCSSModuleLocalIdent
                                 },
                             },
                             {

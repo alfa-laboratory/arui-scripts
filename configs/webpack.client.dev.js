@@ -7,7 +7,7 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 
-const getLocalIdentPattern = require('./util/css-modules-local-ident');
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const configs = require('./app-configs');
 const babelConf = require('./babel-client');
 const postcssConf = require('./postcss');
@@ -171,7 +171,7 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                                 options: {
                                     importLoaders: 1,
                                     modules: true,
-                                    localIdentName: getLocalIdentPattern({ isProduction: false })
+                                    getLocalIdent: getCSSModuleLocalIdent
                                 },
                             },
                             {
