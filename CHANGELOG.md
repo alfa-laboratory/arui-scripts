@@ -1,3 +1,13 @@
+<a name="8.2.6"></a>
+## [8.2.6](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.5...v8.2.6) (2020-02-05)
+
+
+### Bug Fixes
+
+* hotfix, according latest webpack dev server docs ([268a6fc](https://github.com/alfa-laboratory/arui-scripts/commit/268a6fc))
+
+
+
 <a name="8.2.5"></a>
 ## [8.2.5](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.4...v8.2.5) (2020-02-05)
 
