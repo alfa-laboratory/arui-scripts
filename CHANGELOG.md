@@ -1,3 +1,13 @@
+<a name="8.2.4"></a>
+## [8.2.4](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.3...v8.2.4) (2020-02-05)
+
+
+### Features
+
+* use react dev utils for css modules ([35c4329](https://github.com/alfa-laboratory/arui-scripts/commit/35c4329))
+
+
+
 <a name="8.2.3"></a>
 ## [8.2.3](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.2...v8.2.3) (2020-02-02)
 
