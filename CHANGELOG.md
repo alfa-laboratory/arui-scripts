@@ -1,3 +1,8 @@
+<a name="8.2.5"></a>
+## [8.2.5](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.4...v8.2.5) (2020-02-05)
+
+
+
 <a name="8.2.4"></a>
 ## [8.2.4](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.3...v8.2.4) (2020-02-05)
 
