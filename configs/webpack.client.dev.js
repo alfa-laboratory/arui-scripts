@@ -51,6 +51,9 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                 .replace(/\\/g, '/'),
     },
     resolve: {
+        alias: {
+            'react-dom': '@hot-loader/react-dom',
+        },
         // This allows you to set a fallback for where Webpack should look for modules.
         // We placed these paths second because we want `node_modules` to "win"
         // if there are any conflicts. This matches Node resolution mechanism.
