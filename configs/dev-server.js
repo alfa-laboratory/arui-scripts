@@ -21,7 +21,7 @@ module.exports = applyOverrides('devServer', {
                     return req.url;
                 }
 
-                return false;
+                return null;
             }
         }
     })

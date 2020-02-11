@@ -1,3 +1,49 @@
+<a name="8.2.6"></a>
+## [8.2.6](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.5...v8.2.6) (2020-02-05)
+
+
+### Bug Fixes
+
+* hotfix, according latest webpack dev server docs ([268a6fc](https://github.com/alfa-laboratory/arui-scripts/commit/268a6fc))
+
+
+
+<a name="8.2.5"></a>
+## [8.2.5](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.4...v8.2.5) (2020-02-05)
+
+
+
+<a name="8.2.4"></a>
+## [8.2.4](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.3...v8.2.4) (2020-02-05)
+
+
+### Features
+
+* use react dev utils for css modules ([35c4329](https://github.com/alfa-laboratory/arui-scripts/commit/35c4329))
+
+
+
+<a name="8.2.3"></a>
+## [8.2.3](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.2...v8.2.3) (2020-02-02)
+
+
+### Bug Fixes
+
+* fix regexp to exclude test files outside of src dir ([8a8729b](https://github.com/alfa-laboratory/arui-scripts/commit/8a8729b))
+
+
+
+<a name="8.2.2"></a>
+## [8.2.2](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.1...v8.2.2) (2020-01-28)
+
+
+### Bug Fixes
+
+* remove invalid option ([1de8fae](https://github.com/alfa-laboratory/arui-scripts/commit/1de8fae))
+* up css loader ([32dec5e](https://github.com/alfa-laboratory/arui-scripts/commit/32dec5e))
+
+
+
 <a name="8.2.1"></a>
 ## [8.2.1](https://github.com/alfa-laboratory/arui-scripts/compare/v8.2.0...v8.2.1) (2020-01-17)
 
