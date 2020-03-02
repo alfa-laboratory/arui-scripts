@@ -1,3 +1,4 @@
+const path = require('path');
 const configs = require('./app-configs');
 const applyOverrides = require('./util/apply-overrides');
 
@@ -14,10 +15,13 @@ module.exports = applyOverrides('devServer', {
         '/**': {
             target: `http://localhost:${configs.serverPort}`,
             bypass: (req) => {
-                if (req.url.match(/\./)) {
+                const assetsRoot = path.resolve(`/${configs.publicPath}`);
+
+                if (req.url.startsWith(assetsRoot)) {
                     return req.url;
                 }
-                return false;
+
+                return null;
             }
         }
     })

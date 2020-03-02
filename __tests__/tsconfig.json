@@ -1,6 +1,10 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+            "Src/*": ["src/*"],
+        },
         "lib": [
             "dom",
             "es2015",

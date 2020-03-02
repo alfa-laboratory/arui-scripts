@@ -7,8 +7,9 @@ const TerserPlugin = require('terser-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
-const getLocalIdentPattern = require('./util/css-modules-local-ident');
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const configs = require('./app-configs');
 const babelConf = require('./babel-client');
 const postcssConf = require('./postcss');
@@ -119,6 +120,12 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
         // `web` extension prefixes have been added for better support
         // for React Native Web.
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
+        plugins: [
+            (configs.tsconfig && new TsconfigPathsPlugin({
+                configFile: configs.tsconfig,
+                extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
+            }))
+        ].filter(Boolean),
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -197,7 +204,6 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
                                 loader: require.resolve('css-loader'),
                                 options: {
                                     importLoaders: 1,
-                                    minimize: true,
                                     sourceMap: false,
                                 },
                             },
@@ -223,10 +229,9 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
                                 loader: require.resolve('css-loader'),
                                 options: {
                                     importLoaders: 1,
-                                    minimize: true,
                                     modules: true,
                                     sourceMap: false,
-                                    localIdentName: getLocalIdentPattern({ isProduction: true })
+                                    getLocalIdent: getCSSModuleLocalIdent
                                 },
                             },
                             {

@@ -3,10 +3,11 @@ const webpack = require('webpack');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 
-const getLocalIdentPattern = require('./util/css-modules-local-ident');
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const configs = require('./app-configs');
 const babelConf = require('./babel-client');
 const postcssConf = require('./postcss');
@@ -50,6 +51,9 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                 .replace(/\\/g, '/'),
     },
     resolve: {
+        alias: {
+            'react-dom': '@hot-loader/react-dom',
+        },
         // This allows you to set a fallback for where Webpack should look for modules.
         // We placed these paths second because we want `node_modules` to "win"
         // if there are any conflicts. This matches Node resolution mechanism.
@@ -62,6 +66,12 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
         // `web` extension prefixes have been added for better support
         // for React Native Web.
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
+        plugins: [
+            (configs.tsconfig && new TsconfigPathsPlugin({
+                configFile: configs.tsconfig,
+                extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
+            }))
+        ].filter(Boolean),
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -164,7 +174,7 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                                 options: {
                                     importLoaders: 1,
                                     modules: true,
-                                    localIdentName: getLocalIdentPattern({ isProduction: false })
+                                    getLocalIdent: getCSSModuleLocalIdent
                                 },
                             },
                             {

@@ -8,8 +8,9 @@ const ReloadServerPlugin = require('reload-server-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
-const getLocalIdentPattern = require('./util/css-modules-local-ident');
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const configs = require('./app-configs');
 const babelConf = require('./babel-server');
 const postcssConf = require('./postcss');
@@ -57,7 +58,7 @@ const config = {
                 .replace(/\\/g, '/'),
     },
     externals: [nodeExternals({
-        whitelist: [/^arui-feather/, /^arui-ft-private/, /^arui-private/, /^alfaform-core-ui/, /^#/]
+        whitelist: [/^arui-feather/, /^arui-ft-private/, /^arui-private/, /^alfaform-core-ui/, /^newclick-components/, /^#/]
     })],
     resolve: {
         // This allows you to set a fallback for where Webpack should look for modules.
@@ -72,6 +73,12 @@ const config = {
         // `web` extension prefixes have been added for better support
         // for React Native Web.
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
+        plugins: [
+            (configs.tsconfig && new TsconfigPathsPlugin({
+                configFile: configs.tsconfig,
+                extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
+            }))
+        ].filter(Boolean),
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -128,10 +135,11 @@ const config = {
                         test: cssModuleRegex,
                         use: [
                             {
-                                loader: require.resolve('css-loader/locals'),
+                                loader: require.resolve('css-loader'),
                                 options: {
                                     modules: true,
-                                    localIdentName: getLocalIdentPattern({ isProduction: false })
+                                    exportOnlyLocals: true,
+                                    getLocalIdent: getCSSModuleLocalIdent
                                 },
                             },
                             {
