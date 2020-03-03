@@ -1,11 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "es2015",
-      "es2016"
-    ],
+    "lib": ["dom", "es2015", "es2016"],
     "experimentalDecorators": true,
     "jsx": "react",
     "target": "es2017",

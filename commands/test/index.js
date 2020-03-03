@@ -10,15 +10,12 @@ const jestConfig = require('../../configs/jest');
 // ignoring them. In the future, promise rejections that are not handled will
 // terminate the Node.js process with a non-zero exit code.
 process.on('unhandledRejection', err => {
-    throw err;
+  throw err;
 });
 
 // Skip 'node', 'arui-scripts' and 'test' arguments and take all the rest (or none if there is no more arguments).
 const argv = process.argv.slice(3);
 
-argv.push(
-    '--config',
-    JSON.stringify(jestConfig)
-);
+argv.push('--config', JSON.stringify(jestConfig));
 
 jest.run(argv);
