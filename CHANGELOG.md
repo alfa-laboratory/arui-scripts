@@ -1,3 +1,21 @@
+<a name="8.3.2"></a>
+## [8.3.2](https://github.com/alfa-laboratory/arui-scripts/compare/v8.3.0...v8.3.2) (2020-03-04)
+
+
+### Bug Fixes
+
+* **nginx.conf.template:** updated rule for request's max body size ([5364789](https://github.com/alfa-laboratory/arui-scripts/commit/5364789))
+
+
+### Features
+
+* add .editorconfig ([c0238d4](https://github.com/alfa-laboratory/arui-scripts/commit/c0238d4))
+* change some rules in .editorconfig ([cae471b](https://github.com/alfa-laboratory/arui-scripts/commit/cae471b))
+* update [@babel](https://github.com/babel)/preset-env, remove usless deps ([10b9993](https://github.com/alfa-laboratory/arui-scripts/commit/10b9993))
+* update yarn.lock ([889fbf0](https://github.com/alfa-laboratory/arui-scripts/commit/889fbf0))
+
+
+
 <a name="8.3.1"></a>
 ## [8.3.1](https://github.com/alfa-laboratory/arui-scripts/compare/v8.3.0...v8.3.1) (2020-03-04)
 
