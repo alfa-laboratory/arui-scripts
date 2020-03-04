@@ -1,6 +1,8 @@
 const configs = require('../configs/app-configs');
 
-module.exports = `server {
+module.exports = `client_max_body_size 20m;
+
+server {
     listen ${configs.clientServerPort};
 
     location / {
