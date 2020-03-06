@@ -1,3 +1,15 @@
+<a name="8.3.3"></a>
+## [8.3.3](https://github.com/alfa-laboratory/arui-scripts/compare/v8.3.2...v8.3.3) (2020-03-06)
+
+
+### Bug Fixes
+
+* remove bad tests ([81cb375](https://github.com/alfa-laboratory/arui-scripts/commit/81cb375))
+* restore utils ([0434106](https://github.com/alfa-laboratory/arui-scripts/commit/0434106))
+* **tests:** textRegex path ([9ed4589](https://github.com/alfa-laboratory/arui-scripts/commit/9ed4589))
+
+
+
 <a name="8.3.2"></a>
 ## [8.3.2](https://github.com/alfa-laboratory/arui-scripts/compare/v8.3.0...v8.3.2) (2020-03-04)
 
