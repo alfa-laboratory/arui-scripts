@@ -7,7 +7,7 @@ describe('isSmaller', () => {
         expect(result).toBe(YesNoEnum.No);
     });
 
-    it('should return yesy if a > b', () => {
+    it('should return yes if a > b', () => {
         const result = isSmaller(2, 1);
 
         expect(result).toBe(YesNoEnum.Yes);
