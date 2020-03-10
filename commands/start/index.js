@@ -3,6 +3,7 @@ process.env.BROWSERSLIST_CONFIG = process.env.BROWSERSLIST_CONFIG || require.res
 const fs = require('fs-extra');
 const webpack = require('webpack');
 const chalk = require('chalk');
+const npid = require('npid');
 const WebpackDevServer = require('webpack-dev-server');
 const { choosePort } = require('react-dev-utils/WebpackDevServerUtils');
 const checkRequiredFiles = require('../util/check-required-files');
@@ -35,6 +36,8 @@ if (fs.pathExistsSync(configs.serverOutputPath)) {
     fs.removeSync(configs.serverOutputPath);
 }
 
+const pid = npid.create(configs.devServerPidFile, true);
+
 // We attempt to use the default port but if it is busy, we offer the user to
 // run on a different port. `detect()` Promise resolves to the next free port.
 choosePort(HOST, DEFAULT_PORT)
@@ -56,6 +59,17 @@ choosePort(HOST, DEFAULT_PORT)
         process.exit(1);
     });
 
+
+process
+    .on('SIGTERM', shutdown('SIGTERM'))
+    .on('SIGINT', shutdown('SIGINT'));
+
+function shutdown(signal) {
+    return () => {
+        pid.remove();
+        process.exit(1);
+    }
+}
 
 function printCompilerOutput(compilerName, stats) {
     const output = stats.toString(statsOptions)

@@ -8,6 +8,7 @@ process.env.BROWSERSLIST_CONFIG = process.env.BROWSERSLIST_CONFIG || require.res
 const { spawn } = require('child_process');
 const fs = require('fs-extra');
 const path = require('path');
+const chalk = require('chalk');
 
 const checkRequiredFiles = require('../util/check-required-files');
 const configs = require('../../configs/app-configs');
@@ -18,6 +19,11 @@ if (!checkRequiredFiles()) {
 
 if (fs.pathExistsSync(configs.serverOutputPath)) {
     fs.removeSync(configs.serverOutputPath);
+}
+
+if (fs.existsSync(configs.devServerPidFile)) {
+    console.error(chalk.red('\nerror WebpackDevServer already is running! Please stop dev-server or remove dev-server.pid file\n'));
+    process.exit(1);
 }
 
 const compileServer = spawn('node', [path.join(__dirname, './server')], { stdio: 'inherit' });

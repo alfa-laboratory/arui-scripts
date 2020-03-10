@@ -73,8 +73,8 @@ module.exports = {
 
     // compilation configs locations
     tsconfig: fs.existsSync(projectTsConfigPath) ? projectTsConfigPath : null,
-	localNginxConf: fs.existsSync(nginxConfFilePath) ? nginxConfFilePath : null,
-	localDockerfile: fs.existsSync(dockerfileFilePath) ? dockerfileFilePath : null,
+    localNginxConf: fs.existsSync(nginxConfFilePath) ? nginxConfFilePath : null,
+    localDockerfile: fs.existsSync(dockerfileFilePath) ? dockerfileFilePath : null,
 
     useTscLoader: packageSettings.useTscLoader || false,
     useServerHMR: typeof packageSettings.useServerHMR !== 'undefined' ? !!packageSettings.useServerHMR : false,
@@ -84,5 +84,7 @@ module.exports = {
 
     debug: !!packageSettings.debug,
     hasOverrides: fs.existsSync(overridesPath),
-    overridesPath: overridesPath
+    overridesPath: overridesPath,
+
+    devServerPidFile: `dev-server.pid`
 };

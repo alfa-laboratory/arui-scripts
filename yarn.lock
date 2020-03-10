@@ -7276,6 +7276,11 @@ normalize-url@^3.0.0:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
   integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
 
+npid@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/npid/-/npid-0.4.0.tgz#a1169823d3cb91b7b3d66ed62180cc338526237e"
+  integrity sha1-oRaYI9PLkbez1m7WIYDMM4UmI34=
+
 npm-run-path@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"
