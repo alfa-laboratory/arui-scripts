@@ -1,3 +1,18 @@
+<a name="8.4.0"></a>
+# [8.4.0](https://github.com/alfa-laboratory/arui-scripts/compare/v8.3.4...v8.4.0) (2020-03-23)
+
+
+### Bug Fixes
+
+* update babel version ([5f7d508](https://github.com/alfa-laboratory/arui-scripts/commit/5f7d508))
+
+
+### Features
+
+* **conf:** disable allowJs rule ([49cfc56](https://github.com/alfa-laboratory/arui-scripts/commit/49cfc56))
+
+
+
 <a name="8.3.4"></a>
 ## [8.3.4](https://github.com/alfa-laboratory/arui-scripts/compare/v8.3.3...v8.3.4) (2020-03-06)
 
