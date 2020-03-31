@@ -51,7 +51,7 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
                 .replace(/\\/g, '/'),
     },
     externals: [nodeExternals({
-        whitelist: [/^arui-feather/, /^arui-ft-private/, /^arui-private/, /^alfaform-core-ui/, /^newclick-components/, /^#/]
+        whitelist: [/^arui-feather/, /^arui-ft-private/, /^arui-private/, /^alfaform-core-ui/, /^newclick-components/, /^#/, /^@alfalab\/icons/,]
     })],
     resolve: {
         // This allows you to set a fallback for where Webpack should look for modules.
