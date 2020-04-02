@@ -1,4 +1,4 @@
-const path = require('path');
+const { appPackage } = require('../app-configs');
 
 const THEME_KEY = 'сomponentsTheme';
 
@@ -8,8 +8,6 @@ const THEME_KEY = 'сomponentsTheme';
  * @returns {Object}
  */
 function setupPostcssCustomProperties() {
-    const appPackage = require(path.join(process.cwd(), 'package.json'));
-
     const config = {
         preserve: false
     };
