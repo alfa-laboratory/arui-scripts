@@ -1,3 +1,5 @@
+const setupPostcssCustomProperties = require('./util/setup-postcss-custom-properties');
+
 /**
  * Функция для создания конфигурационного файла postcss
  * @param {String[]} plugins список плагинов
@@ -23,7 +25,7 @@ const postcssPlugins = [
     'postcss-for',
     'postcss-each',
     'postcss-custom-media',
-    'postcss-custom-properties',
+    '@alfalab/postcss-custom-properties',
     'postcss-strip-units',
     'postcss-calc',
     'postcss-color-function',
@@ -66,9 +68,7 @@ const postcssPluginsOptions = {
             '--desktop': 'screen and (min-width: 64em)'
         },
     },
-    'postcss-custom-properties': {
-        preserve: false,
-    },
+    '@alfalab/postcss-custom-properties': setupPostcssCustomProperties(),
 };
 
 module.exports = { postcssPlugins, postcssPluginsOptions, createPostcssConfig };
