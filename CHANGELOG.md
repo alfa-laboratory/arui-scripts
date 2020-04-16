@@ -1,3 +1,13 @@
+<a name="8.5.1"></a>
+## [8.5.1](https://github.com/alfa-laboratory/arui-scripts/compare/v8.5.0...v8.5.1) (2020-04-16)
+
+
+### Features
+
+* css vars theming ([1c8029b](https://github.com/alfa-laboratory/arui-scripts/commit/1c8029b))
+
+
+
 <a name="8.5.0"></a>
 # [8.5.0](https://github.com/alfa-laboratory/arui-scripts/compare/v8.4.0...v8.5.0) (2020-04-01)
 
