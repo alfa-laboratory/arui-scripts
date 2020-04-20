@@ -1,3 +1,13 @@
+<a name="9.0.0"></a>
+# [9.0.0](https://github.com/alfa-laboratory/arui-scripts/compare/v8.5.1...v9.0.0) (2020-04-20)
+
+
+### Features
+
+* **config:** use node 12 as default base image ([cc8ef06](https://github.com/alfa-laboratory/arui-scripts/commit/cc8ef06))
+
+
+
 <a name="8.5.1"></a>
 ## [8.5.1](https://github.com/alfa-laboratory/arui-scripts/compare/v8.5.0...v8.5.1) (2020-04-16)
 
