@@ -23,8 +23,16 @@ build(config)
             console.log(chalk.green('Client compiled successfully.\n'));
         }
 
-        const sizes = calculateAssetsSizes(stats, config.output.path);
-        printAssetsSizes(sizes);
+        function printOutputSizes(webpackConfig) {
+            const sizes = calculateAssetsSizes(stats, webpackConfig.output.path);
+            printAssetsSizes(sizes);
+        }
+
+        if (Array.isArray(config)) {
+            config.forEach(printOutputSizes)
+        } else {
+            printOutputSizes(config);
+        }
     })
     .catch((err) => {
         console.log(chalk.red('Failed to compile client.\n'));
