@@ -1,3 +1,13 @@
+<a name="9.0.1"></a>
+## [9.0.1](https://github.com/alfa-laboratory/arui-scripts/compare/v9.0.0...v9.0.1) (2020-04-27)
+
+
+### Bug Fixes
+
+* **webpack-client:** work with array-style webpack configs correctly ([6f8c912](https://github.com/alfa-laboratory/arui-scripts/commit/6f8c912))
+
+
+
 <a name="9.0.0"></a>
 # [9.0.0](https://github.com/alfa-laboratory/arui-scripts/compare/v8.5.1...v9.0.0) (2020-04-20)
 
