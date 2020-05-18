@@ -1,3 +1,88 @@
+<a name="9.0.1"></a>
+## [9.0.1](https://github.com/alfa-laboratory/arui-scripts/compare/v9.0.0...v9.0.1) (2020-04-27)
+
+
+### Bug Fixes
+
+* **webpack-client:** work with array-style webpack configs correctly ([6f8c912](https://github.com/alfa-laboratory/arui-scripts/commit/6f8c912))
+
+
+
+<a name="9.0.0"></a>
+# [9.0.0](https://github.com/alfa-laboratory/arui-scripts/compare/v8.5.1...v9.0.0) (2020-04-20)
+
+
+### Features
+
+* **config:** use node 12 as default base image ([cc8ef06](https://github.com/alfa-laboratory/arui-scripts/commit/cc8ef06))
+
+
+
+<a name="8.5.1"></a>
+## [8.5.1](https://github.com/alfa-laboratory/arui-scripts/compare/v8.5.0...v8.5.1) (2020-04-16)
+
+
+### Features
+
+* css vars theming ([1c8029b](https://github.com/alfa-laboratory/arui-scripts/commit/1c8029b))
+
+
+
+<a name="8.5.0"></a>
+# [8.5.0](https://github.com/alfa-laboratory/arui-scripts/compare/v8.4.0...v8.5.0) (2020-04-01)
+
+
+
+<a name="8.4.0"></a>
+# [8.4.0](https://github.com/alfa-laboratory/arui-scripts/compare/v8.3.4...v8.4.0) (2020-03-23)
+
+
+### Bug Fixes
+
+* update babel version ([5f7d508](https://github.com/alfa-laboratory/arui-scripts/commit/5f7d508))
+
+
+### Features
+
+* **conf:** disable allowJs rule ([49cfc56](https://github.com/alfa-laboratory/arui-scripts/commit/49cfc56))
+
+
+
+<a name="8.3.4"></a>
+## [8.3.4](https://github.com/alfa-laboratory/arui-scripts/compare/v8.3.3...v8.3.4) (2020-03-06)
+
+
+
+<a name="8.3.3"></a>
+## [8.3.3](https://github.com/alfa-laboratory/arui-scripts/compare/v8.3.2...v8.3.3) (2020-03-06)
+
+
+### Bug Fixes
+
+* remove bad tests ([81cb375](https://github.com/alfa-laboratory/arui-scripts/commit/81cb375))
+* restore utils ([0434106](https://github.com/alfa-laboratory/arui-scripts/commit/0434106))
+* **tests:** textRegex path ([9ed4589](https://github.com/alfa-laboratory/arui-scripts/commit/9ed4589))
+
+
+
+<a name="8.3.2"></a>
+## [8.3.2](https://github.com/alfa-laboratory/arui-scripts/compare/v8.3.0...v8.3.2) (2020-03-04)
+
+
+### Bug Fixes
+
+* **nginx.conf.template:** updated rule for request's max body size ([5364789](https://github.com/alfa-laboratory/arui-scripts/commit/5364789))
+
+
+### Features
+
+* add .editorconfig ([c0238d4](https://github.com/alfa-laboratory/arui-scripts/commit/c0238d4))
+* change some rules in .editorconfig ([cae471b](https://github.com/alfa-laboratory/arui-scripts/commit/cae471b))
+* update [@babel](https://github.com/babel)/preset-env, remove usless deps ([10b9993](https://github.com/alfa-laboratory/arui-scripts/commit/10b9993))
+* update yarn.lock ([889fbf0](https://github.com/alfa-laboratory/arui-scripts/commit/889fbf0))
+
+
+
 <a name="8.3.1"></a>
 ## [8.3.1](https://github.com/alfa-laboratory/arui-scripts/compare/v8.3.0...v8.3.1) (2020-03-04)
 
