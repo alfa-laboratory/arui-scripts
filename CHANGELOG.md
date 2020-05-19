@@ -1,3 +1,13 @@
+<a name="9.0.2"></a>
+## [9.0.2](https://github.com/alfa-laboratory/arui-scripts/compare/v9.0.1...v9.0.2) (2020-05-19)
+
+
+### Features
+
+* add newclick-composite-components to whitelist ([ff6c1f8](https://github.com/alfa-laboratory/arui-scripts/commit/ff6c1f8))
+
+
+
 <a name="9.0.1"></a>
 ## [9.0.1](https://github.com/alfa-laboratory/arui-scripts/compare/v9.0.0...v9.0.1) (2020-04-27)
 
