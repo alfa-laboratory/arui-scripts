@@ -57,6 +57,7 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
             /^arui-private/,
             /^alfaform-core-ui/,
             /^newclick-components/,
+            /^newclick-composite-components/,
             /^#/,
             /^@alfalab\/icons/,
             /^@alfalab\/core-components/
