@@ -26,6 +26,7 @@ const buildPath = packageSettings.buildPath || '.build';
 const assetsPath = packageSettings.assetsPath || 'assets';
 const additionalBuildPath = packageSettings.additionalBuildPath || ['config'];
 const nginxRootPath = packageSettings.nginxRootPath || '/src';
+const runFromNonRootUser = packageSettings.runFromNonRootUser || false;
 
 const absoluteSrcPath = path.resolve(CWD, 'src');
 const absoluteNodeModulesPath = path.resolve(CWD, 'node_modules');
@@ -58,6 +59,7 @@ module.exports = {
     buildPath,
     additionalBuildPath,
     nginxRootPath,
+    runFromNonRootUser,
     archiveName: 'build.tar',
 
     // server compilation configs
@@ -73,8 +75,8 @@ module.exports = {
 
     // compilation configs locations
     tsconfig: fs.existsSync(projectTsConfigPath) ? projectTsConfigPath : null,
-	localNginxConf: fs.existsSync(nginxConfFilePath) ? nginxConfFilePath : null,
-	localDockerfile: fs.existsSync(dockerfileFilePath) ? dockerfileFilePath : null,
+  	localNginxConf: fs.existsSync(nginxConfFilePath) ? nginxConfFilePath : null,
+  	localDockerfile: fs.existsSync(dockerfileFilePath) ? dockerfileFilePath : null,
 
     useTscLoader: packageSettings.useTscLoader || false,
     useServerHMR: typeof packageSettings.useServerHMR !== 'undefined' ? !!packageSettings.useServerHMR : false,
