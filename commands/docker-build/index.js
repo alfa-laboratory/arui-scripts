@@ -23,6 +23,9 @@ commandLineArguments.forEach(arg => {
         case 'name':
             imageName = argValue;
             break;
+        case 'registry':
+            dockerRegistry = argValue;
+            break;
         default:
             console.warn(`Unknown argument ${argName}`);
     }
