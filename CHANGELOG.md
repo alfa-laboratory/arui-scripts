@@ -1,3 +1,18 @@
+<a name="9.0.4"></a>
+## [9.0.4](https://github.com/alfa-laboratory/arui-scripts/compare/v9.0.3...v9.0.4) (2020-06-02)
+
+
+### Bug Fixes
+
+* **tsconfig:** allow import json modules ([45e5c07](https://github.com/alfa-laboratory/arui-scripts/commit/45e5c07))
+
+
+### Features
+
+* **docker-build:** fetch registry from args ([79bac18](https://github.com/alfa-laboratory/arui-scripts/commit/79bac18))
+
+
+
 <a name="9.0.3"></a>
 ## [9.0.3](https://github.com/alfa-laboratory/arui-scripts/compare/v9.0.2...v9.0.3) (2020-05-25)
 
