@@ -86,5 +86,7 @@ module.exports = {
 
     debug: !!packageSettings.debug,
     hasOverrides: fs.existsSync(overridesPath),
-    overridesPath: overridesPath
+    overridesPath: overridesPath,
+
+    сomponentsTheme: packageSettings.сomponentsTheme
 };

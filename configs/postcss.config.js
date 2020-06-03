@@ -1,4 +1,4 @@
-const setupPostcssCustomProperties = require('./util/setup-postcss-custom-properties');
+const { сomponentsTheme } = require('./app-configs');
 
 /**
  * Функция для создания конфигурационного файла postcss
@@ -68,7 +68,10 @@ const postcssPluginsOptions = {
             '--desktop': 'screen and (min-width: 64em)'
         },
     },
-    '@alfalab/postcss-custom-properties': setupPostcssCustomProperties(),
+    '@alfalab/postcss-custom-properties': {
+        preserve: false,
+        importFrom: сomponentsTheme
+    },
 };
 
 module.exports = { postcssPlugins, postcssPluginsOptions, createPostcssConfig };
