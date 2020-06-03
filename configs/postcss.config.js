@@ -1,4 +1,4 @@
-const { appPackage } = require('./app-configs');
+const { сomponentsTheme } = require('./app-configs');
 
 /**
  * Функция для создания конфигурационного файла postcss
@@ -70,8 +70,7 @@ const postcssPluginsOptions = {
     },
     '@alfalab/postcss-custom-properties': {
         preserve: false,
-        // Если указана тема для core-components - импортирует ее.
-        importFrom: (appPackage['aruiScripts'] || {})['сomponentsTheme']
+        importFrom: сomponentsTheme
     },
 };
 
