@@ -49,7 +49,7 @@ npm install arui-scripts --save-dev
 Доступные настройки:
 
 - `dockerRegistry` - адрес используемого docker registry, по умолчанию `''`, то есть используется публичный registry
-- `baseDockerImage` - имя базового образа, используемого для построения docker образа. По умолчанию `heymdall/alpine-node-nginx:8.9.1`.
+- `baseDockerImage` - имя базового образа, используемого для построения docker образа. По умолчанию `heymdall/alpine-node-nginx:12.16.1`.
 - `serverEntry` - точка входа для исходников сервера, по умолчанию `src/server/index`.
 - `serverOutput` - имя файла для компиляции сервера, по умолчанию `server.js`.
 - `clientPolyfillsEntry` - точка входа для полифилов. Будет подключаться до основной точки входа. По умолчанию подтягивает полифилы из `arui-feather`, если он установлен.
