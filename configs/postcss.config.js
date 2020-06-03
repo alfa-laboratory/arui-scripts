@@ -1,4 +1,4 @@
-const setupPostcssCustomProperties = require('./util/setup-postcss-custom-properties');
+const { appPackage } = require('./app-configs');
 
 /**
  * Функция для создания конфигурационного файла postcss
@@ -68,7 +68,11 @@ const postcssPluginsOptions = {
             '--desktop': 'screen and (min-width: 64em)'
         },
     },
-    '@alfalab/postcss-custom-properties': setupPostcssCustomProperties(),
+    '@alfalab/postcss-custom-properties': {
+        preserve: false,
+        // Если указана тема для core-components - импортирует ее.
+        importFrom: (appPackage['aruiScripts'] || {})['сomponentsTheme']
+    },
 };
 
 module.exports = { postcssPlugins, postcssPluginsOptions, createPostcssConfig };
