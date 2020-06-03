@@ -1,3 +1,14 @@
+<a name="9.1.0"></a>
+# [9.1.0](https://github.com/alfa-laboratory/arui-scripts/compare/v9.0.4...v9.1.0) (2020-06-03)
+
+
+### Bug Fixes
+
+* **postcss.config.js:** add docs, export theme setting from app-configs ([7a367c4](https://github.com/alfa-laboratory/arui-scripts/commit/7a367c4))
+* **postcss.config.js:** fix and simplify theme setting ([bed0cab](https://github.com/alfa-laboratory/arui-scripts/commit/bed0cab))
+
+
+
 <a name="9.0.4"></a>
 ## [9.0.4](https://github.com/alfa-laboratory/arui-scripts/compare/v9.0.3...v9.0.4) (2020-06-02)
 
