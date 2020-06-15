@@ -37,6 +37,7 @@ const availablePackageSettings = [
   'keepPropTypes',
   'debug',
   'useTscLoader',
+  'componentsTheme',
 ];
 
 // check passed settings
@@ -115,5 +116,5 @@ module.exports = {
     hasOverrides: fs.existsSync(overridesPath),
     overridesPath: overridesPath,
 
-    сomponentsTheme: packageSettings.сomponentsTheme
+  componentsTheme: packageSettings.componentsTheme
 };
