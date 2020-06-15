@@ -14,6 +14,7 @@ const configs = require('./app-configs');
 const babelConf = require('./babel-client');
 const postcssConf = require('./postcss');
 const applyOverrides = require('./util/apply-overrides');
+const checkNodeVersion = require('./util/check-node-version');
 
 const noopPath = require.resolve('./util/noop');
 
@@ -290,6 +291,16 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
             test: /\.js$|\.css$|\.png$|\.svg$/,
             threshold: 10240,
             minRatio: 0.8
+        }),
+        checkNodeVersion(10) && new CompressionPlugin({
+            filename: '[file].br',
+            algorithm: 'brotliCompress',
+            test: /\.(js|css|html|svg)$/,
+            compressionOptions: {
+                level: 11,
+            },
+            threshold: 10240,
+            minRatio: 0.8,
         }),
         configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
     ].filter(Boolean).concat(
