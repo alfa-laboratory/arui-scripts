@@ -291,6 +291,16 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
             threshold: 10240,
             minRatio: 0.8
         }),
+        new CompressionPlugin({
+            filename: '[file].br',
+            algorithm: 'brotliCompress',
+            test: /\.(js|css|html|svg)$/,
+            compressionOptions: {
+                level: 11,
+            },
+            threshold: 10240,
+            minRatio: 0.8,
+        }),
         configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
     ].filter(Boolean).concat(
         // Ignore prop-types packages in production mode
