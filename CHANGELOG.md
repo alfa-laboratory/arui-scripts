@@ -1,3 +1,18 @@
+<a name="9.2.0"></a>
+# [9.2.0](https://github.com/alfa-laboratory/arui-scripts/compare/v9.1.0...v9.2.0) (2020-06-15)
+
+
+### Bug Fixes
+
+* **client:** disable brotli on node < 10 ([fc274f9](https://github.com/alfa-laboratory/arui-scripts/commit/fc274f9))
+
+
+### Features
+
+* **client:** add brotli support ([062e42c](https://github.com/alfa-laboratory/arui-scripts/commit/062e42c))
+
+
+
 <a name="9.1.0"></a>
 # [9.1.0](https://github.com/alfa-laboratory/arui-scripts/compare/v9.0.4...v9.1.0) (2020-06-03)
 
