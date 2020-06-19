@@ -11,7 +11,7 @@
     "arui-scripts": "./bin/index.js"
   },
   "dependencies": {
-    "@alfalab/postcss-custom-properties": "^9.1.1",
+    "@alfalab/postcss-custom-properties": "^9.1.2",
     "@babel/core": "7.9.0",
     "@babel/plugin-proposal-class-properties": "7.8.3",
     "@babel/plugin-proposal-decorators": "7.8.3",
