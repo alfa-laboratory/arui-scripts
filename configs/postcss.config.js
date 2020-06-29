@@ -1,4 +1,4 @@
-const { сomponentsTheme } = require('./app-configs');
+const { componentsTheme } = require('./app-configs');
 
 /**
  * Функция для создания конфигурационного файла postcss
@@ -70,7 +70,7 @@ const postcssPluginsOptions = {
     },
     '@alfalab/postcss-custom-properties': {
         preserve: false,
-        importFrom: сomponentsTheme
+        importFrom: componentsTheme
     },
 };
 
