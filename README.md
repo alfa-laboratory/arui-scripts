@@ -38,6 +38,7 @@ npm install arui-scripts --save-dev
 - `arui-scripts docker-build` - собирает docker контейнер c production билдом и загружает его в артифактори
 - `arui-scripts test` - запускает jest тесты.
 - `arui-scripts archive-build` - собирает архив с production билдом
+- `arui-scripts bundle-analyze` - запускает [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer) для prod версии клиентского кода
 
 
 Настройки

@@ -5,12 +5,14 @@
         "clientPolyfillsEntry": "./src/polyfills.js",
         "serverEntry": "./src/server.ts",
         "clientEntry": "./src/client.jsx",
+        "useBundleAnalyzer": true,
         "debug": true
     },
     "scripts": {
         "build": "node ../bin/index.js build",
         "start": "node ../bin/index.js start",
-        "test": "node ../bin/index.js test"
+        "test": "node ../bin/index.js test",
+        "bundle-analyze": "node ../bin/index.js bundle-analyze"
     },
     "dependencies": {
         "express": "^4.16.4",
