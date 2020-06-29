@@ -1,11 +1,16 @@
 const fs = require('fs');
 const path = require('path');
 const gzipSize = require('gzip-size').sync;
-const brotliSize = require('brotli-size').sync;
 const filesize = require('filesize');
 const stripAnsi = require('strip-ansi');
 const chalk = require('chalk');
-const checkNodeVersion = require('../../configs/util/check-node-version');
+
+let brotliSize = () => NaN;
+try {
+    brotliSize = require('brotli-size').sync;
+} catch (error) {
+}
+
 
 function canReadAsset(asset) {
     return (
@@ -33,7 +38,7 @@ function calculateAssetsSizes(webpackStats, rootDir) {
                 .map(asset => {
                     const fileContents = fs.readFileSync(path.join(rootDir, asset.name));
                     const size = gzipSize(fileContents);
-                    const brSize = checkNodeVersion(10) ? brotliSize(fileContents) : NaN;
+                    const brSize = brotliSize(fileContents);
                     const filename = path.basename(asset.name);
 
                     return {
