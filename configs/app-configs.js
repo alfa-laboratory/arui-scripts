@@ -22,6 +22,34 @@ if (process.env.ARUI_SCRIPTS_CONFIG) {
     }
 }
 
+const availablePackageSettings = [
+  'dockerRegistry',
+  'baseDockerImage',
+  'serverEntry',
+  'serverOutput',
+  'clientPolyfillsEntry',
+  'clientEntry',
+  'useServerHMR',
+  'clientServerPort',
+  'serverPort',
+  'additionalBuildPath',
+  'archiveName',
+  'keepPropTypes',
+  'debug',
+  'useTscLoader',
+  'componentsTheme',
+];
+
+// check passed settings
+Object.keys(packageSettings).forEach(setting => {
+  if (!availablePackageSettings.includes(setting))
+    console.warn(
+      '\x1b[33m', `Setting`,
+      '\x1b[31m', setting,
+      '\x1b[33m', 'is not supported!'
+    );
+});
+
 const buildPath = packageSettings.buildPath || '.build';
 const assetsPath = packageSettings.assetsPath || 'assets';
 const additionalBuildPath = packageSettings.additionalBuildPath || ['config'];
@@ -88,5 +116,5 @@ module.exports = {
     hasOverrides: fs.existsSync(overridesPath),
     overridesPath: overridesPath,
 
-    сomponentsTheme: packageSettings.сomponentsTheme
+  componentsTheme: packageSettings.componentsTheme
 };
