@@ -5,6 +5,13 @@ const filesize = require('filesize');
 const stripAnsi = require('strip-ansi');
 const chalk = require('chalk');
 
+let brotliSize = () => NaN;
+try {
+    brotliSize = require('brotli-size').sync;
+} catch (error) {
+}
+
+
 function canReadAsset(asset) {
     return (
         /\.(js|css)$/.test(asset) &&
@@ -31,15 +38,18 @@ function calculateAssetsSizes(webpackStats, rootDir) {
                 .map(asset => {
                     const fileContents = fs.readFileSync(path.join(rootDir, asset.name));
                     const size = gzipSize(fileContents);
+                    const brSize = brotliSize(fileContents);
                     const filename = path.basename(asset.name);
 
                     return {
                         name: removeFileNameHash(filename),
                         fullName: filename,
                         gzipSize: size,
+                        brotliSize: brSize,
                         size: asset.size,
                         sizeLabel: filesize(asset.size),
-                        gzipLabel: filesize(size)
+                        gzipLabel: filesize(size),
+                        brotliLabel: brSize ? filesize(brSize) : '-'
                     };
                 })
         )
@@ -49,11 +59,13 @@ function calculateAssetsSizes(webpackStats, rootDir) {
         return {
             size: total.size + file.size,
             gzipSize: total.gzipSize + file.gzipSize,
+            brotliSize: total.brotliSize + file.brotliSize
         };
-    }, { size: 0, gzipSize: 0 });
+    }, { size: 0, gzipSize: 0, brotliSize: 0 });
 
     totalSizes.sizeLabel = filesize(totalSizes.size);
     totalSizes.gzipLabel = filesize(totalSizes.gzipSize);
+    totalSizes.brotliLabel = totalSizes.brotliSize ? filesize(totalSizes.brotliSize) : '-';
 
     return {
         totalSizes,
@@ -70,7 +82,7 @@ function printAssetsSizes(sizes) {
     console.log(chalk.blueBright('Assets sizes:'));
 
     sizes.assets.forEach(asset => {
-        let sizeLabel = `${asset.sizeLabel} (${asset.gzipLabel} gzip)`;
+        let sizeLabel = `${asset.sizeLabel} (${asset.gzipLabel} gzip, ${asset.brotliLabel} br)`;
         const sizeLength = stripAnsi(sizeLabel).length;
 
         if (sizeLength < longestSizeLabelLength) {
@@ -88,7 +100,7 @@ function printAssetsSizes(sizes) {
 
     console.log(
         chalk.blueBright('\nTotal size:\n') +
-        `  ${sizes.totalSizes.sizeLabel} (${sizes.totalSizes.gzipLabel} gzip)\n`
+        `  ${sizes.totalSizes.sizeLabel} (${sizes.totalSizes.gzipLabel} gzip, ${sizes.totalSizes.brotliLabel} br)\n`
     );
 }
 
