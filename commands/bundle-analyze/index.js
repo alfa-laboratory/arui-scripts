@@ -3,12 +3,9 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const makeTmpDir = require('../util/make-tmp-dir');
 const clientConfig = require('../../configs/webpack.client.prod');
 
-
-
 (async () => {
     const tmpDir = await makeTmpDir();
     clientConfig.plugins.push(new BundleAnalyzerPlugin());
-    console.log(tmpDir);
     clientConfig.output.path = tmpDir;
     webpack(clientConfig).run();
 })();

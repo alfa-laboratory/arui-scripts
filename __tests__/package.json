@@ -5,7 +5,6 @@
         "clientPolyfillsEntry": "./src/polyfills.js",
         "serverEntry": "./src/server.ts",
         "clientEntry": "./src/client.jsx",
-        "useBundleAnalyzer": true,
         "debug": true
     },
     "scripts": {
