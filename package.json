@@ -84,6 +84,9 @@
     "webpack-manifest-plugin": "2.2.0",
     "webpack-node-externals": "^1.6.0"
   },
+  "optionalDependencies": {
+    "brotli-size": "^4.0.0"
+  },
   "engines": {
     "node": ">=8.9.1"
   },
