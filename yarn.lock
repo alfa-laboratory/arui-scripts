@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@alfalab/postcss-custom-properties@^9.1.1":
-  version "9.1.1"
-  resolved "https://registry.yarnpkg.com/@alfalab/postcss-custom-properties/-/postcss-custom-properties-9.1.1.tgz#87bf16543d63d9f15c3a0bdf843bac71dfab3971"
-  integrity sha512-B4dL0AfRB2Syyf/1T0hKZPglObRo+sK3bltwaL08+NreXZm2E03MFpiNYG/3cEtnds3DScfDqBkG0VA5b2I9RQ==
+"@alfalab/postcss-custom-properties@^9.1.2":
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/@alfalab/postcss-custom-properties/-/postcss-custom-properties-9.1.2.tgz#1eeb1c2f3820ef4ff84fec13deb08baf71161210"
+  integrity sha512-eKx+09pGoZZJ1lnRwIepvFcWj4i2uFNIdv72OJ0VaLn1GDgKfe7vKYNHD4Cd5LLr6LN6eaygTJ2vDlMxtxKSPA==
   dependencies:
     postcss "^7.0.17"
     postcss-values-parser "^3.0.5"
