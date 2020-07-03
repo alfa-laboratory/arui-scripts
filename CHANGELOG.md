@@ -1,3 +1,25 @@
+<a name="9.3.0"></a>
+# [9.3.0](https://github.com/alfa-laboratory/arui-scripts/compare/v9.2.0...v9.3.0) (2020-07-03)
+
+
+### Bug Fixes
+
+* **assets-size:** use brotli-size as optional dependency ([144980b](https://github.com/alfa-laboratory/arui-scripts/commit/144980b))
+* **config:** add theme setting and change to eng ([1befdf6](https://github.com/alfa-laboratory/arui-scripts/commit/1befdf6))
+* **deps:** update [@alfalab](https://github.com/alfalab)/postcss-custom-properties ([24078ba](https://github.com/alfa-laboratory/arui-scripts/commit/24078ba))
+* **tests:** remove unused flag ([328bab6](https://github.com/alfa-laboratory/arui-scripts/commit/328bab6))
+* **tsconfig:** disable removeComments flag ([30cc24e](https://github.com/alfa-laboratory/arui-scripts/commit/30cc24e)), closes [#117](https://github.com/alfa-laboratory/arui-scripts/issues/117)
+* **webpack-server:** source-map-support is now optional ([7996d82](https://github.com/alfa-laboratory/arui-scripts/commit/7996d82)), closes [#43](https://github.com/alfa-laboratory/arui-scripts/issues/43)
+
+
+### Features
+
+* **assets-size:** print brotli size when possible ([d744fa4](https://github.com/alfa-laboratory/arui-scripts/commit/d744fa4)), closes [#114](https://github.com/alfa-laboratory/arui-scripts/issues/114)
+* **config:** check passed settings ([7653a90](https://github.com/alfa-laboratory/arui-scripts/commit/7653a90))
+* **webpack:** add bundle-analyze command ([705d87e](https://github.com/alfa-laboratory/arui-scripts/commit/705d87e)), closes [#115](https://github.com/alfa-laboratory/arui-scripts/issues/115)
+
+
+
 <a name="9.2.0"></a>
 # [9.2.0](https://github.com/alfa-laboratory/arui-scripts/compare/v9.1.0...v9.2.0) (2020-06-15)
 
