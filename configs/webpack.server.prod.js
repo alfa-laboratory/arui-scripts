@@ -11,6 +11,7 @@ const babelConf = require('./babel-server');
 const postcssConf = require('./postcss');
 const applyOverrides = require('./util/apply-overrides');
 const assetsIgnoreBanner = fs.readFileSync(require.resolve('./util/node-assets-ignore'), 'utf8');
+const sourceMapSupportBanner = fs.readFileSync(require.resolve('./util/install-sourcemap-support'), 'utf8');
 
 // style files regexes
 const cssRegex = /\.css$/;
@@ -180,7 +181,7 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
             entryOnly: false
         }),
         new webpack.BannerPlugin({
-            banner: 'require("source-map-support").install();',
+            banner: sourceMapSupportBanner,
             raw: true,
             entryOnly: false
         }),
