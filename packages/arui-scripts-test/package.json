@@ -1,6 +1,7 @@
 {
     "name": "arui-scripts-test",
     "version": "1.0.0",
+    "private": true,
     "aruiScripts": {
         "clientPolyfillsEntry": "./src/polyfills.js",
         "serverEntry": "./src/server.ts",
@@ -8,18 +9,21 @@
         "debug": true
     },
     "scripts": {
-        "build": "node ../bin/index.js build",
-        "start": "node ../bin/index.js start",
-        "test": "node ../bin/index.js test",
-        "bundle-analyze": "node ../bin/index.js bundle-analyze"
+        "build": "arui-scripts build",
+        "start": "arui-scripts start",
+        "test": "arui-scripts test",
+        "bundle-analyze": "arui-scripts bundle-analyze",
+        "ci": "yarn run test && yarn run build"
     },
     "dependencies": {
+        "arui-scripts": "*",
         "express": "^4.16.4",
         "react": "^16.6.3",
         "react-dom": "^16.6.3"
     },
     "devDependencies": {
         "@hot-loader/react-dom": "16.11.0",
-        "@types/jest": "^23.3.9"
+        "@types/jest": "^23.3.9",
+        "typescript": "3.7.5"
     }
 }

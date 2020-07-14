@@ -440,3 +440,9 @@ module.exports = {
 - `webpack.server.prod` - конфигурация для серверного webpack в prod режиме. Ключи: `webpack`, `webpackServer`, `webpackProd`, `webpackServerProd`.
 
 Для некоторых конфигураций определены несколько ключей, они будут применяться в том порядке, в котором они приведены в этом файле.
+
+---
+## Разработка
+Проект разбит на два пакета: `arui-scripts`, собственно содержащий все конфигурации и `arui-scripts-test`, используемый
+для тестирования. Для работы с пакетами используется [yarn workspaces](https://classic.yarnpkg.com/en/docs/workspaces/).
+Для
