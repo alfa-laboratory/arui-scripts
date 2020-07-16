@@ -6,15 +6,15 @@
     ],
     "testURL": "http://localhost",
     "transform": {
-        "^.+\\.jsx?$": "<rootDir>/node_modules/arui-scripts/configs/jest/babel-transform",
+        "^.+\\.jsx?$": "arui-scripts/configs/jest/babel-transform",
         "^.+\\.tsx?$": "ts-jest",
-        "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/node_modules/arui-scripts/configs/jest/file-transform.js"
+        "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "arui-scripts/configs/jest/file-transform.js"
     },
     "moduleNameMapper": {
-        "\\.css$": "<rootDir>/node_modules/arui-scripts/configs/jest/css-mock.js"
+        "\\.css$": "arui-scripts/configs/jest/css-mock.js"
     },
     "setupFiles": [
-        "<rootDir>/node_modules/arui-scripts/configs/jest/setup"
+        "arui-scripts/configs/jest/setup"
     ],
     "snapshotSerializers": [
         "jest-snapshot-serializer-class-name-to-string"

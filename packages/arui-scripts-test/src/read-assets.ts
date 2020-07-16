@@ -4,8 +4,8 @@ import fs from "fs";
 export function readAssetsManifest() {
     const manifestPath = path.join(process.cwd(), '.build/webpack-assets.json');
     const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-    const js = [];
-    const css = [];
+    const js: string[] = [];
+    const css: string[] = [];
     ['vendor', 'main'].forEach((key) => {
         if (!manifest[key]) {
             return;
