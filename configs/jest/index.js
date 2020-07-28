@@ -34,7 +34,8 @@ const defaultJestConfig = {
     ],
     globals: {
         'ts-jest': {
-            tsConfig: configs.tsconfig
+            tsConfig: configs.tsconfig,
+            babelConfig: require('../babel-client')
         }
     }
 };
