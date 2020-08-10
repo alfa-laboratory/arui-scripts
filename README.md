@@ -74,6 +74,22 @@ ARUI_SCRIPTS_CONFIG="{\"serverPort\":3333}" yarn start
 Так же, читаются настройки jest (см. [документацию](https://facebook.github.io/jest/docs/en/configuration.html))
 и `proxy` (см. [документацию](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#proxying-api-requests-in-development)).
 
+Несколько entry point
+---
+Ключи `serverEntry` и `clientEntry` принимают не только строки, но и любые возможные в [webpack варианты](https://webpack.js.org/concepts/entry-points/).
+Например, package.json:
+```json
+{
+    "aruiScripts": {
+        "clientEntry": { "mobile": "src/mobile/", "desktop": "src/desktop/" },
+        "serverEntry": ["src/server-prepare", "src/server"]
+    }
+}
+```
+
+Ко всем клиентским entryPoint так же будут добавлены `clientPolyfillsEntry` (если задан)
+и, в dev режиме, необходимые для hot-module-reload файлы.
+
 Переопределение настроек компиляторов
 ---
 

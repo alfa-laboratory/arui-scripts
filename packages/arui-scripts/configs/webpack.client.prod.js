@@ -15,6 +15,7 @@ const babelConf = require('./babel-client');
 const postcssConf = require('./postcss');
 const applyOverrides = require('./util/apply-overrides');
 const checkNodeVersion = require('./util/check-node-version');
+const getEntry = require('./util/get-entry');
 
 const noopPath = require.resolve('./util/noop');
 
@@ -22,13 +23,17 @@ const noopPath = require.resolve('./util/noop');
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 
+function getSingleEntry(entryPoint) {
+    return [configs.clientPolyfillsEntry, ...entryPoint].filter(Boolean);
+}
+
 // This is the production configuration.
 module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'webpackClientProd'], {
     mode: 'production',
     // You may want 'eval' instead if you prefer to see the compiled output in DevTools.
     devtool: 'cheap-module-source-map',
     // In production, we only want to load the polyfills and the app code.
-    entry: [configs.clientPolyfillsEntry, configs.clientEntry].filter(Boolean),
+    entry: getEntry(configs.clientEntry, getSingleEntry),
     bail: true,
     context: configs.cwd,
     output: {
