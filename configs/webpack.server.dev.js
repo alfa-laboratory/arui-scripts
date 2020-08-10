@@ -15,7 +15,7 @@ const configs = require('./app-configs');
 const babelConf = require('./babel-server');
 const postcssConf = require('./postcss');
 const applyOverrides = require('./util/apply-overrides');
-const getEntryPoint = require('./util/get-entry-point');
+const getEntry = require('./util/get-entry');
 
 const assetsIgnoreBanner = fs.readFileSync(require.resolve('./util/node-assets-ignore'), 'utf8');
 
@@ -23,7 +23,7 @@ const assetsIgnoreBanner = fs.readFileSync(require.resolve('./util/node-assets-i
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 
-function getSingleEntryPoint(entryPoint) {
+function getSingleEntry(entryPoint) {
     return [...entryPoint];
 }
 
@@ -39,7 +39,7 @@ const config = {
         __filename: true,
         __dirname: true
     },
-    entry: getEntryPoint(configs.serverEntry, getSingleEntryPoint),
+    entry: getEntry(configs.serverEntry, getSingleEntry),
     context: configs.cwd,
     output: {
         // Add /* filename */ comments to generated require()s in the output.

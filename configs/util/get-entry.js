@@ -1,18 +1,18 @@
 /**
  * @param {string|string[]|object} entryPoint Строка, массив строк или объект с энтрипоинтами
- * @param {Function} getSingleEntryPoint Функция, возвращающая конфигурацию для одного entryPoint
+ * @param {Function} getSingleEntry Функция, возвращающая конфигурацию для одного entryPoint
  * @returns {*}
  */
-function getEntryPoint(entryPoint, getSingleEntryPoint) {
+function getEntry(entryPoint, getSingleEntry) {
     if (typeof entryPoint === 'string') {
-        return getSingleEntryPoint([entryPoint]);
+        return getSingleEntry([entryPoint]);
     }
     if (Array.isArray(entryPoint)) {
-        return getSingleEntryPoint(entryPoint);
+        return getSingleEntry(entryPoint);
     }
     // client entry also can be an object, so we must add hot loader to each entry point
     return Object.keys(entryPoint).reduce((result, entryPointName) => {
-        const entry = getEntryPoint(entryPoint[entryPointName], getSingleEntryPoint);
+        const entry = getEntry(entryPoint[entryPointName], getSingleEntry);
 
         return {
             ...result,
@@ -21,4 +21,4 @@ function getEntryPoint(entryPoint, getSingleEntryPoint) {
     }, {});
 }
 
-module.exports = getEntryPoint;
+module.exports = getEntry;

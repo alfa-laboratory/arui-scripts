@@ -12,12 +12,12 @@ const configs = require('./app-configs');
 const babelConf = require('./babel-client');
 const postcssConf = require('./postcss');
 const applyOverrides = require('./util/apply-overrides');
-const getEntryPoint = require('./util/get-entry-point');
+const getEntry = require('./util/get-entry');
 // style files regexes
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 
-function getSingleEntryPoint(clientEntry) {
+function getSingleEntry(clientEntry) {
     return [
         configs.clientPolyfillsEntry,
         require.resolve('react-hot-loader/patch'),
@@ -40,7 +40,7 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
     devtool: 'cheap-module-source-map',
     // These are the "entry points" to our application.
     // This means they will be the "root" imports that are included in JS bundle.
-    entry: getEntryPoint(configs.clientEntry, getSingleEntryPoint),
+    entry: getEntry(configs.clientEntry, getSingleEntry),
     context: configs.cwd,
     output: {
         // Add /* filename */ comments to generated require()s in the output.
