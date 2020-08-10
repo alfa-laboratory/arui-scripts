@@ -9,6 +9,7 @@ const nodeExternals = require('webpack-node-externals');
 
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const configs = require('./app-configs');
@@ -214,6 +215,17 @@ const config = {
         // See https://github.com/facebookincubator/create-react-app/issues/186
         new WatchMissingNodeModulesPlugin(configs.appNodeModules),
         configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
+        new CircularDependencyPlugin({
+            // exclude detection of files based on a RegExp
+            exclude: /a\.js|node_modules/,
+            // add errors to webpack instead of warnings
+            // failOnError: true,
+            // allow import cycles that include an asyncronous import,
+            // e.g. via import(/* webpackMode: "weak" */ './file.js')
+            allowAsyncCycles: false,
+            // set the current working directory for displaying module paths
+            cwd: process.cwd(),
+        })
     ].filter(Boolean),
     // Turn off performance hints during development because we don't do any
     // splitting or minification in interest of speed. These warnings become
