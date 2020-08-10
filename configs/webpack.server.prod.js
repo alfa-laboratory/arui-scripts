@@ -10,12 +10,17 @@ const configs = require('./app-configs');
 const babelConf = require('./babel-server');
 const postcssConf = require('./postcss');
 const applyOverrides = require('./util/apply-overrides');
+const getEntryPoint = require('./util/get-entry-point');
 const assetsIgnoreBanner = fs.readFileSync(require.resolve('./util/node-assets-ignore'), 'utf8');
 const sourceMapSupportBanner = fs.readFileSync(require.resolve('./util/install-sourcemap-support'), 'utf8');
 
 // style files regexes
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
+
+function getSingleEntryPoint(entryPoint) {
+    return [...entryPoint];
+}
 
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
@@ -31,12 +36,7 @@ module.exports = applyOverrides(['webpack', 'webpackServer', 'webpackProd', 'web
         __filename: true,
         __dirname: true
     },
-    // These are the "entry points" to our application.
-    // This means they will be the "root" imports that are included in JS bundle.
-    entry: [
-        // Finally, this is your app's code:
-        configs.serverEntry,
-    ],
+    entry: getEntryPoint(configs.serverEntry, getSingleEntryPoint),
     context: configs.cwd,
     output: {
         // Add /* filename */ comments to generated require()s in the output.
