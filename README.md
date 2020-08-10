@@ -438,6 +438,7 @@ module.exports = {
 - `webpack.client.prod` - конфигурация для клиентского webpack в prod режиме. Ключи: `webpack`, `webpackClient`, `webpackProd`, `webpackClientProd`.
 - `webpack.server.dev` - конфигурация для серверного webpack в dev режиме. Ключи: `webpack`, `webpackServer`, `webpackDev`, `webpackServerDev`.
 - `webpack.server.prod` - конфигурация для серверного webpack в prod режиме. Ключи: `webpack`, `webpackServer`, `webpackProd`, `webpackServerProd`.
+- `supporting-browsers` - список поддерживаемых браузеров в формате [browserslist](https://github.com/browserslist/browserslist). Ключи: `browsers`, `supportingBrowsers`
 
 Для некоторых конфигураций определены несколько ключей, они будут применяться в том порядке, в котором они приведены в этом файле.
 
