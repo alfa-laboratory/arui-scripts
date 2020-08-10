@@ -1,5 +1,12 @@
 #! /usr/bin/env node
 /* eslint import/no-dynamic-require: 0 */
+require('ts-node').register({
+    compilerOptions: {
+        "module": "CommonJS",
+        "target": "ES2016"
+    },
+    transpileOnly: true
+});
 
 const commands = [
     'start',

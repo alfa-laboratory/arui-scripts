@@ -18,5 +18,8 @@
         "extends": [
             "./node_modules/arui-presets-lint/commitlint"
         ]
+    },
+    "scripts": {
+        "test": "yarn workspace arui-scripts run test && yarn workspace arui-scripts-test run ci"
     }
 }

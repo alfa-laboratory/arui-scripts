@@ -2,7 +2,7 @@ const fs = require('fs');
 const { pathsToModuleNameMapper } = require('ts-jest/utils');
 const { parseConfigFileTextToJson } = require('typescript');
 const merge = require('lodash.merge');
-const configs = require('../app-configs');
+const configs = require('../app-configs').default;
 const tsConfigPath = configs.tsconfig;
 const tsConfigText = fs.readFileSync(configs.tsconfig, 'utf8');
 const tsConfig = parseConfigFileTextToJson(tsConfigPath, tsConfigText);
@@ -35,7 +35,7 @@ const defaultJestConfig = {
     globals: {
         'ts-jest': {
             tsConfig: configs.tsconfig,
-            babelConfig: require('../babel-client')
+            babelConfig: require('../babel-client').default
         }
     }
 };
