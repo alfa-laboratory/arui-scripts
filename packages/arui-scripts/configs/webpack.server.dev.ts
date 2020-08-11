@@ -67,7 +67,8 @@ const config: webpack.Configuration = {
             /^#/,
             /^@alfalab\/icons/,
             /^@alfalab\/core-components/
-        ]
+        ],
+        modulesFromFile: true,
     })],
     resolve: {
         // This allows you to set a fallback for where Webpack should look for modules.

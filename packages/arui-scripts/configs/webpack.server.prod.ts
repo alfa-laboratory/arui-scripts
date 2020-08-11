@@ -64,7 +64,10 @@ const config = applyOverrides<webpack.Configuration>(['webpack', 'webpackServer'
             /^#/,
             /^@alfalab\/icons/,
             /^@alfalab\/core-components/
-        ]
+        ],
+        // we cannot determine node_modules location before arui-scripts installation, so just load
+        // dependencies list from package.json
+        modulesFromFile: true,
     })],
     resolve: {
         // This allows you to set a fallback for where Webpack should look for modules.
