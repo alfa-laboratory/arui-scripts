@@ -1,9 +1,5 @@
-require('ts-node').register({
-    compilerOptions: {
-        "module": "CommonJS",
-        "target": "ES2016"
-    }
-});
+require('../../commands/util/register-ts-node');
+
 const babelJest = require('babel-jest');
 const babelPresets = require('../babel-server');
 

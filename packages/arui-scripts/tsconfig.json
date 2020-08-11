@@ -2,7 +2,8 @@
     "extends": "./configs/tsconfig.json",
     "compilerOptions": {
         "module": "CommonJS",
-        "target": "ES2016"
+        "target": "ES2016",
+        "skipLibCheck": true
     },
     "include": [
         "**/*.ts"
