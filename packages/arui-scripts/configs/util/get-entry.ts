@@ -13,8 +13,6 @@ function getEntry(
     if (Array.isArray(entryPoint)) {
         return getSingleEntry(entryPoint);
     }
-    console.log(entryPoint);
-    console.trace();
     // client entry also can be an object, so we must add hot loader to each entry point
     return Object.keys(entryPoint).reduce((result, entryPointName) => {
         const entry = getEntry(entryPoint[entryPointName], getSingleEntry);
