@@ -1,4 +1,5 @@
-FROM mhart/alpine-node:12.18.0
+ARG NODE_VERSION=latest
+FROM mhart/alpine-node:${NODE_VERSION}
 
 # We need nginx with brotli, so we build it from sources.
 # Copied from https://github.com/fholzer/docker-nginx-brotli/blob/master/Dockerfile

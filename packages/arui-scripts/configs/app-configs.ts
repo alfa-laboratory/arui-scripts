@@ -80,7 +80,7 @@ let config: AppConfigs = {
     name: appPackage.name,
     version: appPackage.version,
     dockerRegistry: '',
-    baseDockerImage: 'heymdall/alpine-node-nginx:12.18.0',
+    baseDockerImage: 'alfabankui/arui-scripts:latest',
 
     // general paths
     cwd: CWD,
