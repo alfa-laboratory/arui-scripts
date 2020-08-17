@@ -50,7 +50,7 @@ npm install arui-scripts --save-dev
 Доступные настройки:
 
 - `dockerRegistry` - адрес используемого docker registry, по умолчанию `''`, то есть используется публичный registry
-- `baseDockerImage` - имя базового образа, используемого для построения docker образа. По умолчанию `heymdall/alpine-node-nginx:12.16.1`.
+- `baseDockerImage` - имя базового образа, используемого для построения docker образа. По умолчанию `alfabankui/arui-scripts:latest`.
 - `serverEntry` - точка входа для исходников сервера, по умолчанию `src/server/index`.
 - `serverOutput` - имя файла для компиляции сервера, по умолчанию `server.js`.
 - `clientPolyfillsEntry` - точка входа для полифилов. Будет подключаться до основной точки входа. По умолчанию подтягивает полифилы из `arui-feather`, если он установлен.
@@ -271,7 +271,7 @@ docker
 
 Команда `arui-scripts docker-build` запускает компиляцию продакшн версии и сборку докер образа.
 
-Образ основан на [alpine-node-nginx](https://github.com/Heymdall/alpine-node-nginx).
+Образ основан на [alpine-node-nginx](https://github.com/alfa-laboratory/arui-scripts/blob/master/packages/alpine-node-nginx/).
 
 Имя контейнера определяется как `{configs.dockerRegistry}/{name}:{version}`. Переменные `name` и `version` по умолчанию берутся из package.json,
 но вы так же можете переопределить их из командной строки, например
