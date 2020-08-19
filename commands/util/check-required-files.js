@@ -6,9 +6,22 @@ const configs = require('../../configs/app-configs');
 
 const extensions = ['ts', 'tsx', 'js', 'jsx'];
 
+function entryPointToArray(entryPoint) {
+    if (typeof entryPoint === 'string') {
+        return [entryPoint];
+    }
+    if (Array.isArray(entryPoint)) {
+        return entryPoint;
+    }
+    return Object.keys(entryPoint).reduce((result, name) => {
+        const entry = entryPointToArray(entryPoint[name]);
+        return [...result, ...entry];
+    }, []);
+}
+
 const files = [
-    configs.serverEntry,
-    configs.clientEntry,
+    ...entryPointToArray(configs.serverEntry),
+    ...entryPointToArray(configs.clientEntry),
     configs.clientPolyfillsEntry
 ];
 
@@ -34,6 +47,7 @@ function checkFileWithExtensions(filePath, extensions) {
 
 function checkRequiredFiles() {
     const unavailableFilePaths = files
+        .filter(Boolean)
         .reduce((result, filePath) => {
             if (filePath && !checkFileWithExtensions(filePath, extensions)) {
                 result.push(filePath);
