@@ -10,7 +10,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "yarn workspace arui-scripts-test run ci",
+            "pre-commit": "yarn workspace arui-scripts run test && yarn workspace arui-scripts-test run ci",
             "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
         }
     },
