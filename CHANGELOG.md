@@ -1,3 +1,18 @@
+<a name="9.4.0"></a>
+# [9.4.0](https://github.com/alfa-laboratory/arui-scripts/compare/v9.3.2...v9.4.0) (2020-08-19)
+
+
+### Bug Fixes
+
+* **check-required-files:** skip empty files from config ([34701c5](https://github.com/alfa-laboratory/arui-scripts/commit/34701c5))
+
+
+### Features
+
+* **webpack:** add support for multiple entrypoints ([508c5c1](https://github.com/alfa-laboratory/arui-scripts/commit/508c5c1))
+
+
+
 <a name="9.3.2"></a>
 ## [9.3.2](https://github.com/alfa-laboratory/arui-scripts/compare/v9.3.1...v9.3.2) (2020-08-18)
 
