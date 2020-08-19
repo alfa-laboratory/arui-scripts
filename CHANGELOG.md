@@ -1,3 +1,13 @@
+<a name="9.3.2"></a>
+## [9.3.2](https://github.com/alfa-laboratory/arui-scripts/compare/v9.3.1...v9.3.2) (2020-08-18)
+
+
+### Features
+
+* **supporting-browsers:** add supporting-browsers to overrides ([2671fd5](https://github.com/alfa-laboratory/arui-scripts/commit/2671fd5))
+
+
+
 <a name="9.3.1"></a>
 ## [9.3.1](https://github.com/alfa-laboratory/arui-scripts/compare/v9.3.0...v9.3.1) (2020-07-28)
 
