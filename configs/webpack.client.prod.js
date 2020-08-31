@@ -235,9 +235,10 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
                                 loader: require.resolve('css-loader'),
                                 options: {
                                     importLoaders: 1,
-                                    modules: true,
-                                    sourceMap: false,
-                                    getLocalIdent: getCSSModuleLocalIdent
+                                    modules: {
+                                        getLocalIdent: getCSSModuleLocalIdent,
+                                    },
+                                    sourceMap: false
                                 },
                             },
                             {
