@@ -144,8 +144,8 @@ const config = {
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
+                                    onlyLocals: true,
                                     modules: {
-                                        exportOnlyLocals: true,
                                         getLocalIdent: getCSSModuleLocalIdent,
                                     },
                                 },
