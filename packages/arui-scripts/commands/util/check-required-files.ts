@@ -47,6 +47,7 @@ function checkFileWithExtensions(filePath: string, extensions: string[]) {
 
 function checkRequiredFiles() {
     const unavailableFilePaths: string[] = files
+        .filter(Boolean)
         .reduce((result, filePath) => {
             if (filePath && !checkFileWithExtensions(filePath, extensions)) {
                 result.push(filePath);
