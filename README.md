@@ -290,7 +290,7 @@ docker run -p 8080:8080 container-name:version ./start.sh
 
 На `8080` порту будет поднят nginx, который будет раздавать статику и проксировать все остальные запросы к `nodejs`.
 
-Вы также можете переопределить полностью процесс сборки docker-образа, создав в корневой директории проекта `Dockerfile` содержащий необходимый набор инструкций. Пример [Dockerfile](https://github.com/alfa-laboratory/arui-scripts/blob/master/commands/docker-build/dockerfile.template.js).
+Вы также можете переопределить полностью процесс сборки docker-образа, создав в корневой директории проекта `Dockerfile` содержащий необходимый набор инструкций. Пример [Dockerfile](https://github.com/alfa-laboratory/arui-scripts/blob/master/templates/dockerfile.template.js).
 
 archive
 ---
