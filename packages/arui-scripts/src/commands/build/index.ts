@@ -10,7 +10,7 @@ import configs from '../../configs/app-configs';
 
 process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
-process.env.BROWSERSLIST_CONFIG = process.env.BROWSERSLIST_CONFIG || require.resolve('../../configs/.browserslistrc');
+process.env.BROWSERSLIST_CONFIG = process.env.BROWSERSLIST_CONFIG || require.resolve('../../../.browserslistrc');
 if (!checkRequiredFiles()) {
     process.exit(1);
 }

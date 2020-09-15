@@ -1,6 +1,4 @@
 .idea/
-node_modules/
-.build/
+node_modules
 package-lock.json
 *.log
-build.tar

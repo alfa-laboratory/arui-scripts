@@ -1,6 +1,5 @@
 #! /usr/bin/env node
 /* eslint import/no-dynamic-require: 0 */
-require('../commands/util/register-ts-node');
 
 const commands = [
     'start',

@@ -1,4 +1,4 @@
-process.env.BROWSERSLIST_CONFIG = process.env.BROWSERSLIST_CONFIG || require.resolve('../../configs/.browserslistrc');
+process.env.BROWSERSLIST_CONFIG = process.env.BROWSERSLIST_CONFIG || require.resolve('../../../.browserslistrc');
 
 import fs from 'fs-extra';
 import webpack from 'webpack';
