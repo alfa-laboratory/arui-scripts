@@ -17,9 +17,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-   - name: yarn install and test
+    - name: yarn install and test
       run: |
-        yarn install --frozen-lockfile
+        yarn install --immutable --immutable-cache
         yarn workspace arui-scripts run build
         yarn workspace arui-scripts-test run ci
       env:
