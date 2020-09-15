@@ -195,11 +195,6 @@ const config: webpack.Configuration = {
             raw: true,
             entryOnly: false
         }),
-        new webpack.BannerPlugin({
-            banner: 'require("source-map-support").install();',
-            raw: true,
-            entryOnly: false
-        }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         }),

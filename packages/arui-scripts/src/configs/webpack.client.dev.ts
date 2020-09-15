@@ -6,6 +6,8 @@ import AssetsPlugin from 'assets-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
 import getCSSModuleLocalIdent from 'react-dev-utils/getCSSModuleLocalIdent';
+const PnpWebpackPlugin = require('pnp-webpack-plugin');
+
 import configs from './app-configs';
 import babelConf from './babel-client';
 import postcssConf from './postcss';
@@ -71,11 +73,17 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
         // for React Native Web.
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
         plugins: ([
+            PnpWebpackPlugin,
             (configs.tsconfig && new TsconfigPathsPlugin({
                 configFile: configs.tsconfig,
                 extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
             }))
         ].filter(Boolean)) as webpack.ResolvePlugin[],
+    },
+    resolveLoader: {
+        plugins: [
+            PnpWebpackPlugin.moduleLoader(module),
+        ],
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code

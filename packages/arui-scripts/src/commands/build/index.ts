@@ -19,8 +19,8 @@ if (fs.pathExistsSync(configs.serverOutputPath)) {
     fs.removeSync(configs.serverOutputPath);
 }
 
-const compileServer = spawn('ts-node-script', ['--transpile-only', path.join(__dirname, './server')], { stdio: 'inherit' });
-const compileClient = spawn('ts-node-script', ['--transpile-only', path.join(__dirname, './client')], { stdio: 'inherit' });
+const compileServer = spawn('node', [path.join(__dirname, './server')], { stdio: 'inherit' });
+const compileClient = spawn('node', [path.join(__dirname, './client')], { stdio: 'inherit' });
 
 const onProcessExit = (code: number) => {
     if (code !== 0) {
@@ -30,6 +30,7 @@ const onProcessExit = (code: number) => {
     }
 };
 
-
+compileClient.on('error', onProcessExit);
+compileServer.on('error', onProcessExit);
 compileServer.on('close', onProcessExit);
 compileClient.on('close', onProcessExit);
