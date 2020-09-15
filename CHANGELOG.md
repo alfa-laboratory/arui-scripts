@@ -1,3 +1,13 @@
+<a name="9.4.1"></a>
+## [9.4.1](https://github.com/alfa-laboratory/arui-scripts/compare/v9.4.0...v9.4.1) (2020-09-11)
+
+
+### Features
+
+* **postcss-config:** add postcss-color-mod-function ([a619453](https://github.com/alfa-laboratory/arui-scripts/commit/a619453))
+
+
+
 <a name="9.4.0"></a>
 # [9.4.0](https://github.com/alfa-laboratory/arui-scripts/compare/v9.3.2...v9.4.0) (2020-08-19)
 

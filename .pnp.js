@@ -564,6 +564,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:9.1.2"
       ],
       [
+        "@csstools/convert-colors",
+        "npm:1.4.0"
+      ],
+      [
         "@hot-loader/react-dom",
         "virtual:2c213c67ca6e3743ab37666d1fbbe1044bc26623d297bd900a8da5e7c04ee09f48a553f05d9e496405acbc782f11c64e341622a1b56fd12f09bf6295d5483ee0#npm:16.11.0"
       ],
@@ -3922,6 +3926,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "postcss-color-function",
         "npm:4.1.0"
+      ],
+      [
+        "postcss-color-mod-function",
+        "npm:3.0.3"
       ],
       [
         "postcss-colormin",
@@ -7632,6 +7640,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@csstools/convert-colors", [
+        ["npm:1.4.0", {
+          "packageLocation": "./.yarn/cache/@csstools-convert-colors-npm-1.4.0-43f8302fcb-c8c8e6b5b3.zip/node_modules/@csstools/convert-colors/",
+          "packageDependencies": [
+            ["@csstools/convert-colors", "npm:1.4.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@hot-loader/react-dom", [
         ["virtual:2c213c67ca6e3743ab37666d1fbbe1044bc26623d297bd900a8da5e7c04ee09f48a553f05d9e496405acbc782f11c64e341622a1b56fd12f09bf6295d5483ee0#npm:16.11.0", {
           "packageLocation": "./.yarn/$$virtual/@hot-loader-react-dom-virtual-45a3523691/0/cache/@hot-loader-react-dom-npm-16.11.0-f44315b2b3-d4945f0637.zip/node_modules/@hot-loader/react-dom/",
@@ -9636,6 +9653,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pnp-webpack-plugin", "npm:1.6.4"],
             ["postcss-calc", "npm:6.0.2"],
             ["postcss-color-function", "npm:4.1.0"],
+            ["postcss-color-mod-function", "npm:3.0.3"],
             ["postcss-custom-media", "npm:6.0.0"],
             ["postcss-discard-comments", "npm:2.0.4"],
             ["postcss-each", "npm:0.10.0"],
@@ -9754,6 +9772,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pnp-webpack-plugin", "npm:1.6.4"],
             ["postcss-calc", "npm:6.0.2"],
             ["postcss-color-function", "npm:4.1.0"],
+            ["postcss-color-mod-function", "npm:3.0.3"],
             ["postcss-custom-media", "npm:6.0.0"],
             ["postcss-discard-comments", "npm:2.0.4"],
             ["postcss-each", "npm:0.10.0"],
@@ -19293,6 +19312,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["postcss-color-mod-function", [
+        ["npm:3.0.3", {
+          "packageLocation": "./.yarn/cache/postcss-color-mod-function-npm-3.0.3-1c53b2ef12-dd484df73c.zip/node_modules/postcss-color-mod-function/",
+          "packageDependencies": [
+            ["postcss-color-mod-function", "npm:3.0.3"],
+            ["@csstools/convert-colors", "npm:1.4.0"],
+            ["postcss", "npm:7.0.32"],
+            ["postcss-values-parser", "npm:2.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["postcss-colormin", [
         ["npm:4.0.3", {
           "packageLocation": "./.yarn/cache/postcss-colormin-npm-4.0.3-21265de8f1-c2632c38a6.zip/node_modules/postcss-colormin/",
@@ -19931,6 +19962,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["postcss-values-parser", [
+        ["npm:2.0.1", {
+          "packageLocation": "./.yarn/cache/postcss-values-parser-npm-2.0.1-b7d7dda30d-dfc25618be.zip/node_modules/postcss-values-parser/",
+          "packageDependencies": [
+            ["postcss-values-parser", "npm:2.0.1"],
+            ["flatten", "npm:1.0.3"],
+            ["indexes-of", "npm:1.0.1"],
+            ["uniq", "npm:1.0.1"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:3.2.1", {
           "packageLocation": "./.yarn/cache/postcss-values-parser-npm-3.2.1-43e61d5e98-23006ee50f.zip/node_modules/postcss-values-parser/",
           "packageDependencies": [
