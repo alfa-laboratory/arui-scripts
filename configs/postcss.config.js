@@ -29,6 +29,7 @@ const postcssPlugins = [
     'postcss-strip-units',
     'postcss-calc',
     'postcss-color-function',
+    'postcss-color-mod-function',
     'postcss-nested',
     'autoprefixer',
     'postcss-inherit',
@@ -70,7 +71,10 @@ const postcssPluginsOptions = {
     },
     '@alfalab/postcss-custom-properties': {
         preserve: false,
-        importFrom: componentsTheme
+        importFrom: componentsTheme,
+    },
+    'postcss-color-mod-function': {
+        unresolved: 'warn',
     },
 };
 

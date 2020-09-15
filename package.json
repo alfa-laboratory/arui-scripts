@@ -1,6 +1,6 @@
 {
   "name": "arui-scripts",
-  "version": "9.4.0",
+  "version": "9.4.1",
   "main": "index.js",
   "license": "MPL-2.0",
   "repository": {
@@ -55,6 +55,7 @@
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "postcss-calc": "^6.0.1",
     "postcss-color-function": "^4.0.1",
+    "postcss-color-mod-function": "^3.0.3",
     "postcss-custom-media": "^6.0.0",
     "postcss-discard-comments": "^2.0.4",
     "postcss-each": "^0.10.0",
