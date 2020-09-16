@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
@@ -152,7 +154,12 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                         test: cssRegex,
                         exclude: cssModuleRegex,
                         use: [
-                            require.resolve('style-loader'),
+                            {
+                                loader: MiniCssExtractPlugin.loader,
+                                options: {
+                                    hmr: true,
+                                },
+                            },
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
@@ -173,7 +180,12 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
                     {
                         test: cssModuleRegex,
                         use: [
-                            require.resolve('style-loader'),
+                            {
+                                loader: MiniCssExtractPlugin.loader,
+                                options: {
+                                    hmr: true,
+                                },
+                            },
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
@@ -238,6 +250,22 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackDev', 'webp
         //     }
         // ])
         configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
+        new MiniCssExtractPlugin(),
+        new OptimizeCssAssetsPlugin({
+            cssProcessorOptions: {
+                map: {
+                    inline: false,
+                    annotation: true
+                },
+            },
+            cssProcessorPluginOptions: {
+                preset: () => ({
+                    plugins: [
+                        require('postcss-discard-duplicates')
+                    ]
+                })
+            },
+        }),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.
