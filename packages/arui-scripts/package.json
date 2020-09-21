@@ -54,7 +54,7 @@
         "jest": "25.5.4",
         "jest-snapshot-serializer-class-name-to-string": "1.0.0",
         "lodash.merge": "4.6.2",
-        "mini-css-extract-plugin": "0.4.4",
+        "mini-css-extract-plugin": "0.11.0",
         "null-loader": "0.1.1",
         "optimize-css-assets-webpack-plugin": "5.0.3",
         "pnp-webpack-plugin": "^1.6.4",

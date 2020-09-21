@@ -7,6 +7,8 @@ import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
 import getCSSModuleLocalIdent from 'react-dev-utils/getCSSModuleLocalIdent';
 const PnpWebpackPlugin = require('pnp-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 import configs from './app-configs';
 import babelConf from './babel-client';
@@ -159,7 +161,12 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                         test: cssRegex,
                         exclude: cssModuleRegex,
                         use: [
-                            require.resolve('style-loader'),
+                            {
+                                loader: MiniCssExtractPlugin.loader,
+                                options: {
+                                    hmr: true,
+                                },
+                            },
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
@@ -180,7 +187,12 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                     {
                         test: cssModuleRegex,
                         use: [
-                            require.resolve('style-loader'),
+                            {
+                                loader: MiniCssExtractPlugin.loader,
+                                options: {
+                                    hmr: true,
+                                },
+                            },
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
@@ -245,6 +257,22 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
         //     }
         // ])
         configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
+        new MiniCssExtractPlugin(),
+        new OptimizeCssAssetsPlugin({
+            cssProcessorOptions: {
+                map: {
+                    inline: false,
+                    annotation: true
+                },
+            },
+            cssProcessorPluginOptions: {
+                preset: () => ({
+                    plugins: [
+                        require('postcss-discard-duplicates')
+                    ]
+                })
+            },
+        }),
     ].filter(Boolean)) as webpack.Plugin[],
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.

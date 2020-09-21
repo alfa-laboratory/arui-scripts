@@ -3445,7 +3445,7 @@ __metadata:
     jest: 25.5.4
     jest-snapshot-serializer-class-name-to-string: 1.0.0
     lodash.merge: 4.6.2
-    mini-css-extract-plugin: 0.4.4
+    mini-css-extract-plugin: 0.11.0
     null-loader: 0.1.1
     optimize-css-assets-webpack-plugin: 5.0.3
     pnp-webpack-plugin: ^1.6.4
@@ -10610,18 +10610,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"mini-css-extract-plugin@npm:0.4.4":
-  version: 0.4.4
-  resolution: "mini-css-extract-plugin@npm:0.4.4"
+"mini-css-extract-plugin@npm:0.11.0":
+  version: 0.11.0
+  resolution: "mini-css-extract-plugin@npm:0.11.0"
   dependencies:
     loader-utils: ^1.1.0
+    normalize-url: 1.9.1
     schema-utils: ^1.0.0
     webpack-sources: ^1.1.0
   peerDependencies:
-    webpack: ^4.4.0
-  bin:
-    mini-css-extract-plugin: ""
-  checksum: d329ee241a59b003af76948c6476ce6b85dd502668b4f62819c76220b871f149a2607b8fb9ce69a1a2a7a56be440eceb70e3cbfb15232daeda6b8cdedfce5da4
+    webpack: ^4.4.0 || ^5.0.0
+  checksum: 79a4a065274194461389237200ba66e255f6c7d0b8b928dd46f35a7fa13e2013aa0a761528aff4608a0e61f545192b57f56196e47891504a558c169588d6272c
   languageName: node
   linkType: hard
 
@@ -11065,6 +11064,18 @@ fsevents@^1.2.7:
   version: 0.1.2
   resolution: "normalize-range@npm:0.1.2"
   checksum: bca997d800d76b7954b36d394f44bbe65948eb4cca954b2e731cd81a7a5540725dcd237df7cb2006449e705c4803755658b8f23d89f9cc2eb5da464558baba69
+  languageName: node
+  linkType: hard
+
+"normalize-url@npm:1.9.1":
+  version: 1.9.1
+  resolution: "normalize-url@npm:1.9.1"
+  dependencies:
+    object-assign: ^4.0.1
+    prepend-http: ^1.0.0
+    query-string: ^4.1.0
+    sort-keys: ^1.0.0
+  checksum: f4ebdd85d720c5a3547407153dfee95220ae452a4f3cd7e5a97fe3e12eeb09d3695930b8869df91728dbd4a50dc5a440d2c3dba03b0c1388b10a5850c791ea4d
   languageName: node
   linkType: hard
 
@@ -12664,6 +12675,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"prepend-http@npm:^1.0.0":
+  version: 1.0.4
+  resolution: "prepend-http@npm:1.0.4"
+  checksum: f723f34a23394b568a9ff0cd502bdda244b343c03b12a259343566eab1184cf41a6c7e9975d9e6010ccb2901b7c428d296e56a67a72d0a6ecb0f13531a3fa44e
+  languageName: node
+  linkType: hard
+
 "prepend-http@npm:^2.0.0":
   version: 2.0.0
   resolution: "prepend-http@npm:2.0.0"
@@ -12860,6 +12878,16 @@ fsevents@^1.2.7:
   version: 6.5.2
   resolution: "qs@npm:6.5.2"
   checksum: fa0410eff2c05ce3328e11f82db4015e7819c986ee056d6b62b06ae112f4929af09ea3b879ca168ff9f0338f50972bba487ad0e46c879e42bfaf63c3c2ea7f09
+  languageName: node
+  linkType: hard
+
+"query-string@npm:^4.1.0":
+  version: 4.3.4
+  resolution: "query-string@npm:4.3.4"
+  dependencies:
+    object-assign: ^4.1.0
+    strict-uri-encode: ^1.0.0
+  checksum: fcdbc2e76024a3afd0c5ea3addda75311d5d10402ddb5a03542dec430d36dbc44c87a11765ffa952d53e0b96e187298929561b88cc196a828f8728d2a3545ab8
   languageName: node
   linkType: hard
 
@@ -14221,6 +14249,15 @@ resolve@1.1.7:
     faye-websocket: ^0.10.0
     uuid: ^3.0.1
   checksum: 04c93f75468230e1279340799e3d5fa39978e591e1af4544b9981609c8b2b5f2720269fa11ee1e1bd4413e49bd717792e21f6d467f93337d2a9718ab9e9dc5f7
+  languageName: node
+  linkType: hard
+
+"sort-keys@npm:^1.0.0":
+  version: 1.1.2
+  resolution: "sort-keys@npm:1.1.2"
+  dependencies:
+    is-plain-obj: ^1.0.0
+  checksum: 78d9165ed35a19591685375cf85b7f45d94d0538af8cf162dec9ae67e6c631468169f9242e06f799a5bbb4207e90413f32dc528323f1f5d8edb0be51bf9f8880
   languageName: node
   linkType: hard
 
