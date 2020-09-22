@@ -1,3 +1,13 @@
+<a name="9.5.0"></a>
+# [9.5.0](https://github.com/alfa-laboratory/arui-scripts/compare/v9.4.1...v9.5.0) (2020-09-22)
+
+
+### Features
+
+* **webpack:** replace style tags with optimized css bundle in dev ([22681f2](https://github.com/alfa-laboratory/arui-scripts/commit/22681f2))
+
+
+
 <a name="9.4.1"></a>
 ## [9.4.1](https://github.com/alfa-laboratory/arui-scripts/compare/v9.4.0...v9.4.1) (2020-09-11)
 
