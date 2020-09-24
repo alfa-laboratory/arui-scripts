@@ -1,4 +1,4 @@
-const { componentsTheme } = require('./app-configs');
+const { componentsTheme, keepCssVars } = require('./app-configs');
 
 /**
  * Функция для создания конфигурационного файла postcss
@@ -25,7 +25,7 @@ const postcssPlugins = [
     'postcss-for',
     'postcss-each',
     'postcss-custom-media',
-    '@alfalab/postcss-custom-properties',
+    keepCssVars === false && 'postcss-custom-properties',
     'postcss-strip-units',
     'postcss-calc',
     'postcss-color-function',
@@ -33,7 +33,7 @@ const postcssPlugins = [
     'postcss-nested',
     'autoprefixer',
     'postcss-inherit',
-];
+].filter(Boolean);
 
 const postcssPluginsOptions = {
     'postcss-import': {
@@ -69,13 +69,15 @@ const postcssPluginsOptions = {
             '--desktop': 'screen and (min-width: 64em)'
         },
     },
-    '@alfalab/postcss-custom-properties': {
-        preserve: false,
-        importFrom: componentsTheme,
-    },
     'postcss-color-mod-function': {
         unresolved: 'warn',
     },
+    ...(keepCssVars === false && {
+        'postcss-custom-properties': {
+            preserve: false,
+            importFrom: componentsTheme,
+        }
+    }),
 };
 
 module.exports = { postcssPlugins, postcssPluginsOptions, createPostcssConfig };
