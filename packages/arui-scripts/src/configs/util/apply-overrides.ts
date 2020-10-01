@@ -1,4 +1,5 @@
-const appConfigs = require('../app-configs');
+import appConfigs from '../app-configs';
+
 let overrides: Record<string, (config: any) => any> = {};
 
 if (appConfigs.hasOverrides) {

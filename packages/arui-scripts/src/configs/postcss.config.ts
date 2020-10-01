@@ -7,7 +7,7 @@ import config from './app-configs';
  * @param {Object} options коллекция конфигураций плагинов, где ключ - название плагина, а значение - аргумент для инициализации
  * @returns {*}
  */
-function createPostcssConfig(plugins: string[], options: Record<string, unknown>) {
+export function createPostcssConfig(plugins: string[], options: Record<string, unknown>) {
     return plugins.map(pluginName => {
         const plugin = require(pluginName);
 
@@ -18,7 +18,7 @@ function createPostcssConfig(plugins: string[], options: Record<string, unknown>
     });
 }
 
-const postcssPlugins = [
+export const postcssPlugins = [
     'postcss-omit-import-tilde',
     'postcss-import',
     'postcss-url',
@@ -36,7 +36,7 @@ const postcssPlugins = [
     'postcss-inherit',
 ];
 
-const postcssPluginsOptions = {
+export const postcssPluginsOptions = {
     'postcss-import': {
         path: ['./src'],
         plugins: [require('postcss-discard-comments')()],
@@ -78,5 +78,3 @@ const postcssPluginsOptions = {
         unresolved: 'warn',
     },
 };
-
-module.exports = { postcssPlugins, postcssPluginsOptions, createPostcssConfig };

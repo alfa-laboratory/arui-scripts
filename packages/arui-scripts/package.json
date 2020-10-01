@@ -63,6 +63,7 @@
         "postcss-color-mod-function": "^3.0.3",
         "postcss-custom-media": "^6.0.0",
         "postcss-discard-comments": "^2.0.4",
+        "postcss-discard-duplicates": "^4.0.2",
         "postcss-each": "^0.10.0",
         "postcss-for": "^2.1.1",
         "postcss-import": "^11.1.0",

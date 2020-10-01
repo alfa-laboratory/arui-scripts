@@ -1,6 +1,5 @@
 import applyOverrides from './util/apply-overrides';
-
-const { postcssPlugins, postcssPluginsOptions, createPostcssConfig } = require('./postcss.config');
+import { postcssPlugins, postcssPluginsOptions, createPostcssConfig } from './postcss.config';
 
 const postcssConfig = applyOverrides(
   'postcss',
