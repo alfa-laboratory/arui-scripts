@@ -1,3 +1,13 @@
+<a name="9.6.0"></a>
+# [9.6.0](https://github.com/alfa-laboratory/arui-scripts/compare/v9.5.0...v9.6.0) (2020-10-08)
+
+
+### Features
+
+* **postcss-config:** add keepCssVars, revert plugin ([2d8a0d6](https://github.com/alfa-laboratory/arui-scripts/commit/2d8a0d6))
+
+
+
 <a name="9.5.0"></a>
 # [9.5.0](https://github.com/alfa-laboratory/arui-scripts/compare/v9.4.1...v9.5.0) (2020-09-22)
 
