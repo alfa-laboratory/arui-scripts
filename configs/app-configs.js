@@ -70,7 +70,8 @@ let config = {
     hasOverrides: fs.existsSync(overridesPath),
     overridesPath: overridesPath,
 
-    componentsTheme: undefined
+    componentsTheme: undefined,
+    keepCssVars: true,
 };
 
 /**
@@ -99,7 +100,8 @@ const availablePackageSettings = [
     'serverPort',
 
     'debug',
-    'componentsTheme'
+    'componentsTheme',
+    'keepCssVars',
 ];
 
 const packageSettings = appPackage.aruiScripts || {};

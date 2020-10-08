@@ -11,7 +11,6 @@
     "arui-scripts": "./bin/index.js"
   },
   "dependencies": {
-    "@alfalab/postcss-custom-properties": "^9.1.2",
     "@babel/core": "7.9.0",
     "@babel/plugin-proposal-class-properties": "7.8.3",
     "@babel/plugin-proposal-decorators": "7.8.3",
@@ -57,6 +56,7 @@
     "postcss-color-function": "^4.0.1",
     "postcss-color-mod-function": "^3.0.3",
     "postcss-custom-media": "^6.0.0",
+    "postcss-custom-properties": "9.2.0",
     "postcss-discard-comments": "^2.0.4",
     "postcss-each": "^0.10.0",
     "postcss-for": "^2.1.1",
