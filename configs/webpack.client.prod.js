@@ -50,6 +50,7 @@ module.exports = applyOverrides(['webpack', 'webpackClient', 'webpackProd', 'web
     },
     optimization: {
         splitChunks: {
+            chunks: "all",
             cacheGroups: {
                 commons: {
                     chunks: "initial",
