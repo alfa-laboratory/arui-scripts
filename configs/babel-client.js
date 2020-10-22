@@ -2,11 +2,11 @@ const browsers = require('./supporting-browsers');
 const configs = require('./app-configs');
 const applyOverrides = require('./util/apply-overrides');
 
-module.exports = applyOverrides(['babel', 'babelClient'],{
+module.exports = applyOverrides(['babel', 'babelClient'], {
     presets: [
         [
             require.resolve('@babel/preset-env'),
-            { modules: false, targets: { browsers }, loose: true }
+            { modules: false, targets: { browsers }, loose: true, "useBuiltIns": "usage" }
         ],
         (configs.tsconfig !== null && !configs.useTscLoader) && require.resolve('@babel/preset-typescript'),
         require.resolve('@babel/preset-react')
