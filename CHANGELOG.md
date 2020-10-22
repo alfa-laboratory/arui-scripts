@@ -1,3 +1,13 @@
+<a name="9.7.0"></a>
+# [9.7.0](https://github.com/alfa-laboratory/arui-scripts/compare/v9.6.0...v9.7.0) (2020-10-22)
+
+
+### Features
+
+* **webpack:** split dynamic import from node_modules to chunk ([ba6a286](https://github.com/alfa-laboratory/arui-scripts/commit/ba6a286))
+
+
+
 <a name="9.6.0"></a>
 # [9.6.0](https://github.com/alfa-laboratory/arui-scripts/compare/v9.5.0...v9.6.0) (2020-10-08)
 
