@@ -1,3 +1,27 @@
+# [10.0.0](https://github.com/alfa-laboratory/arui-scripts/compare/v9.7.0...v10.0.0) (2020-10-26)
+
+
+### Bug Fixes
+
+* replace remaining require with imports ([094d6c2](https://github.com/alfa-laboratory/arui-scripts/commit/094d6c24f80a3d4fb9d6e72629f6505a3b307904))
+* **alpine-node-nginx:** fix gpg errors ([33e6f72](https://github.com/alfa-laboratory/arui-scripts/commit/33e6f722b6dee26a0e66dcc979e05729f1927b79))
+* **dependencies:** ts as peer dependency ([438c7e7](https://github.com/alfa-laboratory/arui-scripts/commit/438c7e76023ab4e65bc67c0efa95a50da78f8395))
+* **get-entry:** remove console.log ([39d735d](https://github.com/alfa-laboratory/arui-scripts/commit/39d735db9b3709248ae3b8c7083541ac0c2187c6))
+* **jest:** correctly resolve path to all file mappers ([fcc34f9](https://github.com/alfa-laboratory/arui-scripts/commit/fcc34f99cca471c34b85c2b7dab4d838430770ca))
+* **ts-node:** configure it from single place ([e68eda5](https://github.com/alfa-laboratory/arui-scripts/commit/e68eda5058b694497af69978410c29541d541b0b))
+* **webpack-server:** fix node-externals in workspaces ([c283ae0](https://github.com/alfa-laboratory/arui-scripts/commit/c283ae0c9dface9e99a501f544a9ffc16ed2c22c))
+* **yarn:** fix ci configs ([b4d1162](https://github.com/alfa-laboratory/arui-scripts/commit/b4d1162c92febf6167edcb83c81f6e884f71d092))
+
+
+### Features
+
+* ts in all webpack configs ([e051e29](https://github.com/alfa-laboratory/arui-scripts/commit/e051e293a73c837d8d0cc53f32e262f0883a8d87))
+* yarn 2 support ([73bef4f](https://github.com/alfa-laboratory/arui-scripts/commit/73bef4f711c9b3c446665d38994447cdd896577e))
+* **alpine-node-nginx:** add docker build workflow ([2d95808](https://github.com/alfa-laboratory/arui-scripts/commit/2d958084feac5ba52b5d269eb90ed946f87eb7ba))
+* **alpine-node-nginx:** read version from version file ([dce6105](https://github.com/alfa-laboratory/arui-scripts/commit/dce6105a5a189c009947d4cddc947ce35ed555c6))
+
+
+
 <a name="9.7.0"></a>
 # [9.7.0](https://github.com/alfa-laboratory/arui-scripts/compare/v9.6.0...v9.7.0) (2020-10-22)
 
