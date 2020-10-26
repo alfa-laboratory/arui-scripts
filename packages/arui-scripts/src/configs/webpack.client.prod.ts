@@ -52,6 +52,7 @@ const config  = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient
     },
     optimization: {
         splitChunks: {
+            chunks: "all",
             cacheGroups: {
                 commons: {
                     chunks: "initial",

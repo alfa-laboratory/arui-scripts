@@ -3944,6 +3944,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:6.0.0"
       ],
       [
+        "postcss-custom-properties",
+        "npm:9.2.0"
+      ],
+      [
         "postcss-discard-comments",
         "npm:2.0.4"
       ],
@@ -9635,6 +9639,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-color-function", "npm:4.1.0"],
             ["postcss-color-mod-function", "npm:3.0.3"],
             ["postcss-custom-media", "npm:6.0.0"],
+            ["postcss-custom-properties", "npm:9.2.0"],
             ["postcss-discard-comments", "npm:2.0.4"],
             ["postcss-discard-duplicates", "npm:4.0.2"],
             ["postcss-each", "npm:0.10.0"],
@@ -9760,6 +9765,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-color-function", "npm:4.1.0"],
             ["postcss-color-mod-function", "npm:3.0.3"],
             ["postcss-custom-media", "npm:6.0.0"],
+            ["postcss-custom-properties", "npm:9.2.0"],
             ["postcss-discard-comments", "npm:2.0.4"],
             ["postcss-discard-duplicates", "npm:4.0.2"],
             ["postcss-each", "npm:0.10.0"],
@@ -19297,6 +19303,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["postcss-custom-media", "npm:6.0.0"],
             ["postcss", "npm:6.0.23"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["postcss-custom-properties", [
+        ["npm:9.2.0", {
+          "packageLocation": "./.yarn/cache/postcss-custom-properties-npm-9.2.0-ed5582765a-38f7e9363c.zip/node_modules/postcss-custom-properties/",
+          "packageDependencies": [
+            ["postcss-custom-properties", "npm:9.2.0"],
+            ["postcss", "npm:7.0.32"],
+            ["postcss-values-parser", "npm:3.2.1"]
           ],
           "linkType": "HARD",
         }]

@@ -63,7 +63,8 @@ npm install arui-scripts --save-dev
 - `keepPropTypes` - если `true`, пакеты с prop-types не будут удалены из production билда.
 - `debug` - режим отладки, в котором не выполняются некоторые нежелательные операции и выводится больше сообщений об ошибках, по умолчанию `false`.
 - `useTscLoader` -  использовать ts-loader вместо babel-loader для обработки ts файлов. У babel-loader есть [ряд ограничений](https://blogs.msdn.microsoft.com/typescript/2018/08/27/typescript-and-babel-7/). По умолчанию `false`.
-- `componentsTheme` - путь к css файлу с темой для [core-components](https://alfa-laboratory.github.io/core-components). Используется для настройки [postcss-custom-properties](https://github.com/alfa-laboratory/postcss-custom-properties#importfrom).
+- `componentsTheme` - путь к css файлу с темой для [core-components](https://alfa-laboratory.github.io/core-components). Используется для настройки [postcss-custom-properties](https://github.com/postcss/postcss-custom-properties#importfrom).
+- `keepCssVars` - отключает `postcss-custom-properties`, css переменные будут оставаться в бандле.
 
 В целях отладки все эти настройки можно переопределить не изменяя package.json
 Просто передайте необходимые настройки в environment переменной ARUI_SCRIPTS_CONFIG

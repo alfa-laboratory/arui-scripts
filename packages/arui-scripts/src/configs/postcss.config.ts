@@ -26,7 +26,7 @@ export const postcssPlugins = [
     'postcss-for',
     'postcss-each',
     'postcss-custom-media',
-    '@alfalab/postcss-custom-properties',
+    config.keepCssVars === false && 'postcss-custom-properties',
     'postcss-strip-units',
     'postcss-calc',
     'postcss-color-function',
@@ -34,7 +34,7 @@ export const postcssPlugins = [
     'postcss-nested',
     'autoprefixer',
     'postcss-inherit',
-];
+].filter(Boolean) as string[];
 
 export const postcssPluginsOptions = {
     'postcss-import': {
@@ -70,11 +70,13 @@ export const postcssPluginsOptions = {
             '--desktop': 'screen and (min-width: 64em)'
         },
     },
-    '@alfalab/postcss-custom-properties': {
-        preserve: false,
-        importFrom: config.componentsTheme,
-    },
     'postcss-color-mod-function': {
         unresolved: 'warn',
     },
+    ...(config.keepCssVars === false && {
+        'postcss-custom-properties': {
+            preserve: false,
+            importFrom: config.componentsTheme,
+        }
+    }),
 };

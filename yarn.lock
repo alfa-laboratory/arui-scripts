@@ -3453,6 +3453,7 @@ __metadata:
     postcss-color-function: ^4.0.1
     postcss-color-mod-function: ^3.0.3
     postcss-custom-media: ^6.0.0
+    postcss-custom-properties: 9.2.0
     postcss-discard-comments: ^2.0.4
     postcss-discard-duplicates: ^4.0.2
     postcss-each: ^0.10.0
@@ -12051,6 +12052,16 @@ fsevents@^1.2.7:
   dependencies:
     postcss: ^6.0.1
   checksum: 64d9b4f4f7169134c63c7cd9bfd7640e56bf0027498a702431096953a445d70405448085c22899b52887ac979c57cbe1c613102932c97e60073d4a44f4589772
+  languageName: node
+  linkType: hard
+
+"postcss-custom-properties@npm:9.2.0":
+  version: 9.2.0
+  resolution: "postcss-custom-properties@npm:9.2.0"
+  dependencies:
+    postcss: ^7.0.17
+    postcss-values-parser: ^3.0.5
+  checksum: 38f7e9363cd7150628cf6ec13ae645e0e8a33760173be6c2dd837132be3dc14baa83435c03d0ee2c689bd67a79018d278625fc4b210843c85f5d8e59d13ffcb9
   languageName: node
   linkType: hard
 

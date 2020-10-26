@@ -66,6 +66,7 @@ type AppConfigs = {
     overridesPath: string;
 
     componentsTheme: string | undefined;
+    keepCssVars: boolean;
 
     publicPath: string;
     serverOutputPath: string;
@@ -118,6 +119,7 @@ let config: AppConfigs = {
     overridesPath: overridesPath,
 
     componentsTheme: undefined,
+    keepCssVars: true,
 
     // Эти пути зависят от других настроек, которые могут быть переопределены пользователем
     publicPath: '',
@@ -151,7 +153,8 @@ const availablePackageSettings = [
     'serverPort',
 
     'debug',
-    'componentsTheme'
+    'componentsTheme',
+    'keepCssVars',
 ];
 
 const packageSettings = appPackage.aruiScripts || {};
