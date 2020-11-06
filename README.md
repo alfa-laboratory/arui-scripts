@@ -337,7 +337,7 @@ yarn будет использоваться когда в рутовой пап
 
 ```json
 {
-    "extends": "./node_modules/arui-scripts/configs/tsconfig.json"
+    "extends": "./node_modules/arui-scripts/tsconfig.json"
 }
 ```
 
@@ -358,7 +358,7 @@ yarn будет использоваться когда в рутовой пап
 ---
 
 Несмотря на то, что nginx имеет готовый конфиг с роутингом, иногда возникает необходимость добавлять свои роуты.
-Для этого вы можете создать `nginx.conf` на уровне проекта со своими роутами. Пример конфига: arui-scripts/commands/docker-build/nginx.conf.template.js
+Для этого вы можете создать `nginx.conf` на уровне проекта со своими роутами. Пример конфига [тут](https://github.com/alfa-laboratory/arui-scripts/blob/v10.0.0/packages/arui-scripts/src/templates/nginx.conf.template.ts).
 
 
 Удаление proptypes
@@ -389,7 +389,7 @@ require не js файлов в node_modules в node.js
 в итоговый бандл, а загружается стандартным `require` node.js. Как правило - это нам и нужно.
 Но в случае react-компонентов, мы зачастую запрашиваем кроме кода компонентов еще и `.css`, `.png` и другие файлы.
 require node.js на таких местах ломается. Поэтому наши внутренние библиотеки компонентов все же вкомпиливаются
-в итоговый бандл сервера. Это сделанно с помощью [добавления их в исключение](https://github.com/alfa-laboratory/arui-scripts/blob/master/configs/webpack.server.dev.js#L51)
+в итоговый бандл сервера. Это сделанно с помощью [добавления их в исключение](https://github.com/alfa-laboratory/arui-scripts/blob/master/packages/arui-scripts/src/configs/webpack.server.dev.ts#L59)
 плагина [webpack-node-externals](https://www.npmjs.com/package/webpack-node-externals).
 В случае, если вам необходима обработка не-js файлов из других внешних модулей - вы можете
 воспользоваться механизмом `overrides`, описанным ниже.
@@ -435,7 +435,7 @@ module.exports = {
         createPostcssConfig, // функция для создания конфигурационного файла postcss
         postcssPlugins, // список плагинов
         postcssPluginsOptions, // коллекция конфигураций плагинов
-    } = require('arui-scripts/configs/postcss.config');
+    } = require('arui-scripts/build/configs/postcss.config');
 
     module.exports = {
         postcss: () => {
