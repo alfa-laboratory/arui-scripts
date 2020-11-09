@@ -83,6 +83,7 @@
         "start-server-webpack-plugin": "^2.2.1",
         "strip-ansi": "^6.0.0",
         "style-loader": "1.1.3",
+        "svg-url-loader": "^6.0.0",
         "tar": "4.4.8",
         "terser-webpack-plugin": "1.4.5",
         "ts-jest": "25.5.1",
