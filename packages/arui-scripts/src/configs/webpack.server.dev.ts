@@ -66,7 +66,8 @@ const config: webpack.Configuration = {
             /^newclick-composite-components/,
             /^#/,
             /^@alfalab\/icons/,
-            /^@alfalab\/core-components/
+            /^@alfalab\/core-components/,
+            /^date-fns/,
         ],
         modulesFromFile: true,
     })],
