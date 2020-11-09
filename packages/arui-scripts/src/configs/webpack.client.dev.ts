@@ -165,6 +165,7 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                                 loader: MiniCssExtractPlugin.loader,
                                 options: {
                                     hmr: true,
+                                    publicPath: './',
                                 },
                             },
                             {
@@ -191,6 +192,7 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                                 loader: MiniCssExtractPlugin.loader,
                                 options: {
                                     hmr: true,
+                                    publicPath: './',
                                 },
                             },
                             {
