@@ -63,7 +63,8 @@ const config = applyOverrides<webpack.Configuration>(['webpack', 'webpackServer'
             /^newclick-composite-components/,
             /^#/,
             /^@alfalab\/icons/,
-            /^@alfalab\/core-components/
+            /^@alfalab\/core-components/,
+            /^date-fns/,
         ],
         // we cannot determine node_modules location before arui-scripts installation, so just load
         // dependencies list from package.json
