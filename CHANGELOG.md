@@ -1,3 +1,14 @@
+## [10.0.1](https://github.com/alfa-laboratory/arui-scripts/compare/v10.0.0...v10.0.1) (2020-11-09)
+
+
+### Bug Fixes
+
+* **alpine-node:** push docker image on commit ([7e8c286](https://github.com/alfa-laboratory/arui-scripts/commit/7e8c286a8f038dee5c5f6f020e5f3dc7c9a193d6))
+* **webpack-dev:** add public path, so images loads correctly in dev mode ([e5c8a16](https://github.com/alfa-laboratory/arui-scripts/commit/e5c8a1640d674324ef835a68b76b251cd8772575))
+* **webpack-server:** add date-fns to externals, so it won't conflict with arui-feather date-fns ([131e9b2](https://github.com/alfa-laboratory/arui-scripts/commit/131e9b2d17804f6af378bb3c8adfbbd36ec4a8ee))
+
+
+
 # [10.0.0](https://github.com/alfa-laboratory/arui-scripts/compare/v9.7.0...v10.0.0) (2020-10-26)
 
 
