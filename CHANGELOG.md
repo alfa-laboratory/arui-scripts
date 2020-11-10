@@ -1,3 +1,12 @@
+# [10.1.0](https://github.com/alfa-laboratory/arui-scripts/compare/v10.0.1...v10.1.0) (2020-11-10)
+
+
+### Features
+
+* **webpack-client:** use svg-url-loader for svg ([638d601](https://github.com/alfa-laboratory/arui-scripts/commit/638d6015b1c49863468a0599609e3e107d08bc2d))
+
+
+
 ## [10.0.1](https://github.com/alfa-laboratory/arui-scripts/compare/v10.0.0...v10.0.1) (2020-11-09)
 
 
