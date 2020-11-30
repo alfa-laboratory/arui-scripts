@@ -1,3 +1,13 @@
+## [10.1.1](https://github.com/alfa-laboratory/arui-scripts/compare/v10.1.0...v10.1.1) (2020-11-30)
+
+
+### Bug Fixes
+
+* **tsconfig:** formatting fix ([32b2248](https://github.com/alfa-laboratory/arui-scripts/commit/32b22485197a90bb004deb7d5dedd14f2b89dc10))
+* **tsconfig:** separate build config from published config ([a55051d](https://github.com/alfa-laboratory/arui-scripts/commit/a55051d06f2ee8df86a6c78ebee5d13dba2a713c))
+
+
+
 # [10.1.0](https://github.com/alfa-laboratory/arui-scripts/compare/v10.0.1...v10.1.0) (2020-11-10)
 
 
