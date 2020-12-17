@@ -1,3 +1,12 @@
+## [10.1.2](https://github.com/alfa-laboratory/arui-scripts/compare/v10.1.1...v10.1.2) (2020-12-17)
+
+
+### Bug Fixes
+
+* **nginx:** always use only ipv4 host ([fe73d1c](https://github.com/alfa-laboratory/arui-scripts/commit/fe73d1c41d3f14afdc41c137b760a253eaea2755))
+
+
+
 ## [10.1.1](https://github.com/alfa-laboratory/arui-scripts/compare/v10.1.0...v10.1.1) (2020-11-30)
 
 
