@@ -17,7 +17,7 @@ const devServerConfig = applyOverrides<Configuration>('devServer', {
         '/**': {
             target: `http://localhost:${configs.serverPort}`,
             bypass: (req: http.IncomingMessage) => {
-                const assetsRoot = path.resolve(`/${configs.publicPath}`);
+                const assetsRoot = path.normalize(`/${configs.publicPath}`).replace(/\\/g, '/');
 
                 if (req?.url?.startsWith(assetsRoot)) {
                     return req.url;
