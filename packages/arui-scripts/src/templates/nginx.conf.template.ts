@@ -6,7 +6,7 @@ server {
     listen ${configs.clientServerPort};
 
     location / {
-        proxy_pass http://localhost:${configs.serverPort};
+        proxy_pass http://127.0.0.1:${configs.serverPort};
     }
 
     location /${configs.publicPath} {
