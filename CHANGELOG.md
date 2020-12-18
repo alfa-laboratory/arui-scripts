@@ -1,3 +1,12 @@
+## [10.1.3](https://github.com/alfa-laboratory/arui-scripts/compare/v10.1.2...v10.1.3) (2020-12-18)
+
+
+### Bug Fixes
+
+* **dev-server:** fix wrong path and url comparison on windows ([d488311](https://github.com/alfa-laboratory/arui-scripts/commit/d488311d88343647d19f65daa2364dcb9fb7035c))
+
+
+
 ## [10.1.2](https://github.com/alfa-laboratory/arui-scripts/compare/v10.1.1...v10.1.2) (2020-12-17)
 
 
