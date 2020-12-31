@@ -4,27 +4,31 @@ const { parseConfigFileTextToJson } = require('typescript');
 const merge = require('lodash.merge');
 const configs = require('../app-configs').default;
 const tsConfigPath = configs.tsconfig;
-const tsConfigText = fs.readFileSync(configs.tsconfig, 'utf8');
-const tsConfig = parseConfigFileTextToJson(tsConfigPath, tsConfigText);
-const tsConfigPaths = tsConfig.config.compilerOptions.paths || {};
+let tsConfig;
+let tsConfigPaths;
 
-const defaultJestConfig = {
-    testRegex: '(^.*src).*(((\/__test__\/|\/__tests__\/).*)|(test|spec|tests))\.(jsx?|tsx?)$',
-    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+if (tsConfigPath) {
+    const tsConfigText = fs.readFileSync(configs.tsconfig, 'utf8');
+
+    tsConfig = parseConfigFileTextToJson(tsConfigPath, tsConfigText);
+    tsConfigPaths = tsConfig.config.compilerOptions.paths || {};
+}
+
+let defaultJestConfig = {
+    testRegex: '(^.*src).*(((\/__test__\/|\/__tests__\/).*)|(test|spec|tests))\.(jsx?)$',
+    moduleFileExtensions: ['js', 'jsx'],
     collectCoverageFrom: [
-        'src/**/*.{js,jsx,ts,tsx}'
+        'src/**/*.{js,jsx}'
     ],
     // transform project js and ts files using babel ant ts transformers
     transform: {
         '^.+\\.jsx?$': require.resolve('./babel-transform'),
-        '^.+\\.tsx?$': require.resolve('ts-jest'),
         // transform other files to simple empty strings
-        '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': require.resolve('./file-transform')
+        '^(?!.*\\.(js|jsx|css|json)$)': require.resolve('./file-transform')
     },
     moduleNameMapper: {
         // replace all css files with simple empty exports
-        '\\.css$': require.resolve('./css-mock'),
-        ...pathsToModuleNameMapper(tsConfigPaths, { prefix: '<rootDir>/' })
+        '\\.css$': require.resolve('./css-mock')
     },
     setupFiles: [
         require.resolve('./setup')
@@ -32,13 +36,34 @@ const defaultJestConfig = {
     snapshotSerializers: [
         require.resolve('jest-snapshot-serializer-class-name-to-string')
     ],
-    globals: {
-        'ts-jest': {
-            tsConfig: configs.tsconfig,
-            babelConfig: require('../babel-client').default
-        }
-    }
 };
+
+if (tsConfigPath) {
+    defaultJestConfig = {
+        ...defaultJestConfig,
+        testRegex: '(^.*src).*(((\/__test__\/|\/__tests__\/).*)|(test|spec|tests))\.(jsx?|tsx?)$',
+        moduleFileExtensions: [...defaultJestConfig.moduleFileExtensions, 'ts', 'tsx'],
+        collectCoverageFrom: [
+            'src/**/*.{js,jsx,ts,tsx}'
+        ],
+        transform: {
+            ...defaultJestConfig.transform,
+            '^.+\\.tsx?$': require.resolve('ts-jest'),
+            // transform other files to simple empty strings
+            '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': require.resolve('./file-transform')
+        },
+        globals: {
+            'ts-jest': {
+                tsConfig: configs.tsconfig,
+                babelConfig: require('../babel-client').default
+            }
+        },
+        moduleNameMapper: {
+            ...defaultJestConfig.moduleNameMapper,
+            ...pathsToModuleNameMapper(tsConfigPaths, { prefix: '<rootDir>/' })
+        },
+    };
+}
 
 let appJestConfig = {};
 if (configs.appPackage.jest) {
