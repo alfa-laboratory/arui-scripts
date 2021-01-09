@@ -1,0 +1,19 @@
+name: Create new library package
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: create new version
+        run: |
+          cd packages/arui-scripts
+          yarn --immutable && yarn semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERMISSION_GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          WORK_SPACE: ${{ github.workspace }}
+          CI: true
