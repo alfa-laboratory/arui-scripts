@@ -1,3 +1,12 @@
+## [10.1.4](https://github.com/alfa-laboratory/arui-scripts/compare/v10.1.3...v10.1.4) (2021-01-15)
+
+
+### Bug Fixes
+
+* fix folder error ([eb5faa1](https://github.com/alfa-laboratory/arui-scripts/commit/eb5faa1a8221d09b75de477db2c8754ba909d881))
+
+
+
 ## [10.1.3](https://github.com/alfa-laboratory/arui-scripts/compare/v10.1.2...v10.1.3) (2020-12-18)
 
 
