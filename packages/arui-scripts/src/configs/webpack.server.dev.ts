@@ -5,7 +5,7 @@ import fs from 'fs';
 import webpack from 'webpack';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import StartServerPlugin from 'start-server-webpack-plugin';
+import { RunScriptWebpackPlugin } from 'run-script-webpack-plugin';
 import ReloadServerPlugin from '../plugins/reload-server-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
 import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
@@ -188,7 +188,9 @@ const config: webpack.Configuration = {
     },
     plugins: ([
         configs.useServerHMR
-            ? new StartServerPlugin(configs.serverOutput)
+            ? new RunScriptWebpackPlugin({
+                name: configs.serverOutput
+            })
             : new ReloadServerPlugin({ script: path.join(configs.serverOutputPath, configs.serverOutput) }),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.BannerPlugin({

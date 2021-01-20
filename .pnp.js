@@ -4260,6 +4260,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:1.0.3"
       ],
       [
+        "run-script-webpack-plugin",
+        "npm:0.0.5"
+      ],
+      [
         "safe-buffer",
         "npm:5.2.1"
       ],
@@ -4478,10 +4482,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "stack-utils",
         "npm:1.0.2"
-      ],
-      [
-        "start-server-webpack-plugin",
-        "npm:2.2.5"
       ],
       [
         "static-extend",
@@ -9377,8 +9377,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-hot-loader", "virtual:2c213c67ca6e3743ab37666d1fbbe1044bc26623d297bd900a8da5e7c04ee09f48a553f05d9e496405acbc782f11c64e341622a1b56fd12f09bf6295d5483ee0#npm:4.12.19"],
             ["reload-server-webpack-plugin", "npm:1.0.1"],
             ["rimraf", "npm:2.7.1"],
+            ["run-script-webpack-plugin", "npm:0.0.5"],
             ["shelljs", "npm:0.8.3"],
-            ["start-server-webpack-plugin", "npm:2.2.5"],
             ["strip-ansi", "npm:6.0.0"],
             ["style-loader", "virtual:2e1cfe8ca4b94041027a551f92706165e18b0d6493f6e559da277f2ca53e1af7ab73aac8bd8b94a9a5b92cf04bb71a71dc7d071380908874ca77c2132070d0ad#npm:1.1.3"],
             ["svg-url-loader", "virtual:2e1cfe8ca4b94041027a551f92706165e18b0d6493f6e559da277f2ca53e1af7ab73aac8bd8b94a9a5b92cf04bb71a71dc7d071380908874ca77c2132070d0ad#npm:6.0.0"],
@@ -9502,8 +9502,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-hot-loader", "virtual:2e1cfe8ca4b94041027a551f92706165e18b0d6493f6e559da277f2ca53e1af7ab73aac8bd8b94a9a5b92cf04bb71a71dc7d071380908874ca77c2132070d0ad#npm:4.12.19"],
             ["reload-server-webpack-plugin", "npm:1.0.1"],
             ["rimraf", "npm:2.7.1"],
+            ["run-script-webpack-plugin", "npm:0.0.5"],
             ["shelljs", "npm:0.8.3"],
-            ["start-server-webpack-plugin", "npm:2.2.5"],
             ["strip-ansi", "npm:6.0.0"],
             ["style-loader", "virtual:2e1cfe8ca4b94041027a551f92706165e18b0d6493f6e559da277f2ca53e1af7ab73aac8bd8b94a9a5b92cf04bb71a71dc7d071380908874ca77c2132070d0ad#npm:1.1.3"],
             ["svg-url-loader", "virtual:2e1cfe8ca4b94041027a551f92706165e18b0d6493f6e559da277f2ca53e1af7ab73aac8bd8b94a9a5b92cf04bb71a71dc7d071380908874ca77c2132070d0ad#npm:6.0.0"],
@@ -20208,6 +20208,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["run-script-webpack-plugin", [
+        ["npm:0.0.5", {
+          "packageLocation": "./.yarn/cache/run-script-webpack-plugin-npm-0.0.5-17dda3625a-f464df276d.zip/node_modules/run-script-webpack-plugin/",
+          "packageDependencies": [
+            ["run-script-webpack-plugin", "npm:0.0.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["safe-buffer", [
         ["npm:5.1.2", {
           "packageLocation": "./.yarn/cache/safe-buffer-npm-5.1.2-c27fedf6c4-2708587c1b.zip/node_modules/safe-buffer/",
@@ -20949,15 +20958,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/stack-utils-npm-1.0.2-a53fc54747-593a8bc5ca.zip/node_modules/stack-utils/",
           "packageDependencies": [
             ["stack-utils", "npm:1.0.2"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["start-server-webpack-plugin", [
-        ["npm:2.2.5", {
-          "packageLocation": "./.yarn/cache/start-server-webpack-plugin-npm-2.2.5-80b424537c-fe850d4de2.zip/node_modules/start-server-webpack-plugin/",
-          "packageDependencies": [
-            ["start-server-webpack-plugin", "npm:2.2.5"]
           ],
           "linkType": "HARD",
         }]

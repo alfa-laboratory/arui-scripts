@@ -3475,8 +3475,8 @@ __metadata:
     react-hot-loader: 4.12.19
     reload-server-webpack-plugin: 1.0.1
     rimraf: ^2.6.2
+    run-script-webpack-plugin: ^0.0.5
     shelljs: 0.8.3
-    start-server-webpack-plugin: ^2.2.1
     strip-ansi: ^6.0.0
     style-loader: 1.1.3
     svg-url-loader: ^6.0.0
@@ -13123,6 +13123,13 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
+"run-script-webpack-plugin@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "run-script-webpack-plugin@npm:0.0.5"
+  checksum: f464df276de39bf028d02235b51b351dd86195e035a0aaba4e4ff5a10d3ccb0d03d856063e0300a8f45bb05fe341b819c84a35db214a5d1cf6d7cde9ed47c396
+  languageName: node
+  linkType: hard
+
 "safe-buffer@npm:5.1.2, safe-buffer@npm:~5.1.0, safe-buffer@npm:~5.1.1":
   version: 5.1.2
   resolution: "safe-buffer@npm:5.1.2"
@@ -13810,13 +13817,6 @@ resolve@1.1.7:
   version: 1.0.2
   resolution: "stack-utils@npm:1.0.2"
   checksum: 593a8bc5ca6d4bc0f97a5eb9b4d5739614a1037ccbeb05989de7e24c9352e2744c779611fa30a441ab40a97a1cc770d6cd4acdbc621fd80ea8d309c3d8068c49
-  languageName: node
-  linkType: hard
-
-"start-server-webpack-plugin@npm:^2.2.1":
-  version: 2.2.5
-  resolution: "start-server-webpack-plugin@npm:2.2.5"
-  checksum: fe850d4de27c64e6749044dcd37aed9387ac97f846a4c6f8de6f3e6d519ddb14f32addc7a6ab959c7a2c4327605449f8dfdabbb0466941677a4710f7a34da6f8
   languageName: node
   linkType: hard
 
