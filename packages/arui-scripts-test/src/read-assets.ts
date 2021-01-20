@@ -11,7 +11,11 @@ export function readAssetsManifest() {
             return;
         }
         if (manifest[key].js) {
-            js.push(manifest[key].js);
+            if (Array.isArray(manifest[key].js)){
+                manifest[key].js.map((jsPath: string) => js.push(jsPath)).join('');
+            } else {
+                js.push(manifest[key].js);
+            }
         }
         if (manifest[key].css) {
             css.push(manifest[key].css);

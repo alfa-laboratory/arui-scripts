@@ -1,7 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 
-import ManifestPlugin from 'webpack-manifest-plugin';
+import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
@@ -10,7 +10,6 @@ import CompressionPlugin from 'compression-webpack-plugin';
 import AssetsPlugin from 'assets-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import getCSSModuleLocalIdent from 'react-dev-utils/getCSSModuleLocalIdent';
-const PnpWebpackPlugin = require('pnp-webpack-plugin');
 
 import applyOverrides from './util/apply-overrides';
 import getEntry from './util/get-entry';
@@ -45,7 +44,7 @@ const config  = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient
         filename: '[name].[chunkhash:8].js',
         chunkFilename: '[name].[chunkhash:8].chunk.js',
         // Point sourcemap entries to original disk location (format as URL on Windows)
-        devtoolModuleFilenameTemplate: info =>
+        devtoolModuleFilenameTemplate: (info: any) =>
             path
                 .relative(configs.appSrc, info.absoluteResourcePath)
                 .replace(/\\/g, '/'),
@@ -80,11 +79,10 @@ const config  = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient
                         // into invalid ecma 5 code. This is why the 'compress' and 'output'
                         // sections only apply transformations that are ecma 5 safe
                         // https://github.com/facebook/create-react-app/pull/4234
-                        ecma: 8,
+                        ecma: 2017,
                     },
                     compress: {
                         ecma: 5,
-                        warnings: false,
                         // Disabled because of an issue with Uglify breaking seemingly valid code:
                         // https://github.com/facebook/create-react-app/issues/2376
                         // Pending further investigation:
@@ -110,9 +108,6 @@ const config  = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient
                 // Use multi-process parallel running to improve the build speed
                 // Default number of concurrent runs: os.cpus().length - 1
                 parallel: true,
-                // Enable file caching
-                cache: true,
-                sourceMap: true,
             })
         ],
     },
@@ -130,17 +125,11 @@ const config  = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient
         // for React Native Web.
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
         plugins: ([
-            PnpWebpackPlugin,
             (configs.tsconfig && new TsconfigPathsPlugin({
                 configFile: configs.tsconfig,
                 extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
             })),
-        ].filter(Boolean)) as webpack.ResolvePlugin[],
-    },
-    resolveLoader: {
-        plugins: [
-            PnpWebpackPlugin.moduleLoader(module),
-        ],
+        ].filter(Boolean)) as any[],
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -219,7 +208,7 @@ const config  = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient
                     {
                         test: cssRegex,
                         exclude: cssModuleRegex,
-                        loaders: [
+                        use: [
                             {
                                 loader: MiniCssExtractPlugin.loader,
                                 options: { publicPath: './' }
@@ -244,7 +233,7 @@ const config  = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient
                     },
                     {
                         test: cssModuleRegex,
-                        loaders: [
+                        use: [
                             {
                                 loader: MiniCssExtractPlugin.loader,
                                 options: { publicPath: './' }
@@ -293,13 +282,16 @@ const config  = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient
     },
     plugins: ([
         new AssetsPlugin({ path: configs.serverOutputPath }),
+        new webpack.DefinePlugin({
+            // Tell Webpack to provide empty mocks for process.env.
+            'process.env': '{}' 
+        }),
         // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash:8].css',
             chunkFilename: '[name].[contenthash:8].chunk.css',
         }),
-        new webpack.HashedModuleIdsPlugin(),
-        new ManifestPlugin(),
+        new WebpackManifestPlugin(),
         new OptimizeCssAssetsPlugin({
             cssProcessorOptions: {
                 reduceIdents: {
@@ -341,16 +333,7 @@ const config  = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient
                     noopPath
                 )
             ]
-    )) as webpack.Plugin[],
-    // Some libraries import Node modules but don't use them in the browser.
-    // Tell Webpack to provide empty mocks for them so importing them works.
-    node: {
-        dgram: 'empty',
-        fs: 'empty',
-        net: 'empty',
-        tls: 'empty',
-        child_process: 'empty',
-    }
+    )) as any[]
 });
 
 export default config;

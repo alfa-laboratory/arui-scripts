@@ -54,7 +54,7 @@ const config = applyOverrides<webpack.Configuration>(['webpack', 'webpackServer'
                 .replace(/\\/g, '/'),
     },
     externals: [nodeExternals({
-        whitelist: [
+        allowlist: [
             /^arui-feather/,
             /^arui-ft-private/,
             /^arui-private/,
@@ -88,7 +88,7 @@ const config = applyOverrides<webpack.Configuration>(['webpack', 'webpackServer'
                 configFile: configs.tsconfig,
                 extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
             }))
-        ].filter(Boolean)) as webpack.ResolvePlugin[],
+        ].filter(Boolean)) as any[],
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -192,7 +192,7 @@ const config = applyOverrides<webpack.Configuration>(['webpack', 'webpackServer'
             entryOnly: false
         }),
         configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin()
-    ].filter(Boolean)) as webpack.Plugin[]
+    ].filter(Boolean)) as any[]
 });
 
 export default config;

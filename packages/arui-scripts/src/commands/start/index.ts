@@ -16,12 +16,12 @@ const clientCompiler = webpack(clientConfig);
 const serverCompiler = webpack(serverConfig);
 const clientDevServer = new WebpackDevServer(clientCompiler, devServerConfig);
 
-serverCompiler.plugin('compile', () => console.log('Compiling server...'));
-serverCompiler.plugin('invalid', () => console.log('Compiling server...'));
-serverCompiler.plugin('done', (stats) => printCompilerOutput('Server', stats));
+serverCompiler.hooks.compile.tap('server', () => console.log('Compiling server...'));
+serverCompiler.hooks.invalid.tap('server', () => console.log('Compiling server...'));
+serverCompiler.hooks.done.tap('server', (stats: any) => printCompilerOutput('Server', stats));
 
-clientCompiler.plugin('invalid', () => console.log('Compiling client...'));
-clientCompiler.plugin('done', (stats) => printCompilerOutput('Client', stats));
+clientCompiler.hooks.invalid.tap('client', () => console.log('Compiling client...'));
+clientCompiler.hooks.done.tap('client', (stats: any) => printCompilerOutput('Client', stats));
 
 
 const DEFAULT_PORT = devServerConfig.port;

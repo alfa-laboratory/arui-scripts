@@ -6,7 +6,7 @@ import webpack from 'webpack';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import StartServerPlugin from 'start-server-webpack-plugin';
-import ReloadServerPlugin from 'reload-server-webpack-plugin';
+import ReloadServerPlugin from '../plugins/reload-server-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
 import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
@@ -51,13 +51,13 @@ const config: webpack.Configuration = {
         filename: configs.serverOutput,
         chunkFilename: '[name].js',
         // Point sourcemap entries to original disk location (format as URL on Windows)
-        devtoolModuleFilenameTemplate: info =>
+        devtoolModuleFilenameTemplate: (info: any) =>
             path
                 .relative(configs.appSrc, info.absoluteResourcePath)
                 .replace(/\\/g, '/'),
     },
     externals: [nodeExternals({
-        whitelist: [
+        allowlist: [
             /^arui-feather/,
             /^arui-ft-private/,
             /^arui-private/,
@@ -89,7 +89,7 @@ const config: webpack.Configuration = {
                 configFile: configs.tsconfig,
                 extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
             }))
-        ].filter(Boolean)) as webpack.ResolvePlugin[],
+        ].filter(Boolean)) as any[],
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -199,7 +199,6 @@ const config: webpack.Configuration = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         }),
-        new webpack.NamedModulesPlugin(),
         // Watcher doesn't work well if you mistype casing in a path so we use
         // a plugin that prints an error when you attempt to do this.
         // See https://github.com/facebookincubator/create-react-app/issues/240
@@ -211,7 +210,7 @@ const config: webpack.Configuration = {
         new WatchMissingNodeModulesPlugin(configs.appNodeModules),
         configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
         configs.useServerHMR && new webpack.HotModuleReplacementPlugin(),
-    ].filter(Boolean)) as webpack.Plugin[],
+    ].filter(Boolean)) as any[],
     // Turn off performance hints during development because we don't do any
     // splitting or minification in interest of speed. These warnings become
     // cumbersome.
