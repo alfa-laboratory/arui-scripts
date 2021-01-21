@@ -1,3 +1,40 @@
+## [10.1.4](https://github.com/alfa-laboratory/arui-scripts/compare/v10.1.3...v10.1.4) (2021-01-15)
+
+
+### Bug Fixes
+
+* fix folder error ([eb5faa1](https://github.com/alfa-laboratory/arui-scripts/commit/eb5faa1a8221d09b75de477db2c8754ba909d881))
+
+
+
+## [10.1.3](https://github.com/alfa-laboratory/arui-scripts/compare/v10.1.2...v10.1.3) (2020-12-18)
+
+
+### Bug Fixes
+
+* **dev-server:** fix wrong path and url comparison on windows ([d488311](https://github.com/alfa-laboratory/arui-scripts/commit/d488311d88343647d19f65daa2364dcb9fb7035c))
+
+
+
+## [10.1.2](https://github.com/alfa-laboratory/arui-scripts/compare/v10.1.1...v10.1.2) (2020-12-17)
+
+
+### Bug Fixes
+
+* **nginx:** always use only ipv4 host ([fe73d1c](https://github.com/alfa-laboratory/arui-scripts/commit/fe73d1c41d3f14afdc41c137b760a253eaea2755))
+
+
+
+## [10.1.1](https://github.com/alfa-laboratory/arui-scripts/compare/v10.1.0...v10.1.1) (2020-11-30)
+
+
+### Bug Fixes
+
+* **tsconfig:** formatting fix ([32b2248](https://github.com/alfa-laboratory/arui-scripts/commit/32b22485197a90bb004deb7d5dedd14f2b89dc10))
+* **tsconfig:** separate build config from published config ([a55051d](https://github.com/alfa-laboratory/arui-scripts/commit/a55051d06f2ee8df86a6c78ebee5d13dba2a713c))
+
+
+
 # [10.1.0](https://github.com/alfa-laboratory/arui-scripts/compare/v10.0.1...v10.1.0) (2020-11-10)
 
 

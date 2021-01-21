@@ -2,8 +2,8 @@
     "compilerOptions": {
         /* Basic Options */
         "incremental": true /* Enable incremental compilation */,
-        "target": "ES2016" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */,
-        "module": "CommonJS" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */,
+        "target": "esnext" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */,
+        "module": "esnext" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */,
         "lib": [
             "dom",
             "esnext"
@@ -66,13 +66,6 @@
         "emitDecoratorMetadata": true /* Enables experimental support for emitting type metadata for decorators. */,
 
         /* Advanced Options */
-        "forceConsistentCasingInFileNames": true, /* Disallow inconsistently-cased references to the same file. */
-        "skipLibCheck": true,
-        "outDir": "./build",
-        "allowJs": true
-    },
-    "include": [
-        "src/**/*.ts",
-        "src/**/*.js"
-    ]
+        "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
+    }
 }
