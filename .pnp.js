@@ -4333,7 +4333,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "postcss-custom-media",
-        "npm:6.0.0"
+        "npm:7.0.8"
       ],
       [
         "postcss-custom-properties",
@@ -10628,7 +10628,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-calc", "npm:6.0.2"],
             ["postcss-color-function", "npm:4.1.0"],
             ["postcss-color-mod-function", "npm:3.0.3"],
-            ["postcss-custom-media", "npm:6.0.0"],
+            ["postcss-custom-media", "npm:7.0.8"],
             ["postcss-custom-properties", "npm:9.2.0"],
             ["postcss-discard-comments", "npm:2.0.4"],
             ["postcss-discard-duplicates", "npm:4.0.2"],
@@ -10761,7 +10761,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-calc", "npm:6.0.2"],
             ["postcss-color-function", "npm:4.1.0"],
             ["postcss-color-mod-function", "npm:3.0.3"],
-            ["postcss-custom-media", "npm:6.0.0"],
+            ["postcss-custom-media", "npm:7.0.8"],
             ["postcss-custom-properties", "npm:9.2.0"],
             ["postcss-discard-comments", "npm:2.0.4"],
             ["postcss-discard-duplicates", "npm:4.0.2"],
@@ -21737,11 +21737,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["postcss-custom-media", [
-        ["npm:6.0.0", {
-          "packageLocation": "./.yarn/cache/postcss-custom-media-npm-6.0.0-be0b1da824-64d9b4f4f7.zip/node_modules/postcss-custom-media/",
+        ["npm:7.0.8", {
+          "packageLocation": "./.yarn/cache/postcss-custom-media-npm-7.0.8-a81612c5d3-f0ac879d17.zip/node_modules/postcss-custom-media/",
           "packageDependencies": [
-            ["postcss-custom-media", "npm:6.0.0"],
-            ["postcss", "npm:6.0.23"]
+            ["postcss-custom-media", "npm:7.0.8"],
+            ["postcss", "npm:7.0.32"]
           ],
           "linkType": "HARD",
         }]
