@@ -3835,7 +3835,7 @@ __metadata:
     postcss-calc: ^6.0.1
     postcss-color-function: ^4.0.1
     postcss-color-mod-function: ^3.0.3
-    postcss-custom-media: ^6.0.0
+    postcss-custom-media: ^7.0.8
     postcss-custom-properties: 9.2.0
     postcss-discard-comments: ^2.0.4
     postcss-discard-duplicates: ^4.0.2
@@ -13798,12 +13798,12 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"postcss-custom-media@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "postcss-custom-media@npm:6.0.0"
+"postcss-custom-media@npm:^7.0.8":
+  version: 7.0.8
+  resolution: "postcss-custom-media@npm:7.0.8"
   dependencies:
-    postcss: ^6.0.1
-  checksum: 64d9b4f4f7169134c63c7cd9bfd7640e56bf0027498a702431096953a445d70405448085c22899b52887ac979c57cbe1c613102932c97e60073d4a44f4589772
+    postcss: ^7.0.14
+  checksum: f0ac879d17f61225f1e086854720a63a2950d59f115ac66ed440873b69cc7b20f3941bf4667954bd8aa311ec959a98b8044a69c4674364e9bb9452097357b606
   languageName: node
   linkType: hard
 

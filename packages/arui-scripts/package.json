@@ -60,7 +60,7 @@
         "postcss-calc": "^6.0.1",
         "postcss-color-function": "^4.0.1",
         "postcss-color-mod-function": "^3.0.3",
-        "postcss-custom-media": "^6.0.0",
+        "postcss-custom-media": "^7.0.8",
         "postcss-custom-properties": "9.2.0",
         "postcss-discard-comments": "^2.0.4",
         "postcss-discard-duplicates": "^4.0.2",
