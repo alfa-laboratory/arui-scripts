@@ -109,7 +109,7 @@ const config  = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient
                 // Default number of concurrent runs: os.cpus().length - 1
                 parallel: true,
             })
-        ],
+        ] as any[],
     },
     resolve: {
         // This allows you to set a fallback for where Webpack should look for modules.
