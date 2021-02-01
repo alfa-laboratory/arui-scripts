@@ -176,7 +176,7 @@ if (process.env.ARUI_SCRIPTS_CONFIG) {
 
 //
 // Обновляем их в последнюю очередь
-config.publicPath = `${config.assetsPath}/`;
+config.publicPath += `${config.assetsPath}/`;
 config.serverOutputPath = path.resolve(CWD, config.buildPath);
 config.clientOutputPath = path.resolve(CWD, config.buildPath, config.assetsPath);
 
