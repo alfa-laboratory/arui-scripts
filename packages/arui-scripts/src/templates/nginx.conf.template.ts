@@ -4,6 +4,7 @@ const nginxTemplate = `client_max_body_size 20m;
 
 server {
     listen ${configs.clientServerPort};
+    server_tokens off;
 
     location / {
         proxy_pass http://127.0.0.1:${configs.serverPort};
