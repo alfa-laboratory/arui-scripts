@@ -12,7 +12,7 @@ export function readAssetsManifest() {
         }
         if (manifest[key].js) {
             if (Array.isArray(manifest[key].js)){
-                manifest[key].js.map((jsPath: string) => js.push(jsPath)).join('');
+                js.push(manifest[key].js[0]);
             } else {
                 js.push(manifest[key].js);
             }
