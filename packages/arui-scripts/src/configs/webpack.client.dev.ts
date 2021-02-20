@@ -6,6 +6,7 @@ import AssetsPlugin from 'assets-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
 import getCSSModuleLocalIdent from 'react-dev-utils/getCSSModuleLocalIdent';
+const PnpWebpackPlugin = require('pnp-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
@@ -79,6 +80,11 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                 extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
             }))
         ].filter(Boolean)) as any[],
+    },
+    resolveLoader: {	
+        plugins: [	
+            PnpWebpackPlugin.moduleLoader(module),	
+        ],	
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -246,7 +252,7 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
             'process.env': '{}' 
         }),
         // This is necessary to emit hot updates (currently CSS only):
-        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
         // Watcher doesn't work well if you mistype casing in a path so we use
         // a plugin that prints an error when you attempt to do this.
         // See https://github.com/facebookincubator/create-react-app/issues/240
