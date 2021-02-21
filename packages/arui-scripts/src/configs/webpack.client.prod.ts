@@ -3,7 +3,6 @@ import webpack from 'webpack';
 
 import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
@@ -17,6 +16,8 @@ import configs from './app-configs';
 import babelConf from './babel-client';
 import postcssConf from './postcss';
 import checkNodeVersion from './util/check-node-version';
+
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const noopPath = require.resolve('./util/noop');
 
@@ -292,14 +293,7 @@ const config  = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient
             chunkFilename: '[name].[contenthash:8].chunk.css',
         }),
         new WebpackManifestPlugin(),
-        new OptimizeCssAssetsPlugin({
-            cssProcessorOptions: {
-                reduceIdents: {
-                    keyframes: false
-                },
-                zindex: false
-            }
-        }),
+        new CssMinimizerPlugin(),
         new CompressionPlugin({
             filename: '[file].gz',
             algorithm: 'gzip',

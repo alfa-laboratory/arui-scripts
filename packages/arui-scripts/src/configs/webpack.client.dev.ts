@@ -8,7 +8,7 @@ import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModul
 import getCSSModuleLocalIdent from 'react-dev-utils/getCSSModuleLocalIdent';
 const PnpWebpackPlugin = require('pnp-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 import configs from './app-configs';
 import babelConf from './babel-client';
@@ -24,7 +24,7 @@ function getSingleEntry(clientEntry: string[]) {
     return [
         configs.clientPolyfillsEntry,
         require.resolve('react-hot-loader/patch'),
-        `${require.resolve('webpack-dev-server/client')}?/`,
+        // `${require.resolve('webpack-dev-server/client')}?/`,
         require.resolve('webpack/hot/dev-server'),
         // Finally, this is your app's code:
         ...clientEntry,
@@ -270,14 +270,12 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
         // ])
         configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
         new MiniCssExtractPlugin(),
-        new OptimizeCssAssetsPlugin({
-            cssProcessorOptions: {
-                map: {
-                    inline: false,
-                    annotation: true
-                },
+        new CssMinimizerPlugin({ // нужно использовать https://github.com/webpack-contrib/css-minimizer-webpack-plugin
+            sourceMap: {
+                inline: false,
+                annotation: true
             },
-            cssProcessorPluginOptions: {
+            minimizerOptions: {
                 preset: () => ({
                     plugins: [
                         require('postcss-discard-duplicates')
