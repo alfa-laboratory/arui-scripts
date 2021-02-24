@@ -24,7 +24,7 @@ function getSingleEntry(clientEntry: string[]) {
     return [
         configs.clientPolyfillsEntry,
         require.resolve('react-hot-loader/patch'),
-        `${require.resolve('webpack-dev-server/client/default')}?/`,
+        // `${require.resolve('webpack-dev-server/client/default')}?/`,
         require.resolve('webpack/hot/dev-server'),
         // Finally, this is your app's code:
         ...clientEntry,
@@ -286,6 +286,10 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
     performance: {
         hints: false,
     },
+    // Без этого комиляция трирегилась на изменение в node_modules и приводила к утечке памяти
+    watchOptions: {
+        ignored: '**/node_modules',
+    }
 });
 
 export default webpackClientDev;
