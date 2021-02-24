@@ -3926,7 +3926,7 @@ __metadata:
     tsconfig-paths-webpack-plugin: 3.3.0
     typescript: ^3.9.7
     url-loader: 1.1.2
-    webpack: 5.23.0
+    webpack: 5.24.1
     webpack-bundle-analyzer: ^3.8.0
     webpack-dev-server: 4.0.0-beta.0
     webpack-manifest-plugin: 3.0.0
@@ -7327,6 +7327,13 @@ __metadata:
   version: 0.3.26
   resolution: "es-module-lexer@npm:0.3.26"
   checksum: f6a6bfb5f38e7ecdb3fb5e530a9998dcf988356757460cb5f3b86240f6150bf5084aa651984a295d820c0532d097ab5296dad73f408f70e846ad566b733910fa
+  languageName: node
+  linkType: hard
+
+"es-module-lexer@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "es-module-lexer@npm:0.4.0"
+  checksum: 41d29cc3eb7e648c535bba09e6511834cbb9d06ed4747972ad102e605e1134567a39a3b3f482b9148693a5a95caf7ffe828db9d8f1ede833b836a5d9593f1933
   languageName: node
   linkType: hard
 
@@ -18365,7 +18372,43 @@ typescript@^4.0.2:
   languageName: node
   linkType: hard
 
-"webpack@npm:5.23.0, webpack@npm:^5.1.0":
+"webpack@npm:5.24.1":
+  version: 5.24.1
+  resolution: "webpack@npm:5.24.1"
+  dependencies:
+    "@types/eslint-scope": ^3.7.0
+    "@types/estree": ^0.0.46
+    "@webassemblyjs/ast": 1.11.0
+    "@webassemblyjs/wasm-edit": 1.11.0
+    "@webassemblyjs/wasm-parser": 1.11.0
+    acorn: ^8.0.4
+    browserslist: ^4.14.5
+    chrome-trace-event: ^1.0.2
+    enhanced-resolve: ^5.7.0
+    es-module-lexer: ^0.4.0
+    eslint-scope: ^5.1.1
+    events: ^3.2.0
+    glob-to-regexp: ^0.4.1
+    graceful-fs: ^4.2.4
+    json-parse-better-errors: ^1.0.2
+    loader-runner: ^4.2.0
+    mime-types: ^2.1.27
+    neo-async: ^2.6.2
+    schema-utils: ^3.0.0
+    tapable: ^2.1.1
+    terser-webpack-plugin: ^5.1.1
+    watchpack: ^2.0.0
+    webpack-sources: ^2.1.1
+  peerDependenciesMeta:
+    webpack-cli:
+      optional: true
+  bin:
+    webpack: bin/webpack.js
+  checksum: 1e290ffe77504be99c677ff654f27fcca375a04bb2fd5d1a5d3146ab0082ecd02b992d78f5499b5119a8b5ae6bb247ea9d8f52fb793041af1a16d75c2a975677
+  languageName: node
+  linkType: hard
+
+"webpack@npm:^5.1.0":
   version: 5.23.0
   resolution: "webpack@npm:5.23.0"
   dependencies:
