@@ -110,6 +110,7 @@
         "@types/filesize": "^5.0.0",
         "@types/fs-extra": "^9.0.1",
         "@types/gzip-size": "^5.1.1",
+        "@types/jest": "^26.0.20",
         "@types/lodash.merge": "^4.6.6",
         "@types/mini-css-extract-plugin": "^0.9.1",
         "@types/node": "12",
@@ -135,12 +136,20 @@
         "node": ">=8.9.1"
     },
     "scripts": {
-        "build": "tsc --project tsconfig-local.json"
+        "build": "tsc --project tsconfig-local.json",
+        "test": "jest"
     },
     "peerDependencies": {
         "react": "^16.0.0",
         "react-dom": "^16.0.0",
         "typescript": ">=3.7.3"
+    },
+    "jest": {
+        "testRegex": "src/.*/__tests__/.*\\.ts$",
+        "moduleFileExtensions": ["ts", "js"],
+        "transform": {
+            "^.+\\.tsx?$": "ts-jest"
+        }
     },
     "author": "Good guys from Alfa Laboratory",
     "maintainers": [
