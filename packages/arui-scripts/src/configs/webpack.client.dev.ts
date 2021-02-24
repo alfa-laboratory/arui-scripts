@@ -172,7 +172,6 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                             {
                                 loader: MiniCssExtractPlugin.loader,
                                 options: {
-                                    hmr: true,
                                     publicPath: './',
                                 },
                             },
@@ -199,7 +198,6 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                             {
                                 loader: MiniCssExtractPlugin.loader,
                                 options: {
-                                    hmr: true,
                                     publicPath: './',
                                 },
                             },
@@ -251,8 +249,6 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
             // Tell Webpack to provide empty mocks for process.env.
             'process.env': '{}' 
         }),
-        // This is necessary to emit hot updates (currently CSS only):
-        new webpack.HotModuleReplacementPlugin(),
         // Watcher doesn't work well if you mistype casing in a path so we use
         // a plugin that prints an error when you attempt to do this.
         // See https://github.com/facebookincubator/create-react-app/issues/240
