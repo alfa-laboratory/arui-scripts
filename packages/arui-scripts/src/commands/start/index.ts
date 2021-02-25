@@ -3,6 +3,7 @@ process.env.BROWSERSLIST_CONFIG = process.env.BROWSERSLIST_CONFIG || require.res
 import fs from 'fs-extra';
 import webpack from 'webpack';
 import chalk from 'chalk';
+// @ts-ignore
 import WebpackDevServer from 'webpack-dev-server';
 import { choosePort } from 'react-dev-utils/WebpackDevServerUtils';
 import checkRequiredFiles from '../util/check-required-files';

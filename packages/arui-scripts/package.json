@@ -93,7 +93,7 @@
         "url-loader": "1.1.2",
         "webpack": "5.24.1",
         "webpack-bundle-analyzer": "^3.8.0",
-        "webpack-dev-server": "3.11.2",
+        "webpack-dev-server": "4.0.0-beta.0",
         "webpack-manifest-plugin": "3.0.0",
         "webpack-node-externals": "2.5.2"
     },
@@ -121,7 +121,6 @@
         "@types/tar": "^4.0.3",
         "@types/terser-webpack-plugin": "5.0.2",
         "@types/webpack-bundle-analyzer": "3.9.0",
-        "@types/webpack-dev-server": "3.11.1",
         "@types/webpack-manifest-plugin": "3.0.3",
         "@types/webpack-node-externals": "2.5.0",
         "semantic-release": "^17.3.4",
