@@ -9,6 +9,7 @@ import CompressionPlugin from 'compression-webpack-plugin';
 import AssetsPlugin from 'assets-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import getCSSModuleLocalIdent from 'react-dev-utils/getCSSModuleLocalIdent';
+const PnpWebpackPlugin = require('pnp-webpack-plugin');
 
 import applyOverrides from './util/apply-overrides';
 import getEntry from './util/get-entry';
@@ -131,6 +132,11 @@ const config  = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient
                 extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
             })),
         ].filter(Boolean)) as any[],
+    },
+    resolveLoader: {
+        plugins: [
+            PnpWebpackPlugin.moduleLoader(module),
+        ],
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code

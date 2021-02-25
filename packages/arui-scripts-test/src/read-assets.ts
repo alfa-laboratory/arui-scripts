@@ -11,11 +11,7 @@ export function readAssetsManifest() {
             return;
         }
         if (manifest[key].js) {
-            if (Array.isArray(manifest[key].js)){
-                js.push(manifest[key].js[0]);
-            } else {
-                js.push(manifest[key].js);
-            }
+            js.push(manifest[key].js);
         }
         if (manifest[key].css) {
             css.push(manifest[key].css);

@@ -81,10 +81,10 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
             }))
         ].filter(Boolean)) as any[],
     },
-    resolveLoader: {	
-        plugins: [	
-            PnpWebpackPlugin.moduleLoader(module),	
-        ],	
+    resolveLoader: {
+        plugins: [
+            PnpWebpackPlugin.moduleLoader(module),
+        ],
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
