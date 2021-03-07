@@ -3,7 +3,7 @@
 
 import chalk from 'chalk';
 import webpack from 'webpack';
-import formatWebpackMessages from '../util/format-webpack-messages';
+import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
 
 type BuildResult = {
     stats: webpack.Stats;
