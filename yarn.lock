@@ -2829,7 +2829,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dev-utils@npm:^9.0.4":
+"@types/react-dev-utils@npm:9.0.4":
   version: 9.0.4
   resolution: "@types/react-dev-utils@npm:9.0.4"
   dependencies:
@@ -3853,7 +3853,7 @@ __metadata:
     "@types/lodash.merge": ^4.6.6
     "@types/mini-css-extract-plugin": 1.2.2
     "@types/node": 12
-    "@types/react-dev-utils": ^9.0.4
+    "@types/react-dev-utils": 9.0.4
     "@types/shelljs": ^0.8.8
     "@types/start-server-webpack-plugin": 2.2.0
     "@types/strip-ansi": ^5.2.1
@@ -3908,7 +3908,7 @@ __metadata:
     postcss-omit-import-tilde: ^1.0.1
     postcss-strip-units: ^2.0.1
     postcss-url: 7.3.1
-    react-dev-utils: 11.0.1
+    react-dev-utils: 11.0.3
     react-hot-loader: 4.13.0
     reload-server-webpack-plugin: 1.0.1
     rimraf: ^2.6.2
@@ -9327,10 +9327,10 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"immer@npm:7.0.9":
-  version: 7.0.9
-  resolution: "immer@npm:7.0.9"
-  checksum: 20fba3dabd033f9584eb1df9c16210b64c16a536a6376b0dedf153176554d89432ee86409458d8773edd142ddcae75f8e242b1952cd5b61c22767a4538880dd0
+"immer@npm:8.0.1":
+  version: 8.0.1
+  resolution: "immer@npm:8.0.1"
+  checksum: a8c8d531af8f968f4d5a2ec3c5eeb6dd6933c69d216b3f8c55275e34c87926d556db4e3d81f5f038e66f9886e874da4ab4f7ffe228e33d718593820e2f57b68f
   languageName: node
   linkType: hard
 
@@ -14904,9 +14904,9 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"react-dev-utils@npm:11.0.1":
-  version: 11.0.1
-  resolution: "react-dev-utils@npm:11.0.1"
+"react-dev-utils@npm:11.0.3":
+  version: 11.0.3
+  resolution: "react-dev-utils@npm:11.0.3"
   dependencies:
     "@babel/code-frame": 7.10.4
     address: 1.1.2
@@ -14921,18 +14921,18 @@ fsevents@~2.3.1:
     global-modules: 2.0.0
     globby: 11.0.1
     gzip-size: 5.1.1
-    immer: 7.0.9
+    immer: 8.0.1
     is-root: 2.1.0
     loader-utils: 2.0.0
     open: ^7.0.2
     pkg-up: 3.1.0
     prompts: 2.4.0
-    react-error-overlay: ^6.0.8
+    react-error-overlay: ^6.0.9
     recursive-readdir: 2.2.2
     shell-quote: 1.7.2
     strip-ansi: 6.0.0
     text-table: 0.2.0
-  checksum: f9bfd513f59ada7c5e3f3cdb24709383eebbd750d85a91fb1b91d1712f8ea3ab18d5ae0685e19572ecdb691b4506bf6bdedb845fc8635cb3e8e880c3b7a93ba5
+  checksum: b2f338fd21ff47602c90637111407aeabd3e662c84e0ef860c47451d5d65e7c8df5129435468d35374f0cb3423b49989068377866ec3da93d7e85799a08fc28a
   languageName: node
   linkType: hard
 
@@ -14950,10 +14950,10 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"react-error-overlay@npm:^6.0.8":
-  version: 6.0.8
-  resolution: "react-error-overlay@npm:6.0.8"
-  checksum: b839fdd91ae8b8482c797a007b63753f9b52bcf15641ddb9df17d158791d3ad88d909fa1526071857420478eb502b4ed87e39e96380ebdd43f45db2272680e8d
+"react-error-overlay@npm:^6.0.9":
+  version: 6.0.9
+  resolution: "react-error-overlay@npm:6.0.9"
+  checksum: 5e971284cc76af684940d78a91c8eac639f16b3b9500a03423ae177392cdaf320788b9c9112f58a2dde4f5a80688acdbc89334827354e95493244968af94830f
   languageName: node
   linkType: hard
 
