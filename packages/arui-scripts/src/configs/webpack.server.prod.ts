@@ -117,9 +117,6 @@ const config = applyOverrides<webpack.Configuration>(['webpack', 'webpackServer'
                                 }, babelConf)
                             },
                             {
-                                loader: require.resolve('cache-loader')
-                            },
-                            {
                                 loader: require.resolve('ts-loader'),
                                 options: {
                                     onlyCompileBundledFiles: true,
@@ -142,9 +139,10 @@ const config = applyOverrides<webpack.Configuration>(['webpack', 'webpackServer'
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
-                                    modules: true,
-                                    exportOnlyLocals: true,
-                                    getLocalIdent: getCSSModuleLocalIdent
+                                    modules: {
+                                        exportOnlyLocals: true,
+                                        getLocalIdent: getCSSModuleLocalIdent
+                                    },
                                 },
                             },
                             {

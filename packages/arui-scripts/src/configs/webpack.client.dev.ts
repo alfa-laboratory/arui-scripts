@@ -147,9 +147,6 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                                 }, babelConf)
                             },
                             {
-                                loader: require.resolve('cache-loader')
-                            },
-                            {
                                 loader: require.resolve('ts-loader'),
                                 options: {
                                     onlyCompileBundledFiles: true,
@@ -205,8 +202,9 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                                 loader: require.resolve('css-loader'),
                                 options: {
                                     importLoaders: 1,
-                                    modules: true,
-                                    getLocalIdent: getCSSModuleLocalIdent
+                                    modules: {
+                                        getLocalIdent: getCSSModuleLocalIdent
+                                    },
                                 },
                             },
                             {
@@ -245,9 +243,10 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
     plugins: ([
         new AssetsPlugin({ path: configs.serverOutputPath }),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
             // Tell Webpack to provide empty mocks for process.env.
-            'process.env': '{}' 
+            'process.env': `{
+                NODE_ENV: "${JSON.stringify(process.env.NODE_ENV)}"
+            }` 
         }),
         // Watcher doesn't work well if you mistype casing in a path so we use
         // a plugin that prints an error when you attempt to do this.

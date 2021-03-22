@@ -123,9 +123,6 @@ const config: webpack.Configuration = {
                                 }, babelConf)
                             },
                             {
-                                loader: require.resolve('cache-loader')
-                            },
-                            {
                                 loader: require.resolve('ts-loader'),
                                 options: {
                                     onlyCompileBundledFiles: true,
@@ -148,9 +145,10 @@ const config: webpack.Configuration = {
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
-                                    modules: true,
-                                    exportOnlyLocals: true,
-                                    getLocalIdent: getCSSModuleLocalIdent
+                                    modules: {
+                                        exportOnlyLocals: true,
+                                        getLocalIdent: getCSSModuleLocalIdent
+                                    },
                                 },
                             },
                             {
@@ -199,7 +197,9 @@ const config: webpack.Configuration = {
             entryOnly: false
         }),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+            'process.env': `{
+                NODE_ENV: "${JSON.stringify(process.env.NODE_ENV)}"
+            }`
         }),
         // Watcher doesn't work well if you mistype casing in a path so we use
         // a plugin that prints an error when you attempt to do this.
