@@ -289,7 +289,7 @@ const config  = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient
         new AssetsPlugin({ path: configs.serverOutputPath }),
         new webpack.DefinePlugin({
             // Tell Webpack to provide empty mocks for process.env.
-            'process.env': '{}' 
+            'process.env': '{}'
         }),
         // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
         new MiniCssExtractPlugin({

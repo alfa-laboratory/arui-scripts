@@ -243,10 +243,7 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
     plugins: ([
         new AssetsPlugin({ path: configs.serverOutputPath }),
         new webpack.DefinePlugin({
-            // Tell Webpack to provide empty mocks for process.env.
-            'process.env': `{
-                NODE_ENV: "${JSON.stringify(process.env.NODE_ENV)}"
-            }` 
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
         }),
         // Watcher doesn't work well if you mistype casing in a path so we use
         // a plugin that prints an error when you attempt to do this.
