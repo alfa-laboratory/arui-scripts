@@ -8,7 +8,9 @@ import http from "http";
 const devServerConfig = applyOverrides<Configuration>('devServer', {
     port: configs.clientServerPort,
     hot: 'only',
-    overlay: true,
+    client: {
+        overlay: true,
+    },
     dev: {
         publicPath: `/${configs.publicPath}`,
     },

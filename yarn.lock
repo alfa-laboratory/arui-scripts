@@ -3457,7 +3457,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ansi-html@npm:0.0.7":
+"ansi-html@npm:^0.0.7":
   version: 0.0.7
   resolution: "ansi-html@npm:0.0.7"
   bin:
@@ -3917,7 +3917,7 @@ __metadata:
     url-loader: 4.1.1
     webpack: 5.27.2
     webpack-bundle-analyzer: 3.8.0
-    webpack-dev-server: 4.0.0-beta.0
+    webpack-dev-server: 4.0.0-beta.1
     webpack-manifest-plugin: 3.0.0
     webpack-node-externals: 2.5.2
   peerDependencies:
@@ -4865,7 +4865,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:^3.4.3":
+"chokidar@npm:^3.5.1":
   version: 3.5.1
   resolution: "chokidar@npm:3.5.1"
   dependencies:
@@ -8715,6 +8715,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"graceful-fs@npm:^4.2.6":
+  version: 4.2.6
+  resolution: "graceful-fs@npm:4.2.6"
+  checksum: 84d39c7756892553da990a9db7e45f844b3309b37b5a00174cbb4748476f2250c54f24594d4d252f64f085c65c2fdac7c809419bf6d55f0e6e42eb07ac0f5bf2
+  languageName: node
+  linkType: hard
+
 "growly@npm:^1.3.0":
   version: 1.3.0
   resolution: "growly@npm:1.3.0"
@@ -8986,10 +8993,10 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"html-entities@npm:^1.3.1":
-  version: 1.4.0
-  resolution: "html-entities@npm:1.4.0"
-  checksum: 639b7722433e5f78856f92431a302d2f113a9c2947d684975926801e507dfcf1269fdbf1f719931f478749b5a53a642b0f2c90959cd41af21a633722e9c64422
+"html-entities@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "html-entities@npm:2.1.1"
+  checksum: 0412c31ed8620c35048810cd4dcb6ade15a1e99c89f39c8e1cacce0918a20bb30f32f4776fcc9293941fde708475fa3c9f3f70d258fc8ffcea3099545842a3c2
   languageName: node
   linkType: hard
 
@@ -9486,7 +9493,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"ip@npm:1.1.5, ip@npm:^1.1.0, ip@npm:^1.1.5":
+"ip@npm:1.1.5, ip@npm:^1.1.0":
   version: 1.1.5
   resolution: "ip@npm:1.1.5"
   checksum: 3ad007368cf797ec9b73fbac0a644077198dd85a128d0fe39697a78a9cdd47915577eee5c4eca9933549b575ac4716107896c2d4aa43a1622b3f72104232cad4
@@ -13062,7 +13069,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"open@npm:^7.3.0":
+"open@npm:^7.4.2":
   version: 7.4.2
   resolution: "open@npm:7.4.2"
   dependencies:
@@ -13320,7 +13327,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"p-retry@npm:^4.2.0":
+"p-retry@npm:^4.4.0":
   version: 4.4.0
   resolution: "p-retry@npm:4.4.0"
   dependencies:
@@ -16284,7 +16291,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"sockjs-client@npm:1.5.0":
+"sockjs-client@npm:^1.5.0":
   version: 1.5.0
   resolution: "sockjs-client@npm:1.5.0"
   dependencies:
@@ -16298,7 +16305,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"sockjs@npm:0.3.21":
+"sockjs@npm:^0.3.21":
   version: 0.3.21
   resolution: "sockjs@npm:0.3.21"
   dependencies:
@@ -18213,7 +18220,7 @@ typescript@^4.0.2:
   languageName: node
   linkType: hard
 
-"webpack-dev-middleware@npm:^4.0.2":
+"webpack-dev-middleware@npm:^4.1.0":
   version: 4.1.0
   resolution: "webpack-dev-middleware@npm:4.1.0"
   dependencies:
@@ -18229,39 +18236,39 @@ typescript@^4.0.2:
   languageName: node
   linkType: hard
 
-"webpack-dev-server@npm:4.0.0-beta.0":
-  version: 4.0.0-beta.0
-  resolution: "webpack-dev-server@npm:4.0.0-beta.0"
+"webpack-dev-server@npm:4.0.0-beta.1":
+  version: 4.0.0-beta.1
+  resolution: "webpack-dev-server@npm:4.0.0-beta.1"
   dependencies:
-    ansi-html: 0.0.7
+    ansi-html: ^0.0.7
     bonjour: ^3.5.0
-    chokidar: ^3.4.3
+    chokidar: ^3.5.1
     compression: ^1.7.4
     connect-history-api-fallback: ^1.6.0
     del: ^6.0.0
     express: ^4.17.1
     find-cache-dir: ^3.3.1
-    graceful-fs: ^4.2.4
-    html-entities: ^1.3.1
+    graceful-fs: ^4.2.6
+    html-entities: ^2.1.1
     http-proxy-middleware: ^1.0.6
     internal-ip: ^6.2.0
-    ip: ^1.1.5
+    ipaddr.js: ^1.9.1
     is-absolute-url: ^3.0.3
     killable: ^1.0.1
-    open: ^7.3.0
-    p-retry: ^4.2.0
+    open: ^7.4.2
+    p-retry: ^4.4.0
     portfinder: ^1.0.28
     schema-utils: ^3.0.0
     selfsigned: ^1.10.8
     serve-index: ^1.9.1
-    sockjs: 0.3.21
-    sockjs-client: 1.5.0
+    sockjs: ^0.3.21
+    sockjs-client: ^1.5.0
     spdy: ^4.0.2
     strip-ansi: ^6.0.0
     url: ^0.11.0
     util: ^0.12.3
-    webpack-dev-middleware: ^4.0.2
-    ws: ^7.4.0
+    webpack-dev-middleware: ^4.1.0
+    ws: ^7.4.4
   peerDependencies:
     webpack: ^4.0.0 || ^5.0.0
   peerDependenciesMeta:
@@ -18269,7 +18276,7 @@ typescript@^4.0.2:
       optional: true
   bin:
     webpack-dev-server: bin/webpack-dev-server.js
-  checksum: 41d2857202cad7ba3fa160820aeaf8d5c555313f9eb5bc014fbfea4aeaacf7a6329125e66099ec037315dc4baf3c140b5464dc558427b18056184149c3e5b4e3
+  checksum: 273d49a56be92e92a5e658d5e7e9d2f58dd204c0528f14ac85143bc49eb895a624c9f6acfbc768e86549b52aa5f494d51198aaf26d358f8f6d8a02af05d28562
   languageName: node
   linkType: hard
 
@@ -18627,9 +18634,9 @@ typescript@^4.0.2:
   languageName: node
   linkType: hard
 
-"ws@npm:^7.4.0":
-  version: 7.4.3
-  resolution: "ws@npm:7.4.3"
+"ws@npm:^7.4.4":
+  version: 7.4.4
+  resolution: "ws@npm:7.4.4"
   peerDependencies:
     bufferutil: ^4.0.1
     utf-8-validate: ^5.0.2
@@ -18638,7 +18645,7 @@ typescript@^4.0.2:
       optional: true
     utf-8-validate:
       optional: true
-  checksum: 493655b7c4589d09ff3c2b6e8870b9ad7f7aea0aff34034e2dbb9a2e13f6868a47b06b423bc2365aec6143500b04ad24fdaecfbd9a6752f8eab2d339182c9884
+  checksum: ad08761ed753cdd3f7172e9a9efc7d74e7e196623cace2380e5f74ff0abd16196e03223bd4148a34278dcbc653ee3841994635419281cbf303b3f22c589e2ec4
   languageName: node
   linkType: hard
 
