@@ -291,7 +291,7 @@ docker run -p 8080:8080 container-name:version ./start.sh
 
 На `8080` порту будет поднят nginx, который будет раздавать статику и проксировать все остальные запросы к `nodejs`.
 
-Вы также можете переопределить полностью процесс сборки docker-образа, создав в корневой директории проекта `Dockerfile` содержащий необходимый набор инструкций. Пример [Dockerfile](https://github.com/alfa-laboratory/arui-scripts/blob/master/commands/docker-build/dockerfile.template.js).
+Вы также можете переопределить полностью процесс сборки docker-образа, создав в корневой директории проекта `Dockerfile` содержащий необходимый набор инструкций. Пример [Dockerfile](src/templates/dockerfile.template.js).
 
 archive
 ---
@@ -358,7 +358,7 @@ yarn будет использоваться когда в рутовой пап
 ---
 
 Несмотря на то, что nginx имеет готовый конфиг с роутингом, иногда возникает необходимость добавлять свои роуты.
-Для этого вы можете создать `nginx.conf` на уровне проекта со своими роутами. Пример конфига [тут](https://github.com/alfa-laboratory/arui-scripts/blob/v10.0.0/packages/arui-scripts/src/templates/nginx.conf.template.ts).
+Для этого вы можете создать `nginx.conf` на уровне проекта со своими роутами. Пример конфига [тут](src/templates/nginx.conf.template.ts).
 
 
 Удаление proptypes
@@ -389,7 +389,7 @@ require не js файлов в node_modules в node.js
 в итоговый бандл, а загружается стандартным `require` node.js. Как правило - это нам и нужно.
 Но в случае react-компонентов, мы зачастую запрашиваем кроме кода компонентов еще и `.css`, `.png` и другие файлы.
 require node.js на таких местах ломается. Поэтому наши внутренние библиотеки компонентов все же вкомпиливаются
-в итоговый бандл сервера. Это сделанно с помощью [добавления их в исключение](https://github.com/alfa-laboratory/arui-scripts/blob/master/packages/arui-scripts/src/configs/webpack.server.dev.ts#L59)
+в итоговый бандл сервера. Это сделанно с помощью [добавления их в исключение](src/configs/webpack.server.dev.ts#L59)
 плагина [webpack-node-externals](https://www.npmjs.com/package/webpack-node-externals).
 В случае, если вам необходима обработка не-js файлов из других внешних модулей - вы можете
 воспользоваться механизмом `overrides`, описанным ниже.
