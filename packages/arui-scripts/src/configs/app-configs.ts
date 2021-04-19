@@ -99,7 +99,7 @@ let config: AppConfigs = {
     serverOutput: 'server.js',
 
     // client compilation configs
-    clientPolyfillsEntry: aruiPolyfills,
+    clientPolyfillsEntry: require.resolve('./polyfills/arui-feather'),
     clientEntry: path.resolve(absoluteSrcPath, 'index'),
     keepPropTypes: false,
 
@@ -179,5 +179,9 @@ if (process.env.ARUI_SCRIPTS_CONFIG) {
 config.publicPath = `${config.assetsPath}/`;
 config.serverOutputPath = path.resolve(CWD, config.buildPath);
 config.clientOutputPath = path.resolve(CWD, config.buildPath, config.assetsPath);
+
+if (config.keepCssVars) {
+    config.clientPolyfillsEntry = require.resolve('./polyfills/css-custom-properties');
+}
 
 export default config;
