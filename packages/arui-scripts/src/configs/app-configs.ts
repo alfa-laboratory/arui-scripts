@@ -19,13 +19,6 @@ const overridesPath = path.join(CWD, 'arui-scripts.overrides.js');
 const nginxConfFilePath = path.join(CWD, 'nginx.conf');
 const dockerfileFilePath = path.join(CWD, 'Dockerfile');
 
-let aruiPolyfills = null;
-try {
-    aruiPolyfills = require.resolve('arui-feather/polyfills');
-} catch (error) {
-    // just ignore it
-}
-
 type AppConfigs = {
     appPackage: any; // todo;
     name: string;
