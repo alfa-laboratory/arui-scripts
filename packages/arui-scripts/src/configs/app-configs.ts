@@ -2,6 +2,8 @@ import path from 'path';
 import fs from 'fs';
 import merge from 'lodash.merge';
 import validateSettingsKeys from './util/validate-settings-keys';
+import { AppConfigs } from './config-type';
+import { getPolyfills } from './util/get-polyfills';
 
 const CWD = process.cwd();
 
@@ -18,60 +20,6 @@ const yarnLockFilePath = path.join(CWD, 'yarn.lock');
 const overridesPath = path.join(CWD, 'arui-scripts.overrides.js');
 const nginxConfFilePath = path.join(CWD, 'nginx.conf');
 const dockerfileFilePath = path.join(CWD, 'Dockerfile');
-
-let aruiPolyfills = null;
-try {
-    aruiPolyfills = require.resolve('arui-feather/polyfills');
-} catch (error) {
-    // just ignore it
-}
-
-type AppConfigs = {
-    appPackage: any; // todo;
-    name: string;
-    version: string;
-    dockerRegistry: string;
-    baseDockerImage: string;
-
-    cwd: string;
-    appSrc: string;
-    appNodeModules: string;
-    buildPath: string;
-    assetsPath: string;
-    additionalBuildPath: string[];
-    nginxRootPath: string;
-    runFromNonRootUser: boolean;
-    archiveName: string;
-
-    serverEntry: string | string[] | Record<string, string | string[]>;
-    serverOutput: string;
-
-    clientPolyfillsEntry: string | null;
-    clientEntry: string;
-    keepPropTypes: boolean;
-
-    tsconfig: string | null;
-    localNginxConf: string | null;
-    localDockerfile: string | null;
-
-    useTscLoader: boolean;
-    useServerHMR: boolean;
-    useYarn: boolean;
-
-    clientServerPort: number;
-    serverPort: number;
-
-    debug: boolean;
-    hasOverrides: boolean;
-    overridesPath: string;
-
-    componentsTheme: string | undefined;
-    keepCssVars: boolean;
-
-    publicPath: string;
-    serverOutputPath: string;
-    clientOutputPath: string;
-};
 
 /**
  * Базовые настройки. Часть из них может быть переопределена через env либо через package.json
@@ -99,7 +47,7 @@ let config: AppConfigs = {
     serverOutput: 'server.js',
 
     // client compilation configs
-    clientPolyfillsEntry: aruiPolyfills,
+    clientPolyfillsEntry: null,
     clientEntry: path.resolve(absoluteSrcPath, 'index'),
     keepPropTypes: false,
 
@@ -174,10 +122,11 @@ if (process.env.ARUI_SCRIPTS_CONFIG) {
     }
 }
 
-//
+// Эти ключи зависит от других ключей
 // Обновляем их в последнюю очередь
 config.publicPath = `${config.assetsPath}/`;
 config.serverOutputPath = path.resolve(CWD, config.buildPath);
 config.clientOutputPath = path.resolve(CWD, config.buildPath, config.assetsPath);
+config.clientPolyfillsEntry = getPolyfills(config);
 
 export default config;
