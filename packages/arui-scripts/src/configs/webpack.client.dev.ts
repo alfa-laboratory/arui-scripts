@@ -22,7 +22,7 @@ const cssModuleRegex = /\.module\.css$/;
 
 function getSingleEntry(clientEntry: string[]) {
     return [
-        configs.clientPolyfillsEntry,
+        ...(Array.isArray(configs.clientPolyfillsEntry) ? configs.clientPolyfillsEntry : [configs.clientPolyfillsEntry]),
         require.resolve('react-hot-loader/patch'),
         `${require.resolve('webpack-dev-server/client')}?/`,
         require.resolve('webpack/hot/dev-server'),

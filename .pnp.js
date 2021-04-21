@@ -3036,6 +3036,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:4.1.1"
       ],
       [
+        "ie11-custom-properties",
+        "npm:4.1.0"
+      ],
+      [
         "ieee754",
         "npm:1.1.13"
       ],
@@ -10958,6 +10962,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fork-ts-checker-webpack-plugin", "npm:5.2.0"],
             ["fs-extra", "npm:6.0.1"],
             ["gzip-size", "npm:5.1.1"],
+            ["ie11-custom-properties", "npm:4.1.0"],
             ["jest", "npm:25.5.4"],
             ["jest-snapshot-serializer-class-name-to-string", "npm:1.0.0"],
             ["lodash.merge", "npm:4.6.2"],
@@ -11093,6 +11098,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fork-ts-checker-webpack-plugin", "npm:5.2.0"],
             ["fs-extra", "npm:6.0.1"],
             ["gzip-size", "npm:5.1.1"],
+            ["ie11-custom-properties", "npm:4.1.0"],
             ["jest", "npm:25.5.4"],
             ["jest-snapshot-serializer-class-name-to-string", "npm:1.0.0"],
             ["lodash.merge", "npm:4.6.2"],
@@ -17482,6 +17488,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["icss-utils", "npm:4.1.1"],
             ["postcss", "npm:7.0.32"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["ie11-custom-properties", [
+        ["npm:4.1.0", {
+          "packageLocation": "./.yarn/cache/ie11-custom-properties-npm-4.1.0-503be21d67-66a934b402.zip/node_modules/ie11-custom-properties/",
+          "packageDependencies": [
+            ["ie11-custom-properties", "npm:4.1.0"]
           ],
           "linkType": "HARD",
         }]

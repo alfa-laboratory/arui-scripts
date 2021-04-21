@@ -6,6 +6,7 @@
         "clientPolyfillsEntry": "./src/polyfills.js",
         "serverEntry": "./src/server",
         "clientEntry": "./src/client",
+        "keepCssVars": false,
         "debug": true
     },
     "scripts": {

@@ -51,6 +51,7 @@
         "fork-ts-checker-webpack-plugin": "5.2.0",
         "fs-extra": "6.0.1",
         "gzip-size": "5.1.1",
+        "ie11-custom-properties": "^4.1.0",
         "jest": "25.5.4",
         "jest-snapshot-serializer-class-name-to-string": "1.0.0",
         "lodash.merge": "4.6.2",
@@ -146,7 +147,10 @@
     },
     "jest": {
         "testRegex": "src/.*/__tests__/.*\\.ts$",
-        "moduleFileExtensions": ["ts", "js"],
+        "moduleFileExtensions": [
+            "ts",
+            "js"
+        ],
         "transform": {
             "^.+\\.tsx?$": "ts-jest"
         }

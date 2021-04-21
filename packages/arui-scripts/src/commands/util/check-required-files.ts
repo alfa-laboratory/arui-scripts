@@ -22,7 +22,7 @@ function entryPointToArray(entryPoint: string | string[] | Record<string, string
 const files = [
     ...entryPointToArray(configs.serverEntry),
     ...entryPointToArray(configs.clientEntry),
-    configs.clientPolyfillsEntry
+    ...(Array.isArray(configs.clientPolyfillsEntry) ? configs.clientPolyfillsEntry : [configs.clientPolyfillsEntry]),
 ];
 
 function checkFileWithExtensions(filePath: string, extensions: string[]) {

@@ -1,0 +1,80 @@
+import { getPolyfills } from '../get-polyfills';
+import { AppConfigs } from '../../config-type';
+
+describe('getPolyfills', () => {
+    it('should return array when original config contain string as polyfills entry', () => {
+        const appConfig: Partial<AppConfigs> = {
+            clientPolyfillsEntry: 'custom-polyfills',
+        };
+
+        const polyfills = getPolyfills(appConfig as AppConfigs);
+
+        expect(polyfills).toMatchObject([
+            'custom-polyfills',
+        ]);
+    });
+
+    it('should return array when original config contains multiple polyfills entry', () => {
+        const appConfig: Partial<AppConfigs> = {
+            clientPolyfillsEntry: ['custom1', 'custom2'],
+        };
+
+        const polyfills = getPolyfills(appConfig as AppConfigs);
+
+        expect(polyfills).toMatchObject([
+            'custom1',
+            'custom2'
+        ]);
+    });
+
+    it('should return empty array when original config is empty', () => {
+        const appConfig: Partial<AppConfigs> = {
+            clientPolyfillsEntry: null,
+        };
+
+        const polyfills = getPolyfills(appConfig as AppConfigs);
+
+        expect(polyfills).toMatchObject([]);
+    });
+
+    it('should add feather polyfills when original config is empty and feather polyfills is available', () => {
+        const appConfig: Partial<AppConfigs> = {
+            clientPolyfillsEntry: null,
+        };
+        const requireResolve = jest.fn(() => 'feather-polyfills-path');
+
+        const polyfills = getPolyfills(appConfig as AppConfigs, requireResolve as any);
+
+        expect(polyfills).toMatchObject([
+            'feather-polyfills-path'
+        ]);
+        expect(requireResolve).toHaveBeenCalledWith('arui-feather/polyfills')
+    });
+
+    it('should not add feather polyfills when original config has any polyfills', () => {
+        const appConfig: Partial<AppConfigs> = {
+            clientPolyfillsEntry: [],
+        };
+        const requireResolve = jest.fn(() => 'feather-polyfills-path');
+
+        const polyfills = getPolyfills(appConfig as AppConfigs, requireResolve as any);
+
+        expect(polyfills).toMatchObject([]);
+        expect(requireResolve).not.toHaveBeenCalled();
+    });
+
+    it('should add path to ie custom properties when `config.keepCssVars = true`', () => {
+        const appConfig: Partial<AppConfigs> = {
+            keepCssVars: true,
+            clientPolyfillsEntry: []
+        };
+        const requireResolve = jest.fn(() => 'ie11-custom-properties');
+
+        const polyfills = getPolyfills(appConfig as AppConfigs, requireResolve as any);
+
+        expect(requireResolve).toHaveBeenCalledWith('ie11-custom-properties')
+        expect(polyfills).toMatchObject([
+            'ie11-custom-properties'
+        ]);
+    });
+});
