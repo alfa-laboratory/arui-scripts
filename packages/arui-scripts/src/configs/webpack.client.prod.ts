@@ -110,7 +110,8 @@ const config  = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient
                 // Use multi-process parallel running to improve the build speed
                 // Default number of concurrent runs: os.cpus().length - 1
                 parallel: true,
-            })
+            }),
+            new CssMinimizerPlugin()
         ] as any[],
     },
     resolve: {
@@ -297,7 +298,6 @@ const config  = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient
             chunkFilename: '[name].[contenthash:8].chunk.css',
         }),
         new WebpackManifestPlugin(),
-        new CssMinimizerPlugin(),
         new CompressionPlugin({
             filename: '[file].gz',
             algorithm: 'gzip',

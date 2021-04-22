@@ -247,6 +247,8 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
             // Tell Webpack to provide empty mocks for process.env.
             'process.env': '{}'
         }),
+        // This is necessary to emit hot updates (currently CSS only):
+        new webpack.HotModuleReplacementPlugin(),
         // Watcher doesn't work well if you mistype casing in a path so we use
         // a plugin that prints an error when you attempt to do this.
         // See https://github.com/facebookincubator/create-react-app/issues/240
@@ -264,25 +266,36 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
         // ])
         configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
         new MiniCssExtractPlugin(),
-        new CssMinimizerPlugin({ // нужно использовать https://github.com/webpack-contrib/css-minimizer-webpack-plugin
-            sourceMap: {
-                inline: false,
-                annotation: true
-            },
-            minimizerOptions: {
-                preset: () => ({
-                    plugins: [
-                        require('postcss-discard-duplicates')
-                    ]
-                })
-            },
-        }),
     ].filter(Boolean)),
     // Turn off performance hints during development because we don't do any
     // splitting or minification in interest of speed. These warnings become
     // cumbersome.
     performance: {
         hints: false,
+    },
+    optimization: {
+        minimizer: [
+            new CssMinimizerPlugin({
+                minimizerOptions: {
+                    processorOptions: {
+                        map: {
+                            // `inline: false` generates the source map in a separate file.
+                            // Otherwise, the CSS file is needlessly large.
+                            inline: false,
+                            // `annotation: false` skips appending the `sourceMappingURL`
+                            // to the end of the CSS file. Webpack already handles this.
+                            annotation: false,
+                        },
+                    },
+                    preset: () => ({
+                        plugins: [
+                            // eslint-disable-next-line global-require
+                            require('postcss-discard-duplicates'),
+                        ],
+                    }),
+                },
+            }),
+        ],
     },
     // Без этого комиляция трирегилась на изменение в node_modules и приводила к утечке памяти
     watchOptions: {
