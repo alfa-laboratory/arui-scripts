@@ -1,6 +1,6 @@
 jest.mock('../../app-configs', () => ({
     hasOverrides: true,
-    overridesPath: 'overrides'
+    overridesPath: ['overrides']
 }));
 
 beforeEach(() => {

@@ -1,5 +1,5 @@
 import { getPolyfills } from '../get-polyfills';
-import { AppConfigs } from '../../config-type';
+import { AppConfigs } from '../../app-configs/types';
 
 describe('getPolyfills', () => {
     it('should return array when original config contain string as polyfills entry', () => {

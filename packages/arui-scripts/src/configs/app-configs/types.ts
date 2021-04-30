@@ -35,7 +35,7 @@ export type AppConfigs = {
 
     debug: boolean;
     hasOverrides: boolean;
-    overridesPath: string;
+    overridesPath: string[];
 
     componentsTheme: string | undefined;
     keepCssVars: boolean;
