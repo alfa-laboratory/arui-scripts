@@ -4,15 +4,13 @@ type OverrideFile = Record<string, (config: any) => any>;
 
 let overrides: Array<OverrideFile> = [];
 
-if (appConfigs.hasOverrides) {
-    overrides = appConfigs.overridesPath.map(path => {
-        try {
-            return require(path)
-        } catch (e) {
-            return {};
-        }
-    });
-}
+overrides = appConfigs.overridesPath.map(path => {
+    try {
+        return require(path)
+    } catch (e) {
+        return {};
+    }
+});
 
 /**
  *

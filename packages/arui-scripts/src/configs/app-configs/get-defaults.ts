@@ -57,7 +57,6 @@ export function getDefaults(): AppConfigs {
         serverPort: 3000,
 
         debug: false,
-        hasOverrides: fs.existsSync(overridesPath),
         overridesPath: [overridesPath],
 
         componentsTheme: undefined,
