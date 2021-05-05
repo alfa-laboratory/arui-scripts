@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "private": true,
     "aruiScripts": {
+        "presets": "./presets",
         "clientPolyfillsEntry": "./src/polyfills.js",
         "serverEntry": "./src/server",
         "clientEntry": "./src/client",

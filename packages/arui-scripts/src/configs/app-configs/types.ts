@@ -34,8 +34,7 @@ export type AppConfigs = {
     serverPort: number;
 
     debug: boolean;
-    hasOverrides: boolean;
-    overridesPath: string;
+    overridesPath: string[];
 
     componentsTheme: string | undefined;
     keepCssVars: boolean;
