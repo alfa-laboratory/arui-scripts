@@ -60,7 +60,7 @@ export function getDefaults(): AppConfigs {
         overridesPath: [overridesPath],
 
         componentsTheme: undefined,
-        keepCssVars: true,
+        keepCssVars: false,
 
         // Эти пути зависят от других настроек, которые могут быть переопределены пользователем
         publicPath: '',

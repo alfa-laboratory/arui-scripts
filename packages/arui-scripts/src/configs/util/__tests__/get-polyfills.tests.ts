@@ -62,19 +62,4 @@ describe('getPolyfills', () => {
         expect(polyfills).toMatchObject([]);
         expect(requireResolve).not.toHaveBeenCalled();
     });
-
-    it('should add path to ie custom properties when `config.keepCssVars = true`', () => {
-        const appConfig: Partial<AppConfigs> = {
-            keepCssVars: true,
-            clientPolyfillsEntry: []
-        };
-        const requireResolve = jest.fn(() => 'ie11-custom-properties');
-
-        const polyfills = getPolyfills(appConfig as AppConfigs, requireResolve as any);
-
-        expect(requireResolve).toHaveBeenCalledWith('ie11-custom-properties')
-        expect(polyfills).toMatchObject([
-            'ie11-custom-properties'
-        ]);
-    });
 });
