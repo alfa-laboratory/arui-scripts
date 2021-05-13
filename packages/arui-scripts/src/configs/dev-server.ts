@@ -7,6 +7,8 @@ import http from "http";
 
 const devServerConfig = applyOverrides<Configuration>('devServer', {
     port: configs.clientServerPort,
+    // FIXME: В бета версии webpack-dev-server это поле может быть string
+    // @ts-ignore
     hot: 'only',
     client: {
         overlay: true,

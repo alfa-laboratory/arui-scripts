@@ -27,7 +27,10 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 
 function getSingleEntry(entryPoint: string[]) {
-    return [configs.clientPolyfillsEntry, ...entryPoint].filter(Boolean) as string[];
+    return [
+        ...(Array.isArray(configs.clientPolyfillsEntry) ? configs.clientPolyfillsEntry : [configs.clientPolyfillsEntry]),
+        ...entryPoint
+    ].filter(Boolean) as string[];
 }
 
 // This is the production configuration.

@@ -1,3 +1,6 @@
+:root {
+    --color-red: #ff0000;
+}
 body {
     background: aliceblue;
 }
@@ -8,7 +11,7 @@ body {
     margin: 10px;
     font-size: 20px;
     padding: 15px;
-    color: #eee;
+    color: var(--color-red);
     background: linear-gradient(345deg, #aacac2, #3929bb);
     background-size: 400% 400%;
     animation: Insanity 2s ease infinite;

@@ -1,10 +1,16 @@
 import appConfigs from '../app-configs';
 
-let overrides: Record<string, (config: any) => any> = {};
+type OverrideFile = Record<string, (config: any) => any>;
 
-if (appConfigs.hasOverrides) {
-    overrides = require(appConfigs.overridesPath);
-}
+let overrides: Array<OverrideFile> = [];
+
+overrides = appConfigs.overridesPath.map(path => {
+    try {
+        return require(path)
+    } catch (e) {
+        return {};
+    }
+});
 
 /**
  *
@@ -17,12 +23,14 @@ function applyOverrides<T = any>(overridesKey: string | string[], config: T): T 
         overridesKey = [overridesKey];
     }
     overridesKey.forEach(key => {
-        if (overrides.hasOwnProperty(key)) {
-            if (typeof overrides[key] !== 'function') {
-                console.error(`Override ${key} must be a function`);
+        overrides.forEach((override) =>{
+            if (override.hasOwnProperty(key)) {
+                if (typeof override[key] !== 'function') {
+                    console.error(`Override ${key} must be a function`);
+                }
+                config = override[key](config);
             }
-            config = overrides[key](config);
-        }
+        });
     });
 
     return config;
