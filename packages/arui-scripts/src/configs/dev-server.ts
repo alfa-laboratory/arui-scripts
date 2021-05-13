@@ -13,7 +13,7 @@ const devServerConfig = applyOverrides<Configuration>('devServer', {
     client: {
         overlay: true,
     },
-    dev: {
+    devMiddleware: {
         publicPath: `/${configs.publicPath}`,
     },
     static: [configs.serverOutputPath],
