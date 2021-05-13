@@ -53,7 +53,7 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
         filename: '[name].js',
         chunkFilename: '[name].js',
         // Point sourcemap entries to original disk location (format as URL on Windows)
-        devtoolModuleFilenameTemplate: (info: any) =>
+        devtoolModuleFilenameTemplate: info =>
             path
                 .relative(configs.appSrc, info.absoluteResourcePath)
                 .replace(/\\/g, '/'),
@@ -79,7 +79,7 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                 configFile: configs.tsconfig,
                 extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
             }))
-        ].filter(Boolean)) as any[],
+        ].filter(Boolean)) as webpack.ResolvePlugin[],
     },
     resolveLoader: {
         plugins: [

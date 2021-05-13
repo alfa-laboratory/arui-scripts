@@ -61,8 +61,8 @@ export function calculateAssetsSizes(webpackStats: Stats, rootDir: string = ''):
         .assets || []);
 
     const assets = assetsStats
-        .filter((asset: any) => canReadAsset(asset.name))
-        .map((asset: any) => {
+        .filter((asset) => canReadAsset(asset.name))
+        .map((asset) => {
             const fileContents = fs.readFileSync(path.join(rootDir, asset.name));
             const size = gzipSize(fileContents);
             const brSize = brotliSize(fileContents);
@@ -81,7 +81,7 @@ export function calculateAssetsSizes(webpackStats: Stats, rootDir: string = ''):
         })
 ;
 
-    const totalSizes: Partial<TotalSizes> = (assets || []).reduce((file: any, total: any) => {
+    const totalSizes: Partial<TotalSizes> = (assets || []).reduce((file, total) => {
         return {
             size: total.size + file.size,
             gzipSize: total.gzipSize + file.gzipSize,

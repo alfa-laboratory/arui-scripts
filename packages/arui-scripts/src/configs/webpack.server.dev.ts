@@ -6,7 +6,6 @@ import webpack from 'webpack';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { RunScriptWebpackPlugin } from 'run-script-webpack-plugin';
-import ReloadServerPlugin from '../plugins/reload-server-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
 import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
@@ -17,6 +16,8 @@ import babelConf from './babel-server';
 import postcssConf from './postcss';
 import applyOverrides from './util/apply-overrides';
 import getEntry from './util/get-entry';
+
+const ReloadServerPlugin = require('../plugins/reload-server-webpack-plugin');
 
 const assetsIgnoreBanner = fs.readFileSync(require.resolve('./util/node-assets-ignore'), 'utf8');
 
@@ -51,7 +52,7 @@ const config: webpack.Configuration = {
         filename: configs.serverOutput,
         chunkFilename: '[name].js',
         // Point sourcemap entries to original disk location (format as URL on Windows)
-        devtoolModuleFilenameTemplate: (info: any) =>
+        devtoolModuleFilenameTemplate: info =>
             path
                 .relative(configs.appSrc, info.absoluteResourcePath)
                 .replace(/\\/g, '/'),
@@ -89,7 +90,7 @@ const config: webpack.Configuration = {
                 configFile: configs.tsconfig,
                 extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
             }))
-        ].filter(Boolean)) as any[],
+        ].filter(Boolean)) as webpack.ResolvePlugin[],
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -210,7 +211,7 @@ const config: webpack.Configuration = {
         new WatchMissingNodeModulesPlugin(configs.appNodeModules),
         configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
         configs.useServerHMR && new webpack.HotModuleReplacementPlugin(),
-    ].filter(Boolean)) as any[],
+    ].filter(Boolean)) as webpack.ResolvePlugin[],
     // Turn off performance hints during development because we don't do any
     // splitting or minification in interest of speed. These warnings become
     // cumbersome.
