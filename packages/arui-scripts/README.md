@@ -291,7 +291,11 @@ docker run -p 8080:8080 container-name:version ./start.sh
 
 На `8080` порту будет поднят nginx, который будет раздавать статику и проксировать все остальные запросы к `nodejs`.
 
-Вы также можете переопределить полностью процесс сборки docker-образа, создав в корневой директории проекта `Dockerfile` содержащий необходимый набор инструкций. Пример [Dockerfile](src/templates/dockerfile.template.ts).
+Вы также можете переопределить полностью процесс сборки docker-образа используя механизм [overrides](#тонкая-настройка)
+или создав в корневой директории проекта `Dockerfile` содержащий необходимый набор инструкций.
+Пример [Dockerfile](src/templates/dockerfile.template.ts).
+
+`Dockerfile` в корне проекта имеет приоритет над overrides.
 
 archive
 ---
@@ -358,7 +362,9 @@ yarn будет использоваться когда в рутовой пап
 ---
 
 Несмотря на то, что nginx имеет готовый конфиг с роутингом, иногда возникает необходимость добавлять свои роуты.
-Для этого вы можете создать `nginx.conf` на уровне проекта со своими роутами. Пример конфига [тут](src/templates/nginx.conf.template.ts).
+Вы можете использовать механизм [overrides](#тонкая-настройка).
+Так же вы можете создать `nginx.conf` на уровне проекта со своими роутами. Пример конфига [тут](src/templates/nginx.conf.template.ts).
+Файл nginx.conf имеет приоритет над оверрайдами.
 
 
 Удаление proptypes
@@ -452,11 +458,23 @@ module.exports = {
     };
     ```
 - `stats-options` - конфигурация для [webpack-stats](https://webpack.js.org/configuration/stats/). Ключи: `stats`.
-- `webpack.client.dev` - конфигурация для клиентского webpack в dev режиме. Ключи: `webpack`, `webpackClient`, `webpackDev`, `webpackClientDev`.
-- `webpack.client.prod` - конфигурация для клиентского webpack в prod режиме. Ключи: `webpack`, `webpackClient`, `webpackProd`, `webpackClientProd`.
-- `webpack.server.dev` - конфигурация для серверного webpack в dev режиме. Ключи: `webpack`, `webpackServer`, `webpackDev`, `webpackServerDev`.
-- `webpack.server.prod` - конфигурация для серверного webpack в prod режиме. Ключи: `webpack`, `webpackServer`, `webpackProd`, `webpackServerProd`.
-- `supporting-browsers` - список поддерживаемых браузеров в формате [browserslist](https://github.com/browserslist/browserslist). Ключи: `browsers`, `supportingBrowsers`
+- `webpack.client.dev` - конфигурация для клиентского webpack в dev режиме.
+  Ключи: `webpack`, `webpackClient`, `webpackDev`, `webpackClientDev`.
+- `webpack.client.prod` - конфигурация для клиентского webpack в prod режиме.
+  Ключи: `webpack`, `webpackClient`, `webpackProd`, `webpackClientProd`.
+- `webpack.server.dev` - конфигурация для серверного webpack в dev режиме.
+  Ключи: `webpack`, `webpackServer`, `webpackDev`, `webpackServerDev`.
+- `webpack.server.prod` - конфигурация для серверного webpack в prod режиме.
+  Ключи: `webpack`, `webpackServer`, `webpackProd`, `webpackServerProd`.
+- `supporting-browsers` - список поддерживаемых браузеров в формате [browserslist](https://github.com/browserslist/browserslist).
+  Ключи: `browsers`, `supportingBrowsers`
+- `Dockerfile` - докерфайл, который будет использоваться для сборки контейнера.
+  Базовый шаблон [тут](./src/templates/dockerfile.template.ts).
+  [`Dockerfile` в корне проекта](#docker) имеет приоритет над overrides.
+- `nginx` - шаблон конфигурации для nginx внутри контейнера.
+  Базовый шаблон [тут](./src/templates/nginx.conf.template.ts).
+  [Файл `nginx.conf`](#конфигурация-nginx) в корне имеет приоритет над оверрайдами.
+- `start.sh` - шаблон entrypoint докер контейнера. Базовый шаблон [тут](./src/templates/start.template.ts).
 
 Для некоторых конфигураций определены несколько ключей, они будут применяться в том порядке, в котором они приведены в этом файле.
 

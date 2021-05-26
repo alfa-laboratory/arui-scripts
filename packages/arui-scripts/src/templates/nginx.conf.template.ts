@@ -1,4 +1,5 @@
 import configs from '../configs/app-configs';
+import applyOverrides from '../configs/util/apply-overrides';
 
 const nginxTemplate = `client_max_body_size 20m;
 
@@ -26,4 +27,4 @@ server {
     }
 }`;
 
-export default nginxTemplate;
+export default applyOverrides('nginx', nginxTemplate);
