@@ -361,6 +361,27 @@ yarn будет использоваться когда в рутовой пап
 Для этого вы можете создать `nginx.conf` на уровне проекта со своими роутами. Пример конфига [тут](src/templates/nginx.conf.template.ts).
 
 
+Использование env переменных в nginx.conf
+---
+Иногда у вас может возникнуть потребность переопределять какие-то из настроек nginx в зависимости
+от среды, на которой запущен контейнер. Это можно сделать задав свой `nginx.conf` и передав ENV переменные
+в контейнер. По умолчанию конфигурация nginx прогоняется при старте через [envsubst](https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html).
+Вы можете использовать это так:
+
+```nginx.conf
+server {
+    listen 8080;
+    server_name ${SERVICE_NAME};
+    ...
+}
+```
+
+```shell
+docker run my-awesome-app --env SERVICE_NAME=my-app
+```
+
+После запуска nginx будет иметь server_name `my-app`.
+
 Удаление proptypes
 ---
 

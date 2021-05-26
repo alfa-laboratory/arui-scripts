@@ -2,8 +2,8 @@ import configs from '../configs/app-configs';
 
 const startTemplate = `#!/bin/sh
 
-# Move nginx config
-mv ./nginx.conf /etc/nginx/conf.d/default.conf
+# Подменяем env переменные в nginx конфиге перед стартом
+envsubst < /src/nginx.conf > /etc/nginx/conf.d/default.conf
 
 # Достаем лимит памяти из cgroup, это то, как его докер задает.  https://shuheikagawa.com/blog/2017/05/27/memory-usage/
 max_total_memory=$(cat /sys/fs/cgroup/memory/memory.limit_in_bytes)
