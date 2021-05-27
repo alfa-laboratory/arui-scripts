@@ -3919,7 +3919,7 @@ __metadata:
     tsconfig-paths-webpack-plugin: 3.5.1
     typescript: ^3.9.7
     url-loader: 4.1.1
-    webpack: 5.37.0
+    webpack: 5.38.0
     webpack-bundle-analyzer: 3.8.0
     webpack-dev-server: 4.0.0-beta.3
     webpack-manifest-plugin: 3.1.1
@@ -7408,7 +7408,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-scope@npm:^5.1.1":
+"eslint-scope@npm:5.1.1, eslint-scope@npm:^5.1.1":
   version: 5.1.1
   resolution: "eslint-scope@npm:5.1.1"
   dependencies:
@@ -18226,6 +18226,16 @@ typescript@^4.0.2:
   languageName: node
   linkType: hard
 
+"watchpack@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "watchpack@npm:2.2.0"
+  dependencies:
+    glob-to-regexp: ^0.4.1
+    graceful-fs: ^4.1.2
+  checksum: e275f48fae29edee3195c51a8312b609581b9be5ce323d3102ffd082cb124f48d7a393ce05e4110239e4354379e04d78a97ceb26ae367746e7e218bf258135c8
+  languageName: node
+  linkType: hard
+
 "wbuf@npm:^1.1.0, wbuf@npm:^1.7.3":
   version: 1.7.3
   resolution: "wbuf@npm:1.7.3"
@@ -18378,9 +18388,19 @@ typescript@^4.0.2:
   languageName: node
   linkType: hard
 
-"webpack@npm:5.37.0":
-  version: 5.37.0
-  resolution: "webpack@npm:5.37.0"
+"webpack-sources@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "webpack-sources@npm:2.3.0"
+  dependencies:
+    source-list-map: ^2.0.1
+    source-map: ^0.6.1
+  checksum: f0b3d13d3f350712c828c7187573d43d15fc1a96a11e81f69e3f10220d611dab95b529aca79ded9690a94040491bd7e4d84717f4467762211762cd01795a7b71
+  languageName: node
+  linkType: hard
+
+"webpack@npm:5.38.0":
+  version: 5.38.0
+  resolution: "webpack@npm:5.38.0"
   dependencies:
     "@types/eslint-scope": ^3.7.0
     "@types/estree": ^0.0.47
@@ -18392,7 +18412,7 @@ typescript@^4.0.2:
     chrome-trace-event: ^1.0.2
     enhanced-resolve: ^5.8.0
     es-module-lexer: ^0.4.0
-    eslint-scope: ^5.1.1
+    eslint-scope: 5.1.1
     events: ^3.2.0
     glob-to-regexp: ^0.4.1
     graceful-fs: ^4.2.4
@@ -18403,14 +18423,14 @@ typescript@^4.0.2:
     schema-utils: ^3.0.0
     tapable: ^2.1.1
     terser-webpack-plugin: ^5.1.1
-    watchpack: ^2.0.0
-    webpack-sources: ^2.1.1
+    watchpack: ^2.2.0
+    webpack-sources: ^2.3.0
   peerDependenciesMeta:
     webpack-cli:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: d244880ee15028d95c1dc05a0b0d529e45a457572cf8ddb8f250c5ca1daab355fbd25bd3d957613f30a2848a2998793a0726a8a0c269908659b250f7c2b4c1c4
+  checksum: a85d713b2b18c28044445b8d19a1e1b30ece986d55a9305a6fbf3143cf42a5afaf258d872a2fa7bacd5ed9e067f1869949caa6fb4f2a60f7c5c133995b1ef8f4
   languageName: node
   linkType: hard
 
