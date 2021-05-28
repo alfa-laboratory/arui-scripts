@@ -3914,12 +3914,12 @@ __metadata:
     svg-url-loader: ^6.0.0
     tar: 4.4.8
     ts-jest: 26.5.5
-    ts-loader: 8.0.18
+    ts-loader: 9.2.2
     ts-node: 9.1.1
     tsconfig-paths-webpack-plugin: 3.5.1
     typescript: ^3.9.7
     url-loader: 4.1.1
-    webpack: 5.38.0
+    webpack: 5.38.1
     webpack-bundle-analyzer: 3.8.0
     webpack-dev-server: 4.0.0-beta.3
     webpack-manifest-plugin: 3.1.1
@@ -7030,14 +7030,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enhanced-resolve@npm:^4.0.0":
-  version: 4.3.0
-  resolution: "enhanced-resolve@npm:4.3.0"
+"enhanced-resolve@npm:^5.0.0":
+  version: 5.8.2
+  resolution: "enhanced-resolve@npm:5.8.2"
   dependencies:
-    graceful-fs: ^4.1.2
-    memory-fs: ^0.5.0
-    tapable: ^1.0.0
-  checksum: aaef4c07e7288d67cfd4ed2dad16a5e8a175bb45eaf91f7c9f0d7c1186577f78047452a9d8d5d136473c30c769b7a322c1bf837ccf7f5c6fbde3266d043a633c
+    graceful-fs: ^4.2.4
+    tapable: ^2.2.0
+  checksum: 6e871ec5b183220dbcdaff8580cbdacee5425e321790e5846abd1b573d20d2bcb37f73ee983fd10c6d6878d31a2d08e234e72fc91a81236d64623ee6ba7d6611
   languageName: node
   linkType: hard
 
@@ -7201,7 +7200,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"errno@npm:^0.1.3, errno@npm:~0.1.7":
+"errno@npm:~0.1.7":
   version: 0.1.7
   resolution: "errno@npm:0.1.7"
   dependencies:
@@ -11795,16 +11794,6 @@ fsevents@~2.3.1:
   dependencies:
     fs-monkey: 1.0.1
   checksum: 53e50dfc5b3ef70404735cd88de4deebef327c4add6c2132714f5da828c05e0ec9c5fe82ed36745902c363c74c1b488bbf7d9ef7401a6a4735713482e49f0e73
-  languageName: node
-  linkType: hard
-
-"memory-fs@npm:^0.5.0":
-  version: 0.5.0
-  resolution: "memory-fs@npm:0.5.0"
-  dependencies:
-    errno: ^0.1.3
-    readable-stream: ^2.0.1
-  checksum: a9f25b0a8ecfb7324277393f19ef68e6ba53b9e6e4b526bbf2ba23055c5440fbf61acc7bf66bfd980e9eb4951a4790f6f777a9a3abd36603f22c87e8a64d3d6b
   languageName: node
   linkType: hard
 
@@ -17553,19 +17542,18 @@ resolve@^1.18.1:
   languageName: node
   linkType: hard
 
-"ts-loader@npm:8.0.18":
-  version: 8.0.18
-  resolution: "ts-loader@npm:8.0.18"
+"ts-loader@npm:9.2.2":
+  version: 9.2.2
+  resolution: "ts-loader@npm:9.2.2"
   dependencies:
     chalk: ^4.1.0
-    enhanced-resolve: ^4.0.0
-    loader-utils: ^2.0.0
+    enhanced-resolve: ^5.0.0
     micromatch: ^4.0.0
     semver: ^7.3.4
   peerDependencies:
     typescript: "*"
-    webpack: "*"
-  checksum: 186a6d17cf89cc8d5283eaa17aa733f7fd88909ec68777fc71db13192097921d71d1e6c01a92077b9ad641ab457b1b703886a07bb616973f255acb5d5b20c677
+    webpack: ^5.0.0
+  checksum: d5357bd3a9bb2dc469c666b67a56fa9173de8e0481b361c472e57f502fcd7941ff04d9db5ee795f91e017aab331ce683d73551625b5eae8e916a13efcd26bedc
   languageName: node
   linkType: hard
 
@@ -18398,9 +18386,9 @@ typescript@^4.0.2:
   languageName: node
   linkType: hard
 
-"webpack@npm:5.38.0":
-  version: 5.38.0
-  resolution: "webpack@npm:5.38.0"
+"webpack@npm:5.38.1":
+  version: 5.38.1
+  resolution: "webpack@npm:5.38.1"
   dependencies:
     "@types/eslint-scope": ^3.7.0
     "@types/estree": ^0.0.47
@@ -18430,7 +18418,7 @@ typescript@^4.0.2:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: a85d713b2b18c28044445b8d19a1e1b30ece986d55a9305a6fbf3143cf42a5afaf258d872a2fa7bacd5ed9e067f1869949caa6fb4f2a60f7c5c133995b1ef8f4
+  checksum: 631f0e838dd83f2f735f047a161daba2dd58b1550af5bcbe2df4ad25cfc3d836a48d038cf2ded3669ff2e1f6db58fa38866abe8c537b8fea32bda86e1223cb4f
   languageName: node
   linkType: hard
 

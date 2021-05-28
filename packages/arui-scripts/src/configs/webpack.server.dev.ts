@@ -52,7 +52,7 @@ const config: webpack.Configuration = {
         filename: configs.serverOutput,
         chunkFilename: '[name].js',
         // Point sourcemap entries to original disk location (format as URL on Windows)
-        devtoolModuleFilenameTemplate: info =>
+        devtoolModuleFilenameTemplate: (info: any) =>
             path
                 .relative(configs.appSrc, info.absoluteResourcePath)
                 .replace(/\\/g, '/'),
@@ -90,7 +90,7 @@ const config: webpack.Configuration = {
                 configFile: configs.tsconfig,
                 extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
             }))
-        ].filter(Boolean)) as webpack.ResolvePlugin[],
+        ].filter(Boolean)) as any[],
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -211,7 +211,7 @@ const config: webpack.Configuration = {
         new WatchMissingNodeModulesPlugin(configs.appNodeModules),
         configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
         configs.useServerHMR && new webpack.HotModuleReplacementPlugin(),
-    ].filter(Boolean)) as webpack.ResolvePlugin[],
+    ].filter(Boolean)) as webpack.WebpackPluginInstance[],
     // Turn off performance hints during development because we don't do any
     // splitting or minification in interest of speed. These warnings become
     // cumbersome.
