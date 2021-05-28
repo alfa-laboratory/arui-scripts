@@ -15,6 +15,7 @@ import devServerConfig from '../../configs/dev-server';
 
 const clientCompiler = webpack(clientConfig);
 const serverCompiler = webpack(serverConfig);
+// @ts-ignore
 const clientDevServer = new WebpackDevServer(clientCompiler, devServerConfig);
 
 serverCompiler.hooks.compile.tap('server', () => console.log('Compiling server...'));
