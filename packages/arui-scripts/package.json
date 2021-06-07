@@ -75,7 +75,7 @@
         "postcss-omit-import-tilde": "^1.0.1",
         "postcss-strip-units": "^2.0.1",
         "postcss-url": "7.3.1",
-        "react-dev-utils": "6.1.1",
+        "react-dev-utils": "11.0.4",
         "react-hot-loader": "4.12.19",
         "reload-server-webpack-plugin": "1.0.1",
         "rimraf": "^2.6.2",
