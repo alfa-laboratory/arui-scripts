@@ -20,9 +20,5 @@ export function getPolyfills(config: AppConfigs, requireResolve = require.resolv
         }
     }
 
-    if (config.keepCssVars) {
-        polyfills.push(requireResolve('ie11-custom-properties'));
-    }
-
     return polyfills;
 }
