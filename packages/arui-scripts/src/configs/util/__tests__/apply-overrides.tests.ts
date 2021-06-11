@@ -48,7 +48,7 @@ it('should call override function and update config', () => {
     const applyOverrides = require('../apply-overrides').default;
 
     expect(applyOverrides('foo', {})).toBe('new value');
-    expect(override).toHaveBeenCalledWith({});
+    expect(override).toHaveBeenCalledWith({}, { overridesPath: ['overrides'] });
 });
 
 it('should call multiple override functions and update config with latest value', () => {
@@ -64,6 +64,6 @@ it('should call multiple override functions and update config with latest value'
     const applyOverrides = require('../apply-overrides').default;
 
     expect(applyOverrides(['foo', 'bar'], {})).toBe('new value2');
-    expect(override1).toHaveBeenCalledWith({});
-    expect(override2).toHaveBeenCalledWith('new value');
+    expect(override1).toHaveBeenCalledWith({}, { overridesPath: ['overrides'] });
+    expect(override2).toHaveBeenCalledWith('new value', { overridesPath: ['overrides'] });
 });

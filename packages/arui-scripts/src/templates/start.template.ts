@@ -1,4 +1,5 @@
 import configs from '../configs/app-configs';
+import applyOverrides from '../configs/util/apply-overrides';
 
 const startTemplate = `#!/bin/sh
 
@@ -18,4 +19,4 @@ nginx &
 node --max-old-space-size="$node_memory_limit" ./${configs.buildPath}/${configs.serverOutput}
 `;
 
-export default startTemplate;
+export default applyOverrides('start.sh', startTemplate);

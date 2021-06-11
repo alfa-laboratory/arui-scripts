@@ -1,6 +1,7 @@
 import appConfigs from '../app-configs';
+import { AppConfigs } from '../app-configs/types';
 
-type OverrideFile = Record<string, (config: any) => any>;
+type OverrideFile = Record<string, (config: any, appConfig: AppConfigs) => any>;
 
 let overrides: Array<OverrideFile> = [];
 
@@ -28,7 +29,7 @@ function applyOverrides<T = any>(overridesKey: string | string[], config: T): T 
                 if (typeof override[key] !== 'function') {
                     console.error(`Override ${key} must be a function`);
                 }
-                config = override[key](config);
+                config = override[key](config, appConfigs);
             }
         });
     });
