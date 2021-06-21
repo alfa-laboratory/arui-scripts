@@ -4,7 +4,7 @@ import applyOverrides from '../configs/util/apply-overrides';
 const startTemplate = `#!/bin/sh
 
 # Подменяем env переменные в nginx конфиге перед стартом
-envsubst < /src/nginx.conf > /etc/nginx/conf.d/default.conf
+envsubst < ./nginx.conf > /etc/nginx/conf.d/default.conf
 
 # Достаем лимит памяти из cgroup, это то, как его докер задает.  https://shuheikagawa.com/blog/2017/05/27/memory-usage/
 max_total_memory=$(cat /sys/fs/cgroup/memory/memory.limit_in_bytes)
