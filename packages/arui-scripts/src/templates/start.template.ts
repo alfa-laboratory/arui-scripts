@@ -4,7 +4,15 @@ import applyOverrides from '../configs/util/apply-overrides';
 const startTemplate = `#!/bin/sh
 
 # Подменяем env переменные в nginx конфиге перед стартом
-envsubst < ./nginx.conf > /etc/nginx/conf.d/default.conf
+# Сначала заменяем все слова, начинающиеся на $ но без \${} на ~~слово~~
+# затем запускаем envsubst, после этого обратно заменяем ~~слово~~ на $слово.
+# Это нужно для того, чтоб специальные переменные nginx не подменялись envsubst'ом на
+# пустые строки. envsubst будет заменять только \${слово}.
+echo ./nginx.conf \\
+    | sed 's/\\$\\([a-zA-Z0-9_-]\\{1,\\}\\)/~~\\1~~/' \\
+    | envsubst \\
+    | sed 's/~~\\([a-zA-Z0-9_-]\\{1,\\}\\)~~/$\\1/' \\
+    > /etc/nginx/conf.d/default.conf
 
 # Достаем лимит памяти из cgroup, это то, как его докер задает.  https://shuheikagawa.com/blog/2017/05/27/memory-usage/
 max_total_memory=$(cat /sys/fs/cgroup/memory/memory.limit_in_bytes)
