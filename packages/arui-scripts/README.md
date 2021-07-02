@@ -371,7 +371,17 @@ yarn будет использоваться когда в рутовой пап
 ---
 Иногда у вас может возникнуть потребность переопределять какие-то из настроек nginx в зависимости
 от среды, на которой запущен контейнер. Это можно сделать задав свой `nginx.conf` и передав ENV переменные
-в контейнер. По умолчанию конфигурация nginx прогоняется при старте через [envsubst](https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html).
+в контейнер. По умолчанию конфигурация nginx прогоняется при старте
+через [envsubst](https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html).
+
+Если вы используете свой базовый docker-образ для работы приложения - убедитесь что в нем доступен `envsubst`.
+Для alpine он является частью пакета [`gettext`](https://pkgs.alpinelinux.org/contents?branch=edge&name=gettext&arch=x86&repo=main)
+
+**Важно**. Для того, чтобы сохранить нормальную работу специальных переменных nginx, типа `$proxy_add_x_forwarded_for`
+перед запуском envsubst они будут заменены на `~~proxy_add_x_forwarded_for~~`, а затем возвращены в исходный вид.
+envsubst будет заменять переменные записанные **только** как `${MY_VAR}`.
+
+
 Вы можете использовать это так:
 
 ```nginx.conf
