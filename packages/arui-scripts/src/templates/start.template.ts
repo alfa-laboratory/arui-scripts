@@ -9,9 +9,9 @@ const startTemplate = `#!/bin/sh
 # Это нужно для того, чтоб специальные переменные nginx не подменялись envsubst'ом на
 # пустые строки. envsubst будет заменять только \${слово}.
 cat ./nginx.conf \\
-    | sed 's/\\$\\([a-zA-Z0-9_-]\\{1,\\}\\)/~~\\1~~/' \\
+    | sed 's/\\$\\([a-zA-Z0-9_-]\\{1,\\}\\)/~~\\1~~/g' \\
     | envsubst \\
-    | sed 's/~~\\([a-zA-Z0-9_-]\\{1,\\}\\)~~/$\\1/' \\
+    | sed 's/~~\\([a-zA-Z0-9_-]\\{1,\\}\\)~~/$\\1/g' \\
     > /etc/nginx/conf.d/default.conf
 
 # Достаем лимит памяти из cgroup, это то, как его докер задает.  https://shuheikagawa.com/blog/2017/05/27/memory-usage/
