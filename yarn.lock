@@ -4042,7 +4042,6 @@ __metadata:
     fork-ts-checker-webpack-plugin: 6.2.4
     fs-extra: 6.0.1
     gzip-size: 5.1.1
-    ie11-custom-properties: ^4.1.0
     jest: 26.6.3
     jest-snapshot-serializer-class-name-to-string: 1.0.0
     lodash.merge: 4.6.2
@@ -9328,13 +9327,6 @@ fsevents@~2.3.1:
   peerDependencies:
     postcss: ^8.1.0
   checksum: 5c324d283552b1269cfc13a503aaaa172a280f914e5b81544f3803bc6f06a3b585fb79f66f7c771a2c052db7982c18bf92d001e3b47282e3abbbb4c4cc488d68
-  languageName: node
-  linkType: hard
-
-"ie11-custom-properties@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "ie11-custom-properties@npm:4.1.0"
-  checksum: b3735da085c3cfb835463048f4574932d969bc3bc6edfce7c9f1f39897f56073a084daea01c76a8b0255b0ee702a880f7170c08b28e50e58d76fbefa06ba29e4
   languageName: node
   linkType: hard
 

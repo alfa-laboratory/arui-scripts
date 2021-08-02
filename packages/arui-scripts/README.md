@@ -291,7 +291,11 @@ docker run -p 8080:8080 container-name:version ./start.sh
 
 На `8080` порту будет поднят nginx, который будет раздавать статику и проксировать все остальные запросы к `nodejs`.
 
-Вы также можете переопределить полностью процесс сборки docker-образа, создав в корневой директории проекта `Dockerfile` содержащий необходимый набор инструкций. Пример [Dockerfile](src/templates/dockerfile.template.ts).
+Вы также можете переопределить полностью процесс сборки docker-образа используя механизм [overrides](#тонкая-настройка)
+или создав в корневой директории проекта `Dockerfile` содержащий необходимый набор инструкций.
+Пример [Dockerfile](src/templates/dockerfile.template.ts).
+
+`Dockerfile` в корне проекта имеет приоритет над overrides.
 
 archive
 ---
@@ -358,8 +362,41 @@ yarn будет использоваться когда в рутовой пап
 ---
 
 Несмотря на то, что nginx имеет готовый конфиг с роутингом, иногда возникает необходимость добавлять свои роуты.
-Для этого вы можете создать `nginx.conf` на уровне проекта со своими роутами. Пример конфига [тут](src/templates/nginx.conf.template.ts).
+Вы можете использовать механизм [overrides](#тонкая-настройка).
+Так же вы можете создать `nginx.conf` на уровне проекта со своими роутами. Пример конфига [тут](src/templates/nginx.conf.template.ts).
+Файл nginx.conf имеет приоритет над оверрайдами.
 
+
+Использование env переменных в nginx.conf
+---
+Иногда у вас может возникнуть потребность переопределять какие-то из настроек nginx в зависимости
+от среды, на которой запущен контейнер. Это можно сделать задав свой `nginx.conf` и передав ENV переменные
+в контейнер. По умолчанию конфигурация nginx прогоняется при старте
+через [envsubst](https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html).
+
+Если вы используете свой базовый docker-образ для работы приложения - убедитесь что в нем доступен `envsubst`.
+Для alpine он является частью пакета [`gettext`](https://pkgs.alpinelinux.org/contents?branch=edge&name=gettext&arch=x86&repo=main)
+
+**Важно**. Для того, чтобы сохранить нормальную работу специальных переменных nginx, типа `$proxy_add_x_forwarded_for`
+перед запуском envsubst они будут заменены на `~~proxy_add_x_forwarded_for~~`, а затем возвращены в исходный вид.
+envsubst будет заменять переменные записанные **только** как `${MY_VAR}`.
+
+
+Вы можете использовать это так:
+
+```nginx.conf
+server {
+    listen 8080;
+    server_name ${SERVICE_NAME};
+    ...
+}
+```
+
+```shell
+docker run my-awesome-app --env SERVICE_NAME=my-app
+```
+
+После запуска nginx будет иметь server_name `my-app`.
 
 Удаление proptypes
 ---
@@ -406,14 +443,15 @@ require node.js на таких местах ломается. Поэтому н
 конфигурацией почти всех инструментов, используемых в `arui-scripts`.
 
 Принцип работы тут следующий. Для всех конфигураций определен набор ключей, которые они будут искать в `arui-scripts.overrides.js`,
-В случае если такой ключ найден и это функция - она будет вызвана, и в качестве аргумента ей будет передана существующая конфигурация.
+В случае если такой ключ найден и это функция - она будет вызвана, и в качестве аргументов ей будут переданы
+существующая конфигурация и полный конфиг приложения (см [AppConfig](./src/configs/app-configs/types.ts)).
 Возвращать такая функция должна так же конфигурацию.
 
 Например такое содержимое `arui-scripts.overrides.js`:
 ```javascript
 const path = require('path');
 module.exports = {
-    webpack: (config) => {
+    webpack: (config, applicationConfig) => {
         config.resolve.alias = {
             components: path.resolve(__dirname, 'src/components')
         };
@@ -451,11 +489,23 @@ module.exports = {
     };
     ```
 - `stats-options` - конфигурация для [webpack-stats](https://webpack.js.org/configuration/stats/). Ключи: `stats`.
-- `webpack.client.dev` - конфигурация для клиентского webpack в dev режиме. Ключи: `webpack`, `webpackClient`, `webpackDev`, `webpackClientDev`.
-- `webpack.client.prod` - конфигурация для клиентского webpack в prod режиме. Ключи: `webpack`, `webpackClient`, `webpackProd`, `webpackClientProd`.
-- `webpack.server.dev` - конфигурация для серверного webpack в dev режиме. Ключи: `webpack`, `webpackServer`, `webpackDev`, `webpackServerDev`.
-- `webpack.server.prod` - конфигурация для серверного webpack в prod режиме. Ключи: `webpack`, `webpackServer`, `webpackProd`, `webpackServerProd`.
-- `supporting-browsers` - список поддерживаемых браузеров в формате [browserslist](https://github.com/browserslist/browserslist). Ключи: `browsers`, `supportingBrowsers`
+- `webpack.client.dev` - конфигурация для клиентского webpack в dev режиме.
+  Ключи: `webpack`, `webpackClient`, `webpackDev`, `webpackClientDev`.
+- `webpack.client.prod` - конфигурация для клиентского webpack в prod режиме.
+  Ключи: `webpack`, `webpackClient`, `webpackProd`, `webpackClientProd`.
+- `webpack.server.dev` - конфигурация для серверного webpack в dev режиме.
+  Ключи: `webpack`, `webpackServer`, `webpackDev`, `webpackServerDev`.
+- `webpack.server.prod` - конфигурация для серверного webpack в prod режиме.
+  Ключи: `webpack`, `webpackServer`, `webpackProd`, `webpackServerProd`.
+- `supporting-browsers` - список поддерживаемых браузеров в формате [browserslist](https://github.com/browserslist/browserslist).
+  Ключи: `browsers`, `supportingBrowsers`
+- `Dockerfile` - докерфайл, который будет использоваться для сборки контейнера.
+  Базовый шаблон [тут](./src/templates/dockerfile.template.ts).
+  [`Dockerfile` в корне проекта](#docker) имеет приоритет над overrides.
+- `nginx` - шаблон конфигурации для nginx внутри контейнера.
+  Базовый шаблон [тут](./src/templates/nginx.conf.template.ts).
+  [Файл `nginx.conf`](#конфигурация-nginx) в корне имеет приоритет над оверрайдами.
+- `start.sh` - шаблон entrypoint докер контейнера. Базовый шаблон [тут](./src/templates/start.template.ts).
 
 Для некоторых конфигураций определены несколько ключей, они будут применяться в том порядке, в котором они приведены в этом файле.
 

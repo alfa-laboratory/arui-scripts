@@ -1,4 +1,5 @@
 import configs from '../configs/app-configs';
+import applyOverrides from '../configs/util/apply-overrides';
 
 const nginxNonRootPart = configs.runFromNonRootUser ?
   `RUN chown -R nginx:nginx /src && chmod -R 755 /src && \\
@@ -26,4 +27,4 @@ ADD . /src
 ${nginxNonRootPart}
 `;
 
-export default dockerfileTemplate;
+export default applyOverrides('Dockerfile', dockerfileTemplate);
