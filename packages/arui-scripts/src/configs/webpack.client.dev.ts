@@ -9,6 +9,8 @@ import getCSSModuleLocalIdent from 'react-dev-utils/getCSSModuleLocalIdent';
 const PnpWebpackPlugin = require('pnp-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const ReactRefreshTypeScript = require('react-refresh-typescript');
 
 import configs from './app-configs';
 import babelConf from './babel-client';
@@ -23,7 +25,6 @@ const cssModuleRegex = /\.module\.css$/;
 function getSingleEntry(clientEntry: string[]) {
     return [
         ...(Array.isArray(configs.clientPolyfillsEntry) ? configs.clientPolyfillsEntry : [configs.clientPolyfillsEntry]),
-        require.resolve('react-hot-loader/patch'),
         // `${require.resolve('webpack-dev-server/client')}?/`,
         require.resolve('webpack/hot/dev-server'),
         // Finally, this is your app's code:
@@ -59,9 +60,6 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                 .replace(/\\/g, '/'),
     },
     resolve: {
-        alias: {
-            'react-dom': '@hot-loader/react-dom',
-        },
         // This allows you to set a fallback for where Webpack should look for modules.
         // We placed these paths second because we want `node_modules` to "win"
         // if there are any conflicts. This matches Node resolution mechanism.
@@ -121,14 +119,14 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                         test: configs.useTscLoader ? /\.(js|jsx|mjs)$/ : /\.(js|jsx|mjs|ts|tsx)$/,
                         include: configs.appSrc,
                         use: [
-                            { loader: require.resolve('react-hot-loader/webpack') },
                             {
                                 loader: require.resolve('babel-loader'),
                                 options: Object.assign({
                                     // This is a feature of `babel-loader` for webpack (not Babel itself).
                                     // It enables caching results in ./node_modules/.cache/babel-loader/
                                     // directory for faster rebuilds.
-                                    cacheDirectory: true
+                                    cacheDirectory: true,
+                                    plugins: require.resolve('react-refresh/babel')
                                 }, babelConf)
                             }
                         ]
@@ -136,19 +134,22 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                     (configs.tsconfig && configs.useTscLoader) && {
                         test: /\.tsx?$/,
                         use: [
-                            { loader: require.resolve('react-hot-loader/webpack') },
                             {
                                 loader: require.resolve('babel-loader'),
                                 options: Object.assign({
                                     // This is a feature of `babel-loader` for webpack (not Babel itself).
                                     // It enables caching results in ./node_modules/.cache/babel-loader/
                                     // directory for faster rebuilds.
-                                    cacheDirectory: true
+                                    cacheDirectory: true,
+                                    plugins: require.resolve('react-refresh/babel')
                                 }, babelConf)
                             },
                             {
                                 loader: require.resolve('ts-loader'),
                                 options: {
+                                    getCustomTransformers: () => ({
+                                        before: [ReactRefreshTypeScript()],
+                                    }),
                                     onlyCompileBundledFiles: true,
                                     transpileOnly: true,
                                     happyPackMode: true,
@@ -249,6 +250,7 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
         }),
         // This is necessary to emit hot updates (currently CSS only):
         new webpack.HotModuleReplacementPlugin(),
+        new ReactRefreshWebpackPlugin(),
         // Watcher doesn't work well if you mistype casing in a path so we use
         // a plugin that prints an error when you attempt to do this.
         // See https://github.com/facebookincubator/create-react-app/issues/240
