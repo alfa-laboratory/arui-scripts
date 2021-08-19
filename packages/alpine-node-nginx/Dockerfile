@@ -5,7 +5,7 @@ FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION}
 # We need nginx with brotli, so we build it from sources.
 # Copied from https://github.com/fholzer/docker-nginx-brotli/blob/master/Dockerfile
 ENV NGINX_VERSION 1.18.0
-ENV NGX_BROTLI_COMMIT 25f86f0bac1101b6512135eac5f93c49c63609e3
+ENV NGX_BROTLI_COMMIT 9aec15e2aa6feea2113119ba06460af70ab3ea62
 
 COPY nginx.pub /tmp/nginx.pub
 RUN CONFIG="\
