@@ -12,5 +12,5 @@ alpine-node-nginx
 Если вы хотите собрать локально, выполните
 
 ```sh
-docker build --build-arg NODE_VERSION=12.8.1 .
+docker build --build-arg NODE_VERSION=14.17.6 ALPINE_VERSION=3.14 .
 ```
