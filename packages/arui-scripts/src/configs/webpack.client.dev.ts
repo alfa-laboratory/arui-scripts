@@ -39,6 +39,7 @@ function getSingleEntry(clientEntry: string[]) {
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
 const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient', 'webpackDev', 'webpackClientDev'], {
+    target: 'web',
     mode: 'development',
     // You may want 'eval' instead if you prefer to see the compiled output in DevTools.
     devtool: 'cheap-module-source-map',
@@ -250,7 +251,11 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
         }),
         // This is necessary to emit hot updates (currently CSS only):
         new webpack.HotModuleReplacementPlugin(),
-        new ReactRefreshWebpackPlugin(),
+        new ReactRefreshWebpackPlugin({
+            overlay: {
+                sockIntegration: 'whm',
+            },
+        }),
         // Watcher doesn't work well if you mistype casing in a path so we use
         // a plugin that prints an error when you attempt to do this.
         // See https://github.com/facebookincubator/create-react-app/issues/240

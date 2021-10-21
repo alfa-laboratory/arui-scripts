@@ -1,5 +1,4 @@
 import path from 'path';
-// @ts-ignore
 import { Configuration } from 'webpack-dev-server';
 import configs from './app-configs';
 import applyOverrides from './util/apply-overrides';
@@ -7,9 +6,7 @@ import http from "http";
 
 const devServerConfig = applyOverrides<Configuration>('devServer', {
     port: configs.clientServerPort,
-    // FIXME: В бета версии webpack-dev-server это поле может быть string
-    // @ts-ignore
-    hot: 'only',
+    hot: true,
     client: {
         overlay: true,
     },

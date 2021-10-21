@@ -53,6 +53,7 @@ const config = applyOverrides<webpack.Configuration>(['webpack', 'webpackServer'
                 .relative(configs.appSrc, info.absoluteResourcePath)
                 .replace(/\\/g, '/'),
     },
+    externalsPresets: { node: true },
     externals: [nodeExternals({
         allowlist: [
             /^arui-feather/,

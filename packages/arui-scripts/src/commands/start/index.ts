@@ -3,7 +3,6 @@ process.env.BROWSERSLIST_CONFIG = process.env.BROWSERSLIST_CONFIG || require.res
 import fs from 'fs-extra';
 import webpack from 'webpack';
 import chalk from 'chalk';
-// @ts-ignore
 import WebpackDevServer from 'webpack-dev-server';
 import { choosePort } from 'react-dev-utils/WebpackDevServerUtils';
 import checkRequiredFiles from '../util/check-required-files';
@@ -16,7 +15,7 @@ import devServerConfig from '../../configs/dev-server';
 const clientCompiler = webpack(clientConfig);
 const serverCompiler = webpack(serverConfig);
 // @ts-ignore
-const clientDevServer = new WebpackDevServer(clientCompiler, devServerConfig);
+const clientDevServer = new WebpackDevServer(devServerConfig, clientCompiler);
 
 serverCompiler.hooks.compile.tap('server', () => console.log('Compiling server...'));
 serverCompiler.hooks.invalid.tap('server', () => console.log('Compiling server...'));
@@ -39,7 +38,7 @@ if (fs.pathExistsSync(configs.serverOutputPath)) {
 
 // We attempt to use the default port but if it is busy, we offer the user to
 // run on a different port. `detect()` Promise resolves to the next free port.
-choosePort(HOST, DEFAULT_PORT || 0)
+choosePort(HOST, +(DEFAULT_PORT || 0))
     .then((port) => {
         if (!port) {
             // We have not found a port.
@@ -47,7 +46,7 @@ choosePort(HOST, DEFAULT_PORT || 0)
         }
         serverCompiler.watch({ aggregateTimeout: 100 }, () => {});
 
-        clientDevServer.listen(port, HOST, () => {
+        clientDevServer.startCallback(() => {
             console.log(`Client dev server running at http://${HOST}:${port}...`);
         });
     })

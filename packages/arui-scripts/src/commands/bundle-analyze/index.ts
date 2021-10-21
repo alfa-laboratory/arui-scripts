@@ -5,6 +5,7 @@ import clientConfig from '../../configs/webpack.client.prod';
 
 (async () => {
     const tmpDir = await makeTmpDir();
+    // @ts-ignore
     clientConfig?.plugins?.push(new BundleAnalyzerPlugin());
     clientConfig!.output!.path = tmpDir;
     webpack(clientConfig).run(() => {});

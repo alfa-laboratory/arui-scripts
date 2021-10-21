@@ -2770,6 +2770,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/bonjour@npm:*":
+  version: 3.5.9
+  resolution: "@types/bonjour@npm:3.5.9"
+  dependencies:
+    "@types/node": "*"
+  checksum: a04f2eb99ed3b3a8bfc2443dee9c7a7aa904f552e595e9c8459e6cf937ba03599b839197657ebb8ce6be9b93ce4b123092fa19c8bab1d2c84d58f1ef6ad9f571
+  languageName: node
+  linkType: hard
+
 "@types/case-sensitive-paths-webpack-plugin@npm:2.1.4":
   version: 2.1.4
   resolution: "@types/case-sensitive-paths-webpack-plugin@npm:2.1.4"
@@ -2964,26 +2973,6 @@ __metadata:
     "@types/tapable": "*"
     "@types/webpack": "*"
   checksum: 2215103a7eb55c89258e3593380faa71ba61d442a07317fc3f8b95a5b645260364ab34d92ea058bad3b26c704c17bdfb215073fa95bcb1a53d644c5c83683f46
-  languageName: node
-  linkType: hard
-
-"@types/http-proxy-middleware@npm:*":
-  version: 0.19.3
-  resolution: "@types/http-proxy-middleware@npm:0.19.3"
-  dependencies:
-    "@types/connect": "*"
-    "@types/http-proxy": "*"
-    "@types/node": "*"
-  checksum: 51000558db0aad31947fd60b6ba6cbd05782e09c17ded63bf9de2574200695885b362d23cf16cb796797d5779c1e3b32792bbef69386dd2a9ce688f7856cd8ec
-  languageName: node
-  linkType: hard
-
-"@types/http-proxy@npm:*":
-  version: 1.17.4
-  resolution: "@types/http-proxy@npm:1.17.4"
-  dependencies:
-    "@types/node": "*"
-  checksum: 1f74c7d9956307f0663674159de6ad8d6ca97e304d9f48f556bd6fec884736d761d275ecca4ebb247f73ac2d5e07d30c3badfc953cc0eb367be0d96c27a1d9d0
   languageName: node
   linkType: hard
 
@@ -3186,16 +3175,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dev-utils@npm:9.0.4":
-  version: 9.0.4
-  resolution: "@types/react-dev-utils@npm:9.0.4"
+"@types/react-dev-utils@npm:9.0.8":
+  version: 9.0.8
+  resolution: "@types/react-dev-utils@npm:9.0.8"
   dependencies:
     "@types/eslint": "*"
     "@types/express": "*"
     "@types/html-webpack-plugin": "*"
-    "@types/webpack": "*"
-    "@types/webpack-dev-server": "*"
-  checksum: e0b44e2c363d9655134ff6f5235832100734da45db859eba87c1dcab28c4356f7b93fefa72a60cc8dccbc2737028c73488c584f0bfb8093acdc82833c6f01338
+    "@types/webpack": ^4
+    "@types/webpack-dev-server": ^3
+  checksum: d7b6cdc89a37111416962348a893ea179d93ff2fac4963ef0c90f22c6f7f95e9de592c0237ef1bc20639b5beaf3f769ee771582172fd3da6984e5e526f6ce790
   languageName: node
   linkType: hard
 
@@ -3238,6 +3227,15 @@ __metadata:
   version: 0.12.0
   resolution: "@types/retry@npm:0.12.0"
   checksum: 61a072c7639f6e8126588bf1eb1ce8835f2cb9c2aba795c4491cf6310e013267b0c8488039857c261c387e9728c1b43205099223f160bb6a76b4374f741b5603
+  languageName: node
+  linkType: hard
+
+"@types/serve-index@npm:*":
+  version: 1.9.1
+  resolution: "@types/serve-index@npm:1.9.1"
+  dependencies:
+    "@types/express": "*"
+  checksum: 026f3995fb500f6df7c3fe5009e53bad6d739e20b84089f58ebfafb2f404bbbb6162bbe33f72d2f2af32d5b8d3799c8e179793f90d9ed5871fb8591190bb6056
   languageName: node
   linkType: hard
 
@@ -3300,6 +3298,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/tapable@npm:^1":
+  version: 1.0.8
+  resolution: "@types/tapable@npm:1.0.8"
+  checksum: b4b754dd0822c407b8f29ef6b766490721c276880f9e976d92ee2b3ef915f11a05a2442ae36c8978bcd872ad6bc833b0a2c4d267f2d611590668a366bad50652
+  languageName: node
+  linkType: hard
+
 "@types/tar@npm:^4.0.3":
   version: 4.0.3
   resolution: "@types/tar@npm:4.0.3"
@@ -3328,25 +3333,55 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/webpack-bundle-analyzer@npm:3.9.0":
-  version: 3.9.0
-  resolution: "@types/webpack-bundle-analyzer@npm:3.9.0"
+"@types/webpack-bundle-analyzer@npm:4.4.1":
+  version: 4.4.1
+  resolution: "@types/webpack-bundle-analyzer@npm:4.4.1"
   dependencies:
-    "@types/webpack": "*"
-  checksum: 89f3d42bddec415a9d2b020032740bf51b25ce72bd296851dfc8f159d09fc56e1c05bf313bbdde27f2fec5ea24962fd44b3cc8a1b17b50a8f999ae4f56313673
+    "@types/node": "*"
+    tapable: ^2.2.0
+    webpack: ^5
+  checksum: 50afdbd2a40545a8acda4adda09b98772dd646dea894dfa95d9f86d224d3df462405b5d0c04077958e87399cda4c9bac7451bbb7285c99e7220806b439ae7f72
   languageName: node
   linkType: hard
 
-"@types/webpack-dev-server@npm:*":
-  version: 3.11.0
-  resolution: "@types/webpack-dev-server@npm:3.11.0"
+"@types/webpack-dev-middleware@npm:*":
+  version: 5.0.2
+  resolution: "@types/webpack-dev-middleware@npm:5.0.2"
+  dependencies:
+    "@types/connect": "*"
+    tapable: ^2.1.1
+    webpack: ^5.38.1
+  checksum: fd7ff7608362a1bd01ca7f89d1f3308d21519e4271a16f672e7801b087618c9fda10a102db61a8f5fda1253d580bfc227d574feb10ee0d87d24288f19bd846a9
+  languageName: node
+  linkType: hard
+
+"@types/webpack-dev-server@npm:4.3.1":
+  version: 4.3.1
+  resolution: "@types/webpack-dev-server@npm:4.3.1"
+  dependencies:
+    "@types/bonjour": "*"
+    "@types/connect-history-api-fallback": "*"
+    "@types/express": "*"
+    "@types/serve-index": "*"
+    "@types/serve-static": "*"
+    "@types/webpack-dev-middleware": "*"
+    chokidar: ^3.5.1
+    http-proxy-middleware: ^2.0.0
+    webpack: "*"
+  checksum: d0f0eea78f6024b4eb591c7644fbb9f26211dbbd3dfb2dd380b59e4da131edbc2d8a478a2b718763a0ff484d631da4b932ac500b60af674c1da76a98edeae4ef
+  languageName: node
+  linkType: hard
+
+"@types/webpack-dev-server@npm:^3":
+  version: 3.11.6
+  resolution: "@types/webpack-dev-server@npm:3.11.6"
   dependencies:
     "@types/connect-history-api-fallback": "*"
     "@types/express": "*"
-    "@types/http-proxy-middleware": "*"
     "@types/serve-static": "*"
-    "@types/webpack": "*"
-  checksum: 13ccbbb7896b13f99783a337b7b697822be14cfc51c330b1e25499380a9957f9c81fcc178aae99e9967689ca96dc47a86769dcc4269570642edba58ef880b32f
+    "@types/webpack": ^4
+    http-proxy-middleware: ^1.0.0
+  checksum: ce801b43593aa84d228d170ec6c2397d40754f138635c5a792d4f85647a59d07250d533299af8c6ea4e83ca7f8ac5feaf7ec03f11ad886faac43f3460b5d3c6e
   languageName: node
   linkType: hard
 
@@ -3367,12 +3402,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/webpack-node-externals@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@types/webpack-node-externals@npm:2.5.0"
+"@types/webpack-node-externals@npm:2.5.3":
+  version: 2.5.3
+  resolution: "@types/webpack-node-externals@npm:2.5.3"
   dependencies:
-    "@types/webpack": "*"
-  checksum: 32fe202a203c911865e8571df4cf5474e361abec05535a657697e2845a23dcb388503a851856e609ec84392f441521fcc962b274a86dd9c702c77579538ddb33
+    "@types/node": "*"
+    webpack: ^5
+  checksum: 9cd0f7821d4a322479ef3264f82192ec62d582e7505b28af1d3e352be8ec98fd8432edc4184c2644caa5f75de88266edf5b45661e9be766cb6ae54b0c484636b
   languageName: node
   linkType: hard
 
@@ -3398,6 +3434,31 @@ __metadata:
     "@types/webpack-sources": "*"
     source-map: ^0.6.0
   checksum: 0cc7c9ff90085fa137ff1d522928e7f2fdb67c0e740010838c4bb260162afc7f26e5f65a3ba6dd82afb42112650c592b70b414dc733df694947fb56a37663e4b
+  languageName: node
+  linkType: hard
+
+"@types/webpack@npm:5.28.0":
+  version: 5.28.0
+  resolution: "@types/webpack@npm:5.28.0"
+  dependencies:
+    "@types/node": "*"
+    tapable: ^2.2.0
+    webpack: ^5
+  checksum: a038d7e12dd109c6a8d2eb744fd32070ef94f1655e730fb1443b370db98864c3a0e408638b02d12ba08269b9c012b3be8b801117ced2d1102e7676203fd663ed
+  languageName: node
+  linkType: hard
+
+"@types/webpack@npm:^4":
+  version: 4.41.31
+  resolution: "@types/webpack@npm:4.41.31"
+  dependencies:
+    "@types/node": "*"
+    "@types/tapable": ^1
+    "@types/uglify-js": "*"
+    "@types/webpack-sources": "*"
+    anymatch: ^3.0.0
+    source-map: ^0.6.0
+  checksum: 8aa4b4ad68bb7a6ee5bd027005014e6242434162ed4c14cd251713ad6041e42bf7629fc56a5edc5a2124b49cc0dce273d6ee3386fae9a9cfe02e1f7e82087ea2
   languageName: node
   linkType: hard
 
@@ -3952,6 +4013,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"anymatch@npm:^3.0.0":
+  version: 3.1.2
+  resolution: "anymatch@npm:3.1.2"
+  dependencies:
+    normalize-path: ^3.0.0
+    picomatch: ^2.0.4
+  checksum: 985163db2292fac9e5a1e072bf99f1b5baccf196e4de25a0b0b81865ebddeb3b3eb4480734ef0a2ac8c002845396b91aa89121f5b84f93981a4658164a9ec6e9
+  languageName: node
+  linkType: hard
+
 "anymatch@npm:^3.0.3, anymatch@npm:~3.1.1":
   version: 3.1.1
   resolution: "anymatch@npm:3.1.1"
@@ -4253,15 +4324,17 @@ __metadata:
     "@types/lodash.merge": ^4.6.6
     "@types/mini-css-extract-plugin": 1.2.2
     "@types/node": 12
-    "@types/react-dev-utils": 9.0.4
+    "@types/react-dev-utils": 9.0.8
     "@types/shelljs": ^0.8.8
     "@types/start-server-webpack-plugin": 2.2.0
     "@types/strip-ansi": ^5.2.1
     "@types/tar": ^4.0.3
     "@types/terser-webpack-plugin": 5.2.0
-    "@types/webpack-bundle-analyzer": 3.9.0
+    "@types/webpack": 5.28.0
+    "@types/webpack-bundle-analyzer": 4.4.1
+    "@types/webpack-dev-server": 4.3.1
     "@types/webpack-manifest-plugin": 3.0.3
-    "@types/webpack-node-externals": 2.5.0
+    "@types/webpack-node-externals": 2.5.3
     assets-webpack-plugin: 7.1.1
     autoprefixer: ^8.0.0
     babel-core: ^7.0.0-bridge.0
@@ -4277,7 +4350,7 @@ __metadata:
     enzyme: 3.11.0
     enzyme-adapter-react-16: 1.15.2
     enzyme-to-json: 3.4.3
-    expose-loader: 2.0.0
+    expose-loader: 3.0.0
     file-loader: 6.2.0
     filesize: ^6.1.0
     fork-ts-checker-webpack-plugin: 6.3.5
@@ -8034,12 +8107,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expose-loader@npm:2.0.0":
-  version: 2.0.0
-  resolution: "expose-loader@npm:2.0.0"
+"expose-loader@npm:3.0.0":
+  version: 3.0.0
+  resolution: "expose-loader@npm:3.0.0"
   peerDependencies:
     webpack: ^5.0.0
-  checksum: 8ef4c7b4e666b5b0749129bc153a41901b15351e40dc1379e47184ed60670c9fcdaf73ef18ba8123e3d716728607a639c10ec447c53ffdd7df53baf580a9826d
+  checksum: d18e4c6d29f7bdf1c3b8e99530bf1e67940c76037e82fa520db6cfcc1b9632f643409ed931eb525471aaa550493208acb0d5ce30405d79de2dd7abd1af44bfec
   languageName: node
   linkType: hard
 
@@ -9590,6 +9663,19 @@ fsevents@~2.3.1:
     agent-base: 6
     debug: 4
   checksum: e2ee1ff1656a131953839b2a19cd1f3a52d97c25ba87bd2559af6ae87114abf60971e498021f9b73f9fd78aea8876d1fb0d4656aac8a03c6caa9fc175f22b786
+  languageName: node
+  linkType: hard
+
+"http-proxy-middleware@npm:^1.0.0":
+  version: 1.3.1
+  resolution: "http-proxy-middleware@npm:1.3.1"
+  dependencies:
+    "@types/http-proxy": ^1.17.5
+    http-proxy: ^1.18.1
+    is-glob: ^4.0.1
+    is-plain-obj: ^3.0.0
+    micromatch: ^4.0.2
+  checksum: c6f0fe6d5aa58f3757084f1fad8109e7384fdea1b0a5c62f58ac767c42f367a18d3819bed8cbf8b5183f17e3e14fad04322f179c569629004da5fbec9b81a88a
   languageName: node
   linkType: hard
 
@@ -18867,12 +18953,12 @@ resolve@^1.18.1:
   linkType: hard
 
 typescript@^3.9.7:
-  version: 3.9.7
-  resolution: "typescript@npm:3.9.7"
+  version: 3.9.10
+  resolution: "typescript@npm:3.9.10"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: d549bf1d3a93796b45be9d1dbebbef63777f8cc4d788461f4bfdb6cb07371a97d3e471c7f39dbe31107e8a25d6d8b2ef5e967af7e8e1768d9560bd95095b360b
+  checksum: 46c842e2cd4797b88b66ef06c9c41dd21da48b95787072ccf39d5f2aa3124361bc4c966aa1c7f709fae0509614d76751455b5231b12dbb72eb97a31369e1ff92
   languageName: node
   linkType: hard
 
@@ -18887,12 +18973,12 @@ typescript@^4.0.2:
   linkType: hard
 
 "typescript@patch:typescript@^3.9.7#~builtin<compat/typescript>":
-  version: 3.9.7
-  resolution: "typescript@patch:typescript@npm%3A3.9.7#~builtin<compat/typescript>::version=3.9.7&hash=ea7f47"
+  version: 3.9.10
+  resolution: "typescript@patch:typescript@npm%3A3.9.10#~builtin<compat/typescript>::version=3.9.10&hash=ea7f47"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 46b87576ee37cc91c86965922ddef0fbee3ba49fc1627a9b6dce77cb41dc72d93f5643cefd175928a2d76e68189123e20c24db382d8b289ac6c27cfb4b7993a6
+  checksum: 8dcd46a8a2cb81198497f00c7721a34c914bf6b3241bf9687b868bdec9e59f1f44da41e7917cfc1dcabee4595229c73bab047f2d85c1aedacc0d1b526cc81534
   languageName: node
   linkType: hard
 
@@ -19494,6 +19580,43 @@ typescript@^4.0.2:
   version: 3.2.0
   resolution: "webpack-sources@npm:3.2.0"
   checksum: 8f1d686bd6aab2eda330579a07e14803cb2e01415f5a603697402aea3c36e98c1d2731167c3e97e50170cf1b0214cf8ef945fc639b100d1e3b67c023feb35716
+  languageName: node
+  linkType: hard
+
+"webpack@npm:*, webpack@npm:^5, webpack@npm:^5.38.1":
+  version: 5.59.1
+  resolution: "webpack@npm:5.59.1"
+  dependencies:
+    "@types/eslint-scope": ^3.7.0
+    "@types/estree": ^0.0.50
+    "@webassemblyjs/ast": 1.11.1
+    "@webassemblyjs/wasm-edit": 1.11.1
+    "@webassemblyjs/wasm-parser": 1.11.1
+    acorn: ^8.4.1
+    acorn-import-assertions: ^1.7.6
+    browserslist: ^4.14.5
+    chrome-trace-event: ^1.0.2
+    enhanced-resolve: ^5.8.3
+    es-module-lexer: ^0.9.0
+    eslint-scope: 5.1.1
+    events: ^3.2.0
+    glob-to-regexp: ^0.4.1
+    graceful-fs: ^4.2.4
+    json-parse-better-errors: ^1.0.2
+    loader-runner: ^4.2.0
+    mime-types: ^2.1.27
+    neo-async: ^2.6.2
+    schema-utils: ^3.1.0
+    tapable: ^2.1.1
+    terser-webpack-plugin: ^5.1.3
+    watchpack: ^2.2.0
+    webpack-sources: ^3.2.0
+  peerDependenciesMeta:
+    webpack-cli:
+      optional: true
+  bin:
+    webpack: bin/webpack.js
+  checksum: 6a24f71b640f864e5aa99d4f10ee8d708e4f33524d7ec67ab188ebca27f7002c2cfdd5f051464bf05031047a3accae832ccd1046c88cd1a519f688c7335e7ec3
   languageName: node
   linkType: hard
 
