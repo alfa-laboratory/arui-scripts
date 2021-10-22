@@ -6,7 +6,7 @@ import http from "http";
 
 const devServerConfig = applyOverrides<Configuration>('devServer', {
     port: configs.clientServerPort,
-    hot: true,
+    liveReload: false,
     client: {
         overlay: true,
     },
