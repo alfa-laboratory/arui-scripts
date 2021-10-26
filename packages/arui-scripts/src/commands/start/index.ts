@@ -1,33 +1,10 @@
-process.env.BROWSERSLIST_CONFIG = process.env.BROWSERSLIST_CONFIG || require.resolve('../../../.browserslistrc');
-
+import { spawn } from 'child_process';
 import fs from 'fs-extra';
-import webpack from 'webpack';
-import chalk from 'chalk';
-import WebpackDevServer from 'webpack-dev-server';
-import { choosePort } from 'react-dev-utils/WebpackDevServerUtils';
+import path from 'path';
 import checkRequiredFiles from '../util/check-required-files';
 import configs from '../../configs/app-configs';
-import clientConfig from '../../configs/webpack.client.dev';
-import serverConfig from '../../configs/webpack.server.dev';
-import statsOptions from '../../configs/stats-options';
-import devServerConfig from '../../configs/dev-server';
 
-const clientCompiler = webpack(clientConfig);
-const serverCompiler = webpack(serverConfig);
-// @ts-ignore
-const clientDevServer = new WebpackDevServer(devServerConfig, clientCompiler);
-
-serverCompiler.hooks.compile.tap('server', () => console.log('Compiling server...'));
-serverCompiler.hooks.invalid.tap('server', () => console.log('Compiling server...'));
-serverCompiler.hooks.done.tap('server', (stats: any) => printCompilerOutput('Server', stats));
-
-clientCompiler.hooks.invalid.tap('client', () => console.log('Compiling client...'));
-clientCompiler.hooks.done.tap('client', (stats: any) => printCompilerOutput('Client', stats));
-
-
-const DEFAULT_PORT = devServerConfig.port;
-const HOST = '0.0.0.0';
-
+process.env.BROWSERSLIST_CONFIG = process.env.BROWSERSLIST_CONFIG || require.resolve('../../../.browserslistrc');
 if (!checkRequiredFiles()) {
     process.exit(1);
 }
@@ -36,33 +13,19 @@ if (fs.pathExistsSync(configs.serverOutputPath)) {
     fs.removeSync(configs.serverOutputPath);
 }
 
-// We attempt to use the default port but if it is busy, we offer the user to
-// run on a different port. `detect()` Promise resolves to the next free port.
-choosePort(HOST, +(DEFAULT_PORT || 0))
-    .then((port) => {
-        if (!port) {
-            // We have not found a port.
-            return;
-        }
-        serverCompiler.watch({ aggregateTimeout: 100 }, () => {});
+const compileServer = spawn('node', [path.join(__dirname, './server')], { stdio: 'inherit' });
+const compileClient = spawn('node', [path.join(__dirname, './client')], { stdio: 'inherit' });
 
-        clientDevServer.startCallback(() => {
-            console.log(`Client dev server running at http://${HOST}:${port}...`);
-        });
-    })
-    .catch((err) => {
-        if (err && err.message) {
-            console.log(err.message);
-        }
-        process.exit(1);
-    });
+const onProcessExit = (code: number) => {
+    if (code !== 0) {
+        compileServer.kill();
+        compileClient.kill();
+        process.exit(code);
+    }
+};
 
-
-function printCompilerOutput(compilerName: string, stats: any) {
-    const output = stats.toString(statsOptions)
-        .split('\n')
-        .map((line: string) => `${chalk.cyan(`[${compilerName}]`)} ${line}`)
-        .join('\n');
-    console.log(output);
-}
+compileClient.on('error', onProcessExit);
+compileServer.on('error', onProcessExit);
+compileServer.on('close', onProcessExit);
+compileClient.on('close', onProcessExit);
 
