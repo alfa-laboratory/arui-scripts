@@ -15,6 +15,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@alfalab/stylelint-core-vars@npm:1.3.0":
+  version: 1.3.0
+  resolution: "@alfalab/stylelint-core-vars@npm:1.3.0"
+  checksum: 7a6c30d6757464901ea606d3c27690790ae2c4a47a5159e0ea7dfadfb7511842ae81a6b339ea063020ab1c257613081eea2c72098e69bf8b7020f0df58ec4be2
+  languageName: node
+  linkType: hard
+
 "@babel/code-frame@npm:7.10.4, @babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.10.4, @babel/code-frame@npm:^7.8.3":
   version: 7.10.4
   resolution: "@babel/code-frame@npm:7.10.4"
@@ -4217,22 +4224,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"arui-cssvars@npm:1.1.7":
-  version: 1.1.7
-  resolution: "arui-cssvars@npm:1.1.7"
+"arui-cssvars@npm:1.2.0":
+  version: 1.2.0
+  resolution: "arui-cssvars@npm:1.2.0"
   bin:
     cssvars: ./bin/cssvars.js
-  checksum: a3cd335710d569170e32acb1572653e7346cee3f83e75730c576c7216a31fd72707fb68802146dc29ee50c6393d6a0c9ecfd52855a36bb96e54368a5afabdd65
+  checksum: fdc69fe9bb56077e346b661bd8e1b33f928332a5e31ef2d8371b2f4c6db760834d407adba618046e3d35f50f697123c8bb20f658776b77999851ca856902a3ed
   languageName: node
   linkType: hard
 
-"arui-presets-lint@npm:^5.1.2":
-  version: 5.1.2
-  resolution: "arui-presets-lint@npm:5.1.2"
+"arui-presets-lint@npm:^5.9.0":
+  version: 5.9.0
+  resolution: "arui-presets-lint@npm:5.9.0"
   dependencies:
+    "@alfalab/stylelint-core-vars": 1.3.0
     "@commitlint/cli": ^9.1.2
     "@commitlint/config-conventional": ^9.1.2
-    arui-cssvars: 1.1.7
+    arui-cssvars: 1.2.0
     babel-eslint: ^10.1.0
     case-sensitive-paths-webpack-plugin: 2.3.0
     command-line-args: 5.1.1
@@ -4241,22 +4249,28 @@ __metadata:
     stylelint-config-prettier: ^8.0.2
     stylelint-prettier: ^1.1.2
   peerDependencies:
-    "@typescript-eslint/eslint-plugin": ^3.10.1
-    "@typescript-eslint/parser": ^3.10.1
+    "@typescript-eslint/eslint-plugin": ^4.15.2
+    "@typescript-eslint/parser": ^4.15.2
     eslint: ^7.7.0
+    eslint-config-airbnb: ^18.2.0
     eslint-config-airbnb-typescript: ^9.0.0
     eslint-import-resolver-typescript: ^2.2.1
     eslint-plugin-cypress: 2.11.1
+    eslint-plugin-dirnames: ^1.0.3
     eslint-plugin-import: ^2.22.0
     eslint-plugin-jsx-a11y: ^6.3.1
     eslint-plugin-prettier: ^3.1.4
     eslint-plugin-react: ^7.20.6
     eslint-plugin-react-hooks: ^4.1.0
+    eslint-plugin-simple-import-sort: ^5.0.3
+    eslint-plugin-unicorn: ^18.0.1
+    husky: ^4.2.5
+    lint-staged: ^10.2.13
     prettier: ^2.1.1
     prettier-eslint: ^11.0.0
     prettier-eslint-cli: ^5.0.0
     stylelint: ^13.6.1
-  checksum: 42e5917dbb1a303a0bb4e67f71748741c3b3896e8a20af5af84488feb72c2ae09300a27268cb961de157f40a11380b77270c1a0a66487213fe928a18b905e895
+  checksum: fa4805d93d789b3473e4a976ce277220517a17c11820312ad4c0691ad65903eae930332c114c1b5c60f9874b5e22896d15123d3de20bf9b30ec01f8a25a16961
   languageName: node
   linkType: hard
 
@@ -5191,24 +5205,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30000844, caniuse-lite@npm:^1.0.30000864, caniuse-lite@npm:^1.0.30001125":
-  version: 1.0.30001131
-  resolution: "caniuse-lite@npm:1.0.30001131"
-  checksum: 5a64c681dde4e1b73643d91d434a90468d869e139089d4dff4b34dabdd8246bfaf9763a92c1c07734a20358e9c3d25f7d1b563db22bfd32c74fe9baf76ec84fb
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001219":
-  version: 1.0.30001230
-  resolution: "caniuse-lite@npm:1.0.30001230"
-  checksum: 7ad6bf592c272dc62e59eb05b7e8581f6e8e0b0f6cef8e687c82c8306d77dccacdbba86286a4d1e3defebdd358ddc0a236208f08ea8e7b899d7b519c1223399a
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001265":
-  version: 1.0.30001270
-  resolution: "caniuse-lite@npm:1.0.30001270"
-  checksum: bee685ddf96f707f124c417f9bf7d84e4e57d5cfeaa3d0ccb79c50a09d7c74786fbe7ec89d733ccc1d0fddd593e9eb3fded5ae12b1ad5a3998a32eecbe0b191c
+"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30000844, caniuse-lite@npm:^1.0.30000864, caniuse-lite@npm:^1.0.30001125, caniuse-lite@npm:^1.0.30001219, caniuse-lite@npm:^1.0.30001265":
+  version: 1.0.30001271
+  resolution: "caniuse-lite@npm:1.0.30001271"
+  checksum: 0271e234e17c588fa203a34523f90c5a21ab62f41a2c3acabe96f0251593ac92f192cadd7a3dcbcf49bb28de4f57ca274d775c75700c3f38e9c42028d3becb0f
   languageName: node
   linkType: hard
 
@@ -16892,7 +16892,7 @@ resolve@^1.18.1:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
-    arui-presets-lint: ^5.1.2
+    arui-presets-lint: ^5.9.0
     commitlint: ^11.0.0
     conventional-changelog-cli: 1.3.16
     husky: ^4.3.0
