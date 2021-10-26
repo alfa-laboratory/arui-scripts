@@ -12,7 +12,6 @@ const clientDevServer = new WebpackDevServer(devServerConfig, clientCompiler);
 clientCompiler.hooks.invalid.tap('client', () => console.log('Compiling client...'));
 clientCompiler.hooks.done.tap('client', (stats: any) => printCompilerOutput('Client', stats));
 
-
 const DEFAULT_PORT = devServerConfig.port;
 const HOST = '0.0.0.0';
 
