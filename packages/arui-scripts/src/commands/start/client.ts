@@ -30,5 +30,6 @@ choosePort(HOST, +(DEFAULT_PORT || 0))
         if (err && err.message) {
             console.log(err.message);
         }
+
         process.exit(1);
     });
