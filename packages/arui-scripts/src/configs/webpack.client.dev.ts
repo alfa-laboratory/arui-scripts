@@ -25,7 +25,6 @@ const cssModuleRegex = /\.module\.css$/;
 function getSingleEntry(clientEntry: string[]) {
     return [
         ...(Array.isArray(configs.clientPolyfillsEntry) ? configs.clientPolyfillsEntry : [configs.clientPolyfillsEntry]),
-        // `${require.resolve('webpack-dev-server/client')}?/`,
         require.resolve('webpack/hot/dev-server'),
         // Finally, this is your app's code:
         ...clientEntry,
@@ -78,7 +77,7 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                 configFile: configs.tsconfig,
                 extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
             }))
-        ].filter(Boolean)) as any[],
+        ].filter(Boolean)) as NonNullable<webpack.Configuration['resolve']>['plugins'],
     },
     resolveLoader: {
         plugins: [

@@ -6,6 +6,8 @@ import clientConfig from '../../configs/webpack.client.dev';
 import devServerConfig from '../../configs/dev-server';
 
 const clientCompiler = webpack(clientConfig);
+// не резолвиться constructor(config: WebpackDevServer.Configuration, webpack?: webpack.Compiler | webpack.MultiCompiler);
+// clientCompiler: webpack.Compiler
 // @ts-ignore
 const clientDevServer = new WebpackDevServer(devServerConfig, clientCompiler);
 

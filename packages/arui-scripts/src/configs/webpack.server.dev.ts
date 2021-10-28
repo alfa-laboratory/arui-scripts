@@ -91,7 +91,7 @@ const config: webpack.Configuration = {
                 configFile: configs.tsconfig,
                 extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
             }))
-        ].filter(Boolean)) as any[],
+        ].filter(Boolean)) as NonNullable<webpack.Configuration['resolve']>['plugins'],
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
