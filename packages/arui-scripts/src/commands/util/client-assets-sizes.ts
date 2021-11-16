@@ -61,8 +61,8 @@ export function calculateAssetsSizes(webpackStats: Stats, rootDir: string = ''):
         .assets || []);
 
     const assets = assetsStats
-        .filter(asset => canReadAsset(asset.name))
-        .map(asset => {
+        .filter((asset) => canReadAsset(asset.name))
+        .map((asset) => {
             const fileContents = fs.readFileSync(path.join(rootDir, asset.name));
             const size = gzipSize(fileContents);
             const brSize = brotliSize(fileContents);
@@ -102,7 +102,11 @@ export function calculateAssetsSizes(webpackStats: Stats, rootDir: string = ''):
 export function printAssetsSizes(sizes: ClientAssetsSizes) {
     const longestSizeLabelLength = Math.max.apply(
         null,
-        sizes.assets.map(a => stripAnsi(a.gzipLabel).length + stripAnsi(a.sizeLabel).length + 8)
+        sizes.assets.map(a => {
+            const sizeLength = stripAnsi(a.gzipLabel).length;
+
+            return sizeLength + sizeLength + 8
+        })
     );
 
     console.log(chalk.blueBright('Assets sizes:'));

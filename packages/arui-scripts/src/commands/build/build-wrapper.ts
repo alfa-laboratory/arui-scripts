@@ -3,7 +3,7 @@
 
 import chalk from 'chalk';
 import webpack from 'webpack';
-import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
+import formatWebpackMessages from '../util/format-webpack-messages';
 
 type BuildResult = {
     stats: webpack.Stats;
@@ -14,11 +14,12 @@ type BuildResult = {
 function build(config: webpack.Configuration, previousFileSizes?: unknown) {
     let compiler = webpack(config);
     return new Promise<BuildResult>((resolve, reject) => {
-        compiler.run((err, stats) => {
+        compiler.run((err: any, stats: any) => {
             if (err) {
                 return reject(err);
             }
-            const messages = formatWebpackMessages(stats.toJson({}, true));
+            const messages = formatWebpackMessages(stats?.toJson({}));
+            
             if (messages.errors.length) {
                 // Only keep the first error. Others are often indicative
                 // of the same problem, but confuse the reader with noise.

@@ -5,14 +5,15 @@ import applyOverrides from './util/apply-overrides';
 import http from "http";
 
 const devServerConfig = applyOverrides<Configuration>('devServer', {
-    stats: false,
     port: configs.clientServerPort,
-    hot: true,
-    quiet: false,
-    inline: true,
-    overlay: true,
-    publicPath: `/${configs.publicPath}`,
-    contentBase: configs.serverOutputPath,
+    liveReload: false,
+    client: {
+        overlay: true,
+    },
+    devMiddleware: {
+        publicPath: `/${configs.publicPath}`,
+    },
+    static: [configs.serverOutputPath],
     proxy: Object.assign(configs.appPackage.proxy || {}, {
         '/**': {
             target: `http://localhost:${configs.serverPort}`,

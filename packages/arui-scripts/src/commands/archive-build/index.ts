@@ -80,6 +80,7 @@ const packageJsonPath = path.join(configs.cwd, packageJsonFileName);
         if (configs.debug) {
             console.error(err);
         }
+
         process.exit(1);
     }
 })();
