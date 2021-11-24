@@ -280,6 +280,7 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
         hints: false,
     },
     optimization: {
+        minimize: true,
         minimizer: [
             new CssMinimizerPlugin({
                 minimizerOptions: {
