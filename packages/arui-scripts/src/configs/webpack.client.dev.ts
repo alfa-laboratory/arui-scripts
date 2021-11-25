@@ -8,7 +8,9 @@ import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModul
 import getCSSModuleLocalIdent from 'react-dev-utils/getCSSModuleLocalIdent';
 const PnpWebpackPlugin = require('pnp-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const ReactRefreshTypeScript = require('react-refresh-typescript');
 
 import configs from './app-configs';
 import babelConf from './babel-client';
@@ -23,8 +25,6 @@ const cssModuleRegex = /\.module\.css$/;
 function getSingleEntry(clientEntry: string[]) {
     return [
         ...(Array.isArray(configs.clientPolyfillsEntry) ? configs.clientPolyfillsEntry : [configs.clientPolyfillsEntry]),
-        require.resolve('react-hot-loader/patch'),
-        `${require.resolve('webpack-dev-server/client')}?/`,
         require.resolve('webpack/hot/dev-server'),
         // Finally, this is your app's code:
         ...clientEntry,
@@ -38,6 +38,7 @@ function getSingleEntry(clientEntry: string[]) {
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
 const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webpackClient', 'webpackDev', 'webpackClientDev'], {
+    target: 'web',
     mode: 'development',
     // You may want 'eval' instead if you prefer to see the compiled output in DevTools.
     devtool: 'cheap-module-source-map',
@@ -53,15 +54,12 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
         filename: '[name].js',
         chunkFilename: '[name].js',
         // Point sourcemap entries to original disk location (format as URL on Windows)
-        devtoolModuleFilenameTemplate: info =>
+        devtoolModuleFilenameTemplate: (info: any) =>
             path
                 .relative(configs.appSrc, info.absoluteResourcePath)
                 .replace(/\\/g, '/'),
     },
     resolve: {
-        alias: {
-            'react-dom': '@hot-loader/react-dom',
-        },
         // This allows you to set a fallback for where Webpack should look for modules.
         // We placed these paths second because we want `node_modules` to "win"
         // if there are any conflicts. This matches Node resolution mechanism.
@@ -75,12 +73,11 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
         // for React Native Web.
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
         plugins: ([
-            PnpWebpackPlugin,
             (configs.tsconfig && new TsconfigPathsPlugin({
                 configFile: configs.tsconfig,
                 extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
             }))
-        ].filter(Boolean)) as webpack.ResolvePlugin[],
+        ].filter(Boolean)) as NonNullable<webpack.Configuration['resolve']>['plugins'],
     },
     resolveLoader: {
         plugins: [
@@ -122,14 +119,14 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                         test: configs.useTscLoader ? /\.(js|jsx|mjs)$/ : /\.(js|jsx|mjs|ts|tsx)$/,
                         include: configs.appSrc,
                         use: [
-                            { loader: require.resolve('react-hot-loader/webpack') },
                             {
                                 loader: require.resolve('babel-loader'),
                                 options: Object.assign({
                                     // This is a feature of `babel-loader` for webpack (not Babel itself).
                                     // It enables caching results in ./node_modules/.cache/babel-loader/
                                     // directory for faster rebuilds.
-                                    cacheDirectory: true
+                                    cacheDirectory: true,
+                                    plugins: require.resolve('react-refresh/babel')
                                 }, babelConf)
                             }
                         ]
@@ -137,22 +134,22 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                     (configs.tsconfig && configs.useTscLoader) && {
                         test: /\.tsx?$/,
                         use: [
-                            { loader: require.resolve('react-hot-loader/webpack') },
                             {
                                 loader: require.resolve('babel-loader'),
                                 options: Object.assign({
                                     // This is a feature of `babel-loader` for webpack (not Babel itself).
                                     // It enables caching results in ./node_modules/.cache/babel-loader/
                                     // directory for faster rebuilds.
-                                    cacheDirectory: true
+                                    cacheDirectory: true,
+                                    plugins: require.resolve('react-refresh/babel')
                                 }, babelConf)
-                            },
-                            {
-                                loader: require.resolve('cache-loader')
                             },
                             {
                                 loader: require.resolve('ts-loader'),
                                 options: {
+                                    getCustomTransformers: () => ({
+                                        before: [ReactRefreshTypeScript()],
+                                    }),
                                     onlyCompileBundledFiles: true,
                                     transpileOnly: true,
                                     happyPackMode: true,
@@ -173,7 +170,6 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                             {
                                 loader: MiniCssExtractPlugin.loader,
                                 options: {
-                                    hmr: true,
                                     publicPath: './',
                                 },
                             },
@@ -200,7 +196,6 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                             {
                                 loader: MiniCssExtractPlugin.loader,
                                 options: {
-                                    hmr: true,
                                     publicPath: './',
                                 },
                             },
@@ -208,8 +203,9 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
                                 loader: require.resolve('css-loader'),
                                 options: {
                                     importLoaders: 1,
-                                    modules: true,
-                                    getLocalIdent: getCSSModuleLocalIdent
+                                    modules: {
+                                        getLocalIdent: getCSSModuleLocalIdent
+                                    },
                                 },
                             },
                             {
@@ -248,10 +244,17 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
     plugins: ([
         new AssetsPlugin({ path: configs.serverOutputPath }),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+            // Tell Webpack to provide empty mocks for process.env.
+            'process.env': '{}'
         }),
         // This is necessary to emit hot updates (currently CSS only):
         new webpack.HotModuleReplacementPlugin(),
+        new ReactRefreshWebpackPlugin({
+            overlay: {
+                sockIntegration: 'whm',
+            },
+        }),
         // Watcher doesn't work well if you mistype casing in a path so we use
         // a plugin that prints an error when you attempt to do this.
         // See https://github.com/facebookincubator/create-react-app/issues/240
@@ -269,37 +272,42 @@ const webpackClientDev = applyOverrides<webpack.Configuration>(['webpack', 'webp
         // ])
         configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin(),
         new MiniCssExtractPlugin(),
-        new OptimizeCssAssetsPlugin({
-            cssProcessorOptions: {
-                map: {
-                    inline: false,
-                    annotation: true
-                },
-            },
-            cssProcessorPluginOptions: {
-                preset: () => ({
-                    plugins: [
-                        require('postcss-discard-duplicates')
-                    ]
-                })
-            },
-        }),
-    ].filter(Boolean)) as webpack.Plugin[],
-    // Some libraries import Node modules but don't use them in the browser.
-    // Tell Webpack to provide empty mocks for them so importing them works.
-    node: {
-        dgram: 'empty',
-        fs: 'empty',
-        net: 'empty',
-        tls: 'empty',
-        child_process: 'empty',
-    },
+    ].filter(Boolean)),
     // Turn off performance hints during development because we don't do any
     // splitting or minification in interest of speed. These warnings become
     // cumbersome.
     performance: {
         hints: false,
     },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new CssMinimizerPlugin({
+                minimizerOptions: {
+                    processorOptions: {
+                        map: {
+                            // `inline: false` generates the source map in a separate file.
+                            // Otherwise, the CSS file is needlessly large.
+                            inline: false,
+                            // `annotation: false` skips appending the `sourceMappingURL`
+                            // to the end of the CSS file. Webpack already handles this.
+                            annotation: false,
+                        },
+                    },
+                    preset: () => ({
+                        plugins: [
+                            // eslint-disable-next-line global-require
+                            require('postcss-discard-duplicates'),
+                        ],
+                    }),
+                },
+            }),
+        ],
+    },
+    // Без этого комиляция трирегилась на изменение в node_modules и приводила к утечке памяти
+    watchOptions: {
+        ignored: '**/node_modules',
+    }
 });
 
 export default webpackClientDev;

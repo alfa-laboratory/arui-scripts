@@ -8,6 +8,7 @@ server {
     server_tokens off;
 
     location / {
+        proxy_set_header Host $host;
         proxy_pass http://127.0.0.1:${configs.serverPort};
     }
 

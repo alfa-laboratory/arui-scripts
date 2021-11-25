@@ -53,14 +53,14 @@ const config = applyOverrides<webpack.Configuration>(['webpack', 'webpackServer'
                 .relative(configs.appSrc, info.absoluteResourcePath)
                 .replace(/\\/g, '/'),
     },
+    externalsPresets: { node: true },
     externals: [nodeExternals({
-        whitelist: [
+        allowlist: [
             /^arui-feather/,
             /^arui-ft-private/,
             /^arui-private/,
             /^alfaform-core-ui/,
-            /^newclick-components/,
-            /^newclick-composite-components/,
+            /^@alfa-bank\/newclick-composite-components/,
             /^#/,
             /^@alfalab\/icons/,
             /^@alfalab\/core-components/,
@@ -88,7 +88,7 @@ const config = applyOverrides<webpack.Configuration>(['webpack', 'webpackServer'
                 configFile: configs.tsconfig,
                 extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx']
             }))
-        ].filter(Boolean)) as webpack.ResolvePlugin[],
+        ].filter(Boolean)) as NonNullable<webpack.Configuration['resolve']>['plugins'],
     },
     module: {
         // typescript interface will be removed from modules, and we will get an error on correct code
@@ -117,9 +117,6 @@ const config = applyOverrides<webpack.Configuration>(['webpack', 'webpackServer'
                                 }, babelConf)
                             },
                             {
-                                loader: require.resolve('cache-loader')
-                            },
-                            {
                                 loader: require.resolve('ts-loader'),
                                 options: {
                                     onlyCompileBundledFiles: true,
@@ -142,9 +139,10 @@ const config = applyOverrides<webpack.Configuration>(['webpack', 'webpackServer'
                             {
                                 loader: require.resolve('css-loader'),
                                 options: {
-                                    modules: true,
-                                    exportOnlyLocals: true,
-                                    getLocalIdent: getCSSModuleLocalIdent
+                                    modules: {
+                                        exportOnlyLocals: true,
+                                        getLocalIdent: getCSSModuleLocalIdent
+                                    },
                                 },
                             },
                             {
@@ -192,7 +190,7 @@ const config = applyOverrides<webpack.Configuration>(['webpack', 'webpackServer'
             entryOnly: false
         }),
         configs.tsconfig !== null && new ForkTsCheckerWebpackPlugin()
-    ].filter(Boolean)) as webpack.Plugin[]
+    ].filter(Boolean)) as webpack.WebpackPluginInstance[],
 });
 
 export default config;

@@ -9,7 +9,13 @@ ARUI-scripts
 Использование
 ===
 
-0. Пакет требует версию nodejs 10+.
+0. Пакет требует использовать следующие версии:
+
+Зависимость | Версия
+-- | --
+`nodejs` | `12.13.0+`
+`react` | `16.13.0+`
+`react-dom` | `16.13.0+`
 
 1. Установите `arui-scripts` в свой проект как dev зависимость
 
@@ -146,32 +152,20 @@ function readAssetsManifest() {
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './app';
-import { AppContainer } from 'react-hot-loader';
 
 ReactDOM.render(
-    <AppContainer><App /></AppContainer>,
+    <App />,
     document.getElementById('react-app')
 );
 if (module.hot) {
     module.hot.accept('./app', () => {
         const NextAppAssignments = require('./app').default;
         ReactDOM.render(
-            <AppContainer><NextAppAssignments /></AppContainer>,
+            <NextAppAssignments />,
             document.getElementById('react-app')
         );
     });
 }
-```
-
-При возникновении в консоли предупреждения `React-Hot-Loader: react-🔥-dom patch is not detected. React 16.6+ features may not work.` убедитесь, что в `webpack.client.dev` не переопределяется настройка `resolve.alias`, в нём должна быть следующая запиcь:
-
-```
-// ...
-  resolve: {
-    alias: {
-      'react-dom': '@hot-loader/react-dom'
-    }
-  }
 ```
 
 #### Сервер
