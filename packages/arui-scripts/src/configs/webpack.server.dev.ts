@@ -185,6 +185,9 @@ const config: webpack.Configuration = {
             },
         ],
     },
+    optimization: {
+        nodeEnv: false,
+    },
     plugins: ([
         configs.useServerHMR
             ? new RunScriptWebpackPlugin({
