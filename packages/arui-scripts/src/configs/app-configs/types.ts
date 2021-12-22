@@ -35,6 +35,7 @@ export type AppConfigs = {
 
     debug: boolean;
     overridesPath: string[];
+    statsOutputFilename: string;
 
     componentsTheme: string | undefined;
     keepCssVars: boolean;
@@ -42,4 +43,5 @@ export type AppConfigs = {
     publicPath: string;
     serverOutputPath: string;
     clientOutputPath: string;
+    statsOutputPath: string;
 };

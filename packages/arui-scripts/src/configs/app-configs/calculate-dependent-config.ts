@@ -12,5 +12,6 @@ export function calculateDependentConfig(config: AppConfigs) {
         serverOutputPath: path.resolve(config.cwd, config.buildPath),
         clientOutputPath: path.resolve(config.cwd, config.buildPath, config.assetsPath),
         clientPolyfillsEntry: getPolyfills(config),
+        statsOutputPath: path.resolve(config.cwd, config.buildPath, config.statsOutputFilename),
     });
 }
