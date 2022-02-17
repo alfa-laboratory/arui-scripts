@@ -58,6 +58,7 @@ export function getDefaults(): AppConfigs {
 
         debug: false,
         overridesPath: [overridesPath],
+        statsOutputFilename: 'stats.json',
 
         componentsTheme: undefined,
         keepCssVars: false,
@@ -66,5 +67,6 @@ export function getDefaults(): AppConfigs {
         publicPath: '',
         serverOutputPath: '',
         clientOutputPath: '',
+        statsOutputPath: '',
     };
 }

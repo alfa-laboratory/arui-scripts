@@ -26,6 +26,7 @@ export const availablePackageSettings: Array<keyof AppConfigs> = [
     'serverPort',
 
     'debug',
+    'statsOutputFilename',
     'componentsTheme',
     'keepCssVars',
 ];

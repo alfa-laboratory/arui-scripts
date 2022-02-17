@@ -68,6 +68,7 @@ npm install arui-scripts --save-dev
 - `archiveName` - имя архива, который будет создан при использовании команды `archive-build`. По умолчанию `build.tar`.
 - `keepPropTypes` - если `true`, пакеты с prop-types не будут удалены из production билда.
 - `debug` - режим отладки, в котором не выполняются некоторые нежелательные операции и выводится больше сообщений об ошибках, по умолчанию `false`.
+- `statsOutputFilename` - имя [stats-файла](https://webpack.js.org/api/stats/), которое будет использоваться в [bundle-analyze](#анализ-бандла) команде
 - `useTscLoader` -  использовать ts-loader вместо babel-loader для обработки ts файлов. У babel-loader есть [ряд ограничений](https://blogs.msdn.microsoft.com/typescript/2018/08/27/typescript-and-babel-7/). По умолчанию `false`.
 - `componentsTheme` - путь к css файлу с темой для [core-components](https://alfa-laboratory.github.io/core-components). Используется для настройки [postcss-custom-properties](https://github.com/postcss/postcss-custom-properties#importfrom).
 - `keepCssVars` - отключает `postcss-custom-properties`, css переменные будут оставаться в бандле.
@@ -426,7 +427,16 @@ require node.js на таких местах ломается. Поэтому н
 воспользоваться механизмом `overrides`, описанным ниже.
 По умолчанию же все не-js файлы из внешних модулей будут проигнорированы.
 
-
+Анализ бандла
+---
+Для изучения итогового бандла приложения и просмотра его размеров и включенных файлов в arui-scripts есть команда
+```
+arui-scripts bundle-analyze
+```
+Она запускает [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer) для клиентского кода.
+Так же при запуске будет генерироваться [stats-файл](https://webpack.js.org/api/stats/), который можно использовать в
+[сторонних](http://webpack.github.io/analyse/) инструментах, например для понимания почему тот или иной модуль попал в бандл.
+По умолчанию файл будет писаться в `.build/stats.json`.
 
 Тонкая настройка
 ===
