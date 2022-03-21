@@ -33,7 +33,7 @@ export function getDefaults(): AppConfigs {
         assetsPath: 'assets',
         additionalBuildPath: ['config'],
         nginxRootPath: '/src',
-        runFromNonRootUser: false,
+        runFromNonRootUser: true,
         archiveName: 'build.tar',
 
         // server compilation configs
