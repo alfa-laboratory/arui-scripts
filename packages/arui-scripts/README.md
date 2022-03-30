@@ -57,6 +57,7 @@ npm install arui-scripts --save-dev
 
 - `dockerRegistry` - адрес используемого docker registry, по умолчанию `''`, то есть используется публичный registry
 - `baseDockerImage` - имя базового образа, используемого для построения docker образа. По умолчанию `alfabankui/arui-scripts:latest`.
+- `runFromNonRootUser` - сборка образа под пользователем `nginx`. Нужна для совместимости с k8s, т.к там зачастую запрещен запуск контейнера из под `root` По умолчанию `false`.
 - `serverEntry` - точка входа для исходников сервера, по умолчанию `src/server/index`.
 - `serverOutput` - имя файла для компиляции сервера, по умолчанию `server.js`.
 - `clientPolyfillsEntry` - точка входа для полифилов. Будет подключаться до основной точки входа. По умолчанию подтягивает полифилы из `arui-feather`, если он установлен.
