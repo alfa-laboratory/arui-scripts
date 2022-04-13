@@ -18,3 +18,4 @@ github action [Create new library package](https://github.com/alfa-laboratory/ar
 - [arui-scripts-test](./packages/arui-scripts-test/) - тестовый проект, на котором проводится проверка сборщиковъ
 - [alpine-node-nginx](./packages/alpine-node-nginx/) - Базовый образ docker контейнера, на котором будут основываться контейнеры проектов
 
+This is test
